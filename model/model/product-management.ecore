@@ -1,0 +1,1027 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="product_management" nsURI="ecore://nasdanika.org/models/product-management"
+    nsPrefix="org.nasdanika.models.product.management">
+  <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+    <details key="documentation" value="An Ecore model for the product management domain covering personas, needs, goals, pain points,&#xA;products, features, capabilities, editions, subscriptions, value propositions, market segments,&#xA;hypotheses, and more.&#xA;&#xA;The model supports fine-grained product management and user education, allowing both the product&#xA;builder and product users to achieve maximum synergetic value. It can also be used as a runtime or&#xA;build artifact to tie product usage to the model and generate reports such as popular features.&#xA;&#xA;Key domain areas:&#xA;- Persona: fictional but research-based representation of target users with behaviors, actions, needs, goals, and pain points&#xA;- Product: portfolios, products, editions, features, capabilities, and capability providers&#xA;- Commercial: subscriptions and pricing&#xA;- Versioning: versions and releases&#xA;- Value: value propositions, evidence, alternatives, and outcome metrics&#xA;- Market: segments, industries, geographies, company sizes, channels, and ideal customer profiles&#xA;- Hypothesis: testable beliefs driving product decisions"/>
+  </eAnnotations>
+  <!-- ══════════════════════════════════════════════════════════════════
+       Base / shared abstract types
+       ══════════════════════════════════════════════════════════════════ -->
+  <eClassifiers xsi:type="ecore:EClass" name="ModelElement" abstract="true">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Abstract base for every element in the product management model.&#xA;Provides a common name and description."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Human-readable name of this element."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="description" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Detailed description of this element. May contain Markdown."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
+        iD="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Unique identifier for this element."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <!-- ══════════════════════════════════════════════════════════════════
+       Persona domain
+       ══════════════════════════════════════════════════════════════════ -->
+  <eClassifiers xsi:type="ecore:EClass" name="Persona" eSuperTypes="#//ModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A fictional but research-based representation of a target user.&#xA;&#xA;Purpose: to help the product team visualize who they are building for.&#xA;&#xA;Includes demographics, behaviors, motivations, context (work environment, tools),&#xA;and attitudes/preferences.&#xA;&#xA;Example: 'Alex, a 34-year-old DevOps engineer who values automation and hates manual workflows.'&#xA;&#xA;Personas have needs, goals, and pain points. In this model they are contained by a persona&#xA;for simplicity. Shared needs, goals, or pain points are addressed by reference subtypes&#xA;or 'related to' references."/>
+    </eAnnotations>
+    <!-- Demographics -->
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="age" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Representative age of the persona."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="role" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Job title or role of the persona, e.g. 'DevOps Engineer', 'Hiring Manager'."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="experienceLevel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Level of experience, e.g. 'Junior', 'Mid-level', 'Senior', 'Expert'."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <!-- Context -->
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="workEnvironment" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Description of the persona's work environment, e.g. 'remote startup', 'enterprise office'."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="toolsUsed" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Tools the persona currently uses in their workflow."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="attitudes" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Attitudes and preferences of the persona, e.g. 'risk-averse', 'data-driven'."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <!-- Containment references -->
+    <eStructuralFeatures xsi:type="ecore:EReference" name="behaviors" upperBound="-1"
+        eType="#//Behavior" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Behavioral patterns of this persona — habitual, preference-based, and cross-situational patterns&#xA;describing how the persona typically operates."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="actions" upperBound="-1"
+        eType="#//Action" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Concrete, observable steps this persona performs in workflows or scenarios."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="needs" upperBound="-1"
+        eType="#//Need" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Fundamental requirements this persona has to achieve something meaningful.&#xA;Needs are often unstated and discovered through research."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="goals" upperBound="-1"
+        eType="#//Goal" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Desired outcomes this persona is trying to accomplish.&#xA;Goals may be functional, emotional, or aspirational."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="painPoints" upperBound="-1"
+        eType="#//PainPoint" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Problems, frustrations, or barriers preventing this persona from meeting their goals."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Behavior" eSuperTypes="#//ModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A consistent, characteristic pattern in how a persona operates.&#xA;Behaviors are habitual, preference-based, and cross-situational.&#xA;&#xA;They capture:&#xA;- Attitudes (risk-averse, data-driven, collaborative)&#xA;- Work style (async vs synchronous, detail-oriented, shortcut-taking)&#xA;- Motivation drivers (speed, quality, confidence, accuracy)&#xA;- Decision inclinations (consult peers, trust AI, check data first)&#xA;- Interaction patterns (reads docs, prefers autocomplete, avoids manual steps)&#xA;&#xA;Examples:&#xA;- 'Checks results multiple times before making a decision'&#xA;- 'Prefers automation over manual review'&#xA;&#xA;Behaviors help design how the experience should feel.&#xA;They guide design principles."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="category" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Category of behavior, e.g. 'attitude', 'work-style', 'motivation-driver', 'decision-inclination', 'interaction-pattern'."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <!-- Behavior → Need / PainPoint -->
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relatedNeeds" upperBound="-1"
+        eType="#//Need">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Needs related to or driven by this behavior."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relatedPainPoints" upperBound="-1"
+        eType="#//PainPoint">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Pain points related to or caused by this behavior (behavioral friction)."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relatedGoals" upperBound="-1"
+        eType="#//Goal">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Goals motivated by this behavior."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Action" eSuperTypes="#//ModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A concrete, observable step a persona performs in a workflow or scenario.&#xA;Actions are contextual, sequential, and task-level.&#xA;&#xA;They capture:&#xA;- Task steps in a workflow&#xA;- Interactions with tools or systems&#xA;- Triggered events (what they do next)&#xA;- User journey touchpoints&#xA;&#xA;Examples:&#xA;- 'Uploads a resume file'&#xA;- 'Filters candidates by skill score'&#xA;&#xA;Actions help design what the user must do to succeed.&#xA;They guide workflow and feature design."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="order" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EIntegerObject">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Sequence order of this action within the persona's workflow."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <!-- Action → Capability, Feature -->
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relatedCapabilities" upperBound="-1"
+        eType="#//Capability">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Capabilities exercised or required by this action."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relatedFeatures" upperBound="-1"
+        eType="#//Feature">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Features involved in or supporting this action."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <!-- ══════════════════════════════════════════════════════════════════
+       Needs / Goals / Pain Points
+       ══════════════════════════════════════════════════════════════════ -->
+  <eClassifiers xsi:type="ecore:EClass" name="Need" eSuperTypes="#//ModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="The fundamental requirement a user has to achieve something meaningful.&#xA;&#xA;Think: 'What must be true for this user to succeed?'&#xA;&#xA;Needs are often unstated, discovered through research. They are not tasks and not goals.&#xA;They are the underlying necessities.&#xA;&#xA;Examples:&#xA;- Needs a reliable way to track deployment failures&#xA;- Needs visibility into system performance&#xA;- Needs a workflow that integrates with existing tools&#xA;&#xA;Needs support goals."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="supportedGoals" upperBound="-1"
+        eType="#//Goal">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Goals that this need supports. Fulfilling the need contributes to achieving these goals."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relatedNeeds" upperBound="-1"
+        eType="#//Need">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Other needs related to this need. Supports shared needs across personas."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Goal" eSuperTypes="#//ModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="The desired outcome the user is trying to accomplish.&#xA;&#xA;Think: 'What is the user trying to achieve?'&#xA;&#xA;Goals may be:&#xA;- Functional (ship releases faster)&#xA;- Emotional (feel confident in a deployment)&#xA;- Aspirational (reduce on-call burden over time)&#xA;&#xA;Examples:&#xA;- Ship a stable release with minimal downtime&#xA;- Reduce troubleshooting from hours to minutes&#xA;- Automate repetitive tasks&#xA;&#xA;A need is a requirement; a goal is an outcome."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="goalType" eType="#//GoalType">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The type of goal — functional, emotional, or aspirational."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relatedGoals" upperBound="-1"
+        eType="#//Goal">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Other goals related to this goal. Supports shared goals across personas."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="GoalType">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Classification of goal types."/>
+    </eAnnotations>
+    <eLiterals name="Functional" value="0">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A concrete, task-oriented outcome, e.g. 'ship releases faster'."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="Emotional" value="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A feeling-oriented outcome, e.g. 'feel confident in a deployment'."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="Aspirational" value="2">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="A long-term, strategic outcome, e.g. 'reduce on-call burden over time'."/>
+      </eAnnotations>
+    </eLiterals>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="PainPoint" eSuperTypes="#//ModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="The problem, frustration, or barrier preventing the user from meeting their goals.&#xA;&#xA;Think: 'What is getting in their way?'&#xA;&#xA;Examples:&#xA;- Release notes are scattered across tools&#xA;- Manual steps cause errors&#xA;- Slow CI pipeline delays deployments&#xA;- They do not trust the monitoring alerts&#xA;&#xA;Pain points are what your product should aim to resolve.&#xA;Pain points violate needs and block goals."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="violatedNeeds" upperBound="-1"
+        eType="#//Need">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Needs that this pain point violates or undermines."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="blockedGoals" upperBound="-1"
+        eType="#//Goal">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Goals that this pain point blocks or hinders."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="relatedPainPoints" upperBound="-1"
+        eType="#//PainPoint">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Other pain points related to this one. Supports shared pain points across personas."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <!-- ══════════════════════════════════════════════════════════════════
+       Product domain
+       ══════════════════════════════════════════════════════════════════ -->
+  <eClassifiers xsi:type="ecore:EClass" name="ProductPortfolio" eSuperTypes="#//ModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A collection of related products managed as a group."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="products" upperBound="-1"
+        eType="#//Product" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Products in this portfolio."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Product" eSuperTypes="#//ModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A collection of features targeting a specific persona or a subset of personas."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="editions" upperBound="-1"
+        eType="#//Edition" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Different flavors/editions of this product, e.g. Community, Professional, Enterprise."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="features" upperBound="-1"
+        eType="#//Feature" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Features belonging to this product."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetPersonas" upperBound="-1"
+        eType="#//Persona">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Personas this product is targeting."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="versions" upperBound="-1"
+        eType="#//Version" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Versions of this product."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="releases" upperBound="-1"
+        eType="#//Release" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Releases of this product."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Edition" eSuperTypes="#//ModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A flavor of a product with a specific set of features and capabilities.&#xA;&#xA;Examples: Professional Edition, Community Edition, Enterprise Edition.&#xA;&#xA;Editions bundle features/capabilities and are sold via subscription plans."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="includedFeatures" upperBound="-1"
+        eType="#//Feature">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Features included in this edition."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="includedCapabilities" upperBound="-1"
+        eType="#//Capability">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Capabilities directly included/entitled in this edition."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="availableGeographies" upperBound="-1"
+        eType="#//Geography">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Geographies where this edition is available."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="availableChannels" upperBound="-1"
+        eType="#//Channel">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Channels through which this edition is available, e.g. Direct, Self-serve, Marketplace."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Feature" eSuperTypes="#//Capability">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A unit of utility for one or more personas — something that helps to achieve a goal,&#xA;satisfies a need, or addresses a pain point.&#xA;&#xA;One feature may be associated with multiple goals, needs, and pain points and vice versa.&#xA;Features can be associated with personas directly for coarse-grained models.&#xA;&#xA;A Feature is modeled as a subtype of Capability because a feature is itself a capability&#xA;exposed to users."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="addressedNeeds" upperBound="-1"
+        eType="#//Need">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Needs that this feature addresses or satisfies."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="supportedGoals" upperBound="-1"
+        eType="#//Goal">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Goals that this feature supports or helps achieve."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="addressedPainPoints" upperBound="-1"
+        eType="#//PainPoint">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Pain points that this feature addresses or mitigates."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="personaAssociations" upperBound="-1"
+        eType="#//FeaturePersonaAssociation" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Associations between this feature and specific personas. The association class&#xA;carries a description and is contained by the feature — features are created to make personas happy."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="usedCapabilities" upperBound="-1"
+        eType="#//Capability">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Capabilities that this feature uses or depends on."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="versions" upperBound="-1"
+        eType="#//Version" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Versions of this feature."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="FeaturePersonaAssociation" eSuperTypes="#//ModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="An association class between a Feature and a Persona.&#xA;Contained by the Feature. Allows describing how and why a feature is relevant to a specific persona."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="persona" lowerBound="1"
+        eType="#//Persona">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The persona associated with the containing feature."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Capability" eSuperTypes="#//ModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Ability to achieve something.&#xA;&#xA;Examples: AI chat, embeddings generation, PDF export.&#xA;&#xA;Capabilities are used by features. A Feature is a type of Capability.&#xA;Capabilities may be provided by one or more CapabilityProviders."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="providers" upperBound="-1"
+        eType="#//CapabilityProvider" eOpposite="#//CapabilityProvider/providedCapabilities">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Providers that can deliver this capability."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="versions" upperBound="-1"
+        eType="#//Version" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Versions of this capability."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CapabilityProvider" eSuperTypes="#//ModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Something providing a capability.&#xA;&#xA;Example: OpenAI GPT-4o model for AI chat.&#xA;&#xA;Capability providers may require other capabilities — forming a directed acyclic graph.&#xA;There may be multiple capability providers for a single capability."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="providedCapabilities" upperBound="-1"
+        eType="#//Capability" eOpposite="#//Capability/providers">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Capabilities that this provider delivers."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="requiredCapabilities" upperBound="-1"
+        eType="#//Capability">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Capabilities required by this provider (forms a directed acyclic graph)."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="versions" upperBound="-1"
+        eType="#//Version" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Versions of this capability provider."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <!-- ══════════════════════════════════════════════════════════════════
+       Versioning domain
+       ══════════════════════════════════════════════════════════════════ -->
+  <eClassifiers xsi:type="ecore:EClass" name="Version" eSuperTypes="#//ModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A version identifier. Products, features, capabilities, and capability providers may have versions.&#xA;Versioning may be semantic, calendar-based, or follow other schemes."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="versionScheme" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The versioning scheme, e.g. 'semantic', 'calendar', 'incremental'."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="versionString" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The version string, e.g. '1.2.3', '2024.01'."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="date" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Date this version was defined."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Release" eSuperTypes="#//ModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A version made available to users.&#xA;A release references a specific version and tracks when it was published and its current status."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="version" eType="#//Version">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The version associated with this release."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="releaseDate" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Date the release was published or made available."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="#//ReleaseStatus">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Current status of the release."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="includedFeatures" upperBound="-1"
+        eType="#//Feature">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Features included in this release."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="ReleaseStatus">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Status of a release."/>
+    </eAnnotations>
+    <eLiterals name="Planned" value="0"/>
+    <eLiterals name="InDevelopment" value="1"/>
+    <eLiterals name="Beta" value="2"/>
+    <eLiterals name="GA" value="3">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Generally Available."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="Deprecated" value="4"/>
+    <eLiterals name="EndOfLife" value="5"/>
+  </eClassifiers>
+  <!-- ══════════════════════════════════════════════════════════════════
+       Commercial domain – Subscription
+       ══════════════════════════════════════════════════════════════════ -->
+  <eClassifiers xsi:type="ecore:EClass" name="Subscription" eSuperTypes="#//ModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Subscriptions define how the user pays and for how long.&#xA;&#xA;Examples:&#xA;- Monthly vs yearly&#xA;- Per-user vs per-device&#xA;- Pay-as-you-go vs committed&#xA;- Auto-renewal terms&#xA;- Usage-based or hybrid pricing&#xA;&#xA;A subscription describes pricing and time, not features.&#xA;However, a subscription may also define service levels — for example, LLM models available,&#xA;token budget, response time."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="billingCycle" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Billing cycle, e.g. 'monthly', 'yearly', 'pay-as-you-go'."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="pricingModel" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Pricing model, e.g. 'per-user', 'per-device', 'usage-based', 'hybrid', 'flat-rate'."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="autoRenewal" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EBoolean">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Whether the subscription auto-renews."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="editions" upperBound="-1"
+        eType="#//Edition">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Editions sold through this subscription plan."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="serviceLevels" upperBound="-1"
+        eType="#//ServiceLevel" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Service level definitions for this subscription, e.g. token budgets, response times, available models."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ServiceLevel" eSuperTypes="#//ModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Defines a service level within a subscription.&#xA;Examples: LLM models available, token budget, response time guarantees."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="metric" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The metric or dimension, e.g. 'response-time', 'token-budget', 'available-models'."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The value or threshold for the metric."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <!-- ══════════════════════════════════════════════════════════════════
+       Value domain – Value Proposition, Evidence, Alternative, Metric
+       ══════════════════════════════════════════════════════════════════ -->
+  <eClassifiers xsi:type="ecore:EClass" name="ValueProposition" eSuperTypes="#//ModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A concise statement of who it is for, what it helps them achieve, and why it is better than alternatives.&#xA;&#xA;Treating VP as data enables:&#xA;- Persona-specific messaging&#xA;- Edition/plan design tied to benefits&#xA;- Launch/experiment planning&#xA;- Outcome measurement and iteration&#xA;&#xA;VP sits between user intent (needs/goals) and product packaging (editions/plans),&#xA;with capabilities as the bridge and evidence as validation."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="statement" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The concise value proposition statement."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <!-- VP targets Persona -->
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetPersonas" upperBound="-1"
+        eType="#//Persona">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Personas this value proposition targets."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <!-- VP addresses Need -->
+    <eStructuralFeatures xsi:type="ecore:EReference" name="addressedNeeds" upperBound="-1"
+        eType="#//Need">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Needs this value proposition addresses."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <!-- VP supports Goal -->
+    <eStructuralFeatures xsi:type="ecore:EReference" name="supportedGoals" upperBound="-1"
+        eType="#//Goal">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Goals this value proposition supports."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <!-- VP mitigates PainPoint -->
+    <eStructuralFeatures xsi:type="ecore:EReference" name="mitigatedPainPoints" upperBound="-1"
+        eType="#//PainPoint">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Pain points this value proposition mitigates."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <!-- VP isEnabledBy Capability/Feature -->
+    <eStructuralFeatures xsi:type="ecore:EReference" name="enablingCapabilities" upperBound="-1"
+        eType="#//Capability">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Capabilities (including features) that enable this value proposition."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <!-- VP isPackagedIn Edition -->
+    <eStructuralFeatures xsi:type="ecore:EReference" name="packagedInEditions" upperBound="-1"
+        eType="#//Edition">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Editions in which this value proposition is packaged."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <!-- VP isDifferentiatedFrom Alternative -->
+    <eStructuralFeatures xsi:type="ecore:EReference" name="differentiatedFromAlternatives" upperBound="-1"
+        eType="#//Alternative">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Alternatives (competitors/incumbents) from which this value proposition is differentiated."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <!-- VP isSupportedBy Evidence -->
+    <eStructuralFeatures xsi:type="ecore:EReference" name="supportingEvidence" upperBound="-1"
+        eType="#//Evidence">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Evidence supporting this value proposition."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <!-- VP targets MarketSegment -->
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetSegments" upperBound="-1"
+        eType="#//MarketSegment">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Market segments this value proposition targets (in addition to personas)."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Evidence" eSuperTypes="#//ModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Metrics, experiments, testimonials, or case studies that validate a value proposition."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="evidenceType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Type of evidence, e.g. 'metric', 'experiment', 'testimonial', 'case-study'."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="source" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Source of the evidence, e.g. a study name, customer name, experiment ID."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="measuredMetrics" upperBound="-1"
+        eType="#//OutcomeMetric">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Outcome metrics that this evidence measures."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="collectedInSegments" upperBound="-1"
+        eType="#//MarketSegment">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Market segments in which this evidence was collected."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="OutcomeMetric" eSuperTypes="#//ModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A measurable metric tied to outcomes.&#xA;Used to validate value propositions and hypotheses.&#xA;Examples: activation rate, NRR, win-rate, time-to-value."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="unit" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Unit of measurement, e.g. 'percent', 'seconds', 'count'."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="targetValue" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Target value for this metric, e.g. '&gt;90%', '&lt;5s'."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Alternative" eSuperTypes="#//ModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A competitor or incumbent solution against which a value proposition is differentiated."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="alternativeType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Type of alternative, e.g. 'competitor', 'incumbent', 'manual-process', 'open-source'."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <!-- ══════════════════════════════════════════════════════════════════
+       Market domain
+       ══════════════════════════════════════════════════════════════════ -->
+  <eClassifiers xsi:type="ecore:EClass" name="MarketSegment" eSuperTypes="#//ModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A market segment, e.g. SMB, Mid-market, Enterprise; or horizontal vs vertical segments.&#xA;&#xA;Markets drive which personas you prioritize, which value props you emphasize,&#xA;and how you package/price. Market attributes should be kept independent and composable."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="segmentType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Type of segment, e.g. 'SMB', 'Mid-market', 'Enterprise', 'Horizontal', 'Vertical'."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <!-- MarketSegment targets Persona -->
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetPersonas" upperBound="-1"
+        eType="#//Persona">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Personas targeted by this market segment."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="industries" upperBound="-1"
+        eType="#//Industry" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Industries within this market segment."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="geographies" upperBound="-1"
+        eType="#//Geography" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Geographies within this market segment."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="companySizes" upperBound="-1"
+        eType="#//CompanySize" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Company size bands within this market segment."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="channels" upperBound="-1"
+        eType="#//Channel" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Route-to-market channels in this segment."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="idealCustomerProfiles" upperBound="-1"
+        eType="#//IdealCustomerProfile" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Ideal customer profiles within this market segment."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Industry" eSuperTypes="#//ModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="An industry classification (e.g. NAICS/SIC taxonomy).&#xA;Examples: Financial Services, Healthcare, Manufacturing."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="code" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Industry classification code, e.g. NAICS or SIC code."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="regulatoryConstraints" upperBound="-1"
+        eType="#//RegulatoryConstraint" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Regulatory constraints applicable to this industry."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Geography" eSuperTypes="#//ModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A geographic definition — region, country, state/province.&#xA;Can also include data residency region."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="region" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Geographic region, e.g. 'EMEA', 'North America', 'APAC'."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="country" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Country name or ISO code."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="stateProvince" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="State or province within the country."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="dataResidencyRegion" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Data residency region, if different from geographic region."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="regulatoryConstraints" upperBound="-1"
+        eType="#//RegulatoryConstraint" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Regulatory constraints applicable to this geography."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="CompanySize" eSuperTypes="#//ModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Employee count bands and/or revenue bands.&#xA;Example: '1-50 employees', '$1M-$10M revenue'."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="employeeBand" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Employee count band, e.g. '1-50', '51-200', '201-1000', '1000+'."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="revenueBand" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Revenue band, e.g. '&lt;$1M', '$1M-$10M', '$10M-$100M', '$100M+'."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Channel" eSuperTypes="#//ModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A route-to-market channel.&#xA;Examples: Direct, Self-serve, Partner/Reseller, Marketplace (e.g. Azure, AWS)."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="channelType" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Type of channel, e.g. 'Direct', 'Self-serve', 'Partner', 'Reseller', 'Marketplace'."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="IdealCustomerProfile" eSuperTypes="#//ModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A composite that constrains Segment + Industry + Size + Tech Stack to define the ideal customer.&#xA;ICP is a composite of market primitives."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetIndustries" upperBound="-1"
+        eType="#//Industry">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Target industries for this ICP."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetCompanySizes" upperBound="-1"
+        eType="#//CompanySize">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Target company sizes for this ICP."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetGeographies" upperBound="-1"
+        eType="#//Geography">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Target geographies for this ICP."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="techStack" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Technology stack requirements, e.g. 'AWS', 'Kubernetes', 'Java'."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetPersonas" upperBound="-1"
+        eType="#//Persona">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Personas that characterize this ICP."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="RegulatoryConstraint" eSuperTypes="#//ModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A regulatory constraint determined by industry and/or geography.&#xA;Governs which capabilities and editions are enabled in specific contexts.&#xA;Examples: GDPR, HIPAA, SOC 2, data residency requirements."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="regulation" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Name of the regulation, e.g. 'GDPR', 'HIPAA', 'SOC 2'."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="affectedCapabilities" upperBound="-1"
+        eType="#//Capability">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Capabilities affected by this regulatory constraint."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <!-- ══════════════════════════════════════════════════════════════════
+       Hypothesis domain
+       ══════════════════════════════════════════════════════════════════ -->
+  <eClassifiers xsi:type="ecore:EClass" name="Hypothesis" eSuperTypes="#//ModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="A testable belief that drives product decisions.&#xA;&#xA;Every value proposition, feature, capability, market bet, and pricing decision is ultimately&#xA;based on a belief that must be validated.&#xA;&#xA;A Hypothesis is:&#xA;- Falsifiable&#xA;- Linked to a persona, need, goal, pain point, or value proposition&#xA;- Validated or invalidated by evidence&#xA;- Driving experiments and decisions&#xA;&#xA;Example: 'We believe that enterprise hiring managers will reduce screening time by 50%&#xA;if we provide Premium Skill Signals.'&#xA;&#xA;Hypotheses sit before Value Propositions in the order of abstraction:&#xA;Persona → Needs/Pain Points/Goals → Hypotheses → Value Propositions → Capabilities → Editions → Subscription Plans&#xA;&#xA;You test hypotheses → some become validated → those support Value Props → those define packaging."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="statement" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Structured belief statement. Example: 'We believe that [persona] will [outcome] if we [action].'"/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="status" eType="#//HypothesisStatus">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Current validation status of this hypothesis."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="assumptions" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Key assumptions underlying this hypothesis."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="risks" upperBound="-1"
+        eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Risks associated with this hypothesis."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="owner" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Owner of this hypothesis."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="createdAt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Date when this hypothesis was created."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="lastUpdatedAt" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDate">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Date when this hypothesis was last updated."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <!-- Hypothesis → Persona -->
+    <eStructuralFeatures xsi:type="ecore:EReference" name="targetPersonas" upperBound="-1"
+        eType="#//Persona">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Personas this hypothesis is about."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <!-- Hypothesis → Need -->
+    <eStructuralFeatures xsi:type="ecore:EReference" name="linkedNeeds" upperBound="-1"
+        eType="#//Need">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Needs linked to this hypothesis."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <!-- Hypothesis → Goal -->
+    <eStructuralFeatures xsi:type="ecore:EReference" name="linkedGoals" upperBound="-1"
+        eType="#//Goal">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Goals linked to this hypothesis."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <!-- Hypothesis → PainPoint -->
+    <eStructuralFeatures xsi:type="ecore:EReference" name="linkedPainPoints" upperBound="-1"
+        eType="#//PainPoint">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Pain points linked to this hypothesis."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <!-- Hypothesis → Capability -->
+    <eStructuralFeatures xsi:type="ecore:EReference" name="enabledByCapabilities" upperBound="-1"
+        eType="#//Capability">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Capabilities that would enable validation of this hypothesis."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <!-- Hypothesis → ValueProposition -->
+    <eStructuralFeatures xsi:type="ecore:EReference" name="supportsValuePropositions" upperBound="-1"
+        eType="#//ValueProposition">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Value propositions that this hypothesis supports (once validated)."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <!-- Hypothesis → Evidence -->
+    <eStructuralFeatures xsi:type="ecore:EReference" name="evidence" upperBound="-1"
+        eType="#//Evidence">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Evidence that validates or invalidates this hypothesis."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <!-- Hypothesis → OutcomeMetric (success metrics) -->
+    <eStructuralFeatures xsi:type="ecore:EReference" name="successMetrics" upperBound="-1"
+        eType="#//OutcomeMetric">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Metrics used to measure success of this hypothesis."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EEnum" name="HypothesisStatus">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Validation status of a hypothesis."/>
+    </eAnnotations>
+    <eLiterals name="Unvalidated" value="0">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The hypothesis has not yet been tested."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="Validated" value="1">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The hypothesis has been validated by evidence."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="Invalidated" value="2">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The hypothesis has been invalidated by evidence."/>
+      </eAnnotations>
+    </eLiterals>
+    <eLiterals name="Deprecated" value="3">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="The hypothesis is no longer relevant."/>
+      </eAnnotations>
+    </eLiterals>
+  </eClassifiers>
+  <!-- ══════════════════════════════════════════════════════════════════
+       Root container
+       ══════════════════════════════════════════════════════════════════ -->
+  <eClassifiers xsi:type="ecore:EClass" name="ProductManagementModel" eSuperTypes="#//ModelElement">
+    <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+      <details key="documentation" value="Root container for the product management model. Contains all top-level entities."/>
+    </eAnnotations>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="personas" upperBound="-1"
+        eType="#//Persona" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="All personas defined in this model."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="portfolios" upperBound="-1"
+        eType="#//ProductPortfolio" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Product portfolios in this model."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="products" upperBound="-1"
+        eType="#//Product" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Standalone products not part of a portfolio."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilities" upperBound="-1"
+        eType="#//Capability" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Standalone capabilities not owned by a specific product."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="capabilityProviders" upperBound="-1"
+        eType="#//CapabilityProvider" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Capability providers in this model."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="subscriptions" upperBound="-1"
+        eType="#//Subscription" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Subscription plans in this model."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="valuePropositions" upperBound="-1"
+        eType="#//ValueProposition" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Value propositions defined in this model."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="evidence" upperBound="-1"
+        eType="#//Evidence" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Evidence items in this model."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="alternatives" upperBound="-1"
+        eType="#//Alternative" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Competitor and alternative solutions tracked in this model."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="outcomeMetrics" upperBound="-1"
+        eType="#//OutcomeMetric" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Outcome metrics defined in this model."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="marketSegments" upperBound="-1"
+        eType="#//MarketSegment" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Market segments defined in this model."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="hypotheses" upperBound="-1"
+        eType="#//Hypothesis" containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Hypotheses defined in this model."/>
+      </eAnnotations>
+    </eStructuralFeatures>
+  </eClassifiers>
+</ecore:EPackage>
