@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<genmodel:GenModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore"
+    xmlns:genmodel="http://www.eclipse.org/emf/2002/GenModel" modelDirectory="/org.nasdanika.models.product-management/src/main/java"
+    creationIcons="false" editorDirectory="" modelPluginID="org.nasdanika.models.product-management"
+    modelName="ProductManagement" rootExtendsClass="org.eclipse.emf.ecore.impl.MinimalEObjectImpl$Container"
+    importerID="org.eclipse.emf.importer.ecore" bundleManifest="false" featureDelegation="Dynamic"
+    complianceLevel="21.0" suppressGenModelAnnotations="false" copyrightFields="false"
+    operationReflection="true" importOrganizing="true">
+  <foreignModel>product-management.ecore</foreignModel>
+  <genPackages prefix="ProductManagement" basePackage="org.nasdanika.models" disposableProviderFactory="true"
+      ecorePackage="product-management.ecore#/">
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="product-management.ecore#//GoalType">
+      <genEnumLiterals ecoreEnumLiteral="product-management.ecore#//GoalType/Functional"/>
+      <genEnumLiterals ecoreEnumLiteral="product-management.ecore#//GoalType/Emotional"/>
+      <genEnumLiterals ecoreEnumLiteral="product-management.ecore#//GoalType/Aspirational"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="product-management.ecore#//ReleaseStatus">
+      <genEnumLiterals ecoreEnumLiteral="product-management.ecore#//ReleaseStatus/Planned"/>
+      <genEnumLiterals ecoreEnumLiteral="product-management.ecore#//ReleaseStatus/InDevelopment"/>
+      <genEnumLiterals ecoreEnumLiteral="product-management.ecore#//ReleaseStatus/Beta"/>
+      <genEnumLiterals ecoreEnumLiteral="product-management.ecore#//ReleaseStatus/GA"/>
+      <genEnumLiterals ecoreEnumLiteral="product-management.ecore#//ReleaseStatus/Deprecated"/>
+      <genEnumLiterals ecoreEnumLiteral="product-management.ecore#//ReleaseStatus/EndOfLife"/>
+    </genEnums>
+    <genEnums typeSafeEnumCompatible="false" ecoreEnum="product-management.ecore#//HypothesisStatus">
+      <genEnumLiterals ecoreEnumLiteral="product-management.ecore#//HypothesisStatus/Unvalidated"/>
+      <genEnumLiterals ecoreEnumLiteral="product-management.ecore#//HypothesisStatus/Validated"/>
+      <genEnumLiterals ecoreEnumLiteral="product-management.ecore#//HypothesisStatus/Invalidated"/>
+      <genEnumLiterals ecoreEnumLiteral="product-management.ecore#//HypothesisStatus/Deprecated"/>
+    </genEnums>
+    <genClasses image="false" ecoreClass="product-management.ecore#//ModelElement">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//ModelElement/name"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//ModelElement/description"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//ModelElement/id"/>
+    </genClasses>
+    <genClasses ecoreClass="product-management.ecore#//Persona">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Persona/age"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Persona/role"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Persona/experienceLevel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Persona/workEnvironment"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Persona/toolsUsed"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Persona/attitudes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//Persona/behaviors"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//Persona/actions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//Persona/needs"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//Persona/goals"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//Persona/painPoints"/>
+    </genClasses>
+    <genClasses ecoreClass="product-management.ecore#//Behavior">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Behavior/category"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//Behavior/relatedNeeds"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//Behavior/relatedPainPoints"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//Behavior/relatedGoals"/>
+    </genClasses>
+    <genClasses ecoreClass="product-management.ecore#//Action">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Action/order"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//Action/relatedCapabilities"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//Action/relatedFeatures"/>
+    </genClasses>
+    <genClasses ecoreClass="product-management.ecore#//Need">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//Need/supportedGoals"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//Need/relatedNeeds"/>
+    </genClasses>
+    <genClasses ecoreClass="product-management.ecore#//Goal">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Goal/goalType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//Goal/relatedGoals"/>
+    </genClasses>
+    <genClasses ecoreClass="product-management.ecore#//PainPoint">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//PainPoint/violatedNeeds"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//PainPoint/blockedGoals"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//PainPoint/relatedPainPoints"/>
+    </genClasses>
+    <genClasses ecoreClass="product-management.ecore#//ProductPortfolio">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//ProductPortfolio/products"/>
+    </genClasses>
+    <genClasses ecoreClass="product-management.ecore#//Product">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//Product/editions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//Product/features"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//Product/targetPersonas"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//Product/versions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//Product/releases"/>
+    </genClasses>
+    <genClasses ecoreClass="product-management.ecore#//Edition">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//Edition/includedFeatures"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//Edition/includedCapabilities"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//Edition/availableGeographies"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//Edition/availableChannels"/>
+    </genClasses>
+    <genClasses ecoreClass="product-management.ecore#//Feature">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//Feature/addressedNeeds"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//Feature/supportedGoals"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//Feature/addressedPainPoints"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//Feature/personaAssociations"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//Feature/usedCapabilities"/>
+    </genClasses>
+    <genClasses ecoreClass="product-management.ecore#//FeaturePersonaAssociation">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//FeaturePersonaAssociation/persona"/>
+    </genClasses>
+    <genClasses ecoreClass="product-management.ecore#//Capability">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//Capability/providers"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//Capability/versions"/>
+    </genClasses>
+    <genClasses ecoreClass="product-management.ecore#//CapabilityProvider">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//CapabilityProvider/providedCapabilities"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//CapabilityProvider/requiredCapabilities"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//CapabilityProvider/versions"/>
+    </genClasses>
+    <genClasses ecoreClass="product-management.ecore#//Version">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Version/versionScheme"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Version/versionString"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Version/date"/>
+    </genClasses>
+    <genClasses ecoreClass="product-management.ecore#//Release">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//Release/version"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Release/releaseDate"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Release/status"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//Release/includedFeatures"/>
+    </genClasses>
+    <genClasses ecoreClass="product-management.ecore#//Subscription">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Subscription/billingCycle"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Subscription/pricingModel"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Subscription/autoRenewal"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//Subscription/editions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//Subscription/serviceLevels"/>
+    </genClasses>
+    <genClasses ecoreClass="product-management.ecore#//ServiceLevel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//ServiceLevel/metric"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//ServiceLevel/value"/>
+    </genClasses>
+    <genClasses ecoreClass="product-management.ecore#//ValueProposition">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//ValueProposition/statement"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//ValueProposition/targetPersonas"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//ValueProposition/addressedNeeds"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//ValueProposition/supportedGoals"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//ValueProposition/mitigatedPainPoints"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//ValueProposition/enablingCapabilities"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//ValueProposition/packagedInEditions"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//ValueProposition/differentiatedFromAlternatives"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//ValueProposition/supportingEvidence"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//ValueProposition/targetSegments"/>
+    </genClasses>
+    <genClasses ecoreClass="product-management.ecore#//Evidence">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Evidence/evidenceType"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Evidence/source"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//Evidence/measuredMetrics"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//Evidence/collectedInSegments"/>
+    </genClasses>
+    <genClasses ecoreClass="product-management.ecore#//OutcomeMetric">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//OutcomeMetric/unit"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//OutcomeMetric/targetValue"/>
+    </genClasses>
+    <genClasses ecoreClass="product-management.ecore#//Alternative">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Alternative/alternativeType"/>
+    </genClasses>
+    <genClasses ecoreClass="product-management.ecore#//MarketSegment">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//MarketSegment/segmentType"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//MarketSegment/targetPersonas"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//MarketSegment/industries"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//MarketSegment/geographies"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//MarketSegment/companySizes"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//MarketSegment/channels"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//MarketSegment/idealCustomerProfiles"/>
+    </genClasses>
+    <genClasses ecoreClass="product-management.ecore#//Industry">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Industry/code"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//Industry/regulatoryConstraints"/>
+    </genClasses>
+    <genClasses ecoreClass="product-management.ecore#//Geography">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Geography/region"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Geography/country"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Geography/stateProvince"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Geography/dataResidencyRegion"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//Geography/regulatoryConstraints"/>
+    </genClasses>
+    <genClasses ecoreClass="product-management.ecore#//CompanySize">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//CompanySize/employeeBand"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//CompanySize/revenueBand"/>
+    </genClasses>
+    <genClasses ecoreClass="product-management.ecore#//Channel">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Channel/channelType"/>
+    </genClasses>
+    <genClasses ecoreClass="product-management.ecore#//IdealCustomerProfile">
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//IdealCustomerProfile/targetIndustries"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//IdealCustomerProfile/targetCompanySizes"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//IdealCustomerProfile/targetGeographies"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//IdealCustomerProfile/techStack"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//IdealCustomerProfile/targetPersonas"/>
+    </genClasses>
+    <genClasses ecoreClass="product-management.ecore#//RegulatoryConstraint">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//RegulatoryConstraint/regulation"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//RegulatoryConstraint/affectedCapabilities"/>
+    </genClasses>
+    <genClasses ecoreClass="product-management.ecore#//Hypothesis">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Hypothesis/statement"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Hypothesis/status"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Hypothesis/assumptions"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Hypothesis/risks"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Hypothesis/owner"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Hypothesis/createdAt"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute product-management.ecore#//Hypothesis/lastUpdatedAt"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//Hypothesis/targetPersonas"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//Hypothesis/linkedNeeds"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//Hypothesis/linkedGoals"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//Hypothesis/linkedPainPoints"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//Hypothesis/enabledByCapabilities"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//Hypothesis/supportsValuePropositions"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//Hypothesis/evidence"/>
+      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference product-management.ecore#//Hypothesis/successMetrics"/>
+    </genClasses>
+    <genClasses ecoreClass="product-management.ecore#//ProductManagementModel">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//ProductManagementModel/personas"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//ProductManagementModel/portfolios"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//ProductManagementModel/products"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//ProductManagementModel/capabilities"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//ProductManagementModel/capabilityProviders"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//ProductManagementModel/subscriptions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//ProductManagementModel/valuePropositions"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//ProductManagementModel/evidence"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//ProductManagementModel/alternatives"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//ProductManagementModel/outcomeMetrics"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//ProductManagementModel/marketSegments"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference product-management.ecore#//ProductManagementModel/hypotheses"/>
+    </genClasses>
+  </genPackages>
+</genmodel:GenModel>
