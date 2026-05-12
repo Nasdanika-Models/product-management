@@ -26,5 +26,5 @@ This metamodel composes with and references:
 ## Diagram
 
 ```drawio-resource
-../my.drawio
+../product-management.drawio
 ```
