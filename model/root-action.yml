@@ -3,7 +3,7 @@ app.Action:
   text: Nasdanika Models
   location: https://github.com/Nasdanika-Models
   children:
-    - app.ActionReference: "my.xmi#/"
+    - app.ActionReference: "product-management.xmi#/"
     - app.Action:
         location: ${base-uri}search.html
         icon: fas fa-search

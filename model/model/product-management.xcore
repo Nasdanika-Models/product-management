@@ -39,24 +39,16 @@
  * - enterprise:   ecore://nasdanika.org/models/enterprise
  * - party:        ecore://nasdanika.org/models/party
  */
-@Ecore(
-	nsURI="https://product-management.models.nasdanika.org/0.1.0",
-	nsPrefix="product_management"
-)
+@Ecore(nsURI="https://product-management.models.nasdanika.org", nsPrefix="org.nasdanika.models.product-management")
 @GenModel(
-	modelDirectory="/org.nasdanika.models.product.management.model/src-gen",
-	editDirectory="/org.nasdanika.models.product.management.edit/src-gen",
-	editorDirectory="/org.nasdanika.models.product.management.editor/src-gen",
-	testsDirectory="/org.nasdanika.models.product.management.tests/src-gen",
-	modelName="ProductManagement",
-	prefix="ProductManagement",
-	modelPluginID="org.nasdanika.models.product.management.model",
-	childCreationExtenders="true",
-	extensibleProviderFactory="true",
-	operationReflection="false",
-	importerID="org.eclipse.emf.importer.xcore",
-	complianceLevel="17.0",
-	documentation="Product Management Metamodel — a pragmatic, just-enough model for
+    bundleManifest="false",
+    featureDelegation="Dynamic",
+    complianceLevel="21.0",
+    suppressGenModelAnnotations="false",
+    copyrightFields="false",
+    operationReflection="true",
+    importOrganizing="true",
+    documentation="Product Management Metamodel — a pragmatic, just-enough model for
 product management as code. Enables formal binding of decisions about resource allocation
 toward addressing persona concerns. Composes with ncore (ecore://nasdanika.org/core/ncore),
 architecture (ecore://nasdanika.org/models/architecture), capability
@@ -65,6 +57,11 @@ enterprise (ecore://nasdanika.org/models/enterprise), and party
 (ecore://nasdanika.org/models/party)."
 )
 package org.nasdanika.models.product.management
+
+annotation "http://www.eclipse.org/emf/2002/Ecore" as Ecore
+annotation "http://www.eclipse.org/emf/2002/GenModel" as GenModel
+annotation "urn:org.nasdanika" as Nasdanika
+
 
 // ---------------------------------------------------------------------------
 // Enumerations
@@ -168,7 +165,7 @@ abstract class ModelElement {
 	 */
 	@GenModel(documentation="String key uniquely identifying this element within its
 containment reference. Used as eKey and as a URI segment for cross-resource references.")
-	String id
+	String ^d
 
 	/**
 	 * Human-readable display name. Used as the label in generated documentation,
@@ -552,7 +549,7 @@ class Concern extends ModelElement {
 	 */
 	@GenModel(documentation="The nature of this concern: Goal (desired outcome),
 Need (functional/non-functional requirement), or Pain Point (existing problem).")
-	ConcernType type = "NEED"
+	ConcernType ^type = "NEED"
 
 	/**
 	 * Sub-concerns that decompose this concern into more specific aspects.

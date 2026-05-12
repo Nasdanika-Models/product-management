@@ -41,13 +41,13 @@ jobs:
           chmod u+x nsd          
           pwd
           ls ..
-          ./nsd xcore ../my.xcore doc --diagram=my.drawio --doc-stubs --doc-dir=../doc save ../my.xmi
+          ./nsd xcore ../model/model/product-management.xcore doc --diagram=product-management.drawio --doc-stubs --doc-dir=../model/doc save ../model/product-management.xmi
       - name: Generate Ecore site
         working-directory: nsd-cli
         run: |
-          ./nsd model ../root-action.yml labels site -r=-1 -F ../page-template.yml ../docs
-          cp my.drawio ../docs
-          zip -r ../docs/doc-stubs.zip ../doc
+          ./nsd model ../model/root-action.yml labels site -r=-1 -F ../model/page-template.yml ../docs
+          cp product-management.drawio ../docs
+          zip -r ../docs/doc-stubs.zip ../model/doc
           ls ../docs
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3

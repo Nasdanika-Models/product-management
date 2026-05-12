@@ -1,0 +1,12 @@
+Action:
+    icon: https://docs.nasdanika.org/images/nasdanika-logo.png
+    text: Nasdanika BW5 Model
+    location: https://bw5.models.nasdanika.org/
+    children:
+     - ActionReference: "target/action-models/actions.xmi#/"
+    navigation:
+      - Action:
+          text: Source
+          icon: fab fa-github
+          location: https://github.com/Nasdanika-Models/bw5
+          
