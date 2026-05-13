@@ -22,13 +22,22 @@ public interface ProductmanagementFactory extends EFactory {
 	ProductmanagementFactory eINSTANCE = org.nasdanika.models.productmanagement.impl.ProductmanagementFactoryImpl.init();
 
 	/**
-	 * Returns a new object of class '<em>Lifecycle Status Period</em>'.
+	 * Returns a new object of class '<em>Temporal</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Lifecycle Status Period</em>'.
+	 * @return a new object of class '<em>Temporal</em>'.
 	 * @generated
 	 */
-	LifecycleStatusPeriod createLifecycleStatusPeriod();
+	Temporal createTemporal();
+
+	/**
+	 * Returns a new object of class '<em>Period</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Period</em>'.
+	 * @generated
+	 */
+	Period createPeriod();
 
 	/**
 	 * Returns a new object of class '<em>Product Model</em>'.
@@ -40,24 +49,6 @@ public interface ProductmanagementFactory extends EFactory {
 	ProductModel createProductModel();
 
 	/**
-	 * Returns a new object of class '<em>Role</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Role</em>'.
-	 * @generated
-	 */
-	Role createRole();
-
-	/**
-	 * Returns a new object of class '<em>Actor</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Actor</em>'.
-	 * @generated
-	 */
-	Actor createActor();
-
-	/**
 	 * Returns a new object of class '<em>Persona</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -65,6 +56,24 @@ public interface ProductmanagementFactory extends EFactory {
 	 * @generated
 	 */
 	Persona createPersona();
+
+	/**
+	 * Returns a new object of class '<em>Persona Domain</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Persona Domain</em>'.
+	 * @generated
+	 */
+	PersonaDomain createPersonaDomain();
+
+	/**
+	 * Returns a new object of class '<em>Persona Reference</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Persona Reference</em>'.
+	 * @generated
+	 */
+	PersonaReference createPersonaReference();
 
 	/**
 	 * Returns a new object of class '<em>Concern</em>'.
@@ -76,13 +85,76 @@ public interface ProductmanagementFactory extends EFactory {
 	Concern createConcern();
 
 	/**
-	 * Returns a new object of class '<em>Version</em>'.
+	 * Returns a new object of class '<em>Concern Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Version</em>'.
+	 * @return a new object of class '<em>Concern Reference</em>'.
 	 * @generated
 	 */
-	Version createVersion();
+	ConcernReference createConcernReference();
+
+	/**
+	 * Returns a new object of class '<em>Concern Domain</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Concern Domain</em>'.
+	 * @generated
+	 */
+	ConcernDomain createConcernDomain();
+
+	/**
+	 * Returns a new object of class '<em>Goal</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Goal</em>'.
+	 * @generated
+	 */
+	Goal createGoal();
+
+	/**
+	 * Returns a new object of class '<em>Need</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Need</em>'.
+	 * @generated
+	 */
+	Need createNeed();
+
+	/**
+	 * Returns a new object of class '<em>Supported Goals</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Supported Goals</em>'.
+	 * @generated
+	 */
+	SupportedGoals createSupportedGoals();
+
+	/**
+	 * Returns a new object of class '<em>Pain Point</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Pain Point</em>'.
+	 * @generated
+	 */
+	PainPoint createPainPoint();
+
+	/**
+	 * Returns a new object of class '<em>Blocked Goals</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Blocked Goals</em>'.
+	 * @generated
+	 */
+	BlockedGoals createBlockedGoals();
+
+	/**
+	 * Returns a new object of class '<em>Violated Needs</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Violated Needs</em>'.
+	 * @generated
+	 */
+	ViolatedNeeds createViolatedNeeds();
 
 	/**
 	 * Returns a new object of class '<em>Capability</em>'.
@@ -94,13 +166,40 @@ public interface ProductmanagementFactory extends EFactory {
 	Capability createCapability();
 
 	/**
-	 * Returns a new object of class '<em>Capability Version</em>'.
+	 * Returns a new object of class '<em>Capability Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Capability Version</em>'.
+	 * @return a new object of class '<em>Capability Reference</em>'.
 	 * @generated
 	 */
-	CapabilityVersion createCapabilityVersion();
+	CapabilityReference createCapabilityReference();
+
+	/**
+	 * Returns a new object of class '<em>Capability Domain</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Capability Domain</em>'.
+	 * @generated
+	 */
+	CapabilityDomain createCapabilityDomain();
+
+	/**
+	 * Returns a new object of class '<em>Addressed Concerns</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Addressed Concerns</em>'.
+	 * @generated
+	 */
+	AddressedConcerns createAddressedConcerns();
+
+	/**
+	 * Returns a new object of class '<em>Capability Dependency</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Capability Dependency</em>'.
+	 * @generated
+	 */
+	CapabilityDependency createCapabilityDependency();
 
 	/**
 	 * Returns a new object of class '<em>Capability Provider</em>'.
@@ -112,49 +211,103 @@ public interface ProductmanagementFactory extends EFactory {
 	CapabilityProvider createCapabilityProvider();
 
 	/**
-	 * Returns a new object of class '<em>Capability Provider Version</em>'.
+	 * Returns a new object of class '<em>Capability Provider Domain</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Capability Provider Version</em>'.
+	 * @return a new object of class '<em>Capability Provider Domain</em>'.
 	 * @generated
 	 */
-	CapabilityProviderVersion createCapabilityProviderVersion();
+	CapabilityProviderDomain createCapabilityProviderDomain();
 
 	/**
-	 * Returns a new object of class '<em>Offering</em>'.
+	 * Returns a new object of class '<em>Capability Provider Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Offering</em>'.
+	 * @return a new object of class '<em>Capability Provider Reference</em>'.
 	 * @generated
 	 */
-	Offering createOffering();
+	CapabilityProviderReference createCapabilityProviderReference();
 
 	/**
-	 * Returns a new object of class '<em>Work Package</em>'.
+	 * Returns a new object of class '<em>Provided Capability</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Work Package</em>'.
+	 * @return a new object of class '<em>Provided Capability</em>'.
 	 * @generated
 	 */
-	WorkPackage createWorkPackage();
+	ProvidedCapability createProvidedCapability();
 
 	/**
-	 * Returns a new object of class '<em>Jira Work Package</em>'.
+	 * Returns a new object of class '<em>Evidence</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Jira Work Package</em>'.
+	 * @return a new object of class '<em>Evidence</em>'.
 	 * @generated
 	 */
-	JiraWorkPackage createJiraWorkPackage();
+	Evidence createEvidence();
 
 	/**
-	 * Returns a new object of class '<em>Proposal</em>'.
+	 * Returns a new object of class '<em>Evidence Domain</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Proposal</em>'.
+	 * @return a new object of class '<em>Evidence Domain</em>'.
 	 * @generated
 	 */
-	Proposal createProposal();
+	EvidenceDomain createEvidenceDomain();
+
+	/**
+	 * Returns a new object of class '<em>Required Capability</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Required Capability</em>'.
+	 * @generated
+	 */
+	RequiredCapability createRequiredCapability();
+
+	/**
+	 * Returns a new object of class '<em>Version</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Version</em>'.
+	 * @generated
+	 */
+	Version createVersion();
+
+	/**
+	 * Returns a new object of class '<em>Role</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Role</em>'.
+	 * @generated
+	 */
+	Role createRole();
+
+	/**
+	 * Returns a new object of class '<em>Role Assignment</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Role Assignment</em>'.
+	 * @generated
+	 */
+	RoleAssignment createRoleAssignment();
+
+	/**
+	 * Returns a new object of class '<em>Actor</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Actor</em>'.
+	 * @generated
+	 */
+	Actor createActor();
+
+	/**
+	 * Returns a new object of class '<em>Actor Domain</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Actor Domain</em>'.
+	 * @generated
+	 */
+	ActorDomain createActorDomain();
 
 	/**
 	 * Returns the package supported by this factory.

@@ -4,6 +4,7 @@ package org.nasdanika.models.productmanagement;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -20,51 +21,9 @@ import org.eclipse.emf.ecore.EReference;
  *   <li>and each data type</li>
  * </ul>
  * <!-- end-user-doc -->
- * <!-- begin-model-doc -->
- * *
- * Product Management Metamodel
- * 
- * A pragmatic, just-enough model for product management as code.
- * Elements are federated text-based artifacts that can be authored in version control,
- * published as Maven artifacts, and consumed across teams.
- * 
- * Conceptual frame — three intersecting perspectives on the same elements:
- * - Polity-allocation view: who has authority to bind decisions about resource allocation
- *   toward addressing persona concerns.
- * - Exchange view: concerns are asks; capabilities are bids. Resource allocations and
- *   work packages are bids on concerns.
- * - Decision-binding view: the model formalizes the incremental binding of decisions
- *   with provenance and authority.
- * 
- * Composition and federation principles:
- * - All elements extend ModelElement, which mirrors ncore.DocumentedNamedStringIdentity
- *   (ecore://nasdanika.org/core/ncore) and ncore.Period, providing id, name, documentation,
- *   start/end temporal anchoring, and duration.
- * - Undergoer/Actor machinery is modelled on architecture
- *   (ecore://nasdanika.org/models/architecture): Actors perform Roles on Undergoers.
- * - Capability and CapabilityProvider structure is inspired by the Eclipse P2 capability
- *   model (ecore://nasdanika.org/models/capability).
- * - MCDA weight derivation (ecore://nasdanika.org/models/mcda) is supported through
- *   the 'weight' attribute on ModelElement; Personas and Concerns participate as
- *   MCDA alternatives.
- * - Federation: all elements are loadable from XMI, YAML, JSON, Excel, Draw.io, or
- *   Xtext sources via logical URIs and Maven URI Handler integration, following the
- *   same federated-artifact pattern as the Maven model
- *   (https://maven.models.nasdanika.org/).
- * - The root ProductModel is itself a Period, enabling template product models where
- *   relative dates resolve to concrete dates when start/end is set on the root.
- * 
- * Reference models:
- * - ncore:        ecore://nasdanika.org/core/ncore
- * - architecture: ecore://nasdanika.org/models/architecture
- * - capability:   ecore://nasdanika.org/models/capability
- * - mcda:         ecore://nasdanika.org/models/mcda
- * - enterprise:   ecore://nasdanika.org/models/enterprise
- * - party:        ecore://nasdanika.org/models/party
- * <!-- end-model-doc -->
  * @see org.nasdanika.models.productmanagement.ProductmanagementFactory
  * @model kind="package"
- *        annotation="http://www.eclipse.org/emf/2002/GenModel bundleManifest='false' featureDelegation='Dynamic' complianceLevel='21.0' suppressGenModelAnnotations='false' copyrightFields='false' operationReflection='true' importOrganizing='true' basePackage='org.nasdanika.models'"
+ *        annotation="http://www.eclipse.org/emf/2002/GenModel featureDelegation='Dynamic' complianceLevel='21.0' suppressGenModelAnnotations='false' copyrightFields='false' operationReflection='true' importOrganizing='true' basePackage='org.nasdanika.models'"
  *        annotation="http://www.eclipse.org/emf/2011/Xcore Ecore='http://www.eclipse.org/emf/2002/Ecore' GenModel='http://www.eclipse.org/emf/2002/GenModel' Nasdanika='urn:org.nasdanika'"
  * @generated
  */
@@ -102,59 +61,32 @@ public interface ProductmanagementPackage extends EPackage {
 	ProductmanagementPackage eINSTANCE = org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl.init();
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.ModelElementImpl <em>Model Element</em>}' class.
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.TemporalImpl <em>Temporal</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.models.productmanagement.impl.ModelElementImpl
-	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getModelElement()
+	 * @see org.nasdanika.models.productmanagement.impl.TemporalImpl
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getTemporal()
 	 * @generated
 	 */
-	int MODEL_ELEMENT = 0;
+	int TEMPORAL = 0;
 
 	/**
-	 * The feature id for the '<em><b>D</b></em>' attribute.
+	 * The feature id for the '<em><b>Base</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT__D = 0;
+	int TEMPORAL__BASE = 0;
 
 	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Instant</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT__NAME = 1;
-
-	/**
-	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_ELEMENT__DOCUMENTATION = 2;
-
-	/**
-	 * The feature id for the '<em><b>Start</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_ELEMENT__START = 3;
-
-	/**
-	 * The feature id for the '<em><b>End</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_ELEMENT__END = 4;
+	int TEMPORAL__INSTANT = 1;
 
 	/**
 	 * The feature id for the '<em><b>Duration</b></em>' attribute.
@@ -163,16 +95,172 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT__DURATION = 5;
+	int TEMPORAL__DURATION = 2;
 
 	/**
-	 * The feature id for the '<em><b>Weight</b></em>' attribute.
+	 * The feature id for the '<em><b>Lower Bounds</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT__WEIGHT = 6;
+	int TEMPORAL__LOWER_BOUNDS = 3;
+
+	/**
+	 * The feature id for the '<em><b>Upper Bounds</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPORAL__UPPER_BOUNDS = 4;
+
+	/**
+	 * The number of structural features of the '<em>Temporal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPORAL_FEATURE_COUNT = 5;
+
+	/**
+	 * The number of operations of the '<em>Temporal</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int TEMPORAL_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.PeriodImpl <em>Period</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.impl.PeriodImpl
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getPeriod()
+	 * @generated
+	 */
+	int PERIOD = 1;
+
+	/**
+	 * The feature id for the '<em><b>Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERIOD__DURATION = 0;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERIOD__START = 1;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERIOD__END = 2;
+
+	/**
+	 * The number of structural features of the '<em>Period</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERIOD_FEATURE_COUNT = 3;
+
+	/**
+	 * The number of operations of the '<em>Period</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERIOD_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.StringIdentity <em>String Identity</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.StringIdentity
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getStringIdentity()
+	 * @generated
+	 */
+	int STRING_IDENTITY = 2;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_IDENTITY__ID = 0;
+
+	/**
+	 * The number of structural features of the '<em>String Identity</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_IDENTITY_FEATURE_COUNT = 1;
+
+	/**
+	 * The number of operations of the '<em>String Identity</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_IDENTITY_OPERATION_COUNT = 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.ModelElementImpl <em>Model Element</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.impl.ModelElementImpl
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getModelElement()
+	 * @generated
+	 */
+	int MODEL_ELEMENT = 3;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_ELEMENT__ID = STRING_IDENTITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_ELEMENT__DOCUMENTATION = STRING_IDENTITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_ELEMENT__URIS = STRING_IDENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Model Element</em>' class.
@@ -181,7 +269,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT_FEATURE_COUNT = 7;
+	int MODEL_ELEMENT_FEATURE_COUNT = STRING_IDENTITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Model Element</em>' class.
@@ -190,35 +278,26 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT_OPERATION_COUNT = 0;
+	int MODEL_ELEMENT_OPERATION_COUNT = STRING_IDENTITY_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.LifecycleStatusPeriodImpl <em>Lifecycle Status Period</em>}' class.
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.NamedElementImpl <em>Named Element</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.models.productmanagement.impl.LifecycleStatusPeriodImpl
-	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getLifecycleStatusPeriod()
+	 * @see org.nasdanika.models.productmanagement.impl.NamedElementImpl
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getNamedElement()
 	 * @generated
 	 */
-	int LIFECYCLE_STATUS_PERIOD = 1;
+	int NAMED_ELEMENT = 4;
 
 	/**
-	 * The feature id for the '<em><b>D</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int LIFECYCLE_STATUS_PERIOD__D = MODEL_ELEMENT__D;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LIFECYCLE_STATUS_PERIOD__NAME = MODEL_ELEMENT__NAME;
+	int NAMED_ELEMENT__ID = MODEL_ELEMENT__ID;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -227,25 +306,89 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LIFECYCLE_STATUS_PERIOD__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
+	int NAMED_ELEMENT__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
 
 	/**
-	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LIFECYCLE_STATUS_PERIOD__START = MODEL_ELEMENT__START;
+	int NAMED_ELEMENT__URIS = MODEL_ELEMENT__URIS;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' attribute.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LIFECYCLE_STATUS_PERIOD__END = MODEL_ELEMENT__END;
+	int NAMED_ELEMENT__NAME = MODEL_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Named Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Named Element</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.NamedPeriodImpl <em>Named Period</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.impl.NamedPeriodImpl
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getNamedPeriod()
+	 * @generated
+	 */
+	int NAMED_PERIOD = 5;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_PERIOD__ID = NAMED_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_PERIOD__DOCUMENTATION = NAMED_ELEMENT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_PERIOD__URIS = NAMED_ELEMENT__URIS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_PERIOD__NAME = NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Duration</b></em>' attribute.
@@ -254,43 +397,43 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int LIFECYCLE_STATUS_PERIOD__DURATION = MODEL_ELEMENT__DURATION;
+	int NAMED_PERIOD__DURATION = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Weight</b></em>' attribute.
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LIFECYCLE_STATUS_PERIOD__WEIGHT = MODEL_ELEMENT__WEIGHT;
+	int NAMED_PERIOD__START = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Status</b></em>' attribute.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LIFECYCLE_STATUS_PERIOD__STATUS = MODEL_ELEMENT_FEATURE_COUNT + 0;
+	int NAMED_PERIOD__END = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of structural features of the '<em>Lifecycle Status Period</em>' class.
+	 * The number of structural features of the '<em>Named Period</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LIFECYCLE_STATUS_PERIOD_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 1;
+	int NAMED_PERIOD_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
-	 * The number of operations of the '<em>Lifecycle Status Period</em>' class.
+	 * The number of operations of the '<em>Named Period</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int LIFECYCLE_STATUS_PERIOD_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
+	int NAMED_PERIOD_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.ProductModelImpl <em>Product Model</em>}' class.
@@ -300,25 +443,16 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getProductModel()
 	 * @generated
 	 */
-	int PRODUCT_MODEL = 2;
+	int PRODUCT_MODEL = 6;
 
 	/**
-	 * The feature id for the '<em><b>D</b></em>' attribute.
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_MODEL__D = MODEL_ELEMENT__D;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRODUCT_MODEL__NAME = MODEL_ELEMENT__NAME;
+	int PRODUCT_MODEL__ID = NAMED_PERIOD__ID;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -327,25 +461,25 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_MODEL__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
+	int PRODUCT_MODEL__DOCUMENTATION = NAMED_PERIOD__DOCUMENTATION;
 
 	/**
-	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_MODEL__START = MODEL_ELEMENT__START;
+	int PRODUCT_MODEL__URIS = NAMED_PERIOD__URIS;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' attribute.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_MODEL__END = MODEL_ELEMENT__END;
+	int PRODUCT_MODEL__NAME = NAMED_PERIOD__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Duration</b></em>' attribute.
@@ -354,16 +488,25 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_MODEL__DURATION = MODEL_ELEMENT__DURATION;
+	int PRODUCT_MODEL__DURATION = NAMED_PERIOD__DURATION;
 
 	/**
-	 * The feature id for the '<em><b>Weight</b></em>' attribute.
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_MODEL__WEIGHT = MODEL_ELEMENT__WEIGHT;
+	int PRODUCT_MODEL__START = NAMED_PERIOD__START;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_MODEL__END = NAMED_PERIOD__END;
 
 	/**
 	 * The feature id for the '<em><b>Personas</b></em>' containment reference list.
@@ -372,7 +515,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_MODEL__PERSONAS = MODEL_ELEMENT_FEATURE_COUNT + 0;
+	int PRODUCT_MODEL__PERSONAS = NAMED_PERIOD_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Capabilities</b></em>' containment reference list.
@@ -381,7 +524,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_MODEL__CAPABILITIES = MODEL_ELEMENT_FEATURE_COUNT + 1;
+	int PRODUCT_MODEL__CAPABILITIES = NAMED_PERIOD_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Capability Providers</b></em>' containment reference list.
@@ -390,25 +533,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_MODEL__CAPABILITY_PROVIDERS = MODEL_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Work Packages</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRODUCT_MODEL__WORK_PACKAGES = MODEL_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Offerings</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRODUCT_MODEL__OFFERINGS = MODEL_ELEMENT_FEATURE_COUNT + 4;
+	int PRODUCT_MODEL__CAPABILITY_PROVIDERS = NAMED_PERIOD_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Actors</b></em>' containment reference list.
@@ -417,25 +542,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_MODEL__ACTORS = MODEL_ELEMENT_FEATURE_COUNT + 5;
-
-	/**
-	 * The feature id for the '<em><b>Proposals</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRODUCT_MODEL__PROPOSALS = MODEL_ELEMENT_FEATURE_COUNT + 6;
-
-	/**
-	 * The feature id for the '<em><b>Roles</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRODUCT_MODEL__ROLES = MODEL_ELEMENT_FEATURE_COUNT + 7;
+	int PRODUCT_MODEL__ACTORS = NAMED_PERIOD_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Product Model</em>' class.
@@ -444,7 +551,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_MODEL_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 8;
+	int PRODUCT_MODEL_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of operations of the '<em>Product Model</em>' class.
@@ -453,234 +560,44 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_MODEL_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
+	int PRODUCT_MODEL_OPERATION_COUNT = NAMED_PERIOD_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.RoleImpl <em>Role</em>}' class.
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.AbstractPersona <em>Abstract Persona</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.models.productmanagement.impl.RoleImpl
-	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getRole()
+	 * @see org.nasdanika.models.productmanagement.AbstractPersona
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getAbstractPersona()
 	 * @generated
 	 */
-	int ROLE = 3;
+	int ABSTRACT_PERSONA = 7;
 
 	/**
-	 * The feature id for the '<em><b>D</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ROLE__D = MODEL_ELEMENT__D;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROLE__NAME = MODEL_ELEMENT__NAME;
+	int ABSTRACT_PERSONA__ID = STRING_IDENTITY__ID;
 
 	/**
-	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * The number of structural features of the '<em>Abstract Persona</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROLE__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
+	int ABSTRACT_PERSONA_FEATURE_COUNT = STRING_IDENTITY_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * The number of operations of the '<em>Abstract Persona</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int ROLE__START = MODEL_ELEMENT__START;
-
-	/**
-	 * The feature id for the '<em><b>End</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ROLE__END = MODEL_ELEMENT__END;
-
-	/**
-	 * The feature id for the '<em><b>Duration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ROLE__DURATION = MODEL_ELEMENT__DURATION;
-
-	/**
-	 * The feature id for the '<em><b>Weight</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ROLE__WEIGHT = MODEL_ELEMENT__WEIGHT;
-
-	/**
-	 * The feature id for the '<em><b>Actors</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ROLE__ACTORS = MODEL_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Role</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ROLE_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Role</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ROLE_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.ActorImpl <em>Actor</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.models.productmanagement.impl.ActorImpl
-	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getActor()
-	 * @generated
-	 */
-	int ACTOR = 4;
-
-	/**
-	 * The feature id for the '<em><b>D</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__D = MODEL_ELEMENT__D;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__NAME = MODEL_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Start</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__START = MODEL_ELEMENT__START;
-
-	/**
-	 * The feature id for the '<em><b>End</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__END = MODEL_ELEMENT__END;
-
-	/**
-	 * The feature id for the '<em><b>Duration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__DURATION = MODEL_ELEMENT__DURATION;
-
-	/**
-	 * The feature id for the '<em><b>Weight</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__WEIGHT = MODEL_ELEMENT__WEIGHT;
-
-	/**
-	 * The feature id for the '<em><b>Roles</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__ROLES = MODEL_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Owned Roles</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__OWNED_ROLES = MODEL_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Sub Actors</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__SUB_ACTORS = MODEL_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Party Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__PARTY_ID = MODEL_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of structural features of the '<em>Actor</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 4;
-
-	/**
-	 * The number of operations of the '<em>Actor</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
+	int ABSTRACT_PERSONA_OPERATION_COUNT = STRING_IDENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.PersonaImpl <em>Persona</em>}' class.
@@ -690,25 +607,16 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getPersona()
 	 * @generated
 	 */
-	int PERSONA = 5;
+	int PERSONA = 8;
 
 	/**
-	 * The feature id for the '<em><b>D</b></em>' attribute.
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERSONA__D = MODEL_ELEMENT__D;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PERSONA__NAME = MODEL_ELEMENT__NAME;
+	int PERSONA__ID = NAMED_PERIOD__ID;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -717,25 +625,25 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSONA__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
+	int PERSONA__DOCUMENTATION = NAMED_PERIOD__DOCUMENTATION;
 
 	/**
-	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERSONA__START = MODEL_ELEMENT__START;
+	int PERSONA__URIS = NAMED_PERIOD__URIS;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' attribute.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERSONA__END = MODEL_ELEMENT__END;
+	int PERSONA__NAME = NAMED_PERIOD__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Duration</b></em>' attribute.
@@ -744,16 +652,25 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSONA__DURATION = MODEL_ELEMENT__DURATION;
+	int PERSONA__DURATION = NAMED_PERIOD__DURATION;
 
 	/**
-	 * The feature id for the '<em><b>Weight</b></em>' attribute.
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERSONA__WEIGHT = MODEL_ELEMENT__WEIGHT;
+	int PERSONA__START = NAMED_PERIOD__START;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA__END = NAMED_PERIOD__END;
 
 	/**
 	 * The feature id for the '<em><b>Concerns</b></em>' containment reference list.
@@ -762,43 +679,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSONA__CONCERNS = MODEL_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Sub Personas</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PERSONA__SUB_PERSONAS = MODEL_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Super Personas</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PERSONA__SUPER_PERSONAS = MODEL_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Population</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PERSONA__POPULATION = MODEL_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Roles</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PERSONA__ROLES = MODEL_ELEMENT_FEATURE_COUNT + 4;
+	int PERSONA__CONCERNS = NAMED_PERIOD_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Persona</em>' class.
@@ -807,7 +688,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSONA_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 5;
+	int PERSONA_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of operations of the '<em>Persona</em>' class.
@@ -816,7 +697,163 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSONA_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
+	int PERSONA_OPERATION_COUNT = NAMED_PERIOD_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.PersonaDomainImpl <em>Persona Domain</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.impl.PersonaDomainImpl
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getPersonaDomain()
+	 * @generated
+	 */
+	int PERSONA_DOMAIN = 9;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA_DOMAIN__ID = NAMED_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA_DOMAIN__DOCUMENTATION = NAMED_ELEMENT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA_DOMAIN__URIS = NAMED_ELEMENT__URIS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA_DOMAIN__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Personas</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA_DOMAIN__PERSONAS = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Persona Domain</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA_DOMAIN_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Persona Domain</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA_DOMAIN_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.PersonaReferenceImpl <em>Persona Reference</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.impl.PersonaReferenceImpl
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getPersonaReference()
+	 * @generated
+	 */
+	int PERSONA_REFERENCE = 10;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA_REFERENCE__ID = ABSTRACT_PERSONA__ID;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA_REFERENCE__TARGET = ABSTRACT_PERSONA_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Persona Reference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA_REFERENCE_FEATURE_COUNT = ABSTRACT_PERSONA_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Persona Reference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA_REFERENCE_OPERATION_COUNT = ABSTRACT_PERSONA_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.AbstractConcern <em>Abstract Concern</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.AbstractConcern
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getAbstractConcern()
+	 * @generated
+	 */
+	int ABSTRACT_CONCERN = 11;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CONCERN__ID = STRING_IDENTITY__ID;
+
+	/**
+	 * The number of structural features of the '<em>Abstract Concern</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CONCERN_FEATURE_COUNT = STRING_IDENTITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Abstract Concern</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CONCERN_OPERATION_COUNT = STRING_IDENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.ConcernImpl <em>Concern</em>}' class.
@@ -826,25 +863,16 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getConcern()
 	 * @generated
 	 */
-	int CONCERN = 6;
+	int CONCERN = 12;
 
 	/**
-	 * The feature id for the '<em><b>D</b></em>' attribute.
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONCERN__D = MODEL_ELEMENT__D;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONCERN__NAME = MODEL_ELEMENT__NAME;
+	int CONCERN__ID = NAMED_PERIOD__ID;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -853,25 +881,25 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCERN__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
+	int CONCERN__DOCUMENTATION = NAMED_PERIOD__DOCUMENTATION;
 
 	/**
-	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONCERN__START = MODEL_ELEMENT__START;
+	int CONCERN__URIS = NAMED_PERIOD__URIS;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' attribute.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONCERN__END = MODEL_ELEMENT__END;
+	int CONCERN__NAME = NAMED_PERIOD__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Duration</b></em>' attribute.
@@ -880,52 +908,25 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCERN__DURATION = MODEL_ELEMENT__DURATION;
+	int CONCERN__DURATION = NAMED_PERIOD__DURATION;
 
 	/**
-	 * The feature id for the '<em><b>Weight</b></em>' attribute.
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONCERN__WEIGHT = MODEL_ELEMENT__WEIGHT;
+	int CONCERN__START = NAMED_PERIOD__START;
 
 	/**
-	 * The feature id for the '<em><b>Type</b></em>' attribute.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONCERN__TYPE = MODEL_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Sub Concerns</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONCERN__SUB_CONCERNS = MODEL_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Related Concerns</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONCERN__RELATED_CONCERNS = MODEL_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Referring Concerns</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONCERN__REFERRING_CONCERNS = MODEL_ELEMENT_FEATURE_COUNT + 3;
+	int CONCERN__END = NAMED_PERIOD__END;
 
 	/**
 	 * The number of structural features of the '<em>Concern</em>' class.
@@ -934,7 +935,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCERN_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 4;
+	int CONCERN_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Concern</em>' class.
@@ -943,35 +944,118 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCERN_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
+	int CONCERN_OPERATION_COUNT = NAMED_PERIOD_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.VersionImpl <em>Version</em>}' class.
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.ConcernReferenceImpl <em>Concern Reference</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.models.productmanagement.impl.VersionImpl
-	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getVersion()
+	 * @see org.nasdanika.models.productmanagement.impl.ConcernReferenceImpl
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getConcernReference()
 	 * @generated
 	 */
-	int VERSION = 7;
+	int CONCERN_REFERENCE = 13;
 
 	/**
-	 * The feature id for the '<em><b>D</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VERSION__D = MODEL_ELEMENT__D;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VERSION__NAME = MODEL_ELEMENT__NAME;
+	int CONCERN_REFERENCE__ID = ABSTRACT_CONCERN__ID;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN_REFERENCE__TARGET = ABSTRACT_CONCERN_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Concern Reference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN_REFERENCE_FEATURE_COUNT = ABSTRACT_CONCERN_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Concern Reference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN_REFERENCE_OPERATION_COUNT = ABSTRACT_CONCERN_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.ConcernDomainImpl <em>Concern Domain</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.impl.ConcernDomainImpl
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getConcernDomain()
+	 * @generated
+	 */
+	int CONCERN_DOMAIN = 14;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN_DOMAIN__ID = ABSTRACT_CONCERN__ID;
+
+	/**
+	 * The feature id for the '<em><b>Concerns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN_DOMAIN__CONCERNS = ABSTRACT_CONCERN_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Concern Domain</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN_DOMAIN_FEATURE_COUNT = ABSTRACT_CONCERN_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Concern Domain</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN_DOMAIN_OPERATION_COUNT = ABSTRACT_CONCERN_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.GoalImpl <em>Goal</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.impl.GoalImpl
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getGoal()
+	 * @generated
+	 */
+	int GOAL = 15;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL__ID = CONCERN__ID;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -980,25 +1064,25 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VERSION__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
+	int GOAL__DOCUMENTATION = CONCERN__DOCUMENTATION;
 
 	/**
-	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VERSION__START = MODEL_ELEMENT__START;
+	int GOAL__URIS = CONCERN__URIS;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' attribute.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VERSION__END = MODEL_ELEMENT__END;
+	int GOAL__NAME = CONCERN__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Duration</b></em>' attribute.
@@ -1007,61 +1091,508 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int VERSION__DURATION = MODEL_ELEMENT__DURATION;
+	int GOAL__DURATION = CONCERN__DURATION;
 
 	/**
-	 * The feature id for the '<em><b>Weight</b></em>' attribute.
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VERSION__WEIGHT = MODEL_ELEMENT__WEIGHT;
+	int GOAL__START = CONCERN__START;
 
 	/**
-	 * The feature id for the '<em><b>Version String</b></em>' attribute.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VERSION__VERSION_STRING = MODEL_ELEMENT_FEATURE_COUNT + 0;
+	int GOAL__END = CONCERN__END;
 
 	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * The feature id for the '<em><b>Supporting Needs</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VERSION__LABEL = MODEL_ELEMENT_FEATURE_COUNT + 1;
+	int GOAL__SUPPORTING_NEEDS = CONCERN_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Status Periods</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Blockers</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VERSION__STATUS_PERIODS = MODEL_ELEMENT_FEATURE_COUNT + 2;
+	int GOAL__BLOCKERS = CONCERN_FEATURE_COUNT + 1;
 
 	/**
-	 * The number of structural features of the '<em>Version</em>' class.
+	 * The number of structural features of the '<em>Goal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VERSION_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 3;
+	int GOAL_FEATURE_COUNT = CONCERN_FEATURE_COUNT + 2;
 
 	/**
-	 * The number of operations of the '<em>Version</em>' class.
+	 * The number of operations of the '<em>Goal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int VERSION_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
+	int GOAL_OPERATION_COUNT = CONCERN_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.NeedImpl <em>Need</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.impl.NeedImpl
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getNeed()
+	 * @generated
+	 */
+	int NEED = 16;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NEED__ID = CONCERN__ID;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NEED__DOCUMENTATION = CONCERN__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NEED__URIS = CONCERN__URIS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NEED__NAME = CONCERN__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NEED__DURATION = CONCERN__DURATION;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NEED__START = CONCERN__START;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NEED__END = CONCERN__END;
+
+	/**
+	 * The feature id for the '<em><b>Supports</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NEED__SUPPORTS = CONCERN_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Violators</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NEED__VIOLATORS = CONCERN_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Need</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NEED_FEATURE_COUNT = CONCERN_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Need</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NEED_OPERATION_COUNT = CONCERN_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.SupportedGoalsImpl <em>Supported Goals</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.impl.SupportedGoalsImpl
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getSupportedGoals()
+	 * @generated
+	 */
+	int SUPPORTED_GOALS = 17;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUPPORTED_GOALS__ID = MODEL_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUPPORTED_GOALS__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUPPORTED_GOALS__URIS = MODEL_ELEMENT__URIS;
+
+	/**
+	 * The feature id for the '<em><b>Goals</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUPPORTED_GOALS__GOALS = MODEL_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Supported Goals</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUPPORTED_GOALS_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Supported Goals</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int SUPPORTED_GOALS_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.PainPointImpl <em>Pain Point</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.impl.PainPointImpl
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getPainPoint()
+	 * @generated
+	 */
+	int PAIN_POINT = 18;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAIN_POINT__ID = CONCERN__ID;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAIN_POINT__DOCUMENTATION = CONCERN__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAIN_POINT__URIS = CONCERN__URIS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAIN_POINT__NAME = CONCERN__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAIN_POINT__DURATION = CONCERN__DURATION;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAIN_POINT__START = CONCERN__START;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAIN_POINT__END = CONCERN__END;
+
+	/**
+	 * The feature id for the '<em><b>Blocks</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAIN_POINT__BLOCKS = CONCERN_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Violates</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAIN_POINT__VIOLATES = CONCERN_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Pain Point</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAIN_POINT_FEATURE_COUNT = CONCERN_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Pain Point</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAIN_POINT_OPERATION_COUNT = CONCERN_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.BlockedGoalsImpl <em>Blocked Goals</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.impl.BlockedGoalsImpl
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getBlockedGoals()
+	 * @generated
+	 */
+	int BLOCKED_GOALS = 19;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BLOCKED_GOALS__ID = MODEL_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BLOCKED_GOALS__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BLOCKED_GOALS__URIS = MODEL_ELEMENT__URIS;
+
+	/**
+	 * The feature id for the '<em><b>Goals</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BLOCKED_GOALS__GOALS = MODEL_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Blocked Goals</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BLOCKED_GOALS_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Blocked Goals</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int BLOCKED_GOALS_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.ViolatedNeedsImpl <em>Violated Needs</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.impl.ViolatedNeedsImpl
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getViolatedNeeds()
+	 * @generated
+	 */
+	int VIOLATED_NEEDS = 20;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIOLATED_NEEDS__ID = MODEL_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIOLATED_NEEDS__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIOLATED_NEEDS__URIS = MODEL_ELEMENT__URIS;
+
+	/**
+	 * The feature id for the '<em><b>Needs</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIOLATED_NEEDS__NEEDS = MODEL_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Violated Needs</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIOLATED_NEEDS_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Violated Needs</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VIOLATED_NEEDS_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.AbstractCapability <em>Abstract Capability</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.AbstractCapability
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getAbstractCapability()
+	 * @generated
+	 */
+	int ABSTRACT_CAPABILITY = 21;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CAPABILITY__ID = STRING_IDENTITY__ID;
+
+	/**
+	 * The number of structural features of the '<em>Abstract Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CAPABILITY_FEATURE_COUNT = STRING_IDENTITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Abstract Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CAPABILITY_OPERATION_COUNT = STRING_IDENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl <em>Capability</em>}' class.
@@ -1071,25 +1602,16 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapability()
 	 * @generated
 	 */
-	int CAPABILITY = 8;
+	int CAPABILITY = 22;
 
 	/**
-	 * The feature id for the '<em><b>D</b></em>' attribute.
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY__D = MODEL_ELEMENT__D;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CAPABILITY__NAME = MODEL_ELEMENT__NAME;
+	int CAPABILITY__ID = NAMED_PERIOD__ID;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -1098,25 +1620,25 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
+	int CAPABILITY__DOCUMENTATION = NAMED_PERIOD__DOCUMENTATION;
 
 	/**
-	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY__START = MODEL_ELEMENT__START;
+	int CAPABILITY__URIS = NAMED_PERIOD__URIS;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' attribute.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY__END = MODEL_ELEMENT__END;
+	int CAPABILITY__NAME = NAMED_PERIOD__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Duration</b></em>' attribute.
@@ -1125,25 +1647,34 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY__DURATION = MODEL_ELEMENT__DURATION;
+	int CAPABILITY__DURATION = NAMED_PERIOD__DURATION;
 
 	/**
-	 * The feature id for the '<em><b>Weight</b></em>' attribute.
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY__WEIGHT = MODEL_ELEMENT__WEIGHT;
+	int CAPABILITY__START = NAMED_PERIOD__START;
 
 	/**
-	 * The feature id for the '<em><b>Versions</b></em>' containment reference list.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY__VERSIONS = MODEL_ELEMENT_FEATURE_COUNT + 0;
+	int CAPABILITY__END = NAMED_PERIOD__END;
+
+	/**
+	 * The feature id for the '<em><b>Addresses</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY__ADDRESSES = NAMED_PERIOD_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Sub Capabilities</b></em>' containment reference list.
@@ -1152,34 +1683,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY__SUB_CAPABILITIES = MODEL_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Includes</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CAPABILITY__INCLUDES = MODEL_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Included In</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CAPABILITY__INCLUDED_IN = MODEL_ELEMENT_FEATURE_COUNT + 3;
-
-	/**
-	 * The feature id for the '<em><b>Roles</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CAPABILITY__ROLES = MODEL_ELEMENT_FEATURE_COUNT + 4;
+	int CAPABILITY__SUB_CAPABILITIES = NAMED_PERIOD_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Capability</em>' class.
@@ -1188,7 +1692,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 5;
+	int CAPABILITY_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Capability</em>' class.
@@ -1197,35 +1701,72 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
+	int CAPABILITY_OPERATION_COUNT = NAMED_PERIOD_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.CapabilityVersionImpl <em>Capability Version</em>}' class.
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.CapabilityReferenceImpl <em>Capability Reference</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.models.productmanagement.impl.CapabilityVersionImpl
-	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityVersion()
+	 * @see org.nasdanika.models.productmanagement.impl.CapabilityReferenceImpl
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityReference()
 	 * @generated
 	 */
-	int CAPABILITY_VERSION = 9;
+	int CAPABILITY_REFERENCE = 23;
 
 	/**
-	 * The feature id for the '<em><b>D</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CAPABILITY_VERSION__D = CAPABILITY__D;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_VERSION__NAME = CAPABILITY__NAME;
+	int CAPABILITY_REFERENCE__ID = ABSTRACT_CAPABILITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_REFERENCE__TARGET = ABSTRACT_CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Capability Reference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_REFERENCE_FEATURE_COUNT = ABSTRACT_CAPABILITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Capability Reference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_REFERENCE_OPERATION_COUNT = ABSTRACT_CAPABILITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.CapabilityDomainImpl <em>Capability Domain</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.impl.CapabilityDomainImpl
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityDomain()
+	 * @generated
+	 */
+	int CAPABILITY_DOMAIN = 24;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_DOMAIN__ID = NAMED_ELEMENT__ID;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -1234,133 +1775,235 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_VERSION__DOCUMENTATION = CAPABILITY__DOCUMENTATION;
+	int CAPABILITY_DOMAIN__DOCUMENTATION = NAMED_ELEMENT__DOCUMENTATION;
 
 	/**
-	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_VERSION__START = CAPABILITY__START;
+	int CAPABILITY_DOMAIN__URIS = NAMED_ELEMENT__URIS;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' attribute.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_VERSION__END = CAPABILITY__END;
+	int CAPABILITY_DOMAIN__NAME = NAMED_ELEMENT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Duration</b></em>' attribute.
+	 * The feature id for the '<em><b>Capabilities</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_VERSION__DURATION = CAPABILITY__DURATION;
+	int CAPABILITY_DOMAIN__CAPABILITIES = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Weight</b></em>' attribute.
+	 * The number of structural features of the '<em>Capability Domain</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_VERSION__WEIGHT = CAPABILITY__WEIGHT;
+	int CAPABILITY_DOMAIN_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Versions</b></em>' containment reference list.
+	 * The number of operations of the '<em>Capability Domain</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_VERSION__VERSIONS = CAPABILITY__VERSIONS;
+	int CAPABILITY_DOMAIN_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Sub Capabilities</b></em>' containment reference list.
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.AddressedConcernsImpl <em>Addressed Concerns</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.impl.AddressedConcernsImpl
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getAddressedConcerns()
+	 * @generated
+	 */
+	int ADDRESSED_CONCERNS = 25;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_VERSION__SUB_CAPABILITIES = CAPABILITY__SUB_CAPABILITIES;
+	int ADDRESSED_CONCERNS__ID = MODEL_ELEMENT__ID;
 
 	/**
-	 * The feature id for the '<em><b>Includes</b></em>' reference list.
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_VERSION__INCLUDES = CAPABILITY__INCLUDES;
+	int ADDRESSED_CONCERNS__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
 
 	/**
-	 * The feature id for the '<em><b>Included In</b></em>' reference list.
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_VERSION__INCLUDED_IN = CAPABILITY__INCLUDED_IN;
+	int ADDRESSED_CONCERNS__URIS = MODEL_ELEMENT__URIS;
 
 	/**
-	 * The feature id for the '<em><b>Roles</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Concerns</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_VERSION__ROLES = CAPABILITY__ROLES;
+	int ADDRESSED_CONCERNS__CONCERNS = MODEL_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Version String</b></em>' attribute.
+	 * The number of structural features of the '<em>Addressed Concerns</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_VERSION__VERSION_STRING = CAPABILITY_FEATURE_COUNT + 0;
+	int ADDRESSED_CONCERNS_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * The number of operations of the '<em>Addressed Concerns</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_VERSION__LABEL = CAPABILITY_FEATURE_COUNT + 1;
+	int ADDRESSED_CONCERNS_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Status Periods</b></em>' containment reference list.
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.CapabilityDependencyImpl <em>Capability Dependency</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.impl.CapabilityDependencyImpl
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityDependency()
+	 * @generated
+	 */
+	int CAPABILITY_DEPENDENCY = 26;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_VERSION__STATUS_PERIODS = CAPABILITY_FEATURE_COUNT + 2;
+	int CAPABILITY_DEPENDENCY__ID = MODEL_ELEMENT__ID;
 
 	/**
-	 * The number of structural features of the '<em>Capability Version</em>' class.
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_VERSION_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 3;
+	int CAPABILITY_DEPENDENCY__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
 
 	/**
-	 * The number of operations of the '<em>Capability Version</em>' class.
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_VERSION_OPERATION_COUNT = CAPABILITY_OPERATION_COUNT + 0;
+	int CAPABILITY_DEPENDENCY__URIS = MODEL_ELEMENT__URIS;
+
+	/**
+	 * The feature id for the '<em><b>Capabilities</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_DEPENDENCY__CAPABILITIES = MODEL_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Kind</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_DEPENDENCY__KIND = MODEL_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Optional</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_DEPENDENCY__OPTIONAL = MODEL_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of structural features of the '<em>Capability Dependency</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_DEPENDENCY_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 3;
+
+	/**
+	 * The number of operations of the '<em>Capability Dependency</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_DEPENDENCY_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.AbstractCapabilityProvider <em>Abstract Capability Provider</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.AbstractCapabilityProvider
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getAbstractCapabilityProvider()
+	 * @generated
+	 */
+	int ABSTRACT_CAPABILITY_PROVIDER = 27;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CAPABILITY_PROVIDER__ID = STRING_IDENTITY__ID;
+
+	/**
+	 * The number of structural features of the '<em>Abstract Capability Provider</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CAPABILITY_PROVIDER_FEATURE_COUNT = STRING_IDENTITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Abstract Capability Provider</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CAPABILITY_PROVIDER_OPERATION_COUNT = STRING_IDENTITY_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.CapabilityProviderImpl <em>Capability Provider</em>}' class.
@@ -1370,25 +2013,16 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityProvider()
 	 * @generated
 	 */
-	int CAPABILITY_PROVIDER = 10;
+	int CAPABILITY_PROVIDER = 28;
 
 	/**
-	 * The feature id for the '<em><b>D</b></em>' attribute.
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_PROVIDER__D = MODEL_ELEMENT__D;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CAPABILITY_PROVIDER__NAME = MODEL_ELEMENT__NAME;
+	int CAPABILITY_PROVIDER__ID = NAMED_PERIOD__ID;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -1397,25 +2031,25 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_PROVIDER__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
+	int CAPABILITY_PROVIDER__DOCUMENTATION = NAMED_PERIOD__DOCUMENTATION;
 
 	/**
-	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_PROVIDER__START = MODEL_ELEMENT__START;
+	int CAPABILITY_PROVIDER__URIS = NAMED_PERIOD__URIS;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' attribute.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_PROVIDER__END = MODEL_ELEMENT__END;
+	int CAPABILITY_PROVIDER__NAME = NAMED_PERIOD__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Duration</b></em>' attribute.
@@ -1424,52 +2058,43 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_PROVIDER__DURATION = MODEL_ELEMENT__DURATION;
+	int CAPABILITY_PROVIDER__DURATION = NAMED_PERIOD__DURATION;
 
 	/**
-	 * The feature id for the '<em><b>Weight</b></em>' attribute.
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_PROVIDER__WEIGHT = MODEL_ELEMENT__WEIGHT;
+	int CAPABILITY_PROVIDER__START = NAMED_PERIOD__START;
 
 	/**
-	 * The feature id for the '<em><b>Provided Capabilities</b></em>' reference list.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_PROVIDER__PROVIDED_CAPABILITIES = MODEL_ELEMENT_FEATURE_COUNT + 0;
+	int CAPABILITY_PROVIDER__END = NAMED_PERIOD__END;
 
 	/**
-	 * The feature id for the '<em><b>Required Capabilities</b></em>' reference list.
+	 * The feature id for the '<em><b>Provides</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_PROVIDER__REQUIRED_CAPABILITIES = MODEL_ELEMENT_FEATURE_COUNT + 1;
+	int CAPABILITY_PROVIDER__PROVIDES = NAMED_PERIOD_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Versions</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Requires</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_PROVIDER__VERSIONS = MODEL_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The feature id for the '<em><b>Roles</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CAPABILITY_PROVIDER__ROLES = MODEL_ELEMENT_FEATURE_COUNT + 3;
+	int CAPABILITY_PROVIDER__REQUIRES = NAMED_PERIOD_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Capability Provider</em>' class.
@@ -1478,7 +2103,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_PROVIDER_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 4;
+	int CAPABILITY_PROVIDER_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 2;
 
 	/**
 	 * The number of operations of the '<em>Capability Provider</em>' class.
@@ -1487,35 +2112,26 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_PROVIDER_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
+	int CAPABILITY_PROVIDER_OPERATION_COUNT = NAMED_PERIOD_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.CapabilityProviderVersionImpl <em>Capability Provider Version</em>}' class.
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.CapabilityProviderDomainImpl <em>Capability Provider Domain</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.models.productmanagement.impl.CapabilityProviderVersionImpl
-	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityProviderVersion()
+	 * @see org.nasdanika.models.productmanagement.impl.CapabilityProviderDomainImpl
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityProviderDomain()
 	 * @generated
 	 */
-	int CAPABILITY_PROVIDER_VERSION = 11;
+	int CAPABILITY_PROVIDER_DOMAIN = 29;
 
 	/**
-	 * The feature id for the '<em><b>D</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CAPABILITY_PROVIDER_VERSION__D = CAPABILITY_PROVIDER__D;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_PROVIDER_VERSION__NAME = CAPABILITY_PROVIDER__NAME;
+	int CAPABILITY_PROVIDER_DOMAIN__ID = NAMED_ELEMENT__ID;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -1524,25 +2140,144 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_PROVIDER_VERSION__DOCUMENTATION = CAPABILITY_PROVIDER__DOCUMENTATION;
+	int CAPABILITY_PROVIDER_DOMAIN__DOCUMENTATION = NAMED_ELEMENT__DOCUMENTATION;
 
 	/**
-	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_PROVIDER_VERSION__START = CAPABILITY_PROVIDER__START;
+	int CAPABILITY_PROVIDER_DOMAIN__URIS = NAMED_ELEMENT__URIS;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' attribute.
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_PROVIDER_VERSION__END = CAPABILITY_PROVIDER__END;
+	int CAPABILITY_PROVIDER_DOMAIN__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Capability Providers</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_PROVIDER_DOMAIN__CAPABILITY_PROVIDERS = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Capability Provider Domain</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_PROVIDER_DOMAIN_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Capability Provider Domain</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_PROVIDER_DOMAIN_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.CapabilityProviderReferenceImpl <em>Capability Provider Reference</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.impl.CapabilityProviderReferenceImpl
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityProviderReference()
+	 * @generated
+	 */
+	int CAPABILITY_PROVIDER_REFERENCE = 30;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_PROVIDER_REFERENCE__ID = ABSTRACT_CAPABILITY_PROVIDER__ID;
+
+	/**
+	 * The feature id for the '<em><b>Target</b></em>' reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_PROVIDER_REFERENCE__TARGET = ABSTRACT_CAPABILITY_PROVIDER_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Capability Provider Reference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_PROVIDER_REFERENCE_FEATURE_COUNT = ABSTRACT_CAPABILITY_PROVIDER_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Capability Provider Reference</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_PROVIDER_REFERENCE_OPERATION_COUNT = ABSTRACT_CAPABILITY_PROVIDER_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.ProvidedCapabilityImpl <em>Provided Capability</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.impl.ProvidedCapabilityImpl
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getProvidedCapability()
+	 * @generated
+	 */
+	int PROVIDED_CAPABILITY = 31;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROVIDED_CAPABILITY__ID = NAMED_PERIOD__ID;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROVIDED_CAPABILITY__DOCUMENTATION = NAMED_PERIOD__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROVIDED_CAPABILITY__URIS = NAMED_PERIOD__URIS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROVIDED_CAPABILITY__NAME = NAMED_PERIOD__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Duration</b></em>' attribute.
@@ -1551,43 +2286,463 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_PROVIDER_VERSION__DURATION = CAPABILITY_PROVIDER__DURATION;
+	int PROVIDED_CAPABILITY__DURATION = NAMED_PERIOD__DURATION;
 
 	/**
-	 * The feature id for the '<em><b>Weight</b></em>' attribute.
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_PROVIDER_VERSION__WEIGHT = CAPABILITY_PROVIDER__WEIGHT;
+	int PROVIDED_CAPABILITY__START = NAMED_PERIOD__START;
 
 	/**
-	 * The feature id for the '<em><b>Provided Capabilities</b></em>' reference list.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_PROVIDER_VERSION__PROVIDED_CAPABILITIES = CAPABILITY_PROVIDER__PROVIDED_CAPABILITIES;
+	int PROVIDED_CAPABILITY__END = NAMED_PERIOD__END;
 
 	/**
-	 * The feature id for the '<em><b>Required Capabilities</b></em>' reference list.
+	 * The feature id for the '<em><b>Evidence</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_PROVIDER_VERSION__REQUIRED_CAPABILITIES = CAPABILITY_PROVIDER__REQUIRED_CAPABILITIES;
+	int PROVIDED_CAPABILITY__EVIDENCE = NAMED_PERIOD_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Versions</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Capability</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_PROVIDER_VERSION__VERSIONS = CAPABILITY_PROVIDER__VERSIONS;
+	int PROVIDED_CAPABILITY__CAPABILITY = NAMED_PERIOD_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Provided Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROVIDED_CAPABILITY_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Provided Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROVIDED_CAPABILITY_OPERATION_COUNT = NAMED_PERIOD_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.AbstractEvidence <em>Abstract Evidence</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.AbstractEvidence
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getAbstractEvidence()
+	 * @generated
+	 */
+	int ABSTRACT_EVIDENCE = 32;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_EVIDENCE__ID = STRING_IDENTITY__ID;
+
+	/**
+	 * The number of structural features of the '<em>Abstract Evidence</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_EVIDENCE_FEATURE_COUNT = STRING_IDENTITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Abstract Evidence</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_EVIDENCE_OPERATION_COUNT = STRING_IDENTITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.EvidenceImpl <em>Evidence</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.impl.EvidenceImpl
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getEvidence()
+	 * @generated
+	 */
+	int EVIDENCE = 33;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVIDENCE__ID = NAMED_PERIOD__ID;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVIDENCE__DOCUMENTATION = NAMED_PERIOD__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVIDENCE__URIS = NAMED_PERIOD__URIS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVIDENCE__NAME = NAMED_PERIOD__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVIDENCE__DURATION = NAMED_PERIOD__DURATION;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVIDENCE__START = NAMED_PERIOD__START;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVIDENCE__END = NAMED_PERIOD__END;
+
+	/**
+	 * The number of structural features of the '<em>Evidence</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVIDENCE_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Evidence</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVIDENCE_OPERATION_COUNT = NAMED_PERIOD_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.EvidenceDomainImpl <em>Evidence Domain</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.impl.EvidenceDomainImpl
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getEvidenceDomain()
+	 * @generated
+	 */
+	int EVIDENCE_DOMAIN = 34;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVIDENCE_DOMAIN__ID = NAMED_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVIDENCE_DOMAIN__DOCUMENTATION = NAMED_ELEMENT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVIDENCE_DOMAIN__URIS = NAMED_ELEMENT__URIS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVIDENCE_DOMAIN__NAME = NAMED_ELEMENT__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Evidence</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVIDENCE_DOMAIN__EVIDENCE = NAMED_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Evidence Domain</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVIDENCE_DOMAIN_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Evidence Domain</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVIDENCE_DOMAIN_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.RequiredCapabilityImpl <em>Required Capability</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.impl.RequiredCapabilityImpl
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getRequiredCapability()
+	 * @generated
+	 */
+	int REQUIRED_CAPABILITY = 35;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIRED_CAPABILITY__ID = NAMED_PERIOD__ID;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIRED_CAPABILITY__DOCUMENTATION = NAMED_PERIOD__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIRED_CAPABILITY__URIS = NAMED_PERIOD__URIS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIRED_CAPABILITY__NAME = NAMED_PERIOD__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIRED_CAPABILITY__DURATION = NAMED_PERIOD__DURATION;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIRED_CAPABILITY__START = NAMED_PERIOD__START;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIRED_CAPABILITY__END = NAMED_PERIOD__END;
+
+	/**
+	 * The feature id for the '<em><b>Capability</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIRED_CAPABILITY__CAPABILITY = NAMED_PERIOD_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of structural features of the '<em>Required Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIRED_CAPABILITY_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of operations of the '<em>Required Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIRED_CAPABILITY_OPERATION_COUNT = NAMED_PERIOD_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.VersionImpl <em>Version</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.impl.VersionImpl
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getVersion()
+	 * @generated
+	 */
+	int VERSION = 36;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERSION__ID = NAMED_PERIOD__ID;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERSION__DOCUMENTATION = NAMED_PERIOD__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERSION__URIS = NAMED_PERIOD__URIS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERSION__NAME = NAMED_PERIOD__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERSION__DURATION = NAMED_PERIOD__DURATION;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERSION__START = NAMED_PERIOD__START;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERSION__END = NAMED_PERIOD__END;
+
+	/**
+	 * The number of structural features of the '<em>Version</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERSION_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Version</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERSION_OPERATION_COUNT = NAMED_PERIOD_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.Undergoer <em>Undergoer</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.Undergoer
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getUndergoer()
+	 * @generated
+	 */
+	int UNDERGOER = 37;
 
 	/**
 	 * The feature id for the '<em><b>Roles</b></em>' containment reference list.
@@ -1596,80 +2751,44 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_PROVIDER_VERSION__ROLES = CAPABILITY_PROVIDER__ROLES;
+	int UNDERGOER__ROLES = 0;
 
 	/**
-	 * The feature id for the '<em><b>Version String</b></em>' attribute.
+	 * The number of structural features of the '<em>Undergoer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_PROVIDER_VERSION__VERSION_STRING = CAPABILITY_PROVIDER_FEATURE_COUNT + 0;
+	int UNDERGOER_FEATURE_COUNT = 1;
 
 	/**
-	 * The feature id for the '<em><b>Label</b></em>' attribute.
+	 * The number of operations of the '<em>Undergoer</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_PROVIDER_VERSION__LABEL = CAPABILITY_PROVIDER_FEATURE_COUNT + 1;
+	int UNDERGOER_OPERATION_COUNT = 0;
 
 	/**
-	 * The feature id for the '<em><b>Status Periods</b></em>' containment reference list.
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.RoleImpl <em>Role</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.impl.RoleImpl
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getRole()
+	 * @generated
+	 */
+	int ROLE = 38;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_PROVIDER_VERSION__STATUS_PERIODS = CAPABILITY_PROVIDER_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the '<em>Capability Provider Version</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CAPABILITY_PROVIDER_VERSION_FEATURE_COUNT = CAPABILITY_PROVIDER_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of operations of the '<em>Capability Provider Version</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CAPABILITY_PROVIDER_VERSION_OPERATION_COUNT = CAPABILITY_PROVIDER_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.OfferingImpl <em>Offering</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.models.productmanagement.impl.OfferingImpl
-	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getOffering()
-	 * @generated
-	 */
-	int OFFERING = 12;
-
-	/**
-	 * The feature id for the '<em><b>D</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OFFERING__D = CAPABILITY_PROVIDER__D;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OFFERING__NAME = CAPABILITY_PROVIDER__NAME;
+	int ROLE__ID = NAMED_PERIOD__ID;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -1678,125 +2797,16 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int OFFERING__DOCUMENTATION = CAPABILITY_PROVIDER__DOCUMENTATION;
+	int ROLE__DOCUMENTATION = NAMED_PERIOD__DOCUMENTATION;
 
 	/**
-	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int OFFERING__START = CAPABILITY_PROVIDER__START;
-
-	/**
-	 * The feature id for the '<em><b>End</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OFFERING__END = CAPABILITY_PROVIDER__END;
-
-	/**
-	 * The feature id for the '<em><b>Duration</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OFFERING__DURATION = CAPABILITY_PROVIDER__DURATION;
-
-	/**
-	 * The feature id for the '<em><b>Weight</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OFFERING__WEIGHT = CAPABILITY_PROVIDER__WEIGHT;
-
-	/**
-	 * The feature id for the '<em><b>Provided Capabilities</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OFFERING__PROVIDED_CAPABILITIES = CAPABILITY_PROVIDER__PROVIDED_CAPABILITIES;
-
-	/**
-	 * The feature id for the '<em><b>Required Capabilities</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OFFERING__REQUIRED_CAPABILITIES = CAPABILITY_PROVIDER__REQUIRED_CAPABILITIES;
-
-	/**
-	 * The feature id for the '<em><b>Versions</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OFFERING__VERSIONS = CAPABILITY_PROVIDER__VERSIONS;
-
-	/**
-	 * The feature id for the '<em><b>Roles</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OFFERING__ROLES = CAPABILITY_PROVIDER__ROLES;
-
-	/**
-	 * The feature id for the '<em><b>Coordinate</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OFFERING__COORDINATE = CAPABILITY_PROVIDER_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Offering</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OFFERING_FEATURE_COUNT = CAPABILITY_PROVIDER_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Offering</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int OFFERING_OPERATION_COUNT = CAPABILITY_PROVIDER_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.WorkPackageImpl <em>Work Package</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.models.productmanagement.impl.WorkPackageImpl
-	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getWorkPackage()
-	 * @generated
-	 */
-	int WORK_PACKAGE = 13;
-
-	/**
-	 * The feature id for the '<em><b>D</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WORK_PACKAGE__D = MODEL_ELEMENT__D;
+	int ROLE__URIS = NAMED_PERIOD__URIS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1805,34 +2815,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_PACKAGE__NAME = MODEL_ELEMENT__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WORK_PACKAGE__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Start</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WORK_PACKAGE__START = MODEL_ELEMENT__START;
-
-	/**
-	 * The feature id for the '<em><b>End</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int WORK_PACKAGE__END = MODEL_ELEMENT__END;
+	int ROLE__NAME = NAMED_PERIOD__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Duration</b></em>' attribute.
@@ -1841,98 +2824,199 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_PACKAGE__DURATION = MODEL_ELEMENT__DURATION;
+	int ROLE__DURATION = NAMED_PERIOD__DURATION;
 
 	/**
-	 * The feature id for the '<em><b>Weight</b></em>' attribute.
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_PACKAGE__WEIGHT = MODEL_ELEMENT__WEIGHT;
+	int ROLE__START = NAMED_PERIOD__START;
 
 	/**
-	 * The feature id for the '<em><b>Sub Work Packages</b></em>' containment reference list.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_PACKAGE__SUB_WORK_PACKAGES = MODEL_ELEMENT_FEATURE_COUNT + 0;
+	int ROLE__END = NAMED_PERIOD__END;
 
 	/**
-	 * The feature id for the '<em><b>Impacts</b></em>' reference list.
+	 * The feature id for the '<em><b>Assignments</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_PACKAGE__IMPACTS = MODEL_ELEMENT_FEATURE_COUNT + 1;
+	int ROLE__ASSIGNMENTS = NAMED_PERIOD_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Contributes</b></em>' reference list.
+	 * The number of structural features of the '<em>Role</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_PACKAGE__CONTRIBUTES = MODEL_ELEMENT_FEATURE_COUNT + 2;
+	int ROLE_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>Tracker</b></em>' attribute.
+	 * The number of operations of the '<em>Role</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_PACKAGE__TRACKER = MODEL_ELEMENT_FEATURE_COUNT + 3;
+	int ROLE_OPERATION_COUNT = NAMED_PERIOD_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Roles</b></em>' containment reference list.
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.RoleAssignmentImpl <em>Role Assignment</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.impl.RoleAssignmentImpl
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getRoleAssignment()
+	 * @generated
+	 */
+	int ROLE_ASSIGNMENT = 39;
+
+	/**
+	 * The feature id for the '<em><b>Duration</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_PACKAGE__ROLES = MODEL_ELEMENT_FEATURE_COUNT + 4;
+	int ROLE_ASSIGNMENT__DURATION = PERIOD__DURATION;
 
 	/**
-	 * The number of structural features of the '<em>Work Package</em>' class.
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_PACKAGE_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 5;
+	int ROLE_ASSIGNMENT__START = PERIOD__START;
 
 	/**
-	 * The number of operations of the '<em>Work Package</em>' class.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int WORK_PACKAGE_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
+	int ROLE_ASSIGNMENT__END = PERIOD__END;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.JiraWorkPackageImpl <em>Jira Work Package</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.models.productmanagement.impl.JiraWorkPackageImpl
-	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getJiraWorkPackage()
-	 * @generated
-	 */
-	int JIRA_WORK_PACKAGE = 14;
-
-	/**
-	 * The feature id for the '<em><b>D</b></em>' attribute.
+	 * The feature id for the '<em><b>Comment</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JIRA_WORK_PACKAGE__D = WORK_PACKAGE__D;
+	int ROLE_ASSIGNMENT__COMMENT = PERIOD_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Actors</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_ASSIGNMENT__ACTORS = PERIOD_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Role Assignment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_ASSIGNMENT_FEATURE_COUNT = PERIOD_FEATURE_COUNT + 2;
+
+	/**
+	 * The number of operations of the '<em>Role Assignment</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE_ASSIGNMENT_OPERATION_COUNT = PERIOD_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.AbstractActor <em>Abstract Actor</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.AbstractActor
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getAbstractActor()
+	 * @generated
+	 */
+	int ABSTRACT_ACTOR = 40;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_ACTOR__ID = STRING_IDENTITY__ID;
+
+	/**
+	 * The number of structural features of the '<em>Abstract Actor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_ACTOR_FEATURE_COUNT = STRING_IDENTITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Abstract Actor</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_ACTOR_OPERATION_COUNT = STRING_IDENTITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.ActorImpl <em>Actor</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.impl.ActorImpl
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getActor()
+	 * @generated
+	 */
+	int ACTOR = 41;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__ID = NAMED_PERIOD__ID;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__DOCUMENTATION = NAMED_PERIOD__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__URIS = NAMED_PERIOD__URIS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1941,34 +3025,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JIRA_WORK_PACKAGE__NAME = WORK_PACKAGE__NAME;
-
-	/**
-	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JIRA_WORK_PACKAGE__DOCUMENTATION = WORK_PACKAGE__DOCUMENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Start</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JIRA_WORK_PACKAGE__START = WORK_PACKAGE__START;
-
-	/**
-	 * The feature id for the '<em><b>End</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JIRA_WORK_PACKAGE__END = WORK_PACKAGE__END;
+	int ACTOR__NAME = NAMED_PERIOD__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Duration</b></em>' attribute.
@@ -1977,125 +3034,80 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int JIRA_WORK_PACKAGE__DURATION = WORK_PACKAGE__DURATION;
+	int ACTOR__DURATION = NAMED_PERIOD__DURATION;
 
 	/**
-	 * The feature id for the '<em><b>Weight</b></em>' attribute.
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JIRA_WORK_PACKAGE__WEIGHT = WORK_PACKAGE__WEIGHT;
+	int ACTOR__START = NAMED_PERIOD__START;
 
 	/**
-	 * The feature id for the '<em><b>Sub Work Packages</b></em>' containment reference list.
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JIRA_WORK_PACKAGE__SUB_WORK_PACKAGES = WORK_PACKAGE__SUB_WORK_PACKAGES;
+	int ACTOR__END = NAMED_PERIOD__END;
 
 	/**
-	 * The feature id for the '<em><b>Impacts</b></em>' reference list.
+	 * The number of structural features of the '<em>Actor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JIRA_WORK_PACKAGE__IMPACTS = WORK_PACKAGE__IMPACTS;
+	int ACTOR_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Contributes</b></em>' reference list.
+	 * The number of operations of the '<em>Actor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JIRA_WORK_PACKAGE__CONTRIBUTES = WORK_PACKAGE__CONTRIBUTES;
+	int ACTOR_OPERATION_COUNT = NAMED_PERIOD_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Tracker</b></em>' attribute.
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.ActorDomainImpl <em>Actor Domain</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.impl.ActorDomainImpl
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getActorDomain()
+	 * @generated
+	 */
+	int ACTOR_DOMAIN = 42;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JIRA_WORK_PACKAGE__TRACKER = WORK_PACKAGE__TRACKER;
+	int ACTOR_DOMAIN__ID = NAMED_ELEMENT__ID;
 
 	/**
-	 * The feature id for the '<em><b>Roles</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JIRA_WORK_PACKAGE__ROLES = WORK_PACKAGE__ROLES;
+	int ACTOR_DOMAIN__DOCUMENTATION = NAMED_ELEMENT__DOCUMENTATION;
 
 	/**
-	 * The feature id for the '<em><b>Project Key</b></em>' attribute.
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int JIRA_WORK_PACKAGE__PROJECT_KEY = WORK_PACKAGE_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Issue Key</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JIRA_WORK_PACKAGE__ISSUE_KEY = WORK_PACKAGE_FEATURE_COUNT + 1;
-
-	/**
-	 * The feature id for the '<em><b>Issue Type</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JIRA_WORK_PACKAGE__ISSUE_TYPE = WORK_PACKAGE_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of structural features of the '<em>Jira Work Package</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JIRA_WORK_PACKAGE_FEATURE_COUNT = WORK_PACKAGE_FEATURE_COUNT + 3;
-
-	/**
-	 * The number of operations of the '<em>Jira Work Package</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int JIRA_WORK_PACKAGE_OPERATION_COUNT = WORK_PACKAGE_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.ProposalImpl <em>Proposal</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.models.productmanagement.impl.ProposalImpl
-	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getProposal()
-	 * @generated
-	 */
-	int PROPOSAL = 15;
-
-	/**
-	 * The feature id for the '<em><b>D</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROPOSAL__D = MODEL_ELEMENT__D;
+	int ACTOR_DOMAIN__URIS = NAMED_ELEMENT__URIS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2104,136 +3116,194 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PROPOSAL__NAME = MODEL_ELEMENT__NAME;
+	int ACTOR_DOMAIN__NAME = NAMED_ELEMENT__NAME;
 
 	/**
-	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * The feature id for the '<em><b>Actors</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROPOSAL__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
+	int ACTOR_DOMAIN__ACTORS = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Start</b></em>' attribute.
+	 * The number of structural features of the '<em>Actor Domain</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROPOSAL__START = MODEL_ELEMENT__START;
+	int ACTOR_DOMAIN_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
-	 * The feature id for the '<em><b>End</b></em>' attribute.
+	 * The number of operations of the '<em>Actor Domain</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PROPOSAL__END = MODEL_ELEMENT__END;
+	int ACTOR_DOMAIN_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Duration</b></em>' attribute.
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.DependencyKind <em>Dependency Kind</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.DependencyKind
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getDependencyKind()
 	 * @generated
-	 * @ordered
 	 */
-	int PROPOSAL__DURATION = MODEL_ELEMENT__DURATION;
+	int DEPENDENCY_KIND = 43;
 
 	/**
-	 * The feature id for the '<em><b>Weight</b></em>' attribute.
+	 * The meta object id for the '<em>Instant</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see java.time.Instant
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getInstant()
 	 * @generated
-	 * @ordered
 	 */
-	int PROPOSAL__WEIGHT = MODEL_ELEMENT__WEIGHT;
+	int INSTANT = 44;
 
 	/**
-	 * The feature id for the '<em><b>Cost</b></em>' attribute.
+	 * The meta object id for the '<em>Duration</em>' data type.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @see java.time.Duration
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getDuration()
 	 * @generated
-	 * @ordered
 	 */
-	int PROPOSAL__COST = MODEL_ELEMENT_FEATURE_COUNT + 0;
+	int DURATION = 45;
+
 
 	/**
-	 * The feature id for the '<em><b>Currency</b></em>' attribute.
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.Temporal <em>Temporal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Temporal</em>'.
+	 * @see org.nasdanika.models.productmanagement.Temporal
 	 * @generated
-	 * @ordered
 	 */
-	int PROPOSAL__CURRENCY = MODEL_ELEMENT_FEATURE_COUNT + 1;
+	EClass getTemporal();
 
 	/**
-	 * The feature id for the '<em><b>Work Package</b></em>' reference.
+	 * Returns the meta object for the reference '{@link org.nasdanika.models.productmanagement.Temporal#getBase <em>Base</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Base</em>'.
+	 * @see org.nasdanika.models.productmanagement.Temporal#getBase()
+	 * @see #getTemporal()
 	 * @generated
-	 * @ordered
 	 */
-	int PROPOSAL__WORK_PACKAGE = MODEL_ELEMENT_FEATURE_COUNT + 2;
+	EReference getTemporal_Base();
 
 	/**
-	 * The feature id for the '<em><b>Capability</b></em>' reference.
+	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.Temporal#getInstant <em>Instant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Instant</em>'.
+	 * @see org.nasdanika.models.productmanagement.Temporal#getInstant()
+	 * @see #getTemporal()
 	 * @generated
-	 * @ordered
 	 */
-	int PROPOSAL__CAPABILITY = MODEL_ELEMENT_FEATURE_COUNT + 3;
+	EAttribute getTemporal_Instant();
 
 	/**
-	 * The feature id for the '<em><b>Author</b></em>' reference.
+	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.Temporal#getDuration <em>Duration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Duration</em>'.
+	 * @see org.nasdanika.models.productmanagement.Temporal#getDuration()
+	 * @see #getTemporal()
 	 * @generated
-	 * @ordered
 	 */
-	int PROPOSAL__AUTHOR = MODEL_ELEMENT_FEATURE_COUNT + 4;
+	EAttribute getTemporal_Duration();
 
 	/**
-	 * The number of structural features of the '<em>Proposal</em>' class.
+	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Temporal#getLowerBounds <em>Lower Bounds</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Lower Bounds</em>'.
+	 * @see org.nasdanika.models.productmanagement.Temporal#getLowerBounds()
+	 * @see #getTemporal()
 	 * @generated
-	 * @ordered
 	 */
-	int PROPOSAL_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 5;
+	EReference getTemporal_LowerBounds();
 
 	/**
-	 * The number of operations of the '<em>Proposal</em>' class.
+	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Temporal#getUpperBounds <em>Upper Bounds</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Upper Bounds</em>'.
+	 * @see org.nasdanika.models.productmanagement.Temporal#getUpperBounds()
+	 * @see #getTemporal()
 	 * @generated
-	 * @ordered
 	 */
-	int PROPOSAL_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
+	EReference getTemporal_UpperBounds();
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.LifecycleStatus <em>Lifecycle Status</em>}' enum.
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.Period <em>Period</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.models.productmanagement.LifecycleStatus
-	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getLifecycleStatus()
+	 * @return the meta object for class '<em>Period</em>'.
+	 * @see org.nasdanika.models.productmanagement.Period
 	 * @generated
 	 */
-	int LIFECYCLE_STATUS = 16;
+	EClass getPeriod();
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.ConcernType <em>Concern Type</em>}' enum.
+	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.Period#getDuration <em>Duration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.models.productmanagement.ConcernType
-	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getConcernType()
+	 * @return the meta object for the attribute '<em>Duration</em>'.
+	 * @see org.nasdanika.models.productmanagement.Period#getDuration()
+	 * @see #getPeriod()
 	 * @generated
 	 */
-	int CONCERN_TYPE = 17;
+	EAttribute getPeriod_Duration();
 
+	/**
+	 * Returns the meta object for the containment reference '{@link org.nasdanika.models.productmanagement.Period#getStart <em>Start</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Start</em>'.
+	 * @see org.nasdanika.models.productmanagement.Period#getStart()
+	 * @see #getPeriod()
+	 * @generated
+	 */
+	EReference getPeriod_Start();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.nasdanika.models.productmanagement.Period#getEnd <em>End</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>End</em>'.
+	 * @see org.nasdanika.models.productmanagement.Period#getEnd()
+	 * @see #getPeriod()
+	 * @generated
+	 */
+	EReference getPeriod_End();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.StringIdentity <em>String Identity</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>String Identity</em>'.
+	 * @see org.nasdanika.models.productmanagement.StringIdentity
+	 * @generated
+	 */
+	EClass getStringIdentity();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.StringIdentity#getId <em>Id</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Id</em>'.
+	 * @see org.nasdanika.models.productmanagement.StringIdentity#getId()
+	 * @see #getStringIdentity()
+	 * @generated
+	 */
+	EAttribute getStringIdentity_Id();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.ModelElement <em>Model Element</em>}'.
@@ -2244,28 +3314,6 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getModelElement();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.ModelElement#getD <em>D</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>D</em>'.
-	 * @see org.nasdanika.models.productmanagement.ModelElement#getD()
-	 * @see #getModelElement()
-	 * @generated
-	 */
-	EAttribute getModelElement_D();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.ModelElement#getName <em>Name</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Name</em>'.
-	 * @see org.nasdanika.models.productmanagement.ModelElement#getName()
-	 * @see #getModelElement()
-	 * @generated
-	 */
-	EAttribute getModelElement_Name();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.ModelElement#getDocumentation <em>Documentation</em>}'.
@@ -2279,69 +3327,46 @@ public interface ProductmanagementPackage extends EPackage {
 	EAttribute getModelElement_Documentation();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.ModelElement#getStart <em>Start</em>}'.
+	 * Returns the meta object for the attribute list '{@link org.nasdanika.models.productmanagement.ModelElement#getUris <em>Uris</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Start</em>'.
-	 * @see org.nasdanika.models.productmanagement.ModelElement#getStart()
+	 * @return the meta object for the attribute list '<em>Uris</em>'.
+	 * @see org.nasdanika.models.productmanagement.ModelElement#getUris()
 	 * @see #getModelElement()
 	 * @generated
 	 */
-	EAttribute getModelElement_Start();
+	EAttribute getModelElement_Uris();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.ModelElement#getEnd <em>End</em>}'.
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.NamedElement <em>Named Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>End</em>'.
-	 * @see org.nasdanika.models.productmanagement.ModelElement#getEnd()
-	 * @see #getModelElement()
+	 * @return the meta object for class '<em>Named Element</em>'.
+	 * @see org.nasdanika.models.productmanagement.NamedElement
 	 * @generated
 	 */
-	EAttribute getModelElement_End();
+	EClass getNamedElement();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.ModelElement#getDuration <em>Duration</em>}'.
+	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.NamedElement#getName <em>Name</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Duration</em>'.
-	 * @see org.nasdanika.models.productmanagement.ModelElement#getDuration()
-	 * @see #getModelElement()
+	 * @return the meta object for the attribute '<em>Name</em>'.
+	 * @see org.nasdanika.models.productmanagement.NamedElement#getName()
+	 * @see #getNamedElement()
 	 * @generated
 	 */
-	EAttribute getModelElement_Duration();
+	EAttribute getNamedElement_Name();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.ModelElement#getWeight <em>Weight</em>}'.
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.NamedPeriod <em>Named Period</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Weight</em>'.
-	 * @see org.nasdanika.models.productmanagement.ModelElement#getWeight()
-	 * @see #getModelElement()
+	 * @return the meta object for class '<em>Named Period</em>'.
+	 * @see org.nasdanika.models.productmanagement.NamedPeriod
 	 * @generated
 	 */
-	EAttribute getModelElement_Weight();
-
-	/**
-	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.LifecycleStatusPeriod <em>Lifecycle Status Period</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Lifecycle Status Period</em>'.
-	 * @see org.nasdanika.models.productmanagement.LifecycleStatusPeriod
-	 * @generated
-	 */
-	EClass getLifecycleStatusPeriod();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.LifecycleStatusPeriod#getStatus <em>Status</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Status</em>'.
-	 * @see org.nasdanika.models.productmanagement.LifecycleStatusPeriod#getStatus()
-	 * @see #getLifecycleStatusPeriod()
-	 * @generated
-	 */
-	EAttribute getLifecycleStatusPeriod_Status();
+	EClass getNamedPeriod();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.ProductModel <em>Product Model</em>}'.
@@ -2354,167 +3379,14 @@ public interface ProductmanagementPackage extends EPackage {
 	EClass getProductModel();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.ProductModel#getPersonas <em>Personas</em>}'.
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.AbstractPersona <em>Abstract Persona</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Personas</em>'.
-	 * @see org.nasdanika.models.productmanagement.ProductModel#getPersonas()
-	 * @see #getProductModel()
+	 * @return the meta object for class '<em>Abstract Persona</em>'.
+	 * @see org.nasdanika.models.productmanagement.AbstractPersona
 	 * @generated
 	 */
-	EReference getProductModel_Personas();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.ProductModel#getCapabilities <em>Capabilities</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Capabilities</em>'.
-	 * @see org.nasdanika.models.productmanagement.ProductModel#getCapabilities()
-	 * @see #getProductModel()
-	 * @generated
-	 */
-	EReference getProductModel_Capabilities();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.ProductModel#getCapabilityProviders <em>Capability Providers</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Capability Providers</em>'.
-	 * @see org.nasdanika.models.productmanagement.ProductModel#getCapabilityProviders()
-	 * @see #getProductModel()
-	 * @generated
-	 */
-	EReference getProductModel_CapabilityProviders();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.ProductModel#getWorkPackages <em>Work Packages</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Work Packages</em>'.
-	 * @see org.nasdanika.models.productmanagement.ProductModel#getWorkPackages()
-	 * @see #getProductModel()
-	 * @generated
-	 */
-	EReference getProductModel_WorkPackages();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.ProductModel#getOfferings <em>Offerings</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Offerings</em>'.
-	 * @see org.nasdanika.models.productmanagement.ProductModel#getOfferings()
-	 * @see #getProductModel()
-	 * @generated
-	 */
-	EReference getProductModel_Offerings();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.ProductModel#getActors <em>Actors</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Actors</em>'.
-	 * @see org.nasdanika.models.productmanagement.ProductModel#getActors()
-	 * @see #getProductModel()
-	 * @generated
-	 */
-	EReference getProductModel_Actors();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.ProductModel#getProposals <em>Proposals</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Proposals</em>'.
-	 * @see org.nasdanika.models.productmanagement.ProductModel#getProposals()
-	 * @see #getProductModel()
-	 * @generated
-	 */
-	EReference getProductModel_Proposals();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.ProductModel#getRoles <em>Roles</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Roles</em>'.
-	 * @see org.nasdanika.models.productmanagement.ProductModel#getRoles()
-	 * @see #getProductModel()
-	 * @generated
-	 */
-	EReference getProductModel_Roles();
-
-	/**
-	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.Role <em>Role</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Role</em>'.
-	 * @see org.nasdanika.models.productmanagement.Role
-	 * @generated
-	 */
-	EClass getRole();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Role#getActors <em>Actors</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Actors</em>'.
-	 * @see org.nasdanika.models.productmanagement.Role#getActors()
-	 * @see #getRole()
-	 * @generated
-	 */
-	EReference getRole_Actors();
-
-	/**
-	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.Actor <em>Actor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Actor</em>'.
-	 * @see org.nasdanika.models.productmanagement.Actor
-	 * @generated
-	 */
-	EClass getActor();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Actor#getRoles <em>Roles</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Roles</em>'.
-	 * @see org.nasdanika.models.productmanagement.Actor#getRoles()
-	 * @see #getActor()
-	 * @generated
-	 */
-	EReference getActor_Roles();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.Actor#getOwnedRoles <em>Owned Roles</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Owned Roles</em>'.
-	 * @see org.nasdanika.models.productmanagement.Actor#getOwnedRoles()
-	 * @see #getActor()
-	 * @generated
-	 */
-	EReference getActor_OwnedRoles();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.Actor#getSubActors <em>Sub Actors</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Sub Actors</em>'.
-	 * @see org.nasdanika.models.productmanagement.Actor#getSubActors()
-	 * @see #getActor()
-	 * @generated
-	 */
-	EReference getActor_SubActors();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.Actor#getPartyId <em>Party Id</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Party Id</em>'.
-	 * @see org.nasdanika.models.productmanagement.Actor#getPartyId()
-	 * @see #getActor()
-	 * @generated
-	 */
-	EAttribute getActor_PartyId();
+	EClass getAbstractPersona();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.Persona <em>Persona</em>}'.
@@ -2527,59 +3399,56 @@ public interface ProductmanagementPackage extends EPackage {
 	EClass getPersona();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.Persona#getConcerns <em>Concerns</em>}'.
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.PersonaDomain <em>Persona Domain</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Concerns</em>'.
-	 * @see org.nasdanika.models.productmanagement.Persona#getConcerns()
-	 * @see #getPersona()
+	 * @return the meta object for class '<em>Persona Domain</em>'.
+	 * @see org.nasdanika.models.productmanagement.PersonaDomain
 	 * @generated
 	 */
-	EReference getPersona_Concerns();
+	EClass getPersonaDomain();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.Persona#getSubPersonas <em>Sub Personas</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.PersonaDomain#getPersonas <em>Personas</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Sub Personas</em>'.
-	 * @see org.nasdanika.models.productmanagement.Persona#getSubPersonas()
-	 * @see #getPersona()
+	 * @return the meta object for the containment reference list '<em>Personas</em>'.
+	 * @see org.nasdanika.models.productmanagement.PersonaDomain#getPersonas()
+	 * @see #getPersonaDomain()
 	 * @generated
 	 */
-	EReference getPersona_SubPersonas();
+	EReference getPersonaDomain_Personas();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Persona#getSuperPersonas <em>Super Personas</em>}'.
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.PersonaReference <em>Persona Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Super Personas</em>'.
-	 * @see org.nasdanika.models.productmanagement.Persona#getSuperPersonas()
-	 * @see #getPersona()
+	 * @return the meta object for class '<em>Persona Reference</em>'.
+	 * @see org.nasdanika.models.productmanagement.PersonaReference
 	 * @generated
 	 */
-	EReference getPersona_SuperPersonas();
+	EClass getPersonaReference();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.Persona#getPopulation <em>Population</em>}'.
+	 * Returns the meta object for the reference '{@link org.nasdanika.models.productmanagement.PersonaReference#getTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Population</em>'.
-	 * @see org.nasdanika.models.productmanagement.Persona#getPopulation()
-	 * @see #getPersona()
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see org.nasdanika.models.productmanagement.PersonaReference#getTarget()
+	 * @see #getPersonaReference()
 	 * @generated
 	 */
-	EAttribute getPersona_Population();
+	EReference getPersonaReference_Target();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.Persona#getRoles <em>Roles</em>}'.
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.AbstractConcern <em>Abstract Concern</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Roles</em>'.
-	 * @see org.nasdanika.models.productmanagement.Persona#getRoles()
-	 * @see #getPersona()
+	 * @return the meta object for class '<em>Abstract Concern</em>'.
+	 * @see org.nasdanika.models.productmanagement.AbstractConcern
 	 * @generated
 	 */
-	EReference getPersona_Roles();
+	EClass getAbstractConcern();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.Concern <em>Concern</em>}'.
@@ -2592,91 +3461,215 @@ public interface ProductmanagementPackage extends EPackage {
 	EClass getConcern();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.Concern#getType <em>Type</em>}'.
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.ConcernReference <em>Concern Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Type</em>'.
-	 * @see org.nasdanika.models.productmanagement.Concern#getType()
-	 * @see #getConcern()
+	 * @return the meta object for class '<em>Concern Reference</em>'.
+	 * @see org.nasdanika.models.productmanagement.ConcernReference
 	 * @generated
 	 */
-	EAttribute getConcern_Type();
+	EClass getConcernReference();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.Concern#getSubConcerns <em>Sub Concerns</em>}'.
+	 * Returns the meta object for the reference '{@link org.nasdanika.models.productmanagement.ConcernReference#getTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Sub Concerns</em>'.
-	 * @see org.nasdanika.models.productmanagement.Concern#getSubConcerns()
-	 * @see #getConcern()
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see org.nasdanika.models.productmanagement.ConcernReference#getTarget()
+	 * @see #getConcernReference()
 	 * @generated
 	 */
-	EReference getConcern_SubConcerns();
+	EReference getConcernReference_Target();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Concern#getRelatedConcerns <em>Related Concerns</em>}'.
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.ConcernDomain <em>Concern Domain</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Related Concerns</em>'.
-	 * @see org.nasdanika.models.productmanagement.Concern#getRelatedConcerns()
-	 * @see #getConcern()
+	 * @return the meta object for class '<em>Concern Domain</em>'.
+	 * @see org.nasdanika.models.productmanagement.ConcernDomain
 	 * @generated
 	 */
-	EReference getConcern_RelatedConcerns();
+	EClass getConcernDomain();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Concern#getReferringConcerns <em>Referring Concerns</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.ConcernDomain#getConcerns <em>Concerns</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Referring Concerns</em>'.
-	 * @see org.nasdanika.models.productmanagement.Concern#getReferringConcerns()
-	 * @see #getConcern()
+	 * @return the meta object for the containment reference list '<em>Concerns</em>'.
+	 * @see org.nasdanika.models.productmanagement.ConcernDomain#getConcerns()
+	 * @see #getConcernDomain()
 	 * @generated
 	 */
-	EReference getConcern_ReferringConcerns();
+	EReference getConcernDomain_Concerns();
 
 	/**
-	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.Version <em>Version</em>}'.
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.Goal <em>Goal</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Version</em>'.
-	 * @see org.nasdanika.models.productmanagement.Version
+	 * @return the meta object for class '<em>Goal</em>'.
+	 * @see org.nasdanika.models.productmanagement.Goal
 	 * @generated
 	 */
-	EClass getVersion();
+	EClass getGoal();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.Version#getVersionString <em>Version String</em>}'.
+	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Goal#getSupportingNeeds <em>Supporting Needs</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Version String</em>'.
-	 * @see org.nasdanika.models.productmanagement.Version#getVersionString()
-	 * @see #getVersion()
+	 * @return the meta object for the reference list '<em>Supporting Needs</em>'.
+	 * @see org.nasdanika.models.productmanagement.Goal#getSupportingNeeds()
+	 * @see #getGoal()
 	 * @generated
 	 */
-	EAttribute getVersion_VersionString();
+	EReference getGoal_SupportingNeeds();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.Version#getLabel <em>Label</em>}'.
+	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Goal#getBlockers <em>Blockers</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Label</em>'.
-	 * @see org.nasdanika.models.productmanagement.Version#getLabel()
-	 * @see #getVersion()
+	 * @return the meta object for the reference list '<em>Blockers</em>'.
+	 * @see org.nasdanika.models.productmanagement.Goal#getBlockers()
+	 * @see #getGoal()
 	 * @generated
 	 */
-	EAttribute getVersion_Label();
+	EReference getGoal_Blockers();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.Version#getStatusPeriods <em>Status Periods</em>}'.
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.Need <em>Need</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Status Periods</em>'.
-	 * @see org.nasdanika.models.productmanagement.Version#getStatusPeriods()
-	 * @see #getVersion()
+	 * @return the meta object for class '<em>Need</em>'.
+	 * @see org.nasdanika.models.productmanagement.Need
 	 * @generated
 	 */
-	EReference getVersion_StatusPeriods();
+	EClass getNeed();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.Need#getSupports <em>Supports</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Supports</em>'.
+	 * @see org.nasdanika.models.productmanagement.Need#getSupports()
+	 * @see #getNeed()
+	 * @generated
+	 */
+	EReference getNeed_Supports();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Need#getViolators <em>Violators</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Violators</em>'.
+	 * @see org.nasdanika.models.productmanagement.Need#getViolators()
+	 * @see #getNeed()
+	 * @generated
+	 */
+	EReference getNeed_Violators();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.SupportedGoals <em>Supported Goals</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Supported Goals</em>'.
+	 * @see org.nasdanika.models.productmanagement.SupportedGoals
+	 * @generated
+	 */
+	EClass getSupportedGoals();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.SupportedGoals#getGoals <em>Goals</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Goals</em>'.
+	 * @see org.nasdanika.models.productmanagement.SupportedGoals#getGoals()
+	 * @see #getSupportedGoals()
+	 * @generated
+	 */
+	EReference getSupportedGoals_Goals();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.PainPoint <em>Pain Point</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Pain Point</em>'.
+	 * @see org.nasdanika.models.productmanagement.PainPoint
+	 * @generated
+	 */
+	EClass getPainPoint();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.PainPoint#getBlocks <em>Blocks</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Blocks</em>'.
+	 * @see org.nasdanika.models.productmanagement.PainPoint#getBlocks()
+	 * @see #getPainPoint()
+	 * @generated
+	 */
+	EReference getPainPoint_Blocks();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.PainPoint#getViolates <em>Violates</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Violates</em>'.
+	 * @see org.nasdanika.models.productmanagement.PainPoint#getViolates()
+	 * @see #getPainPoint()
+	 * @generated
+	 */
+	EReference getPainPoint_Violates();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.BlockedGoals <em>Blocked Goals</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Blocked Goals</em>'.
+	 * @see org.nasdanika.models.productmanagement.BlockedGoals
+	 * @generated
+	 */
+	EClass getBlockedGoals();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.BlockedGoals#getGoals <em>Goals</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Goals</em>'.
+	 * @see org.nasdanika.models.productmanagement.BlockedGoals#getGoals()
+	 * @see #getBlockedGoals()
+	 * @generated
+	 */
+	EReference getBlockedGoals_Goals();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.ViolatedNeeds <em>Violated Needs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Violated Needs</em>'.
+	 * @see org.nasdanika.models.productmanagement.ViolatedNeeds
+	 * @generated
+	 */
+	EClass getViolatedNeeds();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.ViolatedNeeds#getNeeds <em>Needs</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Needs</em>'.
+	 * @see org.nasdanika.models.productmanagement.ViolatedNeeds#getNeeds()
+	 * @see #getViolatedNeeds()
+	 * @generated
+	 */
+	EReference getViolatedNeeds_Needs();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.AbstractCapability <em>Abstract Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Abstract Capability</em>'.
+	 * @see org.nasdanika.models.productmanagement.AbstractCapability
+	 * @generated
+	 */
+	EClass getAbstractCapability();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.Capability <em>Capability</em>}'.
@@ -2689,15 +3682,15 @@ public interface ProductmanagementPackage extends EPackage {
 	EClass getCapability();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.Capability#getVersions <em>Versions</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.Capability#getAddresses <em>Addresses</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Versions</em>'.
-	 * @see org.nasdanika.models.productmanagement.Capability#getVersions()
+	 * @return the meta object for the containment reference list '<em>Addresses</em>'.
+	 * @see org.nasdanika.models.productmanagement.Capability#getAddresses()
 	 * @see #getCapability()
 	 * @generated
 	 */
-	EReference getCapability_Versions();
+	EReference getCapability_Addresses();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.Capability#getSubCapabilities <em>Sub Capabilities</em>}'.
@@ -2711,47 +3704,120 @@ public interface ProductmanagementPackage extends EPackage {
 	EReference getCapability_SubCapabilities();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Capability#getIncludes <em>Includes</em>}'.
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.CapabilityReference <em>Capability Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Includes</em>'.
-	 * @see org.nasdanika.models.productmanagement.Capability#getIncludes()
-	 * @see #getCapability()
+	 * @return the meta object for class '<em>Capability Reference</em>'.
+	 * @see org.nasdanika.models.productmanagement.CapabilityReference
 	 * @generated
 	 */
-	EReference getCapability_Includes();
+	EClass getCapabilityReference();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Capability#getIncludedIn <em>Included In</em>}'.
+	 * Returns the meta object for the reference '{@link org.nasdanika.models.productmanagement.CapabilityReference#getTarget <em>Target</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Included In</em>'.
-	 * @see org.nasdanika.models.productmanagement.Capability#getIncludedIn()
-	 * @see #getCapability()
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see org.nasdanika.models.productmanagement.CapabilityReference#getTarget()
+	 * @see #getCapabilityReference()
 	 * @generated
 	 */
-	EReference getCapability_IncludedIn();
+	EReference getCapabilityReference_Target();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.Capability#getRoles <em>Roles</em>}'.
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.CapabilityDomain <em>Capability Domain</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Roles</em>'.
-	 * @see org.nasdanika.models.productmanagement.Capability#getRoles()
-	 * @see #getCapability()
+	 * @return the meta object for class '<em>Capability Domain</em>'.
+	 * @see org.nasdanika.models.productmanagement.CapabilityDomain
 	 * @generated
 	 */
-	EReference getCapability_Roles();
+	EClass getCapabilityDomain();
 
 	/**
-	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.CapabilityVersion <em>Capability Version</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.CapabilityDomain#getCapabilities <em>Capabilities</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Capability Version</em>'.
-	 * @see org.nasdanika.models.productmanagement.CapabilityVersion
+	 * @return the meta object for the containment reference list '<em>Capabilities</em>'.
+	 * @see org.nasdanika.models.productmanagement.CapabilityDomain#getCapabilities()
+	 * @see #getCapabilityDomain()
 	 * @generated
 	 */
-	EClass getCapabilityVersion();
+	EReference getCapabilityDomain_Capabilities();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.AddressedConcerns <em>Addressed Concerns</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Addressed Concerns</em>'.
+	 * @see org.nasdanika.models.productmanagement.AddressedConcerns
+	 * @generated
+	 */
+	EClass getAddressedConcerns();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.AddressedConcerns#getConcerns <em>Concerns</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Concerns</em>'.
+	 * @see org.nasdanika.models.productmanagement.AddressedConcerns#getConcerns()
+	 * @see #getAddressedConcerns()
+	 * @generated
+	 */
+	EReference getAddressedConcerns_Concerns();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.CapabilityDependency <em>Capability Dependency</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Capability Dependency</em>'.
+	 * @see org.nasdanika.models.productmanagement.CapabilityDependency
+	 * @generated
+	 */
+	EClass getCapabilityDependency();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.CapabilityDependency#getCapabilities <em>Capabilities</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Capabilities</em>'.
+	 * @see org.nasdanika.models.productmanagement.CapabilityDependency#getCapabilities()
+	 * @see #getCapabilityDependency()
+	 * @generated
+	 */
+	EReference getCapabilityDependency_Capabilities();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.CapabilityDependency#getKind <em>Kind</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Kind</em>'.
+	 * @see org.nasdanika.models.productmanagement.CapabilityDependency#getKind()
+	 * @see #getCapabilityDependency()
+	 * @generated
+	 */
+	EAttribute getCapabilityDependency_Kind();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.CapabilityDependency#isOptional <em>Optional</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Optional</em>'.
+	 * @see org.nasdanika.models.productmanagement.CapabilityDependency#isOptional()
+	 * @see #getCapabilityDependency()
+	 * @generated
+	 */
+	EAttribute getCapabilityDependency_Optional();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.AbstractCapabilityProvider <em>Abstract Capability Provider</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Abstract Capability Provider</em>'.
+	 * @see org.nasdanika.models.productmanagement.AbstractCapabilityProvider
+	 * @generated
+	 */
+	EClass getAbstractCapabilityProvider();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.CapabilityProvider <em>Capability Provider</em>}'.
@@ -2764,272 +3830,308 @@ public interface ProductmanagementPackage extends EPackage {
 	EClass getCapabilityProvider();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.CapabilityProvider#getProvidedCapabilities <em>Provided Capabilities</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.CapabilityProvider#getProvides <em>Provides</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Provided Capabilities</em>'.
-	 * @see org.nasdanika.models.productmanagement.CapabilityProvider#getProvidedCapabilities()
+	 * @return the meta object for the containment reference list '<em>Provides</em>'.
+	 * @see org.nasdanika.models.productmanagement.CapabilityProvider#getProvides()
 	 * @see #getCapabilityProvider()
 	 * @generated
 	 */
-	EReference getCapabilityProvider_ProvidedCapabilities();
+	EReference getCapabilityProvider_Provides();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.CapabilityProvider#getRequiredCapabilities <em>Required Capabilities</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.CapabilityProvider#getRequires <em>Requires</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Required Capabilities</em>'.
-	 * @see org.nasdanika.models.productmanagement.CapabilityProvider#getRequiredCapabilities()
+	 * @return the meta object for the containment reference list '<em>Requires</em>'.
+	 * @see org.nasdanika.models.productmanagement.CapabilityProvider#getRequires()
 	 * @see #getCapabilityProvider()
 	 * @generated
 	 */
-	EReference getCapabilityProvider_RequiredCapabilities();
+	EReference getCapabilityProvider_Requires();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.CapabilityProvider#getVersions <em>Versions</em>}'.
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.CapabilityProviderDomain <em>Capability Provider Domain</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Versions</em>'.
-	 * @see org.nasdanika.models.productmanagement.CapabilityProvider#getVersions()
-	 * @see #getCapabilityProvider()
+	 * @return the meta object for class '<em>Capability Provider Domain</em>'.
+	 * @see org.nasdanika.models.productmanagement.CapabilityProviderDomain
 	 * @generated
 	 */
-	EReference getCapabilityProvider_Versions();
+	EClass getCapabilityProviderDomain();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.CapabilityProvider#getRoles <em>Roles</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.CapabilityProviderDomain#getCapabilityProviders <em>Capability Providers</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Capability Providers</em>'.
+	 * @see org.nasdanika.models.productmanagement.CapabilityProviderDomain#getCapabilityProviders()
+	 * @see #getCapabilityProviderDomain()
+	 * @generated
+	 */
+	EReference getCapabilityProviderDomain_CapabilityProviders();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.CapabilityProviderReference <em>Capability Provider Reference</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Capability Provider Reference</em>'.
+	 * @see org.nasdanika.models.productmanagement.CapabilityProviderReference
+	 * @generated
+	 */
+	EClass getCapabilityProviderReference();
+
+	/**
+	 * Returns the meta object for the reference '{@link org.nasdanika.models.productmanagement.CapabilityProviderReference#getTarget <em>Target</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference '<em>Target</em>'.
+	 * @see org.nasdanika.models.productmanagement.CapabilityProviderReference#getTarget()
+	 * @see #getCapabilityProviderReference()
+	 * @generated
+	 */
+	EReference getCapabilityProviderReference_Target();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.ProvidedCapability <em>Provided Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Provided Capability</em>'.
+	 * @see org.nasdanika.models.productmanagement.ProvidedCapability
+	 * @generated
+	 */
+	EClass getProvidedCapability();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.nasdanika.models.productmanagement.ProvidedCapability#getCapability <em>Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Capability</em>'.
+	 * @see org.nasdanika.models.productmanagement.ProvidedCapability#getCapability()
+	 * @see #getProvidedCapability()
+	 * @generated
+	 */
+	EReference getProvidedCapability_Capability();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.AbstractEvidence <em>Abstract Evidence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Abstract Evidence</em>'.
+	 * @see org.nasdanika.models.productmanagement.AbstractEvidence
+	 * @generated
+	 */
+	EClass getAbstractEvidence();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.Evidence <em>Evidence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Evidence</em>'.
+	 * @see org.nasdanika.models.productmanagement.Evidence
+	 * @generated
+	 */
+	EClass getEvidence();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.EvidenceDomain <em>Evidence Domain</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Evidence Domain</em>'.
+	 * @see org.nasdanika.models.productmanagement.EvidenceDomain
+	 * @generated
+	 */
+	EClass getEvidenceDomain();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.EvidenceDomain#getEvidence <em>Evidence</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Evidence</em>'.
+	 * @see org.nasdanika.models.productmanagement.EvidenceDomain#getEvidence()
+	 * @see #getEvidenceDomain()
+	 * @generated
+	 */
+	EReference getEvidenceDomain_Evidence();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.RequiredCapability <em>Required Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Required Capability</em>'.
+	 * @see org.nasdanika.models.productmanagement.RequiredCapability
+	 * @generated
+	 */
+	EClass getRequiredCapability();
+
+	/**
+	 * Returns the meta object for the containment reference '{@link org.nasdanika.models.productmanagement.RequiredCapability#getCapability <em>Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference '<em>Capability</em>'.
+	 * @see org.nasdanika.models.productmanagement.RequiredCapability#getCapability()
+	 * @see #getRequiredCapability()
+	 * @generated
+	 */
+	EReference getRequiredCapability_Capability();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.Version <em>Version</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Version</em>'.
+	 * @see org.nasdanika.models.productmanagement.Version
+	 * @generated
+	 */
+	EClass getVersion();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.Undergoer <em>Undergoer</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Undergoer</em>'.
+	 * @see org.nasdanika.models.productmanagement.Undergoer
+	 * @generated
+	 */
+	EClass getUndergoer();
+
+	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.Undergoer#getRoles <em>Roles</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the meta object for the containment reference list '<em>Roles</em>'.
-	 * @see org.nasdanika.models.productmanagement.CapabilityProvider#getRoles()
-	 * @see #getCapabilityProvider()
+	 * @see org.nasdanika.models.productmanagement.Undergoer#getRoles()
+	 * @see #getUndergoer()
 	 * @generated
 	 */
-	EReference getCapabilityProvider_Roles();
+	EReference getUndergoer_Roles();
 
 	/**
-	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.CapabilityProviderVersion <em>Capability Provider Version</em>}'.
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.Role <em>Role</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Capability Provider Version</em>'.
-	 * @see org.nasdanika.models.productmanagement.CapabilityProviderVersion
+	 * @return the meta object for class '<em>Role</em>'.
+	 * @see org.nasdanika.models.productmanagement.Role
 	 * @generated
 	 */
-	EClass getCapabilityProviderVersion();
+	EClass getRole();
 
 	/**
-	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.Offering <em>Offering</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.Role#getAssignments <em>Assignments</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Offering</em>'.
-	 * @see org.nasdanika.models.productmanagement.Offering
+	 * @return the meta object for the containment reference list '<em>Assignments</em>'.
+	 * @see org.nasdanika.models.productmanagement.Role#getAssignments()
+	 * @see #getRole()
 	 * @generated
 	 */
-	EClass getOffering();
+	EReference getRole_Assignments();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.Offering#getCoordinate <em>Coordinate</em>}'.
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.RoleAssignment <em>Role Assignment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Coordinate</em>'.
-	 * @see org.nasdanika.models.productmanagement.Offering#getCoordinate()
-	 * @see #getOffering()
+	 * @return the meta object for class '<em>Role Assignment</em>'.
+	 * @see org.nasdanika.models.productmanagement.RoleAssignment
 	 * @generated
 	 */
-	EAttribute getOffering_Coordinate();
+	EClass getRoleAssignment();
 
 	/**
-	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.WorkPackage <em>Work Package</em>}'.
+	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.RoleAssignment#getComment <em>Comment</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Work Package</em>'.
-	 * @see org.nasdanika.models.productmanagement.WorkPackage
+	 * @return the meta object for the attribute '<em>Comment</em>'.
+	 * @see org.nasdanika.models.productmanagement.RoleAssignment#getComment()
+	 * @see #getRoleAssignment()
 	 * @generated
 	 */
-	EClass getWorkPackage();
+	EAttribute getRoleAssignment_Comment();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.WorkPackage#getSubWorkPackages <em>Sub Work Packages</em>}'.
+	 * Returns the meta object for the containment reference '{@link org.nasdanika.models.productmanagement.RoleAssignment#getActors <em>Actors</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Sub Work Packages</em>'.
-	 * @see org.nasdanika.models.productmanagement.WorkPackage#getSubWorkPackages()
-	 * @see #getWorkPackage()
+	 * @return the meta object for the containment reference '<em>Actors</em>'.
+	 * @see org.nasdanika.models.productmanagement.RoleAssignment#getActors()
+	 * @see #getRoleAssignment()
 	 * @generated
 	 */
-	EReference getWorkPackage_SubWorkPackages();
+	EReference getRoleAssignment_Actors();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.WorkPackage#getImpacts <em>Impacts</em>}'.
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.AbstractActor <em>Abstract Actor</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Impacts</em>'.
-	 * @see org.nasdanika.models.productmanagement.WorkPackage#getImpacts()
-	 * @see #getWorkPackage()
+	 * @return the meta object for class '<em>Abstract Actor</em>'.
+	 * @see org.nasdanika.models.productmanagement.AbstractActor
 	 * @generated
 	 */
-	EReference getWorkPackage_Impacts();
+	EClass getAbstractActor();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.WorkPackage#getContributes <em>Contributes</em>}'.
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.Actor <em>Actor</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Contributes</em>'.
-	 * @see org.nasdanika.models.productmanagement.WorkPackage#getContributes()
-	 * @see #getWorkPackage()
+	 * @return the meta object for class '<em>Actor</em>'.
+	 * @see org.nasdanika.models.productmanagement.Actor
 	 * @generated
 	 */
-	EReference getWorkPackage_Contributes();
+	EClass getActor();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.WorkPackage#getTracker <em>Tracker</em>}'.
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.ActorDomain <em>Actor Domain</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Tracker</em>'.
-	 * @see org.nasdanika.models.productmanagement.WorkPackage#getTracker()
-	 * @see #getWorkPackage()
+	 * @return the meta object for class '<em>Actor Domain</em>'.
+	 * @see org.nasdanika.models.productmanagement.ActorDomain
 	 * @generated
 	 */
-	EAttribute getWorkPackage_Tracker();
+	EClass getActorDomain();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.WorkPackage#getRoles <em>Roles</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.ActorDomain#getActors <em>Actors</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Roles</em>'.
-	 * @see org.nasdanika.models.productmanagement.WorkPackage#getRoles()
-	 * @see #getWorkPackage()
+	 * @return the meta object for the containment reference list '<em>Actors</em>'.
+	 * @see org.nasdanika.models.productmanagement.ActorDomain#getActors()
+	 * @see #getActorDomain()
 	 * @generated
 	 */
-	EReference getWorkPackage_Roles();
+	EReference getActorDomain_Actors();
 
 	/**
-	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.JiraWorkPackage <em>Jira Work Package</em>}'.
+	 * Returns the meta object for enum '{@link org.nasdanika.models.productmanagement.DependencyKind <em>Dependency Kind</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Jira Work Package</em>'.
-	 * @see org.nasdanika.models.productmanagement.JiraWorkPackage
+	 * @return the meta object for enum '<em>Dependency Kind</em>'.
+	 * @see org.nasdanika.models.productmanagement.DependencyKind
 	 * @generated
 	 */
-	EClass getJiraWorkPackage();
+	EEnum getDependencyKind();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.JiraWorkPackage#getProjectKey <em>Project Key</em>}'.
+	 * Returns the meta object for data type '{@link java.time.Instant <em>Instant</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Project Key</em>'.
-	 * @see org.nasdanika.models.productmanagement.JiraWorkPackage#getProjectKey()
-	 * @see #getJiraWorkPackage()
+	 * @return the meta object for data type '<em>Instant</em>'.
+	 * @see java.time.Instant
+	 * @model instanceClass="java.time.Instant"
 	 * @generated
 	 */
-	EAttribute getJiraWorkPackage_ProjectKey();
+	EDataType getInstant();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.JiraWorkPackage#getIssueKey <em>Issue Key</em>}'.
+	 * Returns the meta object for data type '{@link java.time.Duration <em>Duration</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Issue Key</em>'.
-	 * @see org.nasdanika.models.productmanagement.JiraWorkPackage#getIssueKey()
-	 * @see #getJiraWorkPackage()
+	 * @return the meta object for data type '<em>Duration</em>'.
+	 * @see java.time.Duration
+	 * @model instanceClass="java.time.Duration"
 	 * @generated
 	 */
-	EAttribute getJiraWorkPackage_IssueKey();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.JiraWorkPackage#getIssueType <em>Issue Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Issue Type</em>'.
-	 * @see org.nasdanika.models.productmanagement.JiraWorkPackage#getIssueType()
-	 * @see #getJiraWorkPackage()
-	 * @generated
-	 */
-	EAttribute getJiraWorkPackage_IssueType();
-
-	/**
-	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.Proposal <em>Proposal</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Proposal</em>'.
-	 * @see org.nasdanika.models.productmanagement.Proposal
-	 * @generated
-	 */
-	EClass getProposal();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.Proposal#getCost <em>Cost</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Cost</em>'.
-	 * @see org.nasdanika.models.productmanagement.Proposal#getCost()
-	 * @see #getProposal()
-	 * @generated
-	 */
-	EAttribute getProposal_Cost();
-
-	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.Proposal#getCurrency <em>Currency</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Currency</em>'.
-	 * @see org.nasdanika.models.productmanagement.Proposal#getCurrency()
-	 * @see #getProposal()
-	 * @generated
-	 */
-	EAttribute getProposal_Currency();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.nasdanika.models.productmanagement.Proposal#getWorkPackage <em>Work Package</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Work Package</em>'.
-	 * @see org.nasdanika.models.productmanagement.Proposal#getWorkPackage()
-	 * @see #getProposal()
-	 * @generated
-	 */
-	EReference getProposal_WorkPackage();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.nasdanika.models.productmanagement.Proposal#getCapability <em>Capability</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Capability</em>'.
-	 * @see org.nasdanika.models.productmanagement.Proposal#getCapability()
-	 * @see #getProposal()
-	 * @generated
-	 */
-	EReference getProposal_Capability();
-
-	/**
-	 * Returns the meta object for the reference '{@link org.nasdanika.models.productmanagement.Proposal#getAuthor <em>Author</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference '<em>Author</em>'.
-	 * @see org.nasdanika.models.productmanagement.Proposal#getAuthor()
-	 * @see #getProposal()
-	 * @generated
-	 */
-	EReference getProposal_Author();
-
-	/**
-	 * Returns the meta object for enum '{@link org.nasdanika.models.productmanagement.LifecycleStatus <em>Lifecycle Status</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Lifecycle Status</em>'.
-	 * @see org.nasdanika.models.productmanagement.LifecycleStatus
-	 * @generated
-	 */
-	EEnum getLifecycleStatus();
-
-	/**
-	 * Returns the meta object for enum '{@link org.nasdanika.models.productmanagement.ConcernType <em>Concern Type</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for enum '<em>Concern Type</em>'.
-	 * @see org.nasdanika.models.productmanagement.ConcernType
-	 * @generated
-	 */
-	EEnum getConcernType();
+	EDataType getDuration();
 
 	/**
 	 * Returns the factory that creates the instances of the model.
@@ -3055,6 +4157,108 @@ public interface ProductmanagementPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.TemporalImpl <em>Temporal</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.impl.TemporalImpl
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getTemporal()
+		 * @generated
+		 */
+		EClass TEMPORAL = eINSTANCE.getTemporal();
+
+		/**
+		 * The meta object literal for the '<em><b>Base</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEMPORAL__BASE = eINSTANCE.getTemporal_Base();
+
+		/**
+		 * The meta object literal for the '<em><b>Instant</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEMPORAL__INSTANT = eINSTANCE.getTemporal_Instant();
+
+		/**
+		 * The meta object literal for the '<em><b>Duration</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute TEMPORAL__DURATION = eINSTANCE.getTemporal_Duration();
+
+		/**
+		 * The meta object literal for the '<em><b>Lower Bounds</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEMPORAL__LOWER_BOUNDS = eINSTANCE.getTemporal_LowerBounds();
+
+		/**
+		 * The meta object literal for the '<em><b>Upper Bounds</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference TEMPORAL__UPPER_BOUNDS = eINSTANCE.getTemporal_UpperBounds();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.PeriodImpl <em>Period</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.impl.PeriodImpl
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getPeriod()
+		 * @generated
+		 */
+		EClass PERIOD = eINSTANCE.getPeriod();
+
+		/**
+		 * The meta object literal for the '<em><b>Duration</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute PERIOD__DURATION = eINSTANCE.getPeriod_Duration();
+
+		/**
+		 * The meta object literal for the '<em><b>Start</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PERIOD__START = eINSTANCE.getPeriod_Start();
+
+		/**
+		 * The meta object literal for the '<em><b>End</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PERIOD__END = eINSTANCE.getPeriod_End();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.StringIdentity <em>String Identity</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.StringIdentity
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getStringIdentity()
+		 * @generated
+		 */
+		EClass STRING_IDENTITY = eINSTANCE.getStringIdentity();
+
+		/**
+		 * The meta object literal for the '<em><b>Id</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute STRING_IDENTITY__ID = eINSTANCE.getStringIdentity_Id();
+
+		/**
 		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.ModelElementImpl <em>Model Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3065,22 +4269,6 @@ public interface ProductmanagementPackage extends EPackage {
 		EClass MODEL_ELEMENT = eINSTANCE.getModelElement();
 
 		/**
-		 * The meta object literal for the '<em><b>D</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MODEL_ELEMENT__D = eINSTANCE.getModelElement_D();
-
-		/**
-		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute MODEL_ELEMENT__NAME = eINSTANCE.getModelElement_Name();
-
-		/**
 		 * The meta object literal for the '<em><b>Documentation</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -3089,54 +4277,40 @@ public interface ProductmanagementPackage extends EPackage {
 		EAttribute MODEL_ELEMENT__DOCUMENTATION = eINSTANCE.getModelElement_Documentation();
 
 		/**
-		 * The meta object literal for the '<em><b>Start</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Uris</b></em>' attribute list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute MODEL_ELEMENT__START = eINSTANCE.getModelElement_Start();
+		EAttribute MODEL_ELEMENT__URIS = eINSTANCE.getModelElement_Uris();
 
 		/**
-		 * The meta object literal for the '<em><b>End</b></em>' attribute feature.
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.NamedElementImpl <em>Named Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.impl.NamedElementImpl
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getNamedElement()
 		 * @generated
 		 */
-		EAttribute MODEL_ELEMENT__END = eINSTANCE.getModelElement_End();
+		EClass NAMED_ELEMENT = eINSTANCE.getNamedElement();
 
 		/**
-		 * The meta object literal for the '<em><b>Duration</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute MODEL_ELEMENT__DURATION = eINSTANCE.getModelElement_Duration();
+		EAttribute NAMED_ELEMENT__NAME = eINSTANCE.getNamedElement_Name();
 
 		/**
-		 * The meta object literal for the '<em><b>Weight</b></em>' attribute feature.
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.NamedPeriodImpl <em>Named Period</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.impl.NamedPeriodImpl
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getNamedPeriod()
 		 * @generated
 		 */
-		EAttribute MODEL_ELEMENT__WEIGHT = eINSTANCE.getModelElement_Weight();
-
-		/**
-		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.LifecycleStatusPeriodImpl <em>Lifecycle Status Period</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.models.productmanagement.impl.LifecycleStatusPeriodImpl
-		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getLifecycleStatusPeriod()
-		 * @generated
-		 */
-		EClass LIFECYCLE_STATUS_PERIOD = eINSTANCE.getLifecycleStatusPeriod();
-
-		/**
-		 * The meta object literal for the '<em><b>Status</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute LIFECYCLE_STATUS_PERIOD__STATUS = eINSTANCE.getLifecycleStatusPeriod_Status();
+		EClass NAMED_PERIOD = eINSTANCE.getNamedPeriod();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.ProductModelImpl <em>Product Model</em>}' class.
@@ -3149,128 +4323,14 @@ public interface ProductmanagementPackage extends EPackage {
 		EClass PRODUCT_MODEL = eINSTANCE.getProductModel();
 
 		/**
-		 * The meta object literal for the '<em><b>Personas</b></em>' containment reference list feature.
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.AbstractPersona <em>Abstract Persona</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.AbstractPersona
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getAbstractPersona()
 		 * @generated
 		 */
-		EReference PRODUCT_MODEL__PERSONAS = eINSTANCE.getProductModel_Personas();
-
-		/**
-		 * The meta object literal for the '<em><b>Capabilities</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PRODUCT_MODEL__CAPABILITIES = eINSTANCE.getProductModel_Capabilities();
-
-		/**
-		 * The meta object literal for the '<em><b>Capability Providers</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PRODUCT_MODEL__CAPABILITY_PROVIDERS = eINSTANCE.getProductModel_CapabilityProviders();
-
-		/**
-		 * The meta object literal for the '<em><b>Work Packages</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PRODUCT_MODEL__WORK_PACKAGES = eINSTANCE.getProductModel_WorkPackages();
-
-		/**
-		 * The meta object literal for the '<em><b>Offerings</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PRODUCT_MODEL__OFFERINGS = eINSTANCE.getProductModel_Offerings();
-
-		/**
-		 * The meta object literal for the '<em><b>Actors</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PRODUCT_MODEL__ACTORS = eINSTANCE.getProductModel_Actors();
-
-		/**
-		 * The meta object literal for the '<em><b>Proposals</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PRODUCT_MODEL__PROPOSALS = eINSTANCE.getProductModel_Proposals();
-
-		/**
-		 * The meta object literal for the '<em><b>Roles</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PRODUCT_MODEL__ROLES = eINSTANCE.getProductModel_Roles();
-
-		/**
-		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.RoleImpl <em>Role</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.models.productmanagement.impl.RoleImpl
-		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getRole()
-		 * @generated
-		 */
-		EClass ROLE = eINSTANCE.getRole();
-
-		/**
-		 * The meta object literal for the '<em><b>Actors</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ROLE__ACTORS = eINSTANCE.getRole_Actors();
-
-		/**
-		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.ActorImpl <em>Actor</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.models.productmanagement.impl.ActorImpl
-		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getActor()
-		 * @generated
-		 */
-		EClass ACTOR = eINSTANCE.getActor();
-
-		/**
-		 * The meta object literal for the '<em><b>Roles</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ACTOR__ROLES = eINSTANCE.getActor_Roles();
-
-		/**
-		 * The meta object literal for the '<em><b>Owned Roles</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ACTOR__OWNED_ROLES = eINSTANCE.getActor_OwnedRoles();
-
-		/**
-		 * The meta object literal for the '<em><b>Sub Actors</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ACTOR__SUB_ACTORS = eINSTANCE.getActor_SubActors();
-
-		/**
-		 * The meta object literal for the '<em><b>Party Id</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute ACTOR__PARTY_ID = eINSTANCE.getActor_PartyId();
+		EClass ABSTRACT_PERSONA = eINSTANCE.getAbstractPersona();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.PersonaImpl <em>Persona</em>}' class.
@@ -3283,44 +4343,50 @@ public interface ProductmanagementPackage extends EPackage {
 		EClass PERSONA = eINSTANCE.getPersona();
 
 		/**
-		 * The meta object literal for the '<em><b>Concerns</b></em>' containment reference list feature.
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.PersonaDomainImpl <em>Persona Domain</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.impl.PersonaDomainImpl
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getPersonaDomain()
 		 * @generated
 		 */
-		EReference PERSONA__CONCERNS = eINSTANCE.getPersona_Concerns();
+		EClass PERSONA_DOMAIN = eINSTANCE.getPersonaDomain();
 
 		/**
-		 * The meta object literal for the '<em><b>Sub Personas</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Personas</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference PERSONA__SUB_PERSONAS = eINSTANCE.getPersona_SubPersonas();
+		EReference PERSONA_DOMAIN__PERSONAS = eINSTANCE.getPersonaDomain_Personas();
 
 		/**
-		 * The meta object literal for the '<em><b>Super Personas</b></em>' reference list feature.
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.PersonaReferenceImpl <em>Persona Reference</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.impl.PersonaReferenceImpl
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getPersonaReference()
 		 * @generated
 		 */
-		EReference PERSONA__SUPER_PERSONAS = eINSTANCE.getPersona_SuperPersonas();
+		EClass PERSONA_REFERENCE = eINSTANCE.getPersonaReference();
 
 		/**
-		 * The meta object literal for the '<em><b>Population</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute PERSONA__POPULATION = eINSTANCE.getPersona_Population();
+		EReference PERSONA_REFERENCE__TARGET = eINSTANCE.getPersonaReference_Target();
 
 		/**
-		 * The meta object literal for the '<em><b>Roles</b></em>' containment reference list feature.
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.AbstractConcern <em>Abstract Concern</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.AbstractConcern
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getAbstractConcern()
 		 * @generated
 		 */
-		EReference PERSONA__ROLES = eINSTANCE.getPersona_Roles();
+		EClass ABSTRACT_CONCERN = eINSTANCE.getAbstractConcern();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.ConcernImpl <em>Concern</em>}' class.
@@ -3333,70 +4399,182 @@ public interface ProductmanagementPackage extends EPackage {
 		EClass CONCERN = eINSTANCE.getConcern();
 
 		/**
-		 * The meta object literal for the '<em><b>Type</b></em>' attribute feature.
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.ConcernReferenceImpl <em>Concern Reference</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.impl.ConcernReferenceImpl
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getConcernReference()
 		 * @generated
 		 */
-		EAttribute CONCERN__TYPE = eINSTANCE.getConcern_Type();
+		EClass CONCERN_REFERENCE = eINSTANCE.getConcernReference();
 
 		/**
-		 * The meta object literal for the '<em><b>Sub Concerns</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONCERN__SUB_CONCERNS = eINSTANCE.getConcern_SubConcerns();
+		EReference CONCERN_REFERENCE__TARGET = eINSTANCE.getConcernReference_Target();
 
 		/**
-		 * The meta object literal for the '<em><b>Related Concerns</b></em>' reference list feature.
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.ConcernDomainImpl <em>Concern Domain</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.impl.ConcernDomainImpl
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getConcernDomain()
 		 * @generated
 		 */
-		EReference CONCERN__RELATED_CONCERNS = eINSTANCE.getConcern_RelatedConcerns();
+		EClass CONCERN_DOMAIN = eINSTANCE.getConcernDomain();
 
 		/**
-		 * The meta object literal for the '<em><b>Referring Concerns</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Concerns</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CONCERN__REFERRING_CONCERNS = eINSTANCE.getConcern_ReferringConcerns();
+		EReference CONCERN_DOMAIN__CONCERNS = eINSTANCE.getConcernDomain_Concerns();
 
 		/**
-		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.VersionImpl <em>Version</em>}' class.
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.GoalImpl <em>Goal</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.models.productmanagement.impl.VersionImpl
-		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getVersion()
+		 * @see org.nasdanika.models.productmanagement.impl.GoalImpl
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getGoal()
 		 * @generated
 		 */
-		EClass VERSION = eINSTANCE.getVersion();
+		EClass GOAL = eINSTANCE.getGoal();
 
 		/**
-		 * The meta object literal for the '<em><b>Version String</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Supporting Needs</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute VERSION__VERSION_STRING = eINSTANCE.getVersion_VersionString();
+		EReference GOAL__SUPPORTING_NEEDS = eINSTANCE.getGoal_SupportingNeeds();
 
 		/**
-		 * The meta object literal for the '<em><b>Label</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Blockers</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute VERSION__LABEL = eINSTANCE.getVersion_Label();
+		EReference GOAL__BLOCKERS = eINSTANCE.getGoal_Blockers();
 
 		/**
-		 * The meta object literal for the '<em><b>Status Periods</b></em>' containment reference list feature.
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.NeedImpl <em>Need</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.impl.NeedImpl
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getNeed()
+		 * @generated
+		 */
+		EClass NEED = eINSTANCE.getNeed();
+
+		/**
+		 * The meta object literal for the '<em><b>Supports</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference VERSION__STATUS_PERIODS = eINSTANCE.getVersion_StatusPeriods();
+		EReference NEED__SUPPORTS = eINSTANCE.getNeed_Supports();
+
+		/**
+		 * The meta object literal for the '<em><b>Violators</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NEED__VIOLATORS = eINSTANCE.getNeed_Violators();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.SupportedGoalsImpl <em>Supported Goals</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.impl.SupportedGoalsImpl
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getSupportedGoals()
+		 * @generated
+		 */
+		EClass SUPPORTED_GOALS = eINSTANCE.getSupportedGoals();
+
+		/**
+		 * The meta object literal for the '<em><b>Goals</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference SUPPORTED_GOALS__GOALS = eINSTANCE.getSupportedGoals_Goals();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.PainPointImpl <em>Pain Point</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.impl.PainPointImpl
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getPainPoint()
+		 * @generated
+		 */
+		EClass PAIN_POINT = eINSTANCE.getPainPoint();
+
+		/**
+		 * The meta object literal for the '<em><b>Blocks</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PAIN_POINT__BLOCKS = eINSTANCE.getPainPoint_Blocks();
+
+		/**
+		 * The meta object literal for the '<em><b>Violates</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PAIN_POINT__VIOLATES = eINSTANCE.getPainPoint_Violates();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.BlockedGoalsImpl <em>Blocked Goals</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.impl.BlockedGoalsImpl
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getBlockedGoals()
+		 * @generated
+		 */
+		EClass BLOCKED_GOALS = eINSTANCE.getBlockedGoals();
+
+		/**
+		 * The meta object literal for the '<em><b>Goals</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference BLOCKED_GOALS__GOALS = eINSTANCE.getBlockedGoals_Goals();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.ViolatedNeedsImpl <em>Violated Needs</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.impl.ViolatedNeedsImpl
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getViolatedNeeds()
+		 * @generated
+		 */
+		EClass VIOLATED_NEEDS = eINSTANCE.getViolatedNeeds();
+
+		/**
+		 * The meta object literal for the '<em><b>Needs</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference VIOLATED_NEEDS__NEEDS = eINSTANCE.getViolatedNeeds_Needs();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.AbstractCapability <em>Abstract Capability</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.AbstractCapability
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getAbstractCapability()
+		 * @generated
+		 */
+		EClass ABSTRACT_CAPABILITY = eINSTANCE.getAbstractCapability();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl <em>Capability</em>}' class.
@@ -3409,12 +4587,12 @@ public interface ProductmanagementPackage extends EPackage {
 		EClass CAPABILITY = eINSTANCE.getCapability();
 
 		/**
-		 * The meta object literal for the '<em><b>Versions</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Addresses</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CAPABILITY__VERSIONS = eINSTANCE.getCapability_Versions();
+		EReference CAPABILITY__ADDRESSES = eINSTANCE.getCapability_Addresses();
 
 		/**
 		 * The meta object literal for the '<em><b>Sub Capabilities</b></em>' containment reference list feature.
@@ -3425,38 +4603,102 @@ public interface ProductmanagementPackage extends EPackage {
 		EReference CAPABILITY__SUB_CAPABILITIES = eINSTANCE.getCapability_SubCapabilities();
 
 		/**
-		 * The meta object literal for the '<em><b>Includes</b></em>' reference list feature.
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.CapabilityReferenceImpl <em>Capability Reference</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.impl.CapabilityReferenceImpl
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityReference()
 		 * @generated
 		 */
-		EReference CAPABILITY__INCLUDES = eINSTANCE.getCapability_Includes();
+		EClass CAPABILITY_REFERENCE = eINSTANCE.getCapabilityReference();
 
 		/**
-		 * The meta object literal for the '<em><b>Included In</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CAPABILITY__INCLUDED_IN = eINSTANCE.getCapability_IncludedIn();
+		EReference CAPABILITY_REFERENCE__TARGET = eINSTANCE.getCapabilityReference_Target();
 
 		/**
-		 * The meta object literal for the '<em><b>Roles</b></em>' containment reference list feature.
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.CapabilityDomainImpl <em>Capability Domain</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.impl.CapabilityDomainImpl
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityDomain()
 		 * @generated
 		 */
-		EReference CAPABILITY__ROLES = eINSTANCE.getCapability_Roles();
+		EClass CAPABILITY_DOMAIN = eINSTANCE.getCapabilityDomain();
 
 		/**
-		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.CapabilityVersionImpl <em>Capability Version</em>}' class.
+		 * The meta object literal for the '<em><b>Capabilities</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.models.productmanagement.impl.CapabilityVersionImpl
-		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityVersion()
 		 * @generated
 		 */
-		EClass CAPABILITY_VERSION = eINSTANCE.getCapabilityVersion();
+		EReference CAPABILITY_DOMAIN__CAPABILITIES = eINSTANCE.getCapabilityDomain_Capabilities();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.AddressedConcernsImpl <em>Addressed Concerns</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.impl.AddressedConcernsImpl
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getAddressedConcerns()
+		 * @generated
+		 */
+		EClass ADDRESSED_CONCERNS = eINSTANCE.getAddressedConcerns();
+
+		/**
+		 * The meta object literal for the '<em><b>Concerns</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference ADDRESSED_CONCERNS__CONCERNS = eINSTANCE.getAddressedConcerns_Concerns();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.CapabilityDependencyImpl <em>Capability Dependency</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.impl.CapabilityDependencyImpl
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityDependency()
+		 * @generated
+		 */
+		EClass CAPABILITY_DEPENDENCY = eINSTANCE.getCapabilityDependency();
+
+		/**
+		 * The meta object literal for the '<em><b>Capabilities</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CAPABILITY_DEPENDENCY__CAPABILITIES = eINSTANCE.getCapabilityDependency_Capabilities();
+
+		/**
+		 * The meta object literal for the '<em><b>Kind</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CAPABILITY_DEPENDENCY__KIND = eINSTANCE.getCapabilityDependency_Kind();
+
+		/**
+		 * The meta object literal for the '<em><b>Optional</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CAPABILITY_DEPENDENCY__OPTIONAL = eINSTANCE.getCapabilityDependency_Optional();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.AbstractCapabilityProvider <em>Abstract Capability Provider</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.AbstractCapabilityProvider
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getAbstractCapabilityProvider()
+		 * @generated
+		 */
+		EClass ABSTRACT_CAPABILITY_PROVIDER = eINSTANCE.getAbstractCapabilityProvider();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.CapabilityProviderImpl <em>Capability Provider</em>}' class.
@@ -3469,28 +4711,150 @@ public interface ProductmanagementPackage extends EPackage {
 		EClass CAPABILITY_PROVIDER = eINSTANCE.getCapabilityProvider();
 
 		/**
-		 * The meta object literal for the '<em><b>Provided Capabilities</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Provides</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CAPABILITY_PROVIDER__PROVIDED_CAPABILITIES = eINSTANCE.getCapabilityProvider_ProvidedCapabilities();
+		EReference CAPABILITY_PROVIDER__PROVIDES = eINSTANCE.getCapabilityProvider_Provides();
 
 		/**
-		 * The meta object literal for the '<em><b>Required Capabilities</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Requires</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CAPABILITY_PROVIDER__REQUIRED_CAPABILITIES = eINSTANCE.getCapabilityProvider_RequiredCapabilities();
+		EReference CAPABILITY_PROVIDER__REQUIRES = eINSTANCE.getCapabilityProvider_Requires();
 
 		/**
-		 * The meta object literal for the '<em><b>Versions</b></em>' containment reference list feature.
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.CapabilityProviderDomainImpl <em>Capability Provider Domain</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.impl.CapabilityProviderDomainImpl
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityProviderDomain()
+		 * @generated
+		 */
+		EClass CAPABILITY_PROVIDER_DOMAIN = eINSTANCE.getCapabilityProviderDomain();
+
+		/**
+		 * The meta object literal for the '<em><b>Capability Providers</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CAPABILITY_PROVIDER__VERSIONS = eINSTANCE.getCapabilityProvider_Versions();
+		EReference CAPABILITY_PROVIDER_DOMAIN__CAPABILITY_PROVIDERS = eINSTANCE.getCapabilityProviderDomain_CapabilityProviders();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.CapabilityProviderReferenceImpl <em>Capability Provider Reference</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.impl.CapabilityProviderReferenceImpl
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityProviderReference()
+		 * @generated
+		 */
+		EClass CAPABILITY_PROVIDER_REFERENCE = eINSTANCE.getCapabilityProviderReference();
+
+		/**
+		 * The meta object literal for the '<em><b>Target</b></em>' reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CAPABILITY_PROVIDER_REFERENCE__TARGET = eINSTANCE.getCapabilityProviderReference_Target();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.ProvidedCapabilityImpl <em>Provided Capability</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.impl.ProvidedCapabilityImpl
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getProvidedCapability()
+		 * @generated
+		 */
+		EClass PROVIDED_CAPABILITY = eINSTANCE.getProvidedCapability();
+
+		/**
+		 * The meta object literal for the '<em><b>Capability</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PROVIDED_CAPABILITY__CAPABILITY = eINSTANCE.getProvidedCapability_Capability();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.AbstractEvidence <em>Abstract Evidence</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.AbstractEvidence
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getAbstractEvidence()
+		 * @generated
+		 */
+		EClass ABSTRACT_EVIDENCE = eINSTANCE.getAbstractEvidence();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.EvidenceImpl <em>Evidence</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.impl.EvidenceImpl
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getEvidence()
+		 * @generated
+		 */
+		EClass EVIDENCE = eINSTANCE.getEvidence();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.EvidenceDomainImpl <em>Evidence Domain</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.impl.EvidenceDomainImpl
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getEvidenceDomain()
+		 * @generated
+		 */
+		EClass EVIDENCE_DOMAIN = eINSTANCE.getEvidenceDomain();
+
+		/**
+		 * The meta object literal for the '<em><b>Evidence</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference EVIDENCE_DOMAIN__EVIDENCE = eINSTANCE.getEvidenceDomain_Evidence();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.RequiredCapabilityImpl <em>Required Capability</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.impl.RequiredCapabilityImpl
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getRequiredCapability()
+		 * @generated
+		 */
+		EClass REQUIRED_CAPABILITY = eINSTANCE.getRequiredCapability();
+
+		/**
+		 * The meta object literal for the '<em><b>Capability</b></em>' containment reference feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference REQUIRED_CAPABILITY__CAPABILITY = eINSTANCE.getRequiredCapability_Capability();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.VersionImpl <em>Version</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.impl.VersionImpl
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getVersion()
+		 * @generated
+		 */
+		EClass VERSION = eINSTANCE.getVersion();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.Undergoer <em>Undergoer</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.Undergoer
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getUndergoer()
+		 * @generated
+		 */
+		EClass UNDERGOER = eINSTANCE.getUndergoer();
 
 		/**
 		 * The meta object literal for the '<em><b>Roles</b></em>' containment reference list feature.
@@ -3498,189 +4862,119 @@ public interface ProductmanagementPackage extends EPackage {
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CAPABILITY_PROVIDER__ROLES = eINSTANCE.getCapabilityProvider_Roles();
+		EReference UNDERGOER__ROLES = eINSTANCE.getUndergoer_Roles();
 
 		/**
-		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.CapabilityProviderVersionImpl <em>Capability Provider Version</em>}' class.
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.RoleImpl <em>Role</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.models.productmanagement.impl.CapabilityProviderVersionImpl
-		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityProviderVersion()
+		 * @see org.nasdanika.models.productmanagement.impl.RoleImpl
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getRole()
 		 * @generated
 		 */
-		EClass CAPABILITY_PROVIDER_VERSION = eINSTANCE.getCapabilityProviderVersion();
+		EClass ROLE = eINSTANCE.getRole();
 
 		/**
-		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.OfferingImpl <em>Offering</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.models.productmanagement.impl.OfferingImpl
-		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getOffering()
-		 * @generated
-		 */
-		EClass OFFERING = eINSTANCE.getOffering();
-
-		/**
-		 * The meta object literal for the '<em><b>Coordinate</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Assignments</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute OFFERING__COORDINATE = eINSTANCE.getOffering_Coordinate();
+		EReference ROLE__ASSIGNMENTS = eINSTANCE.getRole_Assignments();
 
 		/**
-		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.WorkPackageImpl <em>Work Package</em>}' class.
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.RoleAssignmentImpl <em>Role Assignment</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.models.productmanagement.impl.WorkPackageImpl
-		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getWorkPackage()
+		 * @see org.nasdanika.models.productmanagement.impl.RoleAssignmentImpl
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getRoleAssignment()
 		 * @generated
 		 */
-		EClass WORK_PACKAGE = eINSTANCE.getWorkPackage();
+		EClass ROLE_ASSIGNMENT = eINSTANCE.getRoleAssignment();
 
 		/**
-		 * The meta object literal for the '<em><b>Sub Work Packages</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference WORK_PACKAGE__SUB_WORK_PACKAGES = eINSTANCE.getWorkPackage_SubWorkPackages();
-
-		/**
-		 * The meta object literal for the '<em><b>Impacts</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Comment</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference WORK_PACKAGE__IMPACTS = eINSTANCE.getWorkPackage_Impacts();
+		EAttribute ROLE_ASSIGNMENT__COMMENT = eINSTANCE.getRoleAssignment_Comment();
 
 		/**
-		 * The meta object literal for the '<em><b>Contributes</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Actors</b></em>' containment reference feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference WORK_PACKAGE__CONTRIBUTES = eINSTANCE.getWorkPackage_Contributes();
+		EReference ROLE_ASSIGNMENT__ACTORS = eINSTANCE.getRoleAssignment_Actors();
 
 		/**
-		 * The meta object literal for the '<em><b>Tracker</b></em>' attribute feature.
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.AbstractActor <em>Abstract Actor</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.AbstractActor
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getAbstractActor()
+		 * @generated
+		 */
+		EClass ABSTRACT_ACTOR = eINSTANCE.getAbstractActor();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.ActorImpl <em>Actor</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.impl.ActorImpl
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getActor()
+		 * @generated
+		 */
+		EClass ACTOR = eINSTANCE.getActor();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.ActorDomainImpl <em>Actor Domain</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.impl.ActorDomainImpl
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getActorDomain()
+		 * @generated
+		 */
+		EClass ACTOR_DOMAIN = eINSTANCE.getActorDomain();
+
+		/**
+		 * The meta object literal for the '<em><b>Actors</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute WORK_PACKAGE__TRACKER = eINSTANCE.getWorkPackage_Tracker();
+		EReference ACTOR_DOMAIN__ACTORS = eINSTANCE.getActorDomain_Actors();
 
 		/**
-		 * The meta object literal for the '<em><b>Roles</b></em>' containment reference list feature.
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.DependencyKind <em>Dependency Kind</em>}' enum.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.DependencyKind
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getDependencyKind()
 		 * @generated
 		 */
-		EReference WORK_PACKAGE__ROLES = eINSTANCE.getWorkPackage_Roles();
+		EEnum DEPENDENCY_KIND = eINSTANCE.getDependencyKind();
 
 		/**
-		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.JiraWorkPackageImpl <em>Jira Work Package</em>}' class.
+		 * The meta object literal for the '<em>Instant</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.models.productmanagement.impl.JiraWorkPackageImpl
-		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getJiraWorkPackage()
+		 * @see java.time.Instant
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getInstant()
 		 * @generated
 		 */
-		EClass JIRA_WORK_PACKAGE = eINSTANCE.getJiraWorkPackage();
+		EDataType INSTANT = eINSTANCE.getInstant();
 
 		/**
-		 * The meta object literal for the '<em><b>Project Key</b></em>' attribute feature.
+		 * The meta object literal for the '<em>Duration</em>' data type.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
+		 * @see java.time.Duration
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getDuration()
 		 * @generated
 		 */
-		EAttribute JIRA_WORK_PACKAGE__PROJECT_KEY = eINSTANCE.getJiraWorkPackage_ProjectKey();
-
-		/**
-		 * The meta object literal for the '<em><b>Issue Key</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute JIRA_WORK_PACKAGE__ISSUE_KEY = eINSTANCE.getJiraWorkPackage_IssueKey();
-
-		/**
-		 * The meta object literal for the '<em><b>Issue Type</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute JIRA_WORK_PACKAGE__ISSUE_TYPE = eINSTANCE.getJiraWorkPackage_IssueType();
-
-		/**
-		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.ProposalImpl <em>Proposal</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.models.productmanagement.impl.ProposalImpl
-		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getProposal()
-		 * @generated
-		 */
-		EClass PROPOSAL = eINSTANCE.getProposal();
-
-		/**
-		 * The meta object literal for the '<em><b>Cost</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PROPOSAL__COST = eINSTANCE.getProposal_Cost();
-
-		/**
-		 * The meta object literal for the '<em><b>Currency</b></em>' attribute feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EAttribute PROPOSAL__CURRENCY = eINSTANCE.getProposal_Currency();
-
-		/**
-		 * The meta object literal for the '<em><b>Work Package</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PROPOSAL__WORK_PACKAGE = eINSTANCE.getProposal_WorkPackage();
-
-		/**
-		 * The meta object literal for the '<em><b>Capability</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PROPOSAL__CAPABILITY = eINSTANCE.getProposal_Capability();
-
-		/**
-		 * The meta object literal for the '<em><b>Author</b></em>' reference feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference PROPOSAL__AUTHOR = eINSTANCE.getProposal_Author();
-
-		/**
-		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.LifecycleStatus <em>Lifecycle Status</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.models.productmanagement.LifecycleStatus
-		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getLifecycleStatus()
-		 * @generated
-		 */
-		EEnum LIFECYCLE_STATUS = eINSTANCE.getLifecycleStatus();
-
-		/**
-		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.ConcernType <em>Concern Type</em>}' enum.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.models.productmanagement.ConcernType
-		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getConcernType()
-		 * @generated
-		 */
-		EEnum CONCERN_TYPE = eINSTANCE.getConcernType();
+		EDataType DURATION = eINSTANCE.getDuration();
 
 	}
 

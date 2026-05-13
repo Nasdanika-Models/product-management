@@ -13,9 +13,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.nasdanika.models.productmanagement.Actor;
 import org.nasdanika.models.productmanagement.ProductmanagementPackage;
 import org.nasdanika.models.productmanagement.Role;
+import org.nasdanika.models.productmanagement.RoleAssignment;
 
 /**
  * <!-- begin-user-doc -->
@@ -25,12 +25,12 @@ import org.nasdanika.models.productmanagement.Role;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.models.productmanagement.impl.RoleImpl#getActors <em>Actors</em>}</li>
+ *   <li>{@link org.nasdanika.models.productmanagement.impl.RoleImpl#getAssignments <em>Assignments</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class RoleImpl extends ModelElementImpl implements Role {
+public class RoleImpl extends NamedPeriodImpl implements Role {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -57,23 +57,8 @@ public class RoleImpl extends ModelElementImpl implements Role {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public EList<Actor> getActors() {
-		return (EList<Actor>)eDynamicGet(ProductmanagementPackage.ROLE__ACTORS, ProductmanagementPackage.Literals.ROLE__ACTORS, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ProductmanagementPackage.ROLE__ACTORS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getActors()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
+	public EList<RoleAssignment> getAssignments() {
+		return (EList<RoleAssignment>)eDynamicGet(ProductmanagementPackage.ROLE__ASSIGNMENTS, ProductmanagementPackage.Literals.ROLE__ASSIGNMENTS, true, true);
 	}
 
 	/**
@@ -84,8 +69,8 @@ public class RoleImpl extends ModelElementImpl implements Role {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ProductmanagementPackage.ROLE__ACTORS:
-				return ((InternalEList<?>)getActors()).basicRemove(otherEnd, msgs);
+			case ProductmanagementPackage.ROLE__ASSIGNMENTS:
+				return ((InternalEList<?>)getAssignments()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -98,8 +83,8 @@ public class RoleImpl extends ModelElementImpl implements Role {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ProductmanagementPackage.ROLE__ACTORS:
-				return getActors();
+			case ProductmanagementPackage.ROLE__ASSIGNMENTS:
+				return getAssignments();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -113,9 +98,9 @@ public class RoleImpl extends ModelElementImpl implements Role {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ProductmanagementPackage.ROLE__ACTORS:
-				getActors().clear();
-				getActors().addAll((Collection<? extends Actor>)newValue);
+			case ProductmanagementPackage.ROLE__ASSIGNMENTS:
+				getAssignments().clear();
+				getAssignments().addAll((Collection<? extends RoleAssignment>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -129,8 +114,8 @@ public class RoleImpl extends ModelElementImpl implements Role {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ProductmanagementPackage.ROLE__ACTORS:
-				getActors().clear();
+			case ProductmanagementPackage.ROLE__ASSIGNMENTS:
+				getAssignments().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -144,8 +129,8 @@ public class RoleImpl extends ModelElementImpl implements Role {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ProductmanagementPackage.ROLE__ACTORS:
-				return !getActors().isEmpty();
+			case ProductmanagementPackage.ROLE__ASSIGNMENTS:
+				return !getAssignments().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

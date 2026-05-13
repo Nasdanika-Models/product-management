@@ -1,14 +1,14 @@
 import org.nasdanika.capability.CapabilityFactory;
-import org.nasdanika.models.bw5.doc.Bw5NodeProcessorFactoryCapabilityFactory;
+import org.nasdanika.models.productmanagement.doc.ProductManagementNodeProcessorFactoryCapabilityFactory;
 
-module org.nasdanika.models.bw5.doc {
+module org.nasdanika.models.productmanagement.doc {
 		
-	requires transitive org.nasdanika.models.bw5;
+	requires transitive org.nasdanika.models.productmanagement;
 	requires transitive org.nasdanika.models.ecore.graph;
 	
-	exports org.nasdanika.models.bw5.doc;
-	opens org.nasdanika.models.bw5.doc; // For loading resources
+	exports org.nasdanika.models.productmanagement.doc;
+	opens org.nasdanika.models.productmanagement.doc; // For loading resources
 
-	provides CapabilityFactory with	Bw5NodeProcessorFactoryCapabilityFactory;
+	provides CapabilityFactory with	ProductManagementNodeProcessorFactoryCapabilityFactory;
 	
 }

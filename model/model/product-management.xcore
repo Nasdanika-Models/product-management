@@ -1,47 +1,5 @@
-/**
- * Product Management Metamodel
- *
- * A pragmatic, just-enough model for product management as code.
- * Elements are federated text-based artifacts that can be authored in version control,
- * published as Maven artifacts, and consumed across teams.
- *
- * Conceptual frame — three intersecting perspectives on the same elements:
- * - Polity-allocation view: who has authority to bind decisions about resource allocation
- *   toward addressing persona concerns.
- * - Exchange view: concerns are asks; capabilities are bids. Resource allocations and
- *   work packages are bids on concerns.
- * - Decision-binding view: the model formalizes the incremental binding of decisions
- *   with provenance and authority.
- *
- * Composition and federation principles:
- * - All elements extend ModelElement, which mirrors ncore.DocumentedNamedStringIdentity
- *   (ecore://nasdanika.org/core/ncore) and ncore.Period, providing id, name, documentation,
- *   start/end temporal anchoring, and duration.
- * - Undergoer/Actor machinery is modelled on architecture
- *   (ecore://nasdanika.org/models/architecture): Actors perform Roles on Undergoers.
- * - Capability and CapabilityProvider structure is inspired by the Eclipse P2 capability
- *   model (ecore://nasdanika.org/models/capability).
- * - MCDA weight derivation (ecore://nasdanika.org/models/mcda) is supported through
- *   the 'weight' attribute on ModelElement; Personas and Concerns participate as
- *   MCDA alternatives.
- * - Federation: all elements are loadable from XMI, YAML, JSON, Excel, Draw.io, or
- *   Xtext sources via logical URIs and Maven URI Handler integration, following the
- *   same federated-artifact pattern as the Maven model
- *   (https://maven.models.nasdanika.org/).
- * - The root ProductModel is itself a Period, enabling template product models where
- *   relative dates resolve to concrete dates when start/end is set on the root.
- *
- * Reference models:
- * - ncore:        ecore://nasdanika.org/core/ncore
- * - architecture: ecore://nasdanika.org/models/architecture
- * - capability:   ecore://nasdanika.org/models/capability
- * - mcda:         ecore://nasdanika.org/models/mcda
- * - enterprise:   ecore://nasdanika.org/models/enterprise
- * - party:        ecore://nasdanika.org/models/party
- */
 @Ecore(nsURI="https://product-management.models.nasdanika.org", nsPrefix="org.nasdanika.models.product-management")
 @GenModel(
-    bundleManifest="false",
     featureDelegation="Dynamic",
     complianceLevel="21.0",
     suppressGenModelAnnotations="false",
@@ -55,977 +13,285 @@ annotation "http://www.eclipse.org/emf/2002/Ecore" as Ecore
 annotation "http://www.eclipse.org/emf/2002/GenModel" as GenModel
 annotation "urn:org.nasdanika" as Nasdanika
 
+type Instant wraps java.time.Instant
+type Duration wraps java.time.Duration 
 
-// ---------------------------------------------------------------------------
-// Enumerations
-// ---------------------------------------------------------------------------
+class Temporal {
+    
+    refers Temporal base
+    
+    Instant instant
+    
+    Duration duration
+    
+    refers Temporal[] lowerBounds
+    
+    refers Temporal[] upperBounds
+    
+    // TODO - operations - after, before, normalize, minus, plus, copy, conicides
+        
+}
 
-/**
- * Lifecycle status of a Version or a capability provider version.
- * Statuses are themselves Periods (LifecycleStatusPeriod), enabling time-bounded
- * transitions such as deprecation windows and end-of-life schedules.
- */
-@GenModel(documentation="Lifecycle status of a Version. Models the progression from
-planned through general availability to eventual retirement.")
-enum LifecycleStatus {
+class Period {
+    
+    Duration duration
+    
+    contains Temporal start
+    
+    contains Temporal end
+    
+}
 
-	/**
-	 * Planned but not yet released. Work is in progress or scheduled.
-	 */
-	@GenModel(documentation="Planned but not yet released; work is scheduled or in progress.")
-	PLANNED as "Planned" = 0
+interface StringIdentity {
+    
+    String ^id
+    
+}
 
-	/**
-	 * Generally available. The version is production-ready and supported.
-	 */
-	@GenModel(documentation="Generally available; production-ready and fully supported.")
-	GA as "GA" = 1
+abstract class ModelElement extends StringIdentity {
 
-	/**
-	 * Deprecated. Still available but scheduled for retirement; users should migrate.
-	 */
-	@GenModel(documentation="Deprecated; still available but scheduled for retirement.")
-	DEPRECATED as "Deprecated" = 2
+// id, documentation, uris - aliases
 
-	/**
-	 * Retired. No longer available or supported.
-	 */
-	@GenModel(documentation="Retired; no longer available or supported.")
-	RETIRED as "Retired" = 3
+    String documentation
+    
+    /**
+     * Alias URIs resolved relative to the parent URIs - can be absolute or opaque - global references. 
+     * For example: actors://john-smith
+     */
+    String[] uris
+
+}
+
+abstract class NamedElement extends ModelElement {
+    
+    String name
+    
+}
+
+abstract class NamedPeriod extends NamedElement, Period {
+
+
+}
+
+class ProductModel extends 
+    NamedPeriod, 
+    PersonaDomain, 
+    CapabilityDomain, 
+    CapabilityProviderDomain,
+    ActorDomain {
+    
+    
+}
+
+interface AbstractPersona extends StringIdentity {
+    
+} 
+
+class Persona extends NamedPeriod, AbstractPersona, ConcernDomain {
+    
+}
+
+class PersonaDomain extends NamedElement, AbstractPersona {
+    contains AbstractPersona[] personas keys ^id
+}
+
+
+class PersonaReference extends AbstractPersona {
+    refers Persona target    
+}
+
+interface AbstractConcern extends StringIdentity {
+    
+}
+
+class Concern extends NamedPeriod, AbstractConcern {
+            
+}
+
+class ConcernReference extends AbstractConcern {
+    
+    refers Concern target
+    
+}
+
+class ConcernDomain extends AbstractConcern {
+    
+    contains AbstractConcern[] concerns keys ^id
+    
+}
+
+class Goal extends Concern {
+    
+    refers SupportedGoals[] supportingNeeds opposite goals
+    
+    refers BlockedGoals[] blockers opposite goals
+    
+}
+
+class Need extends Concern {
+    
+    contains SupportedGoals[] supports
+    
+    refers ViolatedNeeds[] violators opposite needs
+    
+}
+
+class SupportedGoals extends ModelElement {
+    
+    refers Goal[1..*] goals opposite supportingNeeds
+    
+}
+
+class PainPoint extends Concern {
+    
+    contains BlockedGoals[] blocks
+    
+    contains ViolatedNeeds[] violates        
+    
+}
+
+class BlockedGoals extends ModelElement {
+    
+    refers Goal[1..*] goals opposite blockers
+    
+}
+
+class ViolatedNeeds extends ModelElement {
+    
+    refers Need[1..*] needs opposite violators
+    
+}
+
+// --- Capabilities ---
+
+interface AbstractCapability extends StringIdentity {
+    
+}
+
+class Capability extends NamedPeriod, AbstractCapability {
+    contains AddressedConcerns[] addresses
+    
+    contains AbstractCapability[] subCapabilities keys ^id  // composition
+        
+}
+
+class CapabilityReference extends AbstractCapability {
+    refers Capability target    
+}
+
+class CapabilityDomain extends NamedElement, AbstractCapability {
+    contains AbstractCapability[] capabilities
+}
+
+class AddressedConcerns extends ModelElement {
+    
+    refers Concern[1..*] concerns
+    
+}
+
+class CapabilityDependency extends ModelElement {
+    refers Capability[1..*] capabilities
+    DependencyKind kind  // PREREQUISITE, ENHANCES, CONFLICTS_WITH
+    boolean optional
+}
+
+enum DependencyKind {
+    PREREQUISITE  // I cannot function without this
+    ENHANCES      // I work better when this is also present
+    CONFLICTS     // I cannot coexist with this
+}
+
+// --- Capability Providers ---
+
+interface AbstractCapabilityProvider extends StringIdentity {
+    
+}
+
+class CapabilityProvider extends NamedPeriod, AbstractCapabilityProvider {
+    
+    contains ProvidedCapability[] provides
+    
+    contains RequiredCapability[] requires    
+    
+}
+
+class CapabilityProviderDomain extends NamedElement, AbstractCapabilityProvider {
+    contains AbstractCapabilityProvider[] capabilityProviders
+}
+
+class CapabilityProviderReference extends AbstractCapabilityProvider {
+    refers CapabilityProvider target
+}
+
+class ProvidedCapability extends NamedPeriod, EvidenceDomain {
+    
+    contains AbstractCapability capability
+        
+}
+
+interface AbstractEvidence extends StringIdentity {
+    
 }
 
 /**
- * Classifies the nature of a Concern: what kind of thing the persona needs, wants,
- * or suffers from.
+ * Evidence of provided capability.
+ * E.g. for humans it can be a diploma or a certification or a project
+ * For software products it might be a demo, recorded video, ...
  */
-@GenModel(documentation="Classifies the nature of a Concern.")
-enum ConcernType {
-
-	/**
-	 * A desired outcome or objective the persona is working toward.
-	 */
-	@GenModel(documentation="A desired outcome or objective the persona is working toward.")
-	GOAL as "Goal" = 0
-
-	/**
-	 * A functional or non-functional need — something the persona requires in order
-	 * to accomplish their work.
-	 */
-	@GenModel(documentation="A functional or non-functional need the persona requires.")
-	NEED as "Need" = 1
-
-	/**
-	 * A pain point — an existing problem, friction, or obstacle the persona experiences.
-	 */
-	@GenModel(documentation="An existing problem, friction, or obstacle the persona experiences.")
-	PAIN_POINT as "Pain Point" = 2
+class Evidence extends NamedPeriod, AbstractEvidence {
+    
 }
 
-// ---------------------------------------------------------------------------
-// Base class
-// ---------------------------------------------------------------------------
-
-/**
- * Abstract base class for all product management model elements.
- *
- * Mirrors ncore.DocumentedNamedStringIdentity (ecore://nasdanika.org/core/ncore),
- * providing:
- * - id: string key for containment-reference keying (eKey) and cross-resource URI segments.
- * - name: human-readable display name.
- * - documentation: rich-text documentation (HTML or Markdown).
- *
- * Also mirrors ncore.Period, providing:
- * - start / end: temporal anchors (ISO-8601 date/datetime or relative offsets from a
- *   container Period).
- * - duration: positive ISO-8601 duration (e.g., "P3M" for three months).
- *
- * The 'weight' attribute enables MCDA participation (ecore://nasdanika.org/models/mcda):
- * Personas, Concerns, and Capabilities can be compared pairwise to derive relative
- * importance weights.
- *
- * Corresponds to: ncore.DocumentedNamedStringIdentity + ncore.Period
- */
-@GenModel(documentation="Abstract base class for all product management elements.
-Provides id, name, documentation (mirroring ncore.DocumentedNamedStringIdentity),
-temporal anchoring via start/end/duration (mirroring ncore.Period), and a weight
-attribute for MCDA participation.")
-abstract class ModelElement {
-
-	/**
-	 * String key uniquely identifying this element within its containment reference.
-	 * Used as the eKey for containment references and as a URI segment for
-	 * cross-resource references (Maven URI Handler pattern).
-	 */
-	@GenModel(documentation="String key uniquely identifying this element within its
-containment reference. Used as eKey and as a URI segment for cross-resource references.")
-	String ^d
-
-	/**
-	 * Human-readable display name. Used as the label in generated documentation,
-	 * diagrams, and navigation trees.
-	 */
-	@GenModel(documentation="Human-readable display name for documentation, diagrams,
-and navigation trees.")
-	String name
-
-	/**
-	 * Rich documentation for this element, in HTML or Markdown.
-	 * Rendered in the generated documentation site.
-	 */
-	@GenModel(documentation="Rich documentation (HTML or Markdown) rendered in the
-generated documentation site.")
-	String documentation
-
-	/**
-	 * Start of the period in ISO-8601 format (e.g., "2026-01-01") or as a relative
-	 * offset from a container element's start (e.g., "P30D" for 30 days after the
-	 * container starts). Corresponds to ncore.Period.start / ncore.Temporal.
-	 */
-	@GenModel(documentation="Start of this element's period. ISO-8601 date/datetime
-or a relative offset from the container's start, e.g. 'P30D' for 30 days in.")
-	String start
-
-	/**
-	 * End of the period in ISO-8601 format or as a relative offset.
-	 * Corresponds to ncore.Period.end / ncore.Temporal.
-	 */
-	@GenModel(documentation="End of this element's period. ISO-8601 date/datetime
-or a relative offset from the container's start.")
-	String end
-
-	/**
-	 * Positive ISO-8601 duration (e.g., "P3M" for three months, "P20D" for twenty days).
-	 * May be used instead of an explicit end date, or to validate that end - start equals
-	 * this duration. Corresponds to ncore.Period.duration.
-	 */
-	@GenModel(documentation="Positive ISO-8601 duration (e.g., 'P3M'). May be used
-instead of an explicit end date. Corresponds to ncore.Period.duration.")
-	String duration
-
-	/**
-	 * Relative importance weight for MCDA (Multiple Criteria Decision Analysis)
-	 * participation. Used when this element is compared pairwise against sibling
-	 * elements (e.g., two Personas, two Concerns) to derive prioritization scores.
-	 * Corresponds to mcda.Alternative weight derivation (ecore://nasdanika.org/models/mcda).
-	 */
-	@GenModel(documentation="Relative importance weight for MCDA pairwise comparison.
-Used to prioritize Personas, Concerns, and Capabilities relative to their siblings.")
-	double weight
+class EvidenceDomain extends NamedElement, AbstractEvidence {
+    
+    contains Evidence[] evidence keys ^id
+    
 }
 
-// ---------------------------------------------------------------------------
-// Lifecycle status period
-// ---------------------------------------------------------------------------
-
-/**
- * A time-bounded lifecycle status record within a Version.
- * Enables fine-grained lifecycle tracking: a version may be Planned from its
- * inception, become GA on a release date, be Deprecated later, and finally
- * Retired at end-of-life.
- *
- * The start/end/duration fields (inherited from ModelElement) define the period
- * during which the given status applies.
- */
-@GenModel(documentation="A time-bounded lifecycle status record within a Version.
-Enables tracking of Planned → GA → Deprecated → Retired transitions with explicit
-date ranges. Extends ModelElement for temporal anchoring.")
-class LifecycleStatusPeriod extends ModelElement {
-
-	/**
-	 * The lifecycle status that applies during this period.
-	 */
-	@GenModel(documentation="The lifecycle status that applies during this period.")
-	LifecycleStatus status = "PLANNED"
+class RequiredCapability extends NamedPeriod {
+    
+    contains AbstractCapability capability
+    
 }
 
-// ---------------------------------------------------------------------------
-// Root element
-// ---------------------------------------------------------------------------
+// --- Version ---
 
-/**
- * Root container for a product management model.
- *
- * ProductModel is itself a Period (via ModelElement), enabling template product
- * models: child elements may express their start/end as relative offsets from
- * the root's start. Setting the root start/end resolves all relative dates,
- * supporting "start with the end in mind" planning.
- *
- * Duration and start/end of the root may be computed from the union of all child
- * element periods.
- *
- * As an Undergoer (architecture pattern, ecore://nasdanika.org/models/architecture),
- * ProductModel can have Roles defined on it, with Actors performing those roles
- * (e.g., a "ProductOwner" role performed by a specific person actor).
- *
- * Corresponds to: ncore.Catalog (ecore://nasdanika.org/core/ncore) specialized for
- * product management.
- */
-@GenModel(documentation="Root container for a product management model. Is itself a
-Period (enabling relative-date templates) and an Undergoer (actors can be assigned
-roles on the model itself). Contains all primary elements: personas, capabilities,
-capability providers, work packages, offerings, actors, and proposals.")
-class ProductModel extends ModelElement {
-
-	/**
-	 * Personas — the stakeholders whose concerns drive product decisions.
-	 * Primary containment; personas may also reference each other through
-	 * superPersonas to model generalization.
-	 */
-	@GenModel(documentation="Personas whose concerns drive product decisions.
-Primary containment. Personas may reference each other via superPersonas.")
-	contains Persona[] personas
-
-	/**
-	 * Capabilities — abilities that address persona concerns.
-	 * Organized hierarchically via Capability.subCapabilities.
-	 */
-	@GenModel(documentation="Capabilities that address persona concerns.
-Organized hierarchically via Capability.subCapabilities.")
-	contains Capability[] capabilities
-
-	/**
-	 * Capability providers — entities that provide one or more capabilities
-	 * at specific versions (e.g., Maven modules, CLI assemblies, deployable bundles).
-	 */
-	@GenModel(documentation="Entities that provide one or more capabilities at specific
-versions, e.g. Maven modules, CLI assemblies, or deployable bundles.")
-	contains CapabilityProvider[] capabilityProviders
-
-	/**
-	 * Work packages — units of planned or in-progress work with temporal scope.
-	 * Nestable; top-level work packages are contained here.
-	 */
-	@GenModel(documentation="Units of planned or in-progress work with temporal scope.
-Nestable; top-level work packages are contained here.")
-	contains WorkPackage[] workPackages
-
-	/**
-	 * Offerings — consumable forms of capability providers (e.g., Maven artifacts,
-	 * CLI downloads, deployable bundles). Offerings are a refinement of CapabilityProvider
-	 * that can be consumed as a unit.
-	 */
-	@GenModel(documentation="Consumable forms of capability providers that can be
-adopted as a unit, e.g. a Maven artifact, a CLI download, or a deployable bundle.")
-	contains Offering[] offerings
-
-	/**
-	 * Actors — people or groups that perform roles on undergoers (personas,
-	 * capabilities, work packages, the model itself).
-	 * Organized hierarchically via Actor.subActors to represent org structure.
-	 */
-	@GenModel(documentation="People or groups that perform roles on undergoers.
-Organized hierarchically via Actor.subActors to reflect organizational structure.")
-	contains Actor[] actors
-
-	/**
-	 * Proposals — bids to build a capability or complete a work package.
-	 * Proposals carry a cost (possibly zero) and must acknowledge implicit
-	 * acceptance and ownership costs.
-	 */
-	@GenModel(documentation="Bids to build a capability or complete a work package.
-Proposals carry a cost (possibly zero) and acknowledge implicit ownership costs.")
-	contains Proposal[] proposals
-
-	/**
-	 * Roles defined on this product model itself. Actors perform roles on the
-	 * model as an undergoer (e.g., a ProductOwner role, a Sponsor role).
-	 * Models the architecture.Undergoer.roles containment.
-	 */
-	@GenModel(documentation="Roles defined on this product model, performed by Actors.
-Models the architecture.Undergoer.roles pattern
-(ecore://nasdanika.org/models/architecture).")
-	contains Role[] roles
+class Version extends NamedPeriod {
+    
 }
 
-// ---------------------------------------------------------------------------
-// Role and Actor
-// ---------------------------------------------------------------------------
+// --- Undergoer, actor, role ---
 
-/**
- * A role that an Actor performs on an Undergoer (a persona, a capability, a work
- * package, or the product model itself).
- *
- * Roles define the authority and responsibility of an actor with respect to an
- * undergoing element. For example: "ProductOwner" role on a Persona means that
- * the actor has authority to bind decisions about resource allocation for that
- * persona's concerns. "Representative" role on a Persona means the actor can
- * speak for the persona.
- *
- * Corresponds to: architecture.Role (ecore://nasdanika.org/models/architecture).
- */
-@GenModel(documentation="A role that an Actor performs on an Undergoer.
-Defines authority and responsibility with respect to an element.
-Corresponds to architecture.Role (ecore://nasdanika.org/models/architecture).")
-class Role extends ModelElement {
-
-	/**
-	 * Actors currently performing this role.
-	 * Bidirectional opposite of Actor.roles.
-	 */
-	@GenModel(documentation="Actors currently performing this role.
-Bidirectional opposite of Actor.roles.")
-	refers Actor[] actors opposite roles
+interface Undergoer {
+    
+    contains Role[] roles
+    
 }
 
-/**
- * An actor — a person, group, or automated agent that performs one or more roles
- * on undergoers (personas, capabilities, work packages, the product model).
- *
- * Actors are organized hierarchically via subActors to represent organizational
- * structure (e.g., a team actor containing individual person actors).
- *
- * An actor is itself an undergoer: it has roles defined on it (someone maintains
- * or manages the actor), and it participates in temporal periods (start/end of
- * the actor's involvement).
- *
- * For actors representing specific parties (persons, organizations), use the
- * partyId field to reference a party defined in a party model
- * (ecore://nasdanika.org/models/party).
- *
- * Corresponds to: architecture.Actor / architecture.PartyActor
- * (ecore://nasdanika.org/models/architecture).
- */
-@GenModel(documentation="A person, group, or automated agent performing roles on
-undergoers. Organized hierarchically via subActors. Is itself an undergoer.
-For actors representing specific parties, use partyId to reference a party model
-(ecore://nasdanika.org/models/party). Corresponds to architecture.Actor /
-architecture.PartyActor (ecore://nasdanika.org/models/architecture).")
-class Actor extends ModelElement {
-
-	/**
-	 * Roles this actor currently performs. Bidirectional opposite of Role.actors.
-	 */
-	@GenModel(documentation="Roles this actor performs. Bidirectional opposite of Role.actors.")
-	refers Role[] roles opposite actors
-
-	/**
-	 * Roles defined on this actor as an undergoer — roles that other actors
-	 * perform on this actor (e.g., a "Manager" role performed by the actor's
-	 * organizational superior).
-	 */
-	@GenModel(documentation="Roles defined on this actor as an undergoer — roles
-that other actors perform on this actor, e.g. a 'Manager' role.")
-	contains Role[] ownedRoles
-
-	/**
-	 * Nested actors representing organizational sub-structure (sub-teams,
-	 * sub-groups, or individual members of a group actor).
-	 */
-	@GenModel(documentation="Nested actors representing organizational sub-structure,
-such as sub-teams or individual members of a group actor.")
-	contains Actor[] subActors
-
-	/**
-	 * Optional reference to a party identity (person, organization) in an external
-	 * party model (ecore://nasdanika.org/models/party). The value is a URI that can
-	 * be resolved via the Maven URI Handler.
-	 */
-	@GenModel(documentation="URI referencing a party (person or organization) in an
-external party model (ecore://nasdanika.org/models/party), resolved via Maven URI
-Handler for cross-resource identity.")
-	String partyId
+class Role extends NamedPeriod {
+    
+    contains RoleAssignment[] assignments 
+    
 }
 
-// ---------------------------------------------------------------------------
-// Persona
-// ---------------------------------------------------------------------------
-
-/**
- * A persona — a named archetype of a product stakeholder whose concerns drive
- * product decisions.
- *
- * Personas support multiple inheritance to model the Java class/interface duality
- * and Ecore supertypes pattern:
- * - subPersonas (containment): primary specializations owned by this persona.
- * - superPersonas (reference): generalization references, modeled like Ecore's
- *   eSuperTypes — a persona may inherit characteristics from multiple super-personas.
- *
- * A Persona is an Undergoer: Actors perform Roles on it (e.g., a "Representative"
- * role — an actor who can speak for the persona in decision-making contexts).
- *
- * Personas participate as MCDA alternatives (ecore://nasdanika.org/models/mcda):
- * the 'weight' field (inherited from ModelElement) records derived importance.
- * Pairwise comparison judgments are stored externally in an MCDA Evaluation model
- * that references these personas as alternatives.
- *
- * Corresponds to: enterprise.Stakeholder (ecore://nasdanika.org/models/enterprise)
- * with MCDA and Undergoer extensions.
- */
-@GenModel(documentation="A named archetype of a product stakeholder whose concerns
-drive product decisions. Supports multiple inheritance via subPersonas (containment)
-and superPersonas (reference). Is an Undergoer: actors perform roles on it (e.g.,
-a Representative role). Participates as an MCDA alternative for prioritization.
-Corresponds to enterprise.Stakeholder (ecore://nasdanika.org/models/enterprise).")
-class Persona extends ModelElement {
-
-	/**
-	 * Concerns this persona has — goals, needs, or pain points.
-	 * Primary containment for concerns that belong to this persona.
-	 */
-	@GenModel(documentation="Goals, needs, or pain points belonging to this persona.
-Primary containment.")
-	contains Concern[] concerns
-
-	/**
-	 * Specialized personas that inherit from this persona (primary containment).
-	 * Analogous to Ecore's subclasses or Java implementing classes.
-	 * A sub-persona inherits all concerns and characteristics of its super-personas.
-	 */
-	@GenModel(documentation="Specialized personas that inherit from this persona.
-Primary containment. Analogous to Ecore subclasses — sub-personas inherit concerns
-and characteristics from their super-personas.")
-	contains Persona[] subPersonas
-
-	/**
-	 * Generalization references — other personas that this persona specializes.
-	 * Modeled on Java class/interface duality and Ecore eSuperTypes: a persona may
-	 * specialize multiple super-personas (multiple inheritance of concerns and
-	 * characteristics). References only; the referenced personas are owned elsewhere.
-	 */
-	@GenModel(documentation="Generalization references to personas this persona
-specializes. Modeled on Ecore eSuperTypes / Java interface duality — a persona
-may specialize multiple super-personas.")
-	refers Persona[] superPersonas
-
-	/**
-	 * Estimated population size of this persona (number of individuals or accounts
-	 * the persona archetype represents). Used in resource-allocation calculations
-	 * and business-case modeling.
-	 */
-	@GenModel(documentation="Estimated population size: the number of individuals or
-accounts represented by this persona archetype. Used in resource-allocation and
-business-case modeling.")
-	int population
-
-	/**
-	 * Roles defined on this persona as an undergoer. For example, a "Representative"
-	 * role — an actor who can speak for the persona in decision-making contexts;
-	 * not necessarily an owner or authority, just the voice of the persona.
-	 * Models the architecture.Undergoer.roles pattern.
-	 */
-	@GenModel(documentation="Roles defined on this persona as an undergoer, e.g. a
-'Representative' role (an actor who can speak for the persona in decision-making).
-Models architecture.Undergoer.roles (ecore://nasdanika.org/models/architecture).")
-	contains Role[] roles
+class RoleAssignment extends Period {
+    
+    String comment
+    
+    contains AbstractActor actors
+    
 }
 
-// ---------------------------------------------------------------------------
-// Concern
-// ---------------------------------------------------------------------------
-
-/**
- * A concern — a goal, need, or pain point that a persona experiences.
- *
- * Concerns have temporal scope (the start/end/duration fields inherited from
- * ModelElement): a concern may apply only during a specific phase of a product
- * lifecycle (e.g., "this pain point applies during the first 60 days of onboarding").
- *
- * Concerns are hierarchical: subConcerns enables decomposition into more specific
- * concerns. Lateral associations are expressed via relatedConcerns (bidirectional):
- * relationships can be defined on one end and navigated from both.
- *
- * Concerns participate as MCDA alternatives for weight derivation, enabling formal
- * prioritization (ecore://nasdanika.org/models/mcda).
- *
- * Corresponds to: enterprise.Concern (ecore://nasdanika.org/models/enterprise)
- * with temporal scope, MCDA weight, and hierarchy extensions.
- */
-@GenModel(documentation="A goal, need, or pain point that a persona experiences.
-Has temporal scope (inherited from ModelElement). Hierarchical via subConcerns.
-Lateral associations via bidirectional relatedConcerns / referringConcerns.
-Participates as an MCDA alternative for weight derivation.
-Corresponds to enterprise.Concern (ecore://nasdanika.org/models/enterprise).")
-class Concern extends ModelElement {
-
-	/**
-	 * The nature of this concern: Goal, Need, or Pain Point.
-	 */
-	@GenModel(documentation="The nature of this concern: Goal (desired outcome),
-Need (functional/non-functional requirement), or Pain Point (existing problem).")
-	ConcernType ^type = "NEED"
-
-	/**
-	 * Sub-concerns that decompose this concern into more specific aspects.
-	 * Primary containment: sub-concerns are owned by this concern.
-	 */
-	@GenModel(documentation="Sub-concerns decomposing this concern into more specific
-aspects. Primary containment.")
-	contains Concern[] subConcerns
-
-	/**
-	 * Related concerns — lateral associations to concerns in other personas or
-	 * other parts of the concern hierarchy. Bidirectional with referringConcerns:
-	 * adding a concern to relatedConcerns on one end automatically makes it
-	 * appear in referringConcerns on the other, so relationships need only be
-	 * defined from one side.
-	 */
-	@GenModel(documentation="Lateral associations to related concerns. Bidirectional
-with referringConcerns: relationships can be defined from one end and navigated
-from both.")
-	refers Concern[] relatedConcerns opposite referringConcerns
-
-	/**
-	 * Derived bidirectional opposite of relatedConcerns. Contains all concerns
-	 * that list this concern in their relatedConcerns. Navigable from both ends
-	 * without duplicating the relationship definition.
-	 */
-	@GenModel(documentation="Derived opposite of relatedConcerns. Contains all
-concerns that reference this concern via their relatedConcerns. Automatically
-maintained by EMF; no need to set explicitly.")
-	refers Concern[] referringConcerns opposite relatedConcerns
+interface AbstractActor extends StringIdentity {
+    
 }
 
-// ---------------------------------------------------------------------------
-// Version
-// ---------------------------------------------------------------------------
-
-/**
- * A version of a capability or capability provider.
- *
- * Carries both a formal version identifier (e.g., "4.12.0", "2026.2.0") and an
- * optional display label (e.g., release name "2026-03 Cerulean"). This separation
- * allows marketing names to differ from technical version strings.
- *
- * Lifecycle is tracked via statusPeriods: a sequence of LifecycleStatusPeriod
- * records representing the time-bounded status transitions of this version
- * (Planned → GA → Deprecated → Retired).
- *
- * The start/end/duration fields (inherited from ModelElement) define the overall
- * availability window of the version.
- *
- * Corresponds to: the Version concept in capability model
- * (ecore://nasdanika.org/models/capability) extended with lifecycle tracking.
- */
-@GenModel(documentation="A version of a capability or capability provider.
-Carries a formal versionString (e.g. '4.12.0') and an optional display label
-(e.g. '2026-03 Cerulean'). Lifecycle transitions are tracked via statusPeriods.
-Corresponds to capability.Version (ecore://nasdanika.org/models/capability).")
-class Version extends ModelElement {
-
-	/**
-	 * Formal version identifier, e.g., "4.12.0", "2026.2.0", "1.0.0-SNAPSHOT".
-	 * Should conform to the version scheme of the capability provider ecosystem
-	 * (e.g., Maven semantic versioning, OSGi version format).
-	 */
-	@GenModel(documentation="Formal version identifier, e.g. '4.12.0' or
-'2026.2.0'. Should follow the versioning scheme of the capability provider
-ecosystem (Maven, OSGi, npm, etc.).")
-	String versionString
-
-	/**
-	 * Human-readable display label for this version, e.g., a release name like
-	 * "2026-03 Cerulean" or "Spring 2026". Distinct from the formal versionString.
-	 * Used in documentation, announcements, and user-facing materials.
-	 */
-	@GenModel(documentation="Human-readable display label, e.g. a release name like
-'2026-03 Cerulean'. Distinct from versionString. Used in documentation and
-user-facing materials.")
-	String label
-
-	/**
-	 * Time-bounded lifecycle status records for this version.
-	 * Records the Planned → GA → Deprecated → Retired transition timeline.
-	 */
-	@GenModel(documentation="Time-bounded lifecycle status records tracking the
-Planned → GA → Deprecated → Retired transition timeline for this version.")
-	contains LifecycleStatusPeriod[] statusPeriods
+class Actor extends NamedPeriod, AbstractActor {
+    
 }
 
-// ---------------------------------------------------------------------------
-// Capability
-// ---------------------------------------------------------------------------
-
-/**
- * A capability — an ability to do something that addresses one or more persona
- * concerns (e.g., "read a Visio file and associate documentation with diagram
- * elements", "generate a documentation site from an Xcore metamodel").
- *
- * Capabilities are organized hierarchically via subCapabilities (primary
- * containment). They also support lateral composition via includes/includedIn
- * (bidirectional): a capability may include other capabilities that it depends
- * on or subsumes.
- *
- * Versioning: CapabilityVersion extends both Capability and Version, enabling
- * version-specific overrides. For simple models, versions can be omitted
- * (capabilities are then treated as versionless).
- *
- * A Capability is an Undergoer: Actors perform Roles on it (e.g., an "Owner"
- * role for the actor responsible for the capability, a "Contributor" role for
- * actors who build it).
- *
- * Corresponds to: capability.Capability (ecore://nasdanika.org/models/capability)
- * extended with Undergoer, Period, and MCDA weight.
- */
-@GenModel(documentation="An ability that addresses persona concerns, e.g. 'generate
-a documentation site from an Xcore metamodel'. Hierarchical via subCapabilities.
-Bidirectional composition via includes/includedIn. Versioned via CapabilityVersion.
-Is an Undergoer: actors perform roles on it. Participates in MCDA weight derivation.
-Corresponds to capability.Capability (ecore://nasdanika.org/models/capability).")
-class Capability extends ModelElement {
-
-	/**
-	 * Versions of this capability. For simple models this may be empty (the
-	 * capability is treated as versionless). CapabilityVersion extends both
-	 * Capability and Version, so a version entry is itself a Capability with
-	 * version-specific properties that may override parent capability fields.
-	 */
-	@GenModel(documentation="Versions of this capability. May be empty for simple
-models. CapabilityVersion extends both Capability and Version, enabling version-
-specific property overrides.")
-	contains CapabilityVersion[] versions
-
-	/**
-	 * Sub-capabilities: more specific capabilities that belong to this capability.
-	 * Used to organize capabilities into a hierarchy (e.g., a "Documentation"
-	 * capability containing "HTML Site Generation", "PDF Export", and "Diagram
-	 * Generation" sub-capabilities).
-	 */
-	@GenModel(documentation="More specific capabilities belonging to this capability.
-Used to build a capability hierarchy, e.g. 'Documentation' containing 'HTML Site
-Generation', 'PDF Export', and 'Diagram Generation'.")
-	contains Capability[] subCapabilities
-
-	/**
-	 * Other capabilities that this capability includes or depends on.
-	 * Bidirectional opposite of includedIn: a capability that includes another
-	 * will appear in that other capability's includedIn list.
-	 */
-	@GenModel(documentation="Other capabilities that this capability includes or
-depends on. Bidirectional opposite of includedIn.")
-	refers Capability[] includes opposite includedIn
-
-	/**
-	 * Capabilities that include this capability. Derived bidirectional opposite
-	 * of includes. Automatically maintained by EMF.
-	 */
-	@GenModel(documentation="Capabilities that include this capability. Derived
-bidirectional opposite of includes. Automatically maintained by EMF.")
-	refers Capability[] includedIn opposite includes
-
-	/**
-	 * Roles defined on this capability as an undergoer. For example, an "Owner"
-	 * role for the actor responsible for the capability, or a "Contributor" role
-	 * for actors who build it. Models architecture.Undergoer.roles.
-	 */
-	@GenModel(documentation="Roles defined on this capability as an undergoer,
-e.g. 'Owner' or 'Contributor' roles. Models architecture.Undergoer.roles
-(ecore://nasdanika.org/models/architecture).")
-	contains Role[] roles
+class ActorDomain extends NamedElement, AbstractActor {
+    contains AbstractActor[] actors
 }
 
-/**
- * A version of a specific capability, combining the identity of a Capability
- * with the versioning metadata of a Version.
- *
- * By extending both Capability and Version, CapabilityVersion allows version-
- * specific properties to override the parent capability's properties (e.g., a
- * different documentation text for the 2.0 version, a different set of sub-
- * capabilities added in 3.0).
- *
- * Simple models may omit CapabilityVersion entirely and treat all Capability
- * instances as versionless. More mature models can introduce versions incrementally.
- *
- * Corresponds to: capability.CapabilityVersion
- * (ecore://nasdanika.org/models/capability).
- */
-@GenModel(documentation="A version of a capability, combining Capability identity
-with Version metadata. Allows version-specific overrides of capability properties.
-Simple models may omit this entirely. Corresponds to capability.CapabilityVersion
-(ecore://nasdanika.org/models/capability).")
-class CapabilityVersion extends Capability, Version {
-}
-
-// ---------------------------------------------------------------------------
-// Capability Provider
-// ---------------------------------------------------------------------------
-
-/**
- * A capability provider — an entity that provides one or more capabilities at
- * specific versions. Examples: a Maven module, an OSGi bundle, a CLI assembly,
- * a deployable microservice.
- *
- * Inspired by the Eclipse P2 capability model
- * (ecore://nasdanika.org/models/capability) and the Java/OSGi module duality:
- * providers are both consumers of capabilities they require and providers of
- * capabilities they offer.
- *
- * CapabilityProvider is an Undergoer: Actors perform Roles on it (e.g., a
- * "Maintainer" role, a "Consumer" role).
- *
- * Corresponds to: capability.CapabilityProvider
- * (ecore://nasdanika.org/models/capability) extended with Undergoer and Period.
- */
-@GenModel(documentation="An entity that provides one or more capabilities at
-specific versions, e.g. a Maven module, OSGi bundle, or CLI assembly. Inspired
-by the Eclipse P2 model. Is an Undergoer: actors perform roles on it. Dual
-role: both provider and consumer of capabilities.
-Corresponds to capability.CapabilityProvider
-(ecore://nasdanika.org/models/capability).")
-class CapabilityProvider extends ModelElement {
-
-	/**
-	 * Capabilities provided by this provider. References to Capability instances
-	 * defined in the ProductModel.capabilities collection or elsewhere.
-	 */
-	@GenModel(documentation="Capabilities provided by this provider. References to
-Capability instances defined in the model.")
-	refers Capability[] providedCapabilities
-
-	/**
-	 * Capabilities required by this provider in order to function. Implements
-	 * the Java/OSGi consumer side of the duality: this provider requires certain
-	 * capabilities to be present (provided by other providers) to operate correctly.
-	 */
-	@GenModel(documentation="Capabilities required by this provider to function.
-Implements the Java/OSGi consumer side: this provider depends on capabilities
-provided by other providers.")
-	refers Capability[] requiredCapabilities
-
-	/**
-	 * Versions of this capability provider. Each CapabilityProviderVersion
-	 * combines the provider's identity with version-specific metadata (version
-	 * string, display label, lifecycle status).
-	 */
-	@GenModel(documentation="Versions of this capability provider, each combining
-provider identity with version-specific metadata (version string, label, lifecycle).")
-	contains CapabilityProviderVersion[] versions
-
-	/**
-	 * Roles defined on this capability provider as an undergoer. For example,
-	 * a "Maintainer" role, a "Consumer" role. Models architecture.Undergoer.roles.
-	 */
-	@GenModel(documentation="Roles defined on this provider as an undergoer, e.g.
-'Maintainer' or 'Consumer'. Models architecture.Undergoer.roles
-(ecore://nasdanika.org/models/architecture).")
-	contains Role[] roles
-}
-
-/**
- * A version of a capability provider, combining CapabilityProvider identity
- * with Version metadata (version string, display label, lifecycle status periods).
- *
- * Analogous to CapabilityVersion for capabilities. Allows version-specific
- * overrides of the provider's properties and lifecycle tracking.
- */
-@GenModel(documentation="A version of a capability provider, combining provider
-identity with Version metadata. Allows version-specific property overrides and
-lifecycle tracking.")
-class CapabilityProviderVersion extends CapabilityProvider, Version {
-}
-
-// ---------------------------------------------------------------------------
-// Offering
-// ---------------------------------------------------------------------------
-
-/**
- * An offering — a form of capability provider that can be consumed as a unit.
- *
- * Examples: a Maven artifact published to Maven Central, a CLI tool download,
- * a deployable Docker image, an installable Eclipse plugin (P2 feature).
- *
- * Offering refines CapabilityProvider: all offerings are capability providers,
- * but not all capability providers are offerings. The distinction is that an
- * offering is explicitly packaged for external consumption with a stable
- * coordinate (Maven GAV, npm package name, Docker image tag, etc.).
- *
- * The 'coordinate' field captures the canonical external coordinate (e.g.,
- * Maven GAV "org.nasdanika.models:product-management:0.1.0").
- *
- * Corresponds to: a deployable unit in the Maven model federation pattern
- * (https://maven.models.nasdanika.org/).
- */
-@GenModel(documentation="A form of capability provider packaged for external
-consumption as a unit, e.g. a Maven artifact, a CLI download, or a Docker image.
-Extends CapabilityProvider. The 'coordinate' field holds the canonical external
-coordinate (e.g., Maven GAV). Follows the federated-artifact pattern from
-https://maven.models.nasdanika.org/.")
-class Offering extends CapabilityProvider {
-
-	/**
-	 * The canonical external coordinate for this offering, e.g.:
-	 * - Maven GAV: "org.nasdanika.models:product-management:0.1.0"
-	 * - npm package: "@nasdanika/product-management@0.1.0"
-	 * - Docker image: "nasdanika/product-management:0.1.0"
-	 */
-	@GenModel(documentation="Canonical external coordinate for this offering, e.g.
-a Maven GAV 'org.nasdanika.models:product-management:0.1.0', an npm package name,
-or a Docker image tag.")
-	String coordinate
-}
-
-// ---------------------------------------------------------------------------
-// Work Package
-// ---------------------------------------------------------------------------
-
-/**
- * A work package — a unit of planned or in-progress work that has temporal scope
- * (start/end/duration from ModelElement) and organizational accountability (via
- * roles as an undergoer).
- *
- * Work packages are nestable: subWorkPackages allows decomposition into smaller
- * units of work (analogous to Jira epics → stories → sub-tasks).
- *
- * The 'impacts' relationship links work packages to the offerings or capability
- * providers they affect (e.g., a work package adds a feature to a Maven module).
- *
- * The 'contributes' relationship links work packages to the capabilities they
- * deliver or advance.
- *
- * The 'tracker' field holds a URI or identifier referencing the work package in
- * an external tracking system (e.g., a Jira issue URL, a GitHub issue URL).
- *
- * Subclasses (e.g., JiraWorkPackage) can add tracker-specific fields.
- */
-@GenModel(documentation="A unit of planned or in-progress work with temporal scope
-and organizational accountability. Nestable via subWorkPackages. Links to offerings
-via 'impacts' and to capabilities via 'contributes'. The 'tracker' field holds a
-URI to an external tracking system (Jira, GitHub Issues, etc.).")
-class WorkPackage extends ModelElement {
-
-	/**
-	 * Nested work packages that decompose this work package into smaller units.
-	 * Analogous to Jira epics decomposed into stories, or stories into sub-tasks.
-	 */
-	@GenModel(documentation="Nested work packages decomposing this work package into
-smaller units, e.g. epics → stories → sub-tasks.")
-	contains WorkPackage[] subWorkPackages
-
-	/**
-	 * Offerings and capability providers that this work package affects.
-	 * For example, a work package that adds a feature to a Maven module impacts
-	 * that module's Offering in the model.
-	 */
-	@GenModel(documentation="Offerings and capability providers that this work package
-affects, e.g. the Maven module or deployable bundle that will be changed.")
-	refers CapabilityProvider[] impacts
-
-	/**
-	 * Capabilities this work package delivers or advances. Used to track which
-	 * planned capabilities are progressed by which work packages.
-	 */
-	@GenModel(documentation="Capabilities this work package delivers or advances.
-Tracks which planned capabilities are progressed by this work package.")
-	refers Capability[] contributes
-
-	/**
-	 * URI or identifier for this work package in an external tracking system,
-	 * e.g., "https://jira.example.com/browse/PM-123" or "github:org/repo#42".
-	 * Enables bidirectional traceability between the product management model
-	 * and execution-layer tracking tools.
-	 */
-	@GenModel(documentation="URI or identifier in an external tracking system, e.g.
-a Jira issue URL or GitHub issue reference. Enables traceability between the
-product model and execution-layer tools.")
-	String tracker
-
-	/**
-	 * Roles defined on this work package as an undergoer. For example, a
-	 * "Lead" role, an "Assignee" role, a "Reviewer" role.
-	 * Models architecture.Undergoer.roles.
-	 */
-	@GenModel(documentation="Roles defined on this work package as an undergoer,
-e.g. 'Lead', 'Assignee', or 'Reviewer'. Models architecture.Undergoer.roles
-(ecore://nasdanika.org/models/architecture).")
-	contains Role[] roles
-}
-
-/**
- * A work package whose tracker is a Jira issue. Adds Jira-specific fields:
- * project key, issue key, and issue type. The inherited 'tracker' field holds
- * the full Jira issue URL for hyperlinking.
- */
-@GenModel(documentation="A WorkPackage backed by a Jira issue. Adds Jira-specific
-fields: projectKey (e.g. 'PM'), issueKey (e.g. 'PM-123'), and issueType
-(e.g. 'Story', 'Epic'). The inherited 'tracker' field holds the full Jira URL.")
-class JiraWorkPackage extends WorkPackage {
-
-	/**
-	 * Jira project key, e.g., "PM", "NSDPM". Used to construct Jira URLs and
-	 * for filtering/grouping by project.
-	 */
-	@GenModel(documentation="Jira project key, e.g. 'PM' or 'NSDPM'. Used for URL
-construction and filtering by project.")
-	String projectKey
-
-	/**
-	 * Jira issue key, e.g., "PM-123". Uniquely identifies the issue within the
-	 * Jira instance.
-	 */
-	@GenModel(documentation="Jira issue key, e.g. 'PM-123'. Uniquely identifies
-the issue within the Jira instance.")
-	String issueKey
-
-	/**
-	 * Jira issue type, e.g., "Epic", "Story", "Task", "Bug", "Sub-task".
-	 */
-	@GenModel(documentation="Jira issue type, e.g. 'Epic', 'Story', 'Task', 'Bug',
-or 'Sub-task'.")
-	String issueType
-}
-
-// ---------------------------------------------------------------------------
-// Proposal
-// ---------------------------------------------------------------------------
-
-/**
- * A proposal — a bid to build a capability or complete a work package.
- *
- * "I can build this capability or complete this work package by date X at cost Y."
- *
- * Cost may be zero (e.g., an internal team member volunteering time), but even
- * zero-cost proposals must acknowledge the implicit acceptance and ongoing
- * ownership cost of the capability or work package.
- *
- * A Proposal is itself a Period (via ModelElement): the start/end/duration fields
- * define the proposed delivery window. The Actor who authored the proposal is
- * captured via the 'author' reference.
- */
-@GenModel(documentation="A bid to build a capability or complete a work package.
-'I can build this by date X at cost Y.' Cost may be zero but must acknowledge
-implicit ownership costs. Is a Period (delivery window). The 'author' reference
-captures who made the proposal.")
-class Proposal extends ModelElement {
-
-	/**
-	 * Proposed monetary cost. A value of zero is explicitly allowed but must
-	 * acknowledge implicit acceptance and ongoing ownership costs.
-	 */
-	@GenModel(documentation="Proposed monetary cost. Zero is allowed but must
-acknowledge implicit acceptance and ongoing ownership costs.")
-	double cost
-
-	/**
-	 * ISO 4217 currency code for the cost, e.g., "USD", "EUR", "GBP".
-	 * If not set, the cost is assumed to be in the default currency of the
-	 * containing model.
-	 */
-	@GenModel(documentation="ISO 4217 currency code for the cost, e.g. 'USD', 'EUR'.
-If not set, defaults to the model's currency context.")
-	String currency
-
-	/**
-	 * The work package this proposal addresses. At least one of workPackage or
-	 * capability must be set.
-	 */
-	@GenModel(documentation="The work package this proposal addresses. At least one
-of workPackage or capability must be set.")
-	refers WorkPackage workPackage
-
-	/**
-	 * The capability this proposal proposes to build. At least one of workPackage
-	 * or capability must be set.
-	 */
-	@GenModel(documentation="The capability this proposal proposes to build. At least
-one of workPackage or capability must be set.")
-	refers Capability capability
-
-	/**
-	 * The actor who authored this proposal. Records the decision provenance: who
-	 * made the bid and when (the 'when' is captured by the ModelElement.start date
-	 * or the submission date in documentation).
-	 */
-	@GenModel(documentation="The actor who authored this proposal. Records decision
-provenance: who made the bid. The 'when' is captured by ModelElement.start or
-documented in the proposal's documentation.")
-	refers Actor author
-}
+// Party with contact methods...

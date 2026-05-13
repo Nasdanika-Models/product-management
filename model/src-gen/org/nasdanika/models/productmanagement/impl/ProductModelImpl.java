@@ -13,16 +13,16 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.nasdanika.models.productmanagement.Actor;
-import org.nasdanika.models.productmanagement.Capability;
-import org.nasdanika.models.productmanagement.CapabilityProvider;
-import org.nasdanika.models.productmanagement.Offering;
-import org.nasdanika.models.productmanagement.Persona;
+import org.nasdanika.models.productmanagement.AbstractActor;
+import org.nasdanika.models.productmanagement.AbstractCapability;
+import org.nasdanika.models.productmanagement.AbstractCapabilityProvider;
+import org.nasdanika.models.productmanagement.AbstractPersona;
+import org.nasdanika.models.productmanagement.ActorDomain;
+import org.nasdanika.models.productmanagement.CapabilityDomain;
+import org.nasdanika.models.productmanagement.CapabilityProviderDomain;
+import org.nasdanika.models.productmanagement.PersonaDomain;
 import org.nasdanika.models.productmanagement.ProductModel;
 import org.nasdanika.models.productmanagement.ProductmanagementPackage;
-import org.nasdanika.models.productmanagement.Proposal;
-import org.nasdanika.models.productmanagement.Role;
-import org.nasdanika.models.productmanagement.WorkPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -35,16 +35,12 @@ import org.nasdanika.models.productmanagement.WorkPackage;
  *   <li>{@link org.nasdanika.models.productmanagement.impl.ProductModelImpl#getPersonas <em>Personas</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.ProductModelImpl#getCapabilities <em>Capabilities</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.ProductModelImpl#getCapabilityProviders <em>Capability Providers</em>}</li>
- *   <li>{@link org.nasdanika.models.productmanagement.impl.ProductModelImpl#getWorkPackages <em>Work Packages</em>}</li>
- *   <li>{@link org.nasdanika.models.productmanagement.impl.ProductModelImpl#getOfferings <em>Offerings</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.ProductModelImpl#getActors <em>Actors</em>}</li>
- *   <li>{@link org.nasdanika.models.productmanagement.impl.ProductModelImpl#getProposals <em>Proposals</em>}</li>
- *   <li>{@link org.nasdanika.models.productmanagement.impl.ProductModelImpl#getRoles <em>Roles</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class ProductModelImpl extends ModelElementImpl implements ProductModel {
+public class ProductModelImpl extends NamedPeriodImpl implements ProductModel {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -71,8 +67,8 @@ public class ProductModelImpl extends ModelElementImpl implements ProductModel {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public EList<Persona> getPersonas() {
-		return (EList<Persona>)eDynamicGet(ProductmanagementPackage.PRODUCT_MODEL__PERSONAS, ProductmanagementPackage.Literals.PRODUCT_MODEL__PERSONAS, true, true);
+	public EList<AbstractPersona> getPersonas() {
+		return (EList<AbstractPersona>)eDynamicGet(ProductmanagementPackage.PRODUCT_MODEL__PERSONAS, ProductmanagementPackage.Literals.PERSONA_DOMAIN__PERSONAS, true, true);
 	}
 
 	/**
@@ -82,8 +78,8 @@ public class ProductModelImpl extends ModelElementImpl implements ProductModel {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public EList<Capability> getCapabilities() {
-		return (EList<Capability>)eDynamicGet(ProductmanagementPackage.PRODUCT_MODEL__CAPABILITIES, ProductmanagementPackage.Literals.PRODUCT_MODEL__CAPABILITIES, true, true);
+	public EList<AbstractCapability> getCapabilities() {
+		return (EList<AbstractCapability>)eDynamicGet(ProductmanagementPackage.PRODUCT_MODEL__CAPABILITIES, ProductmanagementPackage.Literals.CAPABILITY_DOMAIN__CAPABILITIES, true, true);
 	}
 
 	/**
@@ -93,8 +89,8 @@ public class ProductModelImpl extends ModelElementImpl implements ProductModel {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public EList<CapabilityProvider> getCapabilityProviders() {
-		return (EList<CapabilityProvider>)eDynamicGet(ProductmanagementPackage.PRODUCT_MODEL__CAPABILITY_PROVIDERS, ProductmanagementPackage.Literals.PRODUCT_MODEL__CAPABILITY_PROVIDERS, true, true);
+	public EList<AbstractCapabilityProvider> getCapabilityProviders() {
+		return (EList<AbstractCapabilityProvider>)eDynamicGet(ProductmanagementPackage.PRODUCT_MODEL__CAPABILITY_PROVIDERS, ProductmanagementPackage.Literals.CAPABILITY_PROVIDER_DOMAIN__CAPABILITY_PROVIDERS, true, true);
 	}
 
 	/**
@@ -104,52 +100,8 @@ public class ProductModelImpl extends ModelElementImpl implements ProductModel {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public EList<WorkPackage> getWorkPackages() {
-		return (EList<WorkPackage>)eDynamicGet(ProductmanagementPackage.PRODUCT_MODEL__WORK_PACKAGES, ProductmanagementPackage.Literals.PRODUCT_MODEL__WORK_PACKAGES, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public EList<Offering> getOfferings() {
-		return (EList<Offering>)eDynamicGet(ProductmanagementPackage.PRODUCT_MODEL__OFFERINGS, ProductmanagementPackage.Literals.PRODUCT_MODEL__OFFERINGS, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public EList<Actor> getActors() {
-		return (EList<Actor>)eDynamicGet(ProductmanagementPackage.PRODUCT_MODEL__ACTORS, ProductmanagementPackage.Literals.PRODUCT_MODEL__ACTORS, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public EList<Proposal> getProposals() {
-		return (EList<Proposal>)eDynamicGet(ProductmanagementPackage.PRODUCT_MODEL__PROPOSALS, ProductmanagementPackage.Literals.PRODUCT_MODEL__PROPOSALS, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public EList<Role> getRoles() {
-		return (EList<Role>)eDynamicGet(ProductmanagementPackage.PRODUCT_MODEL__ROLES, ProductmanagementPackage.Literals.PRODUCT_MODEL__ROLES, true, true);
+	public EList<AbstractActor> getActors() {
+		return (EList<AbstractActor>)eDynamicGet(ProductmanagementPackage.PRODUCT_MODEL__ACTORS, ProductmanagementPackage.Literals.ACTOR_DOMAIN__ACTORS, true, true);
 	}
 
 	/**
@@ -166,16 +118,8 @@ public class ProductModelImpl extends ModelElementImpl implements ProductModel {
 				return ((InternalEList<?>)getCapabilities()).basicRemove(otherEnd, msgs);
 			case ProductmanagementPackage.PRODUCT_MODEL__CAPABILITY_PROVIDERS:
 				return ((InternalEList<?>)getCapabilityProviders()).basicRemove(otherEnd, msgs);
-			case ProductmanagementPackage.PRODUCT_MODEL__WORK_PACKAGES:
-				return ((InternalEList<?>)getWorkPackages()).basicRemove(otherEnd, msgs);
-			case ProductmanagementPackage.PRODUCT_MODEL__OFFERINGS:
-				return ((InternalEList<?>)getOfferings()).basicRemove(otherEnd, msgs);
 			case ProductmanagementPackage.PRODUCT_MODEL__ACTORS:
 				return ((InternalEList<?>)getActors()).basicRemove(otherEnd, msgs);
-			case ProductmanagementPackage.PRODUCT_MODEL__PROPOSALS:
-				return ((InternalEList<?>)getProposals()).basicRemove(otherEnd, msgs);
-			case ProductmanagementPackage.PRODUCT_MODEL__ROLES:
-				return ((InternalEList<?>)getRoles()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -194,16 +138,8 @@ public class ProductModelImpl extends ModelElementImpl implements ProductModel {
 				return getCapabilities();
 			case ProductmanagementPackage.PRODUCT_MODEL__CAPABILITY_PROVIDERS:
 				return getCapabilityProviders();
-			case ProductmanagementPackage.PRODUCT_MODEL__WORK_PACKAGES:
-				return getWorkPackages();
-			case ProductmanagementPackage.PRODUCT_MODEL__OFFERINGS:
-				return getOfferings();
 			case ProductmanagementPackage.PRODUCT_MODEL__ACTORS:
 				return getActors();
-			case ProductmanagementPackage.PRODUCT_MODEL__PROPOSALS:
-				return getProposals();
-			case ProductmanagementPackage.PRODUCT_MODEL__ROLES:
-				return getRoles();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -219,35 +155,19 @@ public class ProductModelImpl extends ModelElementImpl implements ProductModel {
 		switch (featureID) {
 			case ProductmanagementPackage.PRODUCT_MODEL__PERSONAS:
 				getPersonas().clear();
-				getPersonas().addAll((Collection<? extends Persona>)newValue);
+				getPersonas().addAll((Collection<? extends AbstractPersona>)newValue);
 				return;
 			case ProductmanagementPackage.PRODUCT_MODEL__CAPABILITIES:
 				getCapabilities().clear();
-				getCapabilities().addAll((Collection<? extends Capability>)newValue);
+				getCapabilities().addAll((Collection<? extends AbstractCapability>)newValue);
 				return;
 			case ProductmanagementPackage.PRODUCT_MODEL__CAPABILITY_PROVIDERS:
 				getCapabilityProviders().clear();
-				getCapabilityProviders().addAll((Collection<? extends CapabilityProvider>)newValue);
-				return;
-			case ProductmanagementPackage.PRODUCT_MODEL__WORK_PACKAGES:
-				getWorkPackages().clear();
-				getWorkPackages().addAll((Collection<? extends WorkPackage>)newValue);
-				return;
-			case ProductmanagementPackage.PRODUCT_MODEL__OFFERINGS:
-				getOfferings().clear();
-				getOfferings().addAll((Collection<? extends Offering>)newValue);
+				getCapabilityProviders().addAll((Collection<? extends AbstractCapabilityProvider>)newValue);
 				return;
 			case ProductmanagementPackage.PRODUCT_MODEL__ACTORS:
 				getActors().clear();
-				getActors().addAll((Collection<? extends Actor>)newValue);
-				return;
-			case ProductmanagementPackage.PRODUCT_MODEL__PROPOSALS:
-				getProposals().clear();
-				getProposals().addAll((Collection<? extends Proposal>)newValue);
-				return;
-			case ProductmanagementPackage.PRODUCT_MODEL__ROLES:
-				getRoles().clear();
-				getRoles().addAll((Collection<? extends Role>)newValue);
+				getActors().addAll((Collection<? extends AbstractActor>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -270,20 +190,8 @@ public class ProductModelImpl extends ModelElementImpl implements ProductModel {
 			case ProductmanagementPackage.PRODUCT_MODEL__CAPABILITY_PROVIDERS:
 				getCapabilityProviders().clear();
 				return;
-			case ProductmanagementPackage.PRODUCT_MODEL__WORK_PACKAGES:
-				getWorkPackages().clear();
-				return;
-			case ProductmanagementPackage.PRODUCT_MODEL__OFFERINGS:
-				getOfferings().clear();
-				return;
 			case ProductmanagementPackage.PRODUCT_MODEL__ACTORS:
 				getActors().clear();
-				return;
-			case ProductmanagementPackage.PRODUCT_MODEL__PROPOSALS:
-				getProposals().clear();
-				return;
-			case ProductmanagementPackage.PRODUCT_MODEL__ROLES:
-				getRoles().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -303,18 +211,118 @@ public class ProductModelImpl extends ModelElementImpl implements ProductModel {
 				return !getCapabilities().isEmpty();
 			case ProductmanagementPackage.PRODUCT_MODEL__CAPABILITY_PROVIDERS:
 				return !getCapabilityProviders().isEmpty();
-			case ProductmanagementPackage.PRODUCT_MODEL__WORK_PACKAGES:
-				return !getWorkPackages().isEmpty();
-			case ProductmanagementPackage.PRODUCT_MODEL__OFFERINGS:
-				return !getOfferings().isEmpty();
 			case ProductmanagementPackage.PRODUCT_MODEL__ACTORS:
 				return !getActors().isEmpty();
-			case ProductmanagementPackage.PRODUCT_MODEL__PROPOSALS:
-				return !getProposals().isEmpty();
-			case ProductmanagementPackage.PRODUCT_MODEL__ROLES:
-				return !getRoles().isEmpty();
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == AbstractPersona.class) {
+			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == PersonaDomain.class) {
+			switch (derivedFeatureID) {
+				case ProductmanagementPackage.PRODUCT_MODEL__PERSONAS: return ProductmanagementPackage.PERSONA_DOMAIN__PERSONAS;
+				default: return -1;
+			}
+		}
+		if (baseClass == AbstractCapability.class) {
+			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == CapabilityDomain.class) {
+			switch (derivedFeatureID) {
+				case ProductmanagementPackage.PRODUCT_MODEL__CAPABILITIES: return ProductmanagementPackage.CAPABILITY_DOMAIN__CAPABILITIES;
+				default: return -1;
+			}
+		}
+		if (baseClass == AbstractCapabilityProvider.class) {
+			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == CapabilityProviderDomain.class) {
+			switch (derivedFeatureID) {
+				case ProductmanagementPackage.PRODUCT_MODEL__CAPABILITY_PROVIDERS: return ProductmanagementPackage.CAPABILITY_PROVIDER_DOMAIN__CAPABILITY_PROVIDERS;
+				default: return -1;
+			}
+		}
+		if (baseClass == AbstractActor.class) {
+			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == ActorDomain.class) {
+			switch (derivedFeatureID) {
+				case ProductmanagementPackage.PRODUCT_MODEL__ACTORS: return ProductmanagementPackage.ACTOR_DOMAIN__ACTORS;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == AbstractPersona.class) {
+			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == PersonaDomain.class) {
+			switch (baseFeatureID) {
+				case ProductmanagementPackage.PERSONA_DOMAIN__PERSONAS: return ProductmanagementPackage.PRODUCT_MODEL__PERSONAS;
+				default: return -1;
+			}
+		}
+		if (baseClass == AbstractCapability.class) {
+			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == CapabilityDomain.class) {
+			switch (baseFeatureID) {
+				case ProductmanagementPackage.CAPABILITY_DOMAIN__CAPABILITIES: return ProductmanagementPackage.PRODUCT_MODEL__CAPABILITIES;
+				default: return -1;
+			}
+		}
+		if (baseClass == AbstractCapabilityProvider.class) {
+			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == CapabilityProviderDomain.class) {
+			switch (baseFeatureID) {
+				case ProductmanagementPackage.CAPABILITY_PROVIDER_DOMAIN__CAPABILITY_PROVIDERS: return ProductmanagementPackage.PRODUCT_MODEL__CAPABILITY_PROVIDERS;
+				default: return -1;
+			}
+		}
+		if (baseClass == AbstractActor.class) {
+			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == ActorDomain.class) {
+			switch (baseFeatureID) {
+				case ProductmanagementPackage.ACTOR_DOMAIN__ACTORS: return ProductmanagementPackage.PRODUCT_MODEL__ACTORS;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 } //ProductModelImpl
