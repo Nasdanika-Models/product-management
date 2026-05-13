@@ -16,6 +16,11 @@
 			<artifactId>model</artifactId>
 			<version>${project.version}</version>
 		</dependency>		
+        <dependency>
+            <groupId>org.nasdanika.core</groupId>
+            <artifactId>emf-json</artifactId>
+            <version>${core.version}</version>
+        </dependency>       
 		<dependency>
 			<groupId>org.nasdanika.models.ecore</groupId>
 			<artifactId>graph</artifactId>

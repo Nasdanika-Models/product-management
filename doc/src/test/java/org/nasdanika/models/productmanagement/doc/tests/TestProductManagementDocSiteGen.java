@@ -22,8 +22,6 @@ import org.nasdanika.common.PrintStreamProgressMonitor;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.html.bootstrap.Theme;
 import org.nasdanika.models.app.gen.AppSiteGenerator;
-import org.nasdanika.models.bw5.Project;
-import org.nasdanika.models.bw5.loader.Bw5ProjectLoader;
 import org.nasdanika.models.ecore.graph.processors.EcoreHtmlAppGenerator;
 
 public class TestProductManagementDocSiteGen {

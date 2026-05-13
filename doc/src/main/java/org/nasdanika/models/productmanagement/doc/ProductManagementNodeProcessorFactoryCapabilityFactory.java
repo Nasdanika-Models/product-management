@@ -43,7 +43,7 @@ public class ProductManagementNodeProcessorFactoryCapabilityFactory implements C
 			cp.getPublisher().subscribe(df -> documentationFactories.add(df));
 		}				
 
-		Bw5NodeProcessorFactory factory = new Bw5NodeProcessorFactory(
+		ProductManagementNodeProcessorFactory factory = new ProductManagementNodeProcessorFactory(
 				requirement.context(), 
 				requirement.prototypeProvider(),
 				documentationFactories);
