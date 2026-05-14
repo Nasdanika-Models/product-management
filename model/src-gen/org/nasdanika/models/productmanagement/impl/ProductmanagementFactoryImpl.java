@@ -67,6 +67,7 @@ public class ProductmanagementFactoryImpl extends EFactoryImpl implements Produc
 			case ProductmanagementPackage.PERSONA_DOMAIN: return createPersonaDomain();
 			case ProductmanagementPackage.PERSONA_REFERENCE: return createPersonaReference();
 			case ProductmanagementPackage.CONCERN: return createConcern();
+			case ProductmanagementPackage.ADDRESSING_CAPABILITIES: return createAddressingCapabilities();
 			case ProductmanagementPackage.CONCERN_REFERENCE: return createConcernReference();
 			case ProductmanagementPackage.CONCERN_DOMAIN: return createConcernDomain();
 			case ProductmanagementPackage.GOAL: return createGoal();
@@ -214,6 +215,17 @@ public class ProductmanagementFactoryImpl extends EFactoryImpl implements Produc
 	public Concern createConcern() {
 		ConcernImpl concern = new ConcernImpl();
 		return concern;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public AddressingCapabilities createAddressingCapabilities() {
+		AddressingCapabilitiesImpl addressingCapabilities = new AddressingCapabilitiesImpl();
+		return addressingCapabilities;
 	}
 
 	/**

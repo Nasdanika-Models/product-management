@@ -22,7 +22,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Capability extends NamedPeriod, AbstractCapability {
+public interface Capability extends NamedPeriod, AbstractCapability, EvidenceDomain {
 	/**
 	 * Returns the value of the '<em><b>Addresses</b></em>' containment reference list.
 	 * The list contents are of type {@link org.nasdanika.models.productmanagement.AddressedConcerns}.

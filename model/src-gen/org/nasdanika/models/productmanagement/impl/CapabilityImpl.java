@@ -14,8 +14,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.nasdanika.models.productmanagement.AbstractCapability;
+import org.nasdanika.models.productmanagement.AbstractEvidence;
 import org.nasdanika.models.productmanagement.AddressedConcerns;
 import org.nasdanika.models.productmanagement.Capability;
+import org.nasdanika.models.productmanagement.Evidence;
+import org.nasdanika.models.productmanagement.EvidenceDomain;
 import org.nasdanika.models.productmanagement.Lifecycle;
 import org.nasdanika.models.productmanagement.ProductmanagementPackage;
 
@@ -27,6 +30,7 @@ import org.nasdanika.models.productmanagement.ProductmanagementPackage;
  * The following features are implemented:
  * </p>
  * <ul>
+ *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getEvidence <em>Evidence</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getAddresses <em>Addresses</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getSubCapabilities <em>Sub Capabilities</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getLifecycle <em>Lifecycle</em>}</li>
@@ -62,6 +66,17 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 	@Override
 	protected EClass eStaticClass() {
 		return ProductmanagementPackage.Literals.CAPABILITY;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public EList<Evidence> getEvidence() {
+		return (EList<Evidence>)eDynamicGet(ProductmanagementPackage.CAPABILITY__EVIDENCE, ProductmanagementPackage.Literals.EVIDENCE_DOMAIN__EVIDENCE, true, true);
 	}
 
 	/**
@@ -114,6 +129,8 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
+			case ProductmanagementPackage.CAPABILITY__EVIDENCE:
+				return ((InternalEList<?>)getEvidence()).basicRemove(otherEnd, msgs);
 			case ProductmanagementPackage.CAPABILITY__ADDRESSES:
 				return ((InternalEList<?>)getAddresses()).basicRemove(otherEnd, msgs);
 			case ProductmanagementPackage.CAPABILITY__SUB_CAPABILITIES:
@@ -130,6 +147,8 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
+			case ProductmanagementPackage.CAPABILITY__EVIDENCE:
+				return getEvidence();
 			case ProductmanagementPackage.CAPABILITY__ADDRESSES:
 				return getAddresses();
 			case ProductmanagementPackage.CAPABILITY__SUB_CAPABILITIES:
@@ -149,6 +168,10 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
+			case ProductmanagementPackage.CAPABILITY__EVIDENCE:
+				getEvidence().clear();
+				getEvidence().addAll((Collection<? extends Evidence>)newValue);
+				return;
 			case ProductmanagementPackage.CAPABILITY__ADDRESSES:
 				getAddresses().clear();
 				getAddresses().addAll((Collection<? extends AddressedConcerns>)newValue);
@@ -172,6 +195,9 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
+			case ProductmanagementPackage.CAPABILITY__EVIDENCE:
+				getEvidence().clear();
+				return;
 			case ProductmanagementPackage.CAPABILITY__ADDRESSES:
 				getAddresses().clear();
 				return;
@@ -193,6 +219,8 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
+			case ProductmanagementPackage.CAPABILITY__EVIDENCE:
+				return !getEvidence().isEmpty();
 			case ProductmanagementPackage.CAPABILITY__ADDRESSES:
 				return !getAddresses().isEmpty();
 			case ProductmanagementPackage.CAPABILITY__SUB_CAPABILITIES:
@@ -201,6 +229,58 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 				return getLifecycle() != LIFECYCLE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
+		if (baseClass == AbstractCapability.class) {
+			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == AbstractEvidence.class) {
+			switch (derivedFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == EvidenceDomain.class) {
+			switch (derivedFeatureID) {
+				case ProductmanagementPackage.CAPABILITY__EVIDENCE: return ProductmanagementPackage.EVIDENCE_DOMAIN__EVIDENCE;
+				default: return -1;
+			}
+		}
+		return super.eBaseStructuralFeatureID(derivedFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
+		if (baseClass == AbstractCapability.class) {
+			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == AbstractEvidence.class) {
+			switch (baseFeatureID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == EvidenceDomain.class) {
+			switch (baseFeatureID) {
+				case ProductmanagementPackage.EVIDENCE_DOMAIN__EVIDENCE: return ProductmanagementPackage.CAPABILITY__EVIDENCE;
+				default: return -1;
+			}
+		}
+		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
 	}
 
 } //CapabilityImpl

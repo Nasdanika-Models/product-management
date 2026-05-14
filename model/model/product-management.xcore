@@ -56,7 +56,11 @@ abstract class ModelElement extends StringIdentity {
     
     /**
      * Alias URIs resolved relative to the parent URIs - can be absolute or opaque - global references. 
-     * For example: actors://john-smith
+     * For example: actors://john-smith.
+     * For domains URIs can be used as anchors to merge domains from different sources.
+     * For example, several teams may maintain capability domains with URI myorg://capabilities/developer-productivity
+     * When these definitions are assembled into the organization's product management model to generate documentation
+     * all of these domains are merged into a single logical domain.
      */
     String[] uris
 
@@ -92,7 +96,9 @@ class Persona extends NamedPeriod, AbstractPersona, ConcernDomain {
 }
 
 class PersonaDomain extends NamedElement, AbstractPersona {
+    
     contains AbstractPersona[] personas keys ^id
+        
 }
 
 
@@ -105,7 +111,24 @@ interface AbstractConcern extends StringIdentity {
 }
 
 class Concern extends NamedPeriod, AbstractConcern {
+    
+    /**
+     * Addressed by allows to explain how some external capabilities address
+     * concerns. 
+     * It also allows to model capabilities within concerns to have a 
+     * self-contained persona. 
+     * It can be used in acquisition/unification scenarios
+     * where shared capabilities are extracted (e.g. accounting or a custom script/tool)
+     * and unique are retained (e.g. the best clam chowder in town, report generation)
+     */
+    contains AddressingCapabilities[] addressedBy
             
+}
+
+
+class AddressingCapabilities extends ModelElement, CapabilityDomain {
+    
+    
 }
 
 class ConcernReference extends AbstractConcern {
@@ -179,7 +202,8 @@ interface AbstractCapability extends StringIdentity {
     
 }
 
-class Capability extends NamedPeriod, AbstractCapability {
+class Capability extends NamedPeriod, AbstractCapability, EvidenceDomain {
+    
     contains AddressedConcerns[] addresses
     
     contains AbstractCapability[] subCapabilities keys ^id  // composition

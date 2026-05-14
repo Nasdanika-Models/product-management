@@ -24,6 +24,7 @@ import org.nasdanika.models.productmanagement.AbstractPersona;
 import org.nasdanika.models.productmanagement.Actor;
 import org.nasdanika.models.productmanagement.ActorDomain;
 import org.nasdanika.models.productmanagement.AddressedConcerns;
+import org.nasdanika.models.productmanagement.AddressingCapabilities;
 import org.nasdanika.models.productmanagement.BlockedGoals;
 import org.nasdanika.models.productmanagement.Capability;
 import org.nasdanika.models.productmanagement.CapabilityDependency;
@@ -160,6 +161,13 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	 * @generated
 	 */
 	private EClass concernEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass addressingCapabilitiesEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -730,6 +738,26 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	@Override
 	public EClass getConcern() {
 		return concernEClass;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getConcern_AddressedBy() {
+		return (EReference)concernEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EClass getAddressingCapabilities() {
+		return addressingCapabilitiesEClass;
 	}
 
 	/**
@@ -1470,6 +1498,9 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		abstractConcernEClass = createEClass(ABSTRACT_CONCERN);
 
 		concernEClass = createEClass(CONCERN);
+		createEReference(concernEClass, CONCERN__ADDRESSED_BY);
+
+		addressingCapabilitiesEClass = createEClass(ADDRESSING_CAPABILITIES);
 
 		concernReferenceEClass = createEClass(CONCERN_REFERENCE);
 		createEReference(concernReferenceEClass, CONCERN_REFERENCE__TARGET);
@@ -1623,6 +1654,8 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		abstractConcernEClass.getESuperTypes().add(this.getStringIdentity());
 		concernEClass.getESuperTypes().add(this.getNamedPeriod());
 		concernEClass.getESuperTypes().add(this.getAbstractConcern());
+		addressingCapabilitiesEClass.getESuperTypes().add(this.getModelElement());
+		addressingCapabilitiesEClass.getESuperTypes().add(this.getCapabilityDomain());
 		concernReferenceEClass.getESuperTypes().add(this.getAbstractConcern());
 		concernDomainEClass.getESuperTypes().add(this.getAbstractConcern());
 		goalEClass.getESuperTypes().add(this.getConcern());
@@ -1634,6 +1667,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		abstractCapabilityEClass.getESuperTypes().add(this.getStringIdentity());
 		capabilityEClass.getESuperTypes().add(this.getNamedPeriod());
 		capabilityEClass.getESuperTypes().add(this.getAbstractCapability());
+		capabilityEClass.getESuperTypes().add(this.getEvidenceDomain());
 		capabilityReferenceEClass.getESuperTypes().add(this.getAbstractCapability());
 		capabilityDomainEClass.getESuperTypes().add(this.getNamedElement());
 		capabilityDomainEClass.getESuperTypes().add(this.getAbstractCapability());
@@ -1703,6 +1737,9 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		initEClass(abstractConcernEClass, AbstractConcern.class, "AbstractConcern", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(concernEClass, Concern.class, "Concern", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEReference(getConcern_AddressedBy(), this.getAddressingCapabilities(), null, "addressedBy", null, 0, -1, Concern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(addressingCapabilitiesEClass, AddressingCapabilities.class, "AddressingCapabilities", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(concernReferenceEClass, ConcernReference.class, "ConcernReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConcernReference_Target(), this.getConcern(), null, "target", null, 0, 1, ConcernReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1854,7 +1891,13 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		  (getModelElement_Uris(),
 		   source,
 		   new String[] {
-			   "documentation", "*\nAlias URIs resolved relative to the parent URIs - can be absolute or opaque - global references.\nFor example: actors://john-smith"
+			   "documentation", "*\nAlias URIs resolved relative to the parent URIs - can be absolute or opaque - global references.\nFor example: actors://john-smith.\nFor domains URIs can be used as anchors to merge domains from different sources.\nFor example, several teams may maintain capability domains with URI myorg://capabilities/developer-productivity\nWhen these definitions are assembled into the organization\'s product management model to generate documentation\nall of these domains are merged into a single logical domain."
+		   });
+		addAnnotation
+		  (getConcern_AddressedBy(),
+		   source,
+		   new String[] {
+			   "documentation", "*\nAddressed by allows to explain how some external capabilities address\nconcerns.\nIt also allows to model capabilities within concerns to have a\nself-contained persona.\nIt can be used in acquisition/unification scenarios\nwhere shared capabilities are extracted (e.g. accounting or a custom script/tool)\nand unique are retained (e.g. the best clam chowder in town, report generation)"
 		   });
 		addAnnotation
 		  (evidenceEClass,

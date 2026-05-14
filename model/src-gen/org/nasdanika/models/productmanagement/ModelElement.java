@@ -52,7 +52,11 @@ public interface ModelElement extends StringIdentity {
 	 * <!-- begin-model-doc -->
 	 * *
 	 * Alias URIs resolved relative to the parent URIs - can be absolute or opaque - global references.
-	 * For example: actors://john-smith
+	 * For example: actors://john-smith.
+	 * For domains URIs can be used as anchors to merge domains from different sources.
+	 * For example, several teams may maintain capability domains with URI myorg://capabilities/developer-productivity
+	 * When these definitions are assembled into the organization's product management model to generate documentation
+	 * all of these domains are merged into a single logical domain.
 	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Uris</em>' attribute list.
 	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getModelElement_Uris()

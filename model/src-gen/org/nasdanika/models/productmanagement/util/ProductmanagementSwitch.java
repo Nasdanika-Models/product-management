@@ -186,6 +186,17 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ProductmanagementPackage.ADDRESSING_CAPABILITIES: {
+				AddressingCapabilities addressingCapabilities = (AddressingCapabilities)theEObject;
+				T result = caseAddressingCapabilities(addressingCapabilities);
+				if (result == null) result = caseCapabilityDomain(addressingCapabilities);
+				if (result == null) result = caseNamedElement(addressingCapabilities);
+				if (result == null) result = caseAbstractCapability(addressingCapabilities);
+				if (result == null) result = caseModelElement(addressingCapabilities);
+				if (result == null) result = caseStringIdentity(addressingCapabilities);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case ProductmanagementPackage.CONCERN_REFERENCE: {
 				ConcernReference concernReference = (ConcernReference)theEObject;
 				T result = caseConcernReference(concernReference);
@@ -277,8 +288,10 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				T result = caseCapability(capability);
 				if (result == null) result = caseNamedPeriod(capability);
 				if (result == null) result = caseAbstractCapability(capability);
+				if (result == null) result = caseEvidenceDomain(capability);
 				if (result == null) result = caseNamedElement(capability);
 				if (result == null) result = casePeriod(capability);
+				if (result == null) result = caseAbstractEvidence(capability);
 				if (result == null) result = caseModelElement(capability);
 				if (result == null) result = caseStringIdentity(capability);
 				if (result == null) result = defaultCase(theEObject);
@@ -668,6 +681,21 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseConcern(Concern object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Addressing Capabilities</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Addressing Capabilities</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAddressingCapabilities(AddressingCapabilities object) {
 		return null;
 	}
 
