@@ -17,6 +17,8 @@ This metamodel is itself a product. The page you are reading is the first slice 
 
 ### Personas
 
+- **Senior leader driving innovation and AI adoption.** Accountable for portfolio-level outcomes: reducing duplication, increasing adoption of shared platforms, and turning AI investment into measurable productivity. Sees the developer-productivity space where hundreds of developers have built thousands of overlapping tools and is trying to distinguish genuine coverage from noise.
+- **Internal innovator.** An individual contributor or small team driving a new idea inside a larger organization. Has no formal mandate to define personas or concerns, and no authority to bind anyone else's roadmap. Authors bespoke persona and concern definitions to frame the problem they're working on — definitions that others may not have seen, may not agree with, and may actively dispute.
 - **Enterprise architect.** Maintains capability maps and motivation models, and is asked to defend them against organizational drift, vendor slippage, and political revision. Owns alignment between strategy and delivery.
 - **Technical product manager.** Owns a product or platform whose consumers are themselves engineering teams. Needs to express persona–concern–capability traceability with the same rigor used for code.
 - **Platform engineering lead.** Operates an internal platform whose roadmap depends on, and is depended upon by, many other teams. Needs durable evidence of who promised what to whom and when.
@@ -26,19 +28,31 @@ This metamodel is itself a product. The page you are reading is the first slice 
 
 #### Goals
 
+- **See actual coverage, not claimed coverage.** Distinguish capabilities that genuinely address a persona's concerns from capabilities whose providers merely assert that they do. The model should make the gap between claim and evidence inspectable.
+- **Surface duplication structurally.** When two or three teams independently build capabilities addressing the same concerns of the same personas, the overlap should be visible from the model rather than discovered by accident at a steering committee.
+- **Make consolidation defensible.** Decisions to retire, merge, or anoint a single capability among several overlapping ones should be traceable to the concerns, evidence, and authorities involved - not reducible to executive preference.
 - **Make alignment auditable.** Every assertion about a persona, a concern, or a capability should be attributable to an authority with a defined scope and validity period.
 - **Make every voice heard.** A dissenting team must be able to publish its own model that references the canonical assertions and adds its own. Authority is explicit, not implicit in who speaks loudest.
 - **Make dependencies between capabilities first-class.** A capability that depends on another should say so as part of its contract, not bury the dependency in a wiki page.
 - **Plan in shapes, not in dates.** A roadmap's structure (an approval gate triggers a 14-day review window; a release starts a 90-day stabilization period) should be expressible before any calendar dates are known, and should remain valid after they slip.
 - **Bind plans to reality without rewriting them.** When the date of an approval, release, or commitment finally lands, every temporal that referenced it should resolve automatically. The plan is the same plan; only the calendar projection changes.
+- **Publish a persona without asking permission.** An innovator must be able to define a persona, articulate its concerns, and put the definition on the record without first negotiating it through the organizational hierarchy. The definition exists; whether it is authoritative is a separate question answered by whoever chooses to reference it.
+- **Be cited, agreed with, or disputed on the merits.** A bespoke persona should be discoverable and addressable so that others can extend it, reference it, or publish a competing definition. Silence and selective forgetting are not acceptable responses.
 
 #### Needs
+
+- **Portfolio-level reasoning over a federated graph.** Reasoning about duplication and adoption requires a view across many teams' models without forcing all teams onto a single central tool. The federation has to compose into a coherent portfolio view on demand.
+- **Adoption visible as a first-class signal.** Whether a capability is actually used by the personas it claims to address is itself evidence, and should attach to the capability rather than live in a separate analytics tool nobody opens.
+- **Coexist with disagreement.** Multiple incompatible definitions of "the junior developer persona" should be able to exist simultaneously, each attributable to its author, without one being administratively erased to make the catalog "consistent."
 - **Survive personnel and tooling change.** Models authored today must remain readable and verifiable years later, by humans and by machines, without a vendor account
 - **Compose across organizational boundaries.** A model from one team must be referenceable from another team's model with the same mechanics used for code dependencies.
 - **Reusable templates.** A product launch template, a regulatory approval template, a vendor onboarding template should be authored once with relative temporals and instantiated repeatedly against different concrete anchor events.
 - **Honest schedule arithmetic across federation.** When one team's commitment depends on another team's release, the dependent's temporal should be expressed relative to the dependency, not duplicated and silently drift out of sync.
 
 #### Pain points
+
+- **Internal-tool sprawl - hundreds of developers, thousands of tools.** In the developer-productivity space, parallel construction of overlapping internal tools produces more confusion than productivity. Each tool has its own champion, its own asserted persona, and its own claimed coverage; without a shared model, deduplication is impossible and consolidation is a political fight.
+- **AI adoption stalls on missing structure.** AI assistance over product strategy works only as well as the structure it has to reason over. Free-form roadmaps, slide decks, and wikis do not give an agent enough to detect duplication, gaps, or drift. The absence of a formal model is itself the bottleneck.
 - **Asymmetric blame.** When a high-status promise slips, downstream teams absorb the cost. Without a durable, dated record of who promised what, the political gradient runs only one way
 - **The super-chicken problem.** A loud stakeholder claims "nobody needs that" and the concern disappears from the official narrative. Without per-assertion authorship, the claim is indistinguishable from consensus
 - **Strategy drift.** Roadmap tools optimize for what was decided last week. The longer arc - which goals were committed to, which were silently abandoned - is lost
@@ -84,4 +98,4 @@ Sources live on [GitHub](https://github.com/Nasdanika-Models/product-management)
 
 ## How to build on this
 
-A template repository is work in progress.
+A CLI command for documentation generation and a template repository are work in progress.
