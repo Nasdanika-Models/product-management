@@ -8,6 +8,7 @@ import java.util.Map.Entry;
 import java.util.function.Consumer;
 
 import org.eclipse.emf.common.util.URI;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
 import org.junit.jupiter.api.Test;
 import org.nasdanika.capability.CapabilityLoader;
@@ -20,9 +21,9 @@ import org.nasdanika.common.ExecutionException;
 import org.nasdanika.common.MutableContext;
 import org.nasdanika.common.PrintStreamProgressMonitor;
 import org.nasdanika.common.ProgressMonitor;
-import org.nasdanika.html.bootstrap.Theme;
 import org.nasdanika.models.app.gen.AppSiteGenerator;
 import org.nasdanika.models.ecore.graph.processors.EcoreHtmlAppGenerator;
+import org.nasdanika.models.productmanagement.ProductModel;
 
 public class TestProductManagementDocSiteGen {
 		
@@ -33,18 +34,16 @@ public class TestProductManagementDocSiteGen {
 		Requirement<ResourceSetRequirement, ResourceSet> requirement = ServiceCapabilityFactory.createRequirement(ResourceSet.class);		
 		ResourceSet resourceSet = capabilityLoader.loadOne(requirement, progressMonitor);
 		
-		Bw5ProjectLoader loader = new Bw5ProjectLoader(resourceSet);		
-		Project project = loader.loadProject(new File("../model/src/test/resources/sample-project"));
+		File productModelFile = new File("target/sample-product-model/product-model.yaml").getCanonicalFile();
+		Resource productModelResource = resourceSet.getResource(URI.createFileURI(productModelFile.getAbsolutePath()), true);		
 		
-		project.getResources().forEach(r -> {
-			System.out.println(r.getProjectPath() + " : " + r.eClass().getName());
-		});		
+		ProductModel productModel = (ProductModel) productModelResource.getContents().get(0);
 		
 		MutableContext context = Context.EMPTY_CONTEXT.fork();
 		
 		Consumer<Diagnostic> diagnosticConsumer = d -> d.dump(System.out, 0);		
 		EcoreHtmlAppGenerator htmlAppGenerator = EcoreHtmlAppGenerator.loadEcoreHtmlAppGenerator(
-				Collections.singleton(project), 
+				Collections.singleton(productModel), 
 				context,
 				null, // java.util.function.BiFunction<URI, ProgressMonitor, Action> prototypeProvider,			
 				null, // Predicate<Object> factoryPredicate,

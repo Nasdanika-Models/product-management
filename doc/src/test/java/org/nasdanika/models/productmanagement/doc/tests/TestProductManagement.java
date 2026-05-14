@@ -119,21 +119,7 @@ public class TestProductManagement {
 		capabilityResource.getContents().add(capability);
 		capabilityResource.save(null);
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		productModelResource.save(null);
-		
-		
-		
-		
-		
+		productModelResource.save(null);		
 	}
 
 }
