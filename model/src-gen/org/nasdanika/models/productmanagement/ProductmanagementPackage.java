@@ -1686,13 +1686,22 @@ public interface ProductmanagementPackage extends EPackage {
 	int CAPABILITY__SUB_CAPABILITIES = NAMED_PERIOD_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Lifecycle</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY__LIFECYCLE = NAMED_PERIOD_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Capability</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 2;
+	int CAPABILITY_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Capability</em>' class.
@@ -2097,13 +2106,22 @@ public interface ProductmanagementPackage extends EPackage {
 	int CAPABILITY_PROVIDER__REQUIRES = NAMED_PERIOD_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Lifecycle</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_PROVIDER__LIFECYCLE = NAMED_PERIOD_FEATURE_COUNT + 2;
+
+	/**
 	 * The number of structural features of the '<em>Capability Provider</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_PROVIDER_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 2;
+	int CAPABILITY_PROVIDER_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of operations of the '<em>Capability Provider</em>' class.
@@ -3146,6 +3164,16 @@ public interface ProductmanagementPackage extends EPackage {
 	int ACTOR_DOMAIN_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.Lifecycle <em>Lifecycle</em>}' enum.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.Lifecycle
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getLifecycle()
+	 * @generated
+	 */
+	int LIFECYCLE = 43;
+
+	/**
 	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.DependencyKind <em>Dependency Kind</em>}' enum.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3153,7 +3181,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getDependencyKind()
 	 * @generated
 	 */
-	int DEPENDENCY_KIND = 43;
+	int DEPENDENCY_KIND = 44;
 
 	/**
 	 * The meta object id for the '<em>Instant</em>' data type.
@@ -3163,7 +3191,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getInstant()
 	 * @generated
 	 */
-	int INSTANT = 44;
+	int INSTANT = 45;
 
 	/**
 	 * The meta object id for the '<em>Duration</em>' data type.
@@ -3173,7 +3201,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getDuration()
 	 * @generated
 	 */
-	int DURATION = 45;
+	int DURATION = 46;
 
 
 	/**
@@ -3704,6 +3732,17 @@ public interface ProductmanagementPackage extends EPackage {
 	EReference getCapability_SubCapabilities();
 
 	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.Capability#getLifecycle <em>Lifecycle</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Lifecycle</em>'.
+	 * @see org.nasdanika.models.productmanagement.Capability#getLifecycle()
+	 * @see #getCapability()
+	 * @generated
+	 */
+	EAttribute getCapability_Lifecycle();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.CapabilityReference <em>Capability Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3850,6 +3889,17 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getCapabilityProvider_Requires();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.CapabilityProvider#getLifecycle <em>Lifecycle</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Lifecycle</em>'.
+	 * @see org.nasdanika.models.productmanagement.CapabilityProvider#getLifecycle()
+	 * @see #getCapabilityProvider()
+	 * @generated
+	 */
+	EAttribute getCapabilityProvider_Lifecycle();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.CapabilityProviderDomain <em>Capability Provider Domain</em>}'.
@@ -4100,6 +4150,16 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getActorDomain_Actors();
+
+	/**
+	 * Returns the meta object for enum '{@link org.nasdanika.models.productmanagement.Lifecycle <em>Lifecycle</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for enum '<em>Lifecycle</em>'.
+	 * @see org.nasdanika.models.productmanagement.Lifecycle
+	 * @generated
+	 */
+	EEnum getLifecycle();
 
 	/**
 	 * Returns the meta object for enum '{@link org.nasdanika.models.productmanagement.DependencyKind <em>Dependency Kind</em>}'.
@@ -4603,6 +4663,14 @@ public interface ProductmanagementPackage extends EPackage {
 		EReference CAPABILITY__SUB_CAPABILITIES = eINSTANCE.getCapability_SubCapabilities();
 
 		/**
+		 * The meta object literal for the '<em><b>Lifecycle</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CAPABILITY__LIFECYCLE = eINSTANCE.getCapability_Lifecycle();
+
+		/**
 		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.CapabilityReferenceImpl <em>Capability Reference</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4725,6 +4793,14 @@ public interface ProductmanagementPackage extends EPackage {
 		 * @generated
 		 */
 		EReference CAPABILITY_PROVIDER__REQUIRES = eINSTANCE.getCapabilityProvider_Requires();
+
+		/**
+		 * The meta object literal for the '<em><b>Lifecycle</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute CAPABILITY_PROVIDER__LIFECYCLE = eINSTANCE.getCapabilityProvider_Lifecycle();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.CapabilityProviderDomainImpl <em>Capability Provider Domain</em>}' class.
@@ -4945,6 +5021,16 @@ public interface ProductmanagementPackage extends EPackage {
 		 * @generated
 		 */
 		EReference ACTOR_DOMAIN__ACTORS = eINSTANCE.getActorDomain_Actors();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.Lifecycle <em>Lifecycle</em>}' enum.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.Lifecycle
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getLifecycle()
+		 * @generated
+		 */
+		EEnum LIFECYCLE = eINSTANCE.getLifecycle();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.DependencyKind <em>Dependency Kind</em>}' enum.

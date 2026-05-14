@@ -15,7 +15,9 @@ import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.models.productmanagement.AddressedConcerns;
 import org.nasdanika.models.productmanagement.BlockedGoals;
 import org.nasdanika.models.productmanagement.Capability;
+import org.nasdanika.models.productmanagement.CapabilityReference;
 import org.nasdanika.models.productmanagement.Goal;
+import org.nasdanika.models.productmanagement.Lifecycle;
 import org.nasdanika.models.productmanagement.Need;
 import org.nasdanika.models.productmanagement.PainPoint;
 import org.nasdanika.models.productmanagement.Persona;
@@ -101,10 +103,16 @@ public class TestProductManagement {
 		Capability capability = factory.createCapability();
 		capability.setId("automated-data-aggregation");
 		capability.setName("Automated Data Aggregation");
+		capability.setLifecycle(Lifecycle.IN_PROGRESS);
 		AddressedConcerns addressedConcerns = factory.createAddressedConcerns();
 		addressedConcerns.getConcerns().add(need);
 		addressedConcerns.setDocumentation("Explains how it addresses the need");
 		capability.getAddresses().add(addressedConcerns);
+		
+		CapabilityReference capabilityReferenece = factory.createCapabilityReference();
+		capabilityReferenece.setTarget(capability);
+		capabilityReferenece.setId("automated-data-aggregation-ref");
+		productModel.getCapabilities().add(capabilityReferenece);		
 
 		File capabilityFile = new File("target/sample-product-model/automated-data-aggregation.yaml").getCanonicalFile();
 		Resource capabilityResource = resourceSet.createResource(URI.createFileURI(capabilityFile.getAbsolutePath()));

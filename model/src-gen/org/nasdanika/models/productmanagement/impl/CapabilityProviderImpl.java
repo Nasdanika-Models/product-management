@@ -14,6 +14,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.nasdanika.models.productmanagement.CapabilityProvider;
+import org.nasdanika.models.productmanagement.Lifecycle;
 import org.nasdanika.models.productmanagement.ProductmanagementPackage;
 import org.nasdanika.models.productmanagement.ProvidedCapability;
 import org.nasdanika.models.productmanagement.RequiredCapability;
@@ -28,11 +29,22 @@ import org.nasdanika.models.productmanagement.RequiredCapability;
  * <ul>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityProviderImpl#getProvides <em>Provides</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityProviderImpl#getRequires <em>Requires</em>}</li>
+ *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityProviderImpl#getLifecycle <em>Lifecycle</em>}</li>
  * </ul>
  *
  * @generated
  */
 public class CapabilityProviderImpl extends NamedPeriodImpl implements CapabilityProvider {
+	/**
+	 * The default value of the '{@link #getLifecycle() <em>Lifecycle</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getLifecycle()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final Lifecycle LIFECYCLE_EDEFAULT = Lifecycle.DRAFT;
+
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -80,6 +92,26 @@ public class CapabilityProviderImpl extends NamedPeriodImpl implements Capabilit
 	 * @generated
 	 */
 	@Override
+	public Lifecycle getLifecycle() {
+		return (Lifecycle)eDynamicGet(ProductmanagementPackage.CAPABILITY_PROVIDER__LIFECYCLE, ProductmanagementPackage.Literals.CAPABILITY_PROVIDER__LIFECYCLE, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setLifecycle(Lifecycle newLifecycle) {
+		eDynamicSet(ProductmanagementPackage.CAPABILITY_PROVIDER__LIFECYCLE, ProductmanagementPackage.Literals.CAPABILITY_PROVIDER__LIFECYCLE, newLifecycle);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ProductmanagementPackage.CAPABILITY_PROVIDER__PROVIDES:
@@ -102,6 +134,8 @@ public class CapabilityProviderImpl extends NamedPeriodImpl implements Capabilit
 				return getProvides();
 			case ProductmanagementPackage.CAPABILITY_PROVIDER__REQUIRES:
 				return getRequires();
+			case ProductmanagementPackage.CAPABILITY_PROVIDER__LIFECYCLE:
+				return getLifecycle();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -123,6 +157,9 @@ public class CapabilityProviderImpl extends NamedPeriodImpl implements Capabilit
 				getRequires().clear();
 				getRequires().addAll((Collection<? extends RequiredCapability>)newValue);
 				return;
+			case ProductmanagementPackage.CAPABILITY_PROVIDER__LIFECYCLE:
+				setLifecycle((Lifecycle)newValue);
+				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -141,6 +178,9 @@ public class CapabilityProviderImpl extends NamedPeriodImpl implements Capabilit
 			case ProductmanagementPackage.CAPABILITY_PROVIDER__REQUIRES:
 				getRequires().clear();
 				return;
+			case ProductmanagementPackage.CAPABILITY_PROVIDER__LIFECYCLE:
+				setLifecycle(LIFECYCLE_EDEFAULT);
+				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -157,6 +197,8 @@ public class CapabilityProviderImpl extends NamedPeriodImpl implements Capabilit
 				return !getProvides().isEmpty();
 			case ProductmanagementPackage.CAPABILITY_PROVIDER__REQUIRES:
 				return !getRequires().isEmpty();
+			case ProductmanagementPackage.CAPABILITY_PROVIDER__LIFECYCLE:
+				return getLifecycle() != LIFECYCLE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}

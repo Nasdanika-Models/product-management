@@ -39,6 +39,7 @@ import org.nasdanika.models.productmanagement.DependencyKind;
 import org.nasdanika.models.productmanagement.Evidence;
 import org.nasdanika.models.productmanagement.EvidenceDomain;
 import org.nasdanika.models.productmanagement.Goal;
+import org.nasdanika.models.productmanagement.Lifecycle;
 import org.nasdanika.models.productmanagement.ModelElement;
 import org.nasdanika.models.productmanagement.NamedElement;
 import org.nasdanika.models.productmanagement.NamedPeriod;
@@ -369,6 +370,13 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	 * @generated
 	 */
 	private EClass actorDomainEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EEnum lifecycleEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -960,6 +968,16 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	 * @generated
 	 */
 	@Override
+	public EAttribute getCapability_Lifecycle() {
+		return (EAttribute)capabilityEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getCapabilityReference() {
 		return capabilityReferenceEClass;
 	}
@@ -1092,6 +1110,16 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	@Override
 	public EReference getCapabilityProvider_Requires() {
 		return (EReference)capabilityProviderEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getCapabilityProvider_Lifecycle() {
+		return (EAttribute)capabilityProviderEClass.getEStructuralFeatures().get(2);
 	}
 
 	/**
@@ -1340,6 +1368,16 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	 * @generated
 	 */
 	@Override
+	public EEnum getLifecycle() {
+		return lifecycleEEnum;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EEnum getDependencyKind() {
 		return dependencyKindEEnum;
 	}
@@ -1465,6 +1503,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		capabilityEClass = createEClass(CAPABILITY);
 		createEReference(capabilityEClass, CAPABILITY__ADDRESSES);
 		createEReference(capabilityEClass, CAPABILITY__SUB_CAPABILITIES);
+		createEAttribute(capabilityEClass, CAPABILITY__LIFECYCLE);
 
 		capabilityReferenceEClass = createEClass(CAPABILITY_REFERENCE);
 		createEReference(capabilityReferenceEClass, CAPABILITY_REFERENCE__TARGET);
@@ -1485,6 +1524,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		capabilityProviderEClass = createEClass(CAPABILITY_PROVIDER);
 		createEReference(capabilityProviderEClass, CAPABILITY_PROVIDER__PROVIDES);
 		createEReference(capabilityProviderEClass, CAPABILITY_PROVIDER__REQUIRES);
+		createEAttribute(capabilityProviderEClass, CAPABILITY_PROVIDER__LIFECYCLE);
 
 		capabilityProviderDomainEClass = createEClass(CAPABILITY_PROVIDER_DOMAIN);
 		createEReference(capabilityProviderDomainEClass, CAPABILITY_PROVIDER_DOMAIN__CAPABILITY_PROVIDERS);
@@ -1525,6 +1565,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		createEReference(actorDomainEClass, ACTOR_DOMAIN__ACTORS);
 
 		// Create enums
+		lifecycleEEnum = createEEnum(LIFECYCLE);
 		dependencyKindEEnum = createEEnum(DEPENDENCY_KIND);
 
 		// Create data types
@@ -1697,6 +1738,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		initEReference(getCapability_Addresses(), this.getAddressedConcerns(), null, "addresses", null, 0, -1, Capability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCapability_SubCapabilities(), this.getAbstractCapability(), null, "subCapabilities", null, 0, -1, Capability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getCapability_SubCapabilities().getEKeys().add(this.getStringIdentity_Id());
+		initEAttribute(getCapability_Lifecycle(), this.getLifecycle(), "lifecycle", null, 0, 1, Capability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(capabilityReferenceEClass, CapabilityReference.class, "CapabilityReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCapabilityReference_Target(), this.getCapability(), null, "target", null, 0, 1, CapabilityReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1717,6 +1759,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		initEClass(capabilityProviderEClass, CapabilityProvider.class, "CapabilityProvider", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCapabilityProvider_Provides(), this.getProvidedCapability(), null, "provides", null, 0, -1, CapabilityProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCapabilityProvider_Requires(), this.getRequiredCapability(), null, "requires", null, 0, -1, CapabilityProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCapabilityProvider_Lifecycle(), this.getLifecycle(), "lifecycle", null, 0, 1, CapabilityProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(capabilityProviderDomainEClass, CapabilityProviderDomain.class, "CapabilityProviderDomain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCapabilityProviderDomain_CapabilityProviders(), this.getAbstractCapabilityProvider(), null, "capabilityProviders", null, 0, -1, CapabilityProviderDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1758,6 +1801,16 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		initEReference(getActorDomain_Actors(), this.getAbstractActor(), null, "actors", null, 0, -1, ActorDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		// Initialize enums and add enum literals
+		initEEnum(lifecycleEEnum, Lifecycle.class, "Lifecycle");
+		addEEnumLiteral(lifecycleEEnum, Lifecycle.DRAFT);
+		addEEnumLiteral(lifecycleEEnum, Lifecycle.PROPOSED);
+		addEEnumLiteral(lifecycleEEnum, Lifecycle.BACKLOG);
+		addEEnumLiteral(lifecycleEEnum, Lifecycle.PLANNED);
+		addEEnumLiteral(lifecycleEEnum, Lifecycle.IN_PROGRESS);
+		addEEnumLiteral(lifecycleEEnum, Lifecycle.AVAILABLE);
+		addEEnumLiteral(lifecycleEEnum, Lifecycle.DEPRECATED);
+		addEEnumLiteral(lifecycleEEnum, Lifecycle.RETIRED);
+
 		initEEnum(dependencyKindEEnum, DependencyKind.class, "DependencyKind");
 		addEEnumLiteral(dependencyKindEEnum, DependencyKind.PREREQUISITE);
 		addEEnumLiteral(dependencyKindEEnum, DependencyKind.ENHANCES);

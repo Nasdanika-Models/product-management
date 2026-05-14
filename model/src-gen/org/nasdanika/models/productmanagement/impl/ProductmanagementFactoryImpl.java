@@ -105,6 +105,8 @@ public class ProductmanagementFactoryImpl extends EFactoryImpl implements Produc
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
+			case ProductmanagementPackage.LIFECYCLE:
+				return createLifecycleFromString(eDataType, initialValue);
 			case ProductmanagementPackage.DEPENDENCY_KIND:
 				return createDependencyKindFromString(eDataType, initialValue);
 			case ProductmanagementPackage.INSTANT:
@@ -124,6 +126,8 @@ public class ProductmanagementFactoryImpl extends EFactoryImpl implements Produc
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
+			case ProductmanagementPackage.LIFECYCLE:
+				return convertLifecycleToString(eDataType, instanceValue);
 			case ProductmanagementPackage.DEPENDENCY_KIND:
 				return convertDependencyKindToString(eDataType, instanceValue);
 			case ProductmanagementPackage.INSTANT:
@@ -485,6 +489,26 @@ public class ProductmanagementFactoryImpl extends EFactoryImpl implements Produc
 	public ActorDomain createActorDomain() {
 		ActorDomainImpl actorDomain = new ActorDomainImpl();
 		return actorDomain;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public Lifecycle createLifecycleFromString(EDataType eDataType, String initialValue) {
+		Lifecycle result = Lifecycle.get(initialValue);
+		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
+		return result;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	public String convertLifecycleToString(EDataType eDataType, Object instanceValue) {
+		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

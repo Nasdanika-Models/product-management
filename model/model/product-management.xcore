@@ -164,6 +164,17 @@ class ViolatedNeeds extends ModelElement {
 
 // --- Capabilities ---
 
+enum Lifecycle {
+    DRAFT       as "Draft"    = 0
+    PROPOSED    as "Proposed"    = 100
+    BACKLOG     as "Backlog"     = 200
+    PLANNED     as "Planned"     = 300
+    IN_PROGRESS as "In Progress" = 400
+    AVAILABLE   as "Available"   = 500
+    DEPRECATED  as "Deprecated"  = 600
+    RETIRED     as "Retired"     = 700
+}
+
 interface AbstractCapability extends StringIdentity {
     
 }
@@ -172,6 +183,8 @@ class Capability extends NamedPeriod, AbstractCapability {
     contains AddressedConcerns[] addresses
     
     contains AbstractCapability[] subCapabilities keys ^id  // composition
+    
+    Lifecycle lifecycle
         
 }
 
@@ -212,6 +225,8 @@ class CapabilityProvider extends NamedPeriod, AbstractCapabilityProvider {
     contains ProvidedCapability[] provides
     
     contains RequiredCapability[] requires    
+        
+    Lifecycle lifecycle    
     
 }
 
