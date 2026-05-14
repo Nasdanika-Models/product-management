@@ -956,79 +956,6 @@ public interface ProductmanagementPackage extends EPackage {
 	int CONCERN_OPERATION_COUNT = NAMED_PERIOD_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.AddressingCapabilitiesImpl <em>Addressing Capabilities</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.models.productmanagement.impl.AddressingCapabilitiesImpl
-	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getAddressingCapabilities()
-	 * @generated
-	 */
-	int ADDRESSING_CAPABILITIES = 13;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ADDRESSING_CAPABILITIES__ID = MODEL_ELEMENT__ID;
-
-	/**
-	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ADDRESSING_CAPABILITIES__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ADDRESSING_CAPABILITIES__URIS = MODEL_ELEMENT__URIS;
-
-	/**
-	 * The feature id for the '<em><b>Name</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ADDRESSING_CAPABILITIES__NAME = MODEL_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The feature id for the '<em><b>Capabilities</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ADDRESSING_CAPABILITIES__CAPABILITIES = MODEL_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of structural features of the '<em>Addressing Capabilities</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ADDRESSING_CAPABILITIES_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 2;
-
-	/**
-	 * The number of operations of the '<em>Addressing Capabilities</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ADDRESSING_CAPABILITIES_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.ConcernReferenceImpl <em>Concern Reference</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1036,7 +963,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getConcernReference()
 	 * @generated
 	 */
-	int CONCERN_REFERENCE = 14;
+	int CONCERN_REFERENCE = 13;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1082,7 +1009,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getConcernDomain()
 	 * @generated
 	 */
-	int CONCERN_DOMAIN = 15;
+	int CONCERN_DOMAIN = 14;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1128,7 +1055,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getGoal()
 	 * @generated
 	 */
-	int GOAL = 16;
+	int GOAL = 15;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1246,7 +1173,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getNeed()
 	 * @generated
 	 */
-	int NEED = 17;
+	int NEED = 16;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1364,7 +1291,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getSupportedGoals()
 	 * @generated
 	 */
-	int SUPPORTED_GOALS = 18;
+	int SUPPORTED_GOALS = 17;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1428,7 +1355,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getPainPoint()
 	 * @generated
 	 */
-	int PAIN_POINT = 19;
+	int PAIN_POINT = 18;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1546,7 +1473,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getBlockedGoals()
 	 * @generated
 	 */
-	int BLOCKED_GOALS = 20;
+	int BLOCKED_GOALS = 19;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1610,7 +1537,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getViolatedNeeds()
 	 * @generated
 	 */
-	int VIOLATED_NEEDS = 21;
+	int VIOLATED_NEEDS = 20;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1674,7 +1601,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getAbstractCapability()
 	 * @generated
 	 */
-	int ABSTRACT_CAPABILITY = 22;
+	int ABSTRACT_CAPABILITY = 21;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1711,7 +1638,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapability()
 	 * @generated
 	 */
-	int CAPABILITY = 23;
+	int CAPABILITY = 22;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1838,7 +1765,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityReference()
 	 * @generated
 	 */
-	int CAPABILITY_REFERENCE = 24;
+	int CAPABILITY_REFERENCE = 23;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1884,7 +1811,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityDomain()
 	 * @generated
 	 */
-	int CAPABILITY_DOMAIN = 25;
+	int CAPABILITY_DOMAIN = 24;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1957,7 +1884,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getAddressedConcerns()
 	 * @generated
 	 */
-	int ADDRESSED_CONCERNS = 26;
+	int ADDRESSED_CONCERNS = 25;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2021,7 +1948,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityDependency()
 	 * @generated
 	 */
-	int CAPABILITY_DEPENDENCY = 27;
+	int CAPABILITY_DEPENDENCY = 26;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2103,7 +2030,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getAbstractCapabilityProvider()
 	 * @generated
 	 */
-	int ABSTRACT_CAPABILITY_PROVIDER = 28;
+	int ABSTRACT_CAPABILITY_PROVIDER = 27;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2140,7 +2067,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityProvider()
 	 * @generated
 	 */
-	int CAPABILITY_PROVIDER = 29;
+	int CAPABILITY_PROVIDER = 28;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2258,7 +2185,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityProviderDomain()
 	 * @generated
 	 */
-	int CAPABILITY_PROVIDER_DOMAIN = 30;
+	int CAPABILITY_PROVIDER_DOMAIN = 29;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2331,7 +2258,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityProviderReference()
 	 * @generated
 	 */
-	int CAPABILITY_PROVIDER_REFERENCE = 31;
+	int CAPABILITY_PROVIDER_REFERENCE = 30;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2377,7 +2304,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getProvidedCapability()
 	 * @generated
 	 */
-	int PROVIDED_CAPABILITY = 32;
+	int PROVIDED_CAPABILITY = 31;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2486,7 +2413,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getAbstractEvidence()
 	 * @generated
 	 */
-	int ABSTRACT_EVIDENCE = 33;
+	int ABSTRACT_EVIDENCE = 32;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2523,7 +2450,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getEvidence()
 	 * @generated
 	 */
-	int EVIDENCE = 34;
+	int EVIDENCE = 33;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2614,7 +2541,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getEvidenceDomain()
 	 * @generated
 	 */
-	int EVIDENCE_DOMAIN = 35;
+	int EVIDENCE_DOMAIN = 34;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2687,7 +2614,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getRequiredCapability()
 	 * @generated
 	 */
-	int REQUIRED_CAPABILITY = 36;
+	int REQUIRED_CAPABILITY = 35;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2787,7 +2714,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getVersion()
 	 * @generated
 	 */
-	int VERSION = 37;
+	int VERSION = 36;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2878,7 +2805,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getUndergoer()
 	 * @generated
 	 */
-	int UNDERGOER = 38;
+	int UNDERGOER = 37;
 
 	/**
 	 * The feature id for the '<em><b>Roles</b></em>' containment reference list.
@@ -2915,7 +2842,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getRole()
 	 * @generated
 	 */
-	int ROLE = 39;
+	int ROLE = 38;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3015,7 +2942,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getRoleAssignment()
 	 * @generated
 	 */
-	int ROLE_ASSIGNMENT = 40;
+	int ROLE_ASSIGNMENT = 39;
 
 	/**
 	 * The feature id for the '<em><b>Duration</b></em>' attribute.
@@ -3088,7 +3015,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getAbstractActor()
 	 * @generated
 	 */
-	int ABSTRACT_ACTOR = 41;
+	int ABSTRACT_ACTOR = 40;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3125,7 +3052,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getActor()
 	 * @generated
 	 */
-	int ACTOR = 42;
+	int ACTOR = 41;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3216,7 +3143,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getActorDomain()
 	 * @generated
 	 */
-	int ACTOR_DOMAIN = 43;
+	int ACTOR_DOMAIN = 42;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3289,7 +3216,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getLifecycle()
 	 * @generated
 	 */
-	int LIFECYCLE = 44;
+	int LIFECYCLE = 43;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.DependencyKind <em>Dependency Kind</em>}' enum.
@@ -3299,7 +3226,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getDependencyKind()
 	 * @generated
 	 */
-	int DEPENDENCY_KIND = 45;
+	int DEPENDENCY_KIND = 44;
 
 	/**
 	 * The meta object id for the '<em>Instant</em>' data type.
@@ -3309,7 +3236,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getInstant()
 	 * @generated
 	 */
-	int INSTANT = 46;
+	int INSTANT = 45;
 
 	/**
 	 * The meta object id for the '<em>Duration</em>' data type.
@@ -3319,7 +3246,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getDuration()
 	 * @generated
 	 */
-	int DURATION = 47;
+	int DURATION = 46;
 
 
 	/**
@@ -3616,16 +3543,6 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getConcern_AddressedBy();
-
-	/**
-	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.AddressingCapabilities <em>Addressing Capabilities</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Addressing Capabilities</em>'.
-	 * @see org.nasdanika.models.productmanagement.AddressingCapabilities
-	 * @generated
-	 */
-	EClass getAddressingCapabilities();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.ConcernReference <em>Concern Reference</em>}'.
@@ -4604,16 +4521,6 @@ public interface ProductmanagementPackage extends EPackage {
 		 * @generated
 		 */
 		EReference CONCERN__ADDRESSED_BY = eINSTANCE.getConcern_AddressedBy();
-
-		/**
-		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.AddressingCapabilitiesImpl <em>Addressing Capabilities</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.models.productmanagement.impl.AddressingCapabilitiesImpl
-		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getAddressingCapabilities()
-		 * @generated
-		 */
-		EClass ADDRESSING_CAPABILITIES = eINSTANCE.getAddressingCapabilities();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.ConcernReferenceImpl <em>Concern Reference</em>}' class.

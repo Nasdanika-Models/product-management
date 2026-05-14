@@ -121,14 +121,8 @@ class Concern extends NamedPeriod, AbstractConcern {
      * where shared capabilities are extracted (e.g. accounting or a custom script/tool)
      * and unique are retained (e.g. the best clam chowder in town, report generation)
      */
-    contains AddressingCapabilities[] addressedBy
+    contains AbstractCapability[] addressedBy
             
-}
-
-
-class AddressingCapabilities extends ModelElement, CapabilityDomain {
-    
-    
 }
 
 class ConcernReference extends AbstractConcern {

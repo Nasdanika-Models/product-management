@@ -85,15 +85,6 @@ public interface ProductmanagementFactory extends EFactory {
 	Concern createConcern();
 
 	/**
-	 * Returns a new object of class '<em>Addressing Capabilities</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Addressing Capabilities</em>'.
-	 * @generated
-	 */
-	AddressingCapabilities createAddressingCapabilities();
-
-	/**
 	 * Returns a new object of class '<em>Concern Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

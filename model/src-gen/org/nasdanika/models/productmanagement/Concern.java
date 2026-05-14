@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
 public interface Concern extends NamedPeriod, AbstractConcern {
 	/**
 	 * Returns the value of the '<em><b>Addressed By</b></em>' containment reference list.
-	 * The list contents are of type {@link org.nasdanika.models.productmanagement.AddressingCapabilities}.
+	 * The list contents are of type {@link org.nasdanika.models.productmanagement.AbstractCapability}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -41,6 +41,6 @@ public interface Concern extends NamedPeriod, AbstractConcern {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<AddressingCapabilities> getAddressedBy();
+	EList<AbstractCapability> getAddressedBy();
 
 } // Concern

@@ -13,7 +13,7 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.nasdanika.models.productmanagement.AddressingCapabilities;
+import org.nasdanika.models.productmanagement.AbstractCapability;
 import org.nasdanika.models.productmanagement.Concern;
 import org.nasdanika.models.productmanagement.ProductmanagementPackage;
 
@@ -57,8 +57,8 @@ public class ConcernImpl extends NamedPeriodImpl implements Concern {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public EList<AddressingCapabilities> getAddressedBy() {
-		return (EList<AddressingCapabilities>)eDynamicGet(ProductmanagementPackage.CONCERN__ADDRESSED_BY, ProductmanagementPackage.Literals.CONCERN__ADDRESSED_BY, true, true);
+	public EList<AbstractCapability> getAddressedBy() {
+		return (EList<AbstractCapability>)eDynamicGet(ProductmanagementPackage.CONCERN__ADDRESSED_BY, ProductmanagementPackage.Literals.CONCERN__ADDRESSED_BY, true, true);
 	}
 
 	/**
@@ -100,7 +100,7 @@ public class ConcernImpl extends NamedPeriodImpl implements Concern {
 		switch (featureID) {
 			case ProductmanagementPackage.CONCERN__ADDRESSED_BY:
 				getAddressedBy().clear();
-				getAddressedBy().addAll((Collection<? extends AddressingCapabilities>)newValue);
+				getAddressedBy().addAll((Collection<? extends AbstractCapability>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

@@ -120,10 +120,6 @@ public class ProductmanagementAdapterFactory extends AdapterFactoryImpl {
 				return createConcernAdapter();
 			}
 			@Override
-			public Adapter caseAddressingCapabilities(AddressingCapabilities object) {
-				return createAddressingCapabilitiesAdapter();
-			}
-			@Override
 			public Adapter caseConcernReference(ConcernReference object) {
 				return createConcernReferenceAdapter();
 			}
@@ -442,20 +438,6 @@ public class ProductmanagementAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createConcernAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.productmanagement.AddressingCapabilities <em>Addressing Capabilities</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.productmanagement.AddressingCapabilities
-	 * @generated
-	 */
-	public Adapter createAddressingCapabilitiesAdapter() {
 		return null;
 	}
 
