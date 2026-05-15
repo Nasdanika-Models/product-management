@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20">
+  <title>Capability</title>
+  <polygon points="8,1.5 13.629,4.75 13.629,11.25 8,14.5 2.371,11.25 2.371,4.75"
+           fill="#4A90C2"
+           stroke="#2C5F87"
+           stroke-width="0.6"
+           stroke-linejoin="round"/>
+  <polygon points="8,4.5 11.031,6.25 11.031,9.75 8,11.5 4.969,9.75 4.969,6.25"
+           fill="none"
+           stroke="#FFFFFF"
+           stroke-width="0.5"
+           stroke-linejoin="round"
+           opacity="0.7"/>
+</svg>

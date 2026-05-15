@@ -101,7 +101,6 @@ class PersonaDomain extends NamedElement, AbstractPersona {
         
 }
 
-
 class PersonaReference extends AbstractPersona {
     refers Persona target    
 }

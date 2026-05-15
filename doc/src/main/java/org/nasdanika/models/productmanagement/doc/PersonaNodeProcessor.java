@@ -17,13 +17,13 @@ import org.nasdanika.models.app.Label;
 import org.nasdanika.models.app.gen.DynamicTableBuilder;
 import org.nasdanika.models.app.graph.WidgetFactory;
 import org.nasdanika.models.app.graph.emf.OutgoingReferenceBuilder;
-import org.nasdanika.models.productmanagement.ProductModel;
+import org.nasdanika.models.productmanagement.Persona;
 import org.nasdanika.models.productmanagement.ProductmanagementPackage;
 import org.nasdanika.ncore.NamedElement;
 
-public class ProductModelNodeProcessor extends NamedPeriodNodeProcessor<ProductModel> {
+public class PersonaNodeProcessor extends NamedPeriodNodeProcessor<Persona> {
 
-	public ProductModelNodeProcessor(
+	public PersonaNodeProcessor(
 		NodeProcessorConfig<WidgetFactory, WidgetFactory, Object> config, 
 		Context context,
 		java.util.function.BiFunction<EObject, ProgressMonitor, Action> prototypeProvider,
@@ -34,47 +34,47 @@ public class ProductModelNodeProcessor extends NamedPeriodNodeProcessor<ProductM
 	
 	@OutgoingReferenceBuilder(
 			nsURI = ProductmanagementPackage.eNS_URI,
-			classID = ProductmanagementPackage.PERSONA_DOMAIN,
-			referenceID = ProductmanagementPackage.PERSONA_DOMAIN__PERSONAS)
-	public void buildPersonasOutgoingReference(
+			classID = ProductmanagementPackage.PERSONA,
+			referenceID = ProductmanagementPackage.CONCERN_DOMAIN__CONCERNS)
+	public void buildConcernsOutgoingReference(
 			EReference eReference,
 			List<Entry<EReferenceConnection, WidgetFactory>> referenceOutgoingEndpoints, 
 			Collection<Label> labels,
 			Map<EReferenceConnection, Collection<Label>> outgoingLabels, 
 			ProgressMonitor progressMonitor) {
 
-		List<Entry<EReferenceConnection, Collection<Label>>> sorted = outgoingLabels.entrySet().stream()
-				.sorted((a,b) -> ((NamedElement) a.getKey().getTarget().get()).getName().compareTo(((NamedElement) b.getKey().getTarget().get()).getName()))
-				.toList();		
-
-		// A page with a dynamic agents table and links to agent pages.
-		for (Label label: labels) {
-			Action personasAction = getRoleActionByLocation(
-					((Action) label).getChildren(), 
-					"personas.html", 
-					"Personas", 
-					null /*	PERSONA_ICON */);
-			
-			for (Entry<EReferenceConnection, Collection<Label>> re: sorted) {
-				personasAction.getChildren().addAll(re.getValue());
-			}
-			if (label instanceof Action) {										
-				DynamicTableBuilder<Entry<EReferenceConnection, WidgetFactory>> personasTableBuilder = new DynamicTableBuilder<>("nsd-table");
-				buildNamedElementColumns(personasTableBuilder, progressMonitor);
-				
-				org.nasdanika.models.html.Tag personasTable = personasTableBuilder.build(
-						referenceOutgoingEndpoints.stream().sorted((a,b) -> {
-							NamedElement ane = (NamedElement) a.getKey().getTarget().get();
-							NamedElement bne = (NamedElement) b.getKey().getTarget().get();
-							return ane.getName().compareTo(bne.getName());
-						}).toList(),  
-						"product-model-personas", 
-						"personas-table", 
-						progressMonitor);
-				
-				personasAction.getContent().add(personasTable);
-			}
-		}
+//		List<Entry<EReferenceConnection, Collection<Label>>> sorted = outgoingLabels.entrySet().stream()
+//				.sorted((a,b) -> ((NamedElement) a.getKey().getTarget().get()).getName().compareTo(((NamedElement) b.getKey().getTarget().get()).getName()))
+//				.toList();		
+//
+//		// A page with a dynamic agents table and links to agent pages.
+//		for (Label label: labels) {
+//			Action personasAction = getRoleActionByLocation(
+//					((Action) label).getChildren(), 
+//					"personas.html", 
+//					"Personas", 
+//					null /*	PERSONA_ICON */);
+//			
+//			for (Entry<EReferenceConnection, Collection<Label>> re: sorted) {
+//				personasAction.getChildren().addAll(re.getValue());
+//			}
+//			if (label instanceof Action) {										
+//				DynamicTableBuilder<Entry<EReferenceConnection, WidgetFactory>> personasTableBuilder = new DynamicTableBuilder<>("nsd-table");
+//				buildNamedElementColumns(personasTableBuilder, progressMonitor);
+//				
+//				org.nasdanika.models.html.Tag personasTable = personasTableBuilder.build(
+//						referenceOutgoingEndpoints.stream().sorted((a,b) -> {
+//							NamedElement ane = (NamedElement) a.getKey().getTarget().get();
+//							NamedElement bne = (NamedElement) b.getKey().getTarget().get();
+//							return ane.getName().compareTo(bne.getName());
+//						}).toList(),  
+//						"product-model-personas", 
+//						"personas-table", 
+//						progressMonitor);
+//				
+//				personasAction.getContent().add(personasTable);
+//			}
+//		}
 	}
 	
 	

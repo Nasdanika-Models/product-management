@@ -47,6 +47,7 @@ jobs:
         run: |
           ./nsd model ../model/root-action.yml labels site -r=-1 -F ../model/page-template.yml ../docs
           cp product-management.drawio ../docs
+          cp -R ../images ../docs
           zip -r ../docs/doc-stubs.zip ../model/doc
           ls ../docs
       - name: Upload artifact
