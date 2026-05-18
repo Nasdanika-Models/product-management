@@ -5,6 +5,8 @@ A pragmatic, just-enough Xcore metamodel for product management as code. Element
 ../product-management.drawio
 ```
 
+[TOC levels=6]
+
 ## What this is, in its own terms
 
 This metamodel is itself a product. The page you are reading is the first slice of its own product management model - applied recursively.
