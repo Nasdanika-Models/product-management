@@ -278,9 +278,13 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = caseNamedPeriod(capability);
 				if (result == null) result = caseAbstractCapability(capability);
 				if (result == null) result = caseEvidenceDomain(capability);
+				if (result == null) result = casePersonaDomain(capability);
+				if (result == null) result = caseConcernDomain(capability);
 				if (result == null) result = caseNamedElement(capability);
 				if (result == null) result = casePeriod(capability);
 				if (result == null) result = caseAbstractEvidence(capability);
+				if (result == null) result = caseAbstractPersona(capability);
+				if (result == null) result = caseAbstractConcern(capability);
 				if (result == null) result = caseModelElement(capability);
 				if (result == null) result = caseStringIdentity(capability);
 				if (result == null) result = defaultCase(theEObject);

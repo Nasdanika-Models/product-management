@@ -1646,6 +1646,8 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		capabilityEClass.getESuperTypes().add(this.getNamedPeriod());
 		capabilityEClass.getESuperTypes().add(this.getAbstractCapability());
 		capabilityEClass.getESuperTypes().add(this.getEvidenceDomain());
+		capabilityEClass.getESuperTypes().add(this.getPersonaDomain());
+		capabilityEClass.getESuperTypes().add(this.getConcernDomain());
 		capabilityReferenceEClass.getESuperTypes().add(this.getAbstractCapability());
 		capabilityDomainEClass.getESuperTypes().add(this.getNamedElement());
 		capabilityDomainEClass.getESuperTypes().add(this.getAbstractCapability());
@@ -1705,7 +1707,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 
 		initEClass(personaEClass, Persona.class, "Persona", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(personaDomainEClass, PersonaDomain.class, "PersonaDomain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(personaDomainEClass, PersonaDomain.class, "PersonaDomain", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPersonaDomain_Personas(), this.getAbstractPersona(), null, "personas", null, 0, -1, PersonaDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getPersonaDomain_Personas().getEKeys().add(this.getStringIdentity_Id());
 
@@ -1720,7 +1722,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		initEClass(concernReferenceEClass, ConcernReference.class, "ConcernReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConcernReference_Target(), this.getConcern(), null, "target", null, 0, 1, ConcernReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(concernDomainEClass, ConcernDomain.class, "ConcernDomain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(concernDomainEClass, ConcernDomain.class, "ConcernDomain", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConcernDomain_Concerns(), this.getAbstractConcern(), null, "concerns", null, 0, -1, ConcernDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getConcernDomain_Concerns().getEKeys().add(this.getStringIdentity_Id());
 
@@ -1756,7 +1758,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		initEClass(capabilityReferenceEClass, CapabilityReference.class, "CapabilityReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCapabilityReference_Target(), this.getCapability(), null, "target", null, 0, 1, CapabilityReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(capabilityDomainEClass, CapabilityDomain.class, "CapabilityDomain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(capabilityDomainEClass, CapabilityDomain.class, "CapabilityDomain", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCapabilityDomain_Capabilities(), this.getAbstractCapability(), null, "capabilities", null, 0, -1, CapabilityDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(addressedConcernsEClass, AddressedConcerns.class, "AddressedConcerns", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1774,7 +1776,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		initEReference(getCapabilityProvider_Requires(), this.getRequiredCapability(), null, "requires", null, 0, -1, CapabilityProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCapabilityProvider_Lifecycle(), this.getLifecycle(), "lifecycle", null, 0, 1, CapabilityProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(capabilityProviderDomainEClass, CapabilityProviderDomain.class, "CapabilityProviderDomain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(capabilityProviderDomainEClass, CapabilityProviderDomain.class, "CapabilityProviderDomain", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCapabilityProviderDomain_CapabilityProviders(), this.getAbstractCapabilityProvider(), null, "capabilityProviders", null, 0, -1, CapabilityProviderDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(capabilityProviderReferenceEClass, CapabilityProviderReference.class, "CapabilityProviderReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1787,7 +1789,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 
 		initEClass(evidenceEClass, Evidence.class, "Evidence", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(evidenceDomainEClass, EvidenceDomain.class, "EvidenceDomain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(evidenceDomainEClass, EvidenceDomain.class, "EvidenceDomain", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEvidenceDomain_Evidence(), this.getEvidence(), null, "evidence", null, 0, -1, EvidenceDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getEvidenceDomain_Evidence().getEKeys().add(this.getStringIdentity_Id());
 
@@ -1874,6 +1876,12 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		   source,
 		   new String[] {
 			   "documentation", "*\nAddressed by allows to explain how some external capabilities address\nconcerns.\nIt also allows to model capabilities within concerns to have a\nself-contained persona.\nIt can be used in acquisition/unification scenarios\nwhere shared capabilities are extracted (e.g. accounting or a custom script/tool)\nand unique are retained (e.g. the best clam chowder in town, report generation)"
+		   });
+		addAnnotation
+		  (capabilityEClass,
+		   source,
+		   new String[] {
+			   "documentation", "*\nA capability extends PersonaDomain, ConcernDomain, and EvidenceDomain\nto support self-contained capability definitions. A capability may:\n - address concerns owned by external personas or other capabilities\n   (via AddressedConcerns)\n - introduce capability-specific personas (via PersonaDomain)\n - introduce concerns that exist by virtue of the capability itself,\n   not owned by any persona (via ConcernDomain)\n - carry the evidence supporting all of the above (via EvidenceDomain)\n - decompose into sub-capabilities (via subCapabilities)"
 		   });
 		addAnnotation
 		  (evidenceEClass,

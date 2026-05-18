@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20">
+  <title>Concern</title>
+  <!-- Main thought bubble -->
+  <path d="M 4 2.5
+           Q 2 2.5, 2 4.5
+           L 2 9
+           Q 2 11, 4 11
+           L 5.5 11
+           L 6.5 13
+           L 7.5 11
+           L 12 11
+           Q 14 11, 14 9
+           L 14 4.5
+           Q 14 2.5, 12 2.5
+           Z"
+        fill="#B8A8D9"
+        stroke="#6B5B95"
+        stroke-width="0.6"
+        stroke-linejoin="round"/>
+  <!-- Three dots inside, hinting at "something being considered" -->
+  <circle cx="5.5" cy="6.75" r="0.8" fill="#6B5B95"/>
+  <circle cx="8" cy="6.75" r="0.8" fill="#6B5B95"/>
+  <circle cx="10.5" cy="6.75" r="0.8" fill="#6B5B95"/>
+</svg>

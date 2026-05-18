@@ -58,15 +58,6 @@ public interface ProductmanagementFactory extends EFactory {
 	Persona createPersona();
 
 	/**
-	 * Returns a new object of class '<em>Persona Domain</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Persona Domain</em>'.
-	 * @generated
-	 */
-	PersonaDomain createPersonaDomain();
-
-	/**
 	 * Returns a new object of class '<em>Persona Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -92,15 +83,6 @@ public interface ProductmanagementFactory extends EFactory {
 	 * @generated
 	 */
 	ConcernReference createConcernReference();
-
-	/**
-	 * Returns a new object of class '<em>Concern Domain</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Concern Domain</em>'.
-	 * @generated
-	 */
-	ConcernDomain createConcernDomain();
 
 	/**
 	 * Returns a new object of class '<em>Goal</em>'.
@@ -175,15 +157,6 @@ public interface ProductmanagementFactory extends EFactory {
 	CapabilityReference createCapabilityReference();
 
 	/**
-	 * Returns a new object of class '<em>Capability Domain</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Capability Domain</em>'.
-	 * @generated
-	 */
-	CapabilityDomain createCapabilityDomain();
-
-	/**
 	 * Returns a new object of class '<em>Addressed Concerns</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -211,15 +184,6 @@ public interface ProductmanagementFactory extends EFactory {
 	CapabilityProvider createCapabilityProvider();
 
 	/**
-	 * Returns a new object of class '<em>Capability Provider Domain</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Capability Provider Domain</em>'.
-	 * @generated
-	 */
-	CapabilityProviderDomain createCapabilityProviderDomain();
-
-	/**
 	 * Returns a new object of class '<em>Capability Provider Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -245,15 +209,6 @@ public interface ProductmanagementFactory extends EFactory {
 	 * @generated
 	 */
 	Evidence createEvidence();
-
-	/**
-	 * Returns a new object of class '<em>Evidence Domain</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Evidence Domain</em>'.
-	 * @generated
-	 */
-	EvidenceDomain createEvidenceDomain();
 
 	/**
 	 * Returns a new object of class '<em>Required Capability</em>'.

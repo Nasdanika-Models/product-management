@@ -9,6 +9,19 @@ import org.eclipse.emf.common.util.EList;
  * A representation of the model object '<em><b>Capability</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * *
+ * A capability extends PersonaDomain, ConcernDomain, and EvidenceDomain
+ * to support self-contained capability definitions. A capability may:
+ *  - address concerns owned by external personas or other capabilities
+ *    (via AddressedConcerns)
+ *  - introduce capability-specific personas (via PersonaDomain)
+ *  - introduce concerns that exist by virtue of the capability itself,
+ *    not owned by any persona (via ConcernDomain)
+ *  - carry the evidence supporting all of the above (via EvidenceDomain)
+ *  - decompose into sub-capabilities (via subCapabilities)
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * </p>
@@ -22,7 +35,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface Capability extends NamedPeriod, AbstractCapability, EvidenceDomain {
+public interface Capability extends NamedPeriod, AbstractCapability, EvidenceDomain, PersonaDomain, ConcernDomain {
 	/**
 	 * Returns the value of the '<em><b>Addresses</b></em>' containment reference list.
 	 * The list contents are of type {@link org.nasdanika.models.productmanagement.AddressedConcerns}.

@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getConcernDomain()
- * @model
+ * @model interface="true" abstract="true"
  * @generated
  */
 public interface ConcernDomain extends AbstractConcern {

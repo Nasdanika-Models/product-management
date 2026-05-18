@@ -95,7 +95,7 @@ class Persona extends NamedPeriod, AbstractPersona, ConcernDomain {
     
 }
 
-class PersonaDomain extends NamedElement, AbstractPersona {
+interface PersonaDomain extends NamedElement, AbstractPersona {
     
     contains AbstractPersona[] personas keys ^id
         
@@ -130,7 +130,7 @@ class ConcernReference extends AbstractConcern {
     
 }
 
-class ConcernDomain extends AbstractConcern {
+interface ConcernDomain extends AbstractConcern {
     
     contains AbstractConcern[] concerns keys ^id
     
@@ -195,10 +195,26 @@ interface AbstractCapability extends StringIdentity {
     
 }
 
-class Capability extends NamedPeriod, AbstractCapability, EvidenceDomain {
+/**
+ * A capability extends PersonaDomain, ConcernDomain, and EvidenceDomain
+ * to support self-contained capability definitions. A capability may:
+ *  - address concerns owned by external personas or other capabilities
+ *    (via AddressedConcerns)
+ *  - introduce capability-specific personas (via PersonaDomain)
+ *  - introduce concerns that exist by virtue of the capability itself,
+ *    not owned by any persona (via ConcernDomain)
+ *  - carry the evidence supporting all of the above (via EvidenceDomain)
+ *  - decompose into sub-capabilities (via subCapabilities)
+ */
+class Capability extends 
+    NamedPeriod, 
+    AbstractCapability, 
+    EvidenceDomain, 
+    PersonaDomain, 
+    ConcernDomain {
     
     contains AddressedConcerns[] addresses
-    
+            
     contains AbstractCapability[] subCapabilities keys ^id  // composition
     
     Lifecycle lifecycle
@@ -209,7 +225,7 @@ class CapabilityReference extends AbstractCapability {
     refers Capability target    
 }
 
-class CapabilityDomain extends NamedElement, AbstractCapability {
+interface CapabilityDomain extends NamedElement, AbstractCapability {
     contains AbstractCapability[] capabilities
 }
 
@@ -247,8 +263,10 @@ class CapabilityProvider extends NamedPeriod, AbstractCapabilityProvider {
     
 }
 
-class CapabilityProviderDomain extends NamedElement, AbstractCapabilityProvider {
+interface CapabilityProviderDomain extends NamedElement, AbstractCapabilityProvider {
+    
     contains AbstractCapabilityProvider[] capabilityProviders
+    
 }
 
 class CapabilityProviderReference extends AbstractCapabilityProvider {
@@ -274,7 +292,7 @@ class Evidence extends NamedPeriod, AbstractEvidence {
     
 }
 
-class EvidenceDomain extends NamedElement, AbstractEvidence {
+interface EvidenceDomain extends NamedElement, AbstractEvidence {
     
     contains Evidence[] evidence keys ^id
     
@@ -323,7 +341,9 @@ class Actor extends NamedPeriod, AbstractActor {
 }
 
 class ActorDomain extends NamedElement, AbstractActor {
+    
     contains AbstractActor[] actors
+    
 }
 
 // Party with contact methods...

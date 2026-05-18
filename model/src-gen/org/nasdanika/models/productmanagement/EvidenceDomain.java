@@ -17,7 +17,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getEvidenceDomain()
- * @model
+ * @model interface="true" abstract="true"
  * @generated
  */
 public interface EvidenceDomain extends NamedElement, AbstractEvidence {
