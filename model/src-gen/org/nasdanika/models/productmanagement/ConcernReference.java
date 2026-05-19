@@ -27,7 +27,7 @@ public interface ConcernReference extends AbstractConcern {
 	 * @return the value of the '<em>Target</em>' reference.
 	 * @see #setTarget(Concern)
 	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getConcernReference_Target()
-	 * @model
+	 * @model annotation="urn:org.nasdanika logicalContainment='true'"
 	 * @generated
 	 */
 	Concern getTarget();

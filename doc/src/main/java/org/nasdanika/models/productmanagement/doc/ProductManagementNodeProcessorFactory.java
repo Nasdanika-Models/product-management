@@ -17,11 +17,15 @@ import org.nasdanika.models.app.Action;
 import org.nasdanika.models.app.AppFactory;
 import org.nasdanika.models.app.Label;
 import org.nasdanika.models.app.graph.WidgetFactory;
+import org.nasdanika.models.productmanagement.Capability;
+import org.nasdanika.models.productmanagement.CapabilityReference;
 import org.nasdanika.models.productmanagement.Concern;
+import org.nasdanika.models.productmanagement.ConcernReference;
 import org.nasdanika.models.productmanagement.Goal;
 import org.nasdanika.models.productmanagement.Need;
 import org.nasdanika.models.productmanagement.PainPoint;
 import org.nasdanika.models.productmanagement.Persona;
+import org.nasdanika.models.productmanagement.PersonaReference;
 import org.nasdanika.models.productmanagement.ProductModel;
 import org.nasdanika.ncore.util.NcoreUtil;
 
@@ -148,6 +152,59 @@ public class ProductManagementNodeProcessorFactory {
 				getPrototypeProvider(config), 
 				documentationFactories);
 	}
+		
+	@EObjectNodeProcessor(type = Capability.class)
+	public Object createCapabilityNodeProcessor(
+		NodeProcessorConfig<WidgetFactory, WidgetFactory, Object> config, 
+		boolean parallel, 
+		BiConsumer<Element,BiConsumer<ProcessorInfo<WidgetFactory, WidgetFactory, Object, Object>,ProgressMonitor>> infoProvider,
+		ProgressMonitor progressMonitor) {
+	
+	return new CapabilityNodeProcessor(
+			config, 
+			context, 
+			getPrototypeProvider(config), 
+			documentationFactories);
+	}
+			
+//	@EObjectNodeProcessor(type = PersonaReference.class)
+//	public Object createPersonaReferenceNodeProcessor(
+//		NodeProcessorConfig<WidgetFactory, WidgetFactory, Object> config, 
+//		boolean parallel, 
+//		BiConsumer<Element,BiConsumer<ProcessorInfo<WidgetFactory, WidgetFactory, Object, Object>,ProgressMonitor>> infoProvider,
+//		ProgressMonitor progressMonitor) {
+//	
+//	return new PersonaReferenceNodeProcessor(
+//			config, 
+//			context, 
+//			getPrototypeProvider(config));
+//	}
+//		
+//	@EObjectNodeProcessor(type = ConcernReference.class)
+//	public Object createConcernReferenceNodeProcessor(
+//		NodeProcessorConfig<WidgetFactory, WidgetFactory, Object> config, 
+//		boolean parallel, 
+//		BiConsumer<Element,BiConsumer<ProcessorInfo<WidgetFactory, WidgetFactory, Object, Object>,ProgressMonitor>> infoProvider,
+//		ProgressMonitor progressMonitor) {
+//	
+//	return new ConcernReferenceNodeProcessor(
+//			config, 
+//			context, 
+//			getPrototypeProvider(config));
+//	}
+//		
+//	@EObjectNodeProcessor(type = CapabilityReference.class)
+//	public Object createCapabilityReferemceNodeProcessor(
+//		NodeProcessorConfig<WidgetFactory, WidgetFactory, Object> config, 
+//		boolean parallel, 
+//		BiConsumer<Element,BiConsumer<ProcessorInfo<WidgetFactory, WidgetFactory, Object, Object>,ProgressMonitor>> infoProvider,
+//		ProgressMonitor progressMonitor) {
+//	
+//	return new CapabilityReferenceNodeProcessor(
+//			config, 
+//			context, 
+//			getPrototypeProvider(config));
+//	}
 	
 	
 //	AbstractActor.java
@@ -162,13 +219,9 @@ public class ProductManagementNodeProcessorFactory {
 //	BlockedGoals.java
 //	Capability.java
 //	CapabilityDependency.java
-//	CapabilityDomain.java
 //	CapabilityProvider.java
 //	CapabilityProviderDomain.java
 //	CapabilityProviderReference.java
-//	CapabilityReference.java
-//	ConcernDomain.java
-//	ConcernReference.java
 //	DependencyKind.java
 //	Evidence.java
 //	EvidenceDomain.java
@@ -179,8 +232,6 @@ public class ProductManagementNodeProcessorFactory {
 //	Need.java
 //	PainPoint.java
 //	Period.java
-//	PersonaDomain.java
-//	PersonaReference.java
 //	ProvidedCapability.java
 //	RequiredCapability.java
 //	Role.java

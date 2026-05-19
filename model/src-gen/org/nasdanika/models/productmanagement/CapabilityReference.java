@@ -27,7 +27,7 @@ public interface CapabilityReference extends AbstractCapability {
 	 * @return the value of the '<em>Target</em>' reference.
 	 * @see #setTarget(Capability)
 	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getCapabilityReference_Target()
-	 * @model
+	 * @model annotation="urn:org.nasdanika logicalContainment='true'"
 	 * @generated
 	 */
 	Capability getTarget();

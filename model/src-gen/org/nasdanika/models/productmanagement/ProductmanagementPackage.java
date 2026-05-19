@@ -6,6 +6,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 
@@ -518,13 +519,22 @@ public interface ProductmanagementPackage extends EPackage {
 	int PRODUCT_MODEL__PERSONAS = NAMED_PERIOD_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Resolved Personas</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_MODEL__RESOLVED_PERSONAS = NAMED_PERIOD_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Capabilities</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_MODEL__CAPABILITIES = NAMED_PERIOD_FEATURE_COUNT + 1;
+	int PRODUCT_MODEL__CAPABILITIES = NAMED_PERIOD_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Capability Providers</b></em>' containment reference list.
@@ -533,7 +543,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_MODEL__CAPABILITY_PROVIDERS = NAMED_PERIOD_FEATURE_COUNT + 2;
+	int PRODUCT_MODEL__CAPABILITY_PROVIDERS = NAMED_PERIOD_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Actors</b></em>' containment reference list.
@@ -542,7 +552,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_MODEL__ACTORS = NAMED_PERIOD_FEATURE_COUNT + 3;
+	int PRODUCT_MODEL__ACTORS = NAMED_PERIOD_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Product Model</em>' class.
@@ -551,7 +561,16 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_MODEL_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 4;
+	int PRODUCT_MODEL_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 5;
+
+	/**
+	 * The operation id for the '<em>Resolve Reference</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_MODEL___RESOLVE_REFERENCE__ABSTRACTPERSONA = NAMED_PERIOD_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Product Model</em>' class.
@@ -560,7 +579,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PRODUCT_MODEL_OPERATION_COUNT = NAMED_PERIOD_OPERATION_COUNT + 0;
+	int PRODUCT_MODEL_OPERATION_COUNT = NAMED_PERIOD_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.AbstractPersona <em>Abstract Persona</em>}' class.
@@ -755,13 +774,31 @@ public interface ProductmanagementPackage extends EPackage {
 	int PERSONA_DOMAIN__PERSONAS = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Resolved Personas</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA_DOMAIN__RESOLVED_PERSONAS = NAMED_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Persona Domain</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PERSONA_DOMAIN_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
+	int PERSONA_DOMAIN_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Resolve Reference</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA_DOMAIN___RESOLVE_REFERENCE__ABSTRACTPERSONA = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Persona Domain</em>' class.
@@ -770,7 +807,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PERSONA_DOMAIN_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 0;
+	int PERSONA_DOMAIN_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.PersonaReferenceImpl <em>Persona Reference</em>}' class.
@@ -1722,13 +1759,22 @@ public interface ProductmanagementPackage extends EPackage {
 	int CAPABILITY__PERSONAS = NAMED_PERIOD_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Resolved Personas</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY__RESOLVED_PERSONAS = NAMED_PERIOD_FEATURE_COUNT + 2;
+
+	/**
 	 * The feature id for the '<em><b>Concerns</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY__CONCERNS = NAMED_PERIOD_FEATURE_COUNT + 2;
+	int CAPABILITY__CONCERNS = NAMED_PERIOD_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Addresses</b></em>' containment reference list.
@@ -1737,7 +1783,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY__ADDRESSES = NAMED_PERIOD_FEATURE_COUNT + 3;
+	int CAPABILITY__ADDRESSES = NAMED_PERIOD_FEATURE_COUNT + 4;
 
 	/**
 	 * The feature id for the '<em><b>Sub Capabilities</b></em>' containment reference list.
@@ -1746,7 +1792,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY__SUB_CAPABILITIES = NAMED_PERIOD_FEATURE_COUNT + 4;
+	int CAPABILITY__SUB_CAPABILITIES = NAMED_PERIOD_FEATURE_COUNT + 5;
 
 	/**
 	 * The feature id for the '<em><b>Lifecycle</b></em>' attribute.
@@ -1755,7 +1801,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY__LIFECYCLE = NAMED_PERIOD_FEATURE_COUNT + 5;
+	int CAPABILITY__LIFECYCLE = NAMED_PERIOD_FEATURE_COUNT + 6;
 
 	/**
 	 * The number of structural features of the '<em>Capability</em>' class.
@@ -1764,7 +1810,16 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 6;
+	int CAPABILITY_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 7;
+
+	/**
+	 * The operation id for the '<em>Resolve Reference</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY___RESOLVE_REFERENCE__ABSTRACTPERSONA = NAMED_PERIOD_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Capability</em>' class.
@@ -1773,7 +1828,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_OPERATION_COUNT = NAMED_PERIOD_OPERATION_COUNT + 0;
+	int CAPABILITY_OPERATION_COUNT = NAMED_PERIOD_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.CapabilityReferenceImpl <em>Capability Reference</em>}' class.
@@ -3511,6 +3566,27 @@ public interface ProductmanagementPackage extends EPackage {
 	EReference getPersonaDomain_Personas();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.PersonaDomain#getResolvedPersonas <em>Resolved Personas</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Resolved Personas</em>'.
+	 * @see org.nasdanika.models.productmanagement.PersonaDomain#getResolvedPersonas()
+	 * @see #getPersonaDomain()
+	 * @generated
+	 */
+	EReference getPersonaDomain_ResolvedPersonas();
+
+	/**
+	 * Returns the meta object for the '{@link org.nasdanika.models.productmanagement.PersonaDomain#resolveReference(org.nasdanika.models.productmanagement.AbstractPersona) <em>Resolve Reference</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Resolve Reference</em>' operation.
+	 * @see org.nasdanika.models.productmanagement.PersonaDomain#resolveReference(org.nasdanika.models.productmanagement.AbstractPersona)
+	 * @generated
+	 */
+	EOperation getPersonaDomain__ResolveReference__AbstractPersona();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.PersonaReference <em>Persona Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4493,6 +4569,22 @@ public interface ProductmanagementPackage extends EPackage {
 		 * @generated
 		 */
 		EReference PERSONA_DOMAIN__PERSONAS = eINSTANCE.getPersonaDomain_Personas();
+
+		/**
+		 * The meta object literal for the '<em><b>Resolved Personas</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PERSONA_DOMAIN__RESOLVED_PERSONAS = eINSTANCE.getPersonaDomain_ResolvedPersonas();
+
+		/**
+		 * The meta object literal for the '<em><b>Resolve Reference</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation PERSONA_DOMAIN___RESOLVE_REFERENCE__ABSTRACTPERSONA = eINSTANCE.getPersonaDomain__ResolveReference__AbstractPersona();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.PersonaReferenceImpl <em>Persona Reference</em>}' class.

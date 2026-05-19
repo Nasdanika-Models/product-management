@@ -97,11 +97,36 @@ class Persona extends NamedPeriod, AbstractPersona, ConcernDomain {
 
 interface PersonaDomain extends NamedElement, AbstractPersona {
     
+    @Nasdanika(logicalContainment="false")         
     contains AbstractPersona[] personas keys ^id
+    
+    @Nasdanika(logicalContainment="true")         
+    refers derived transient volatile readonly AbstractPersona[] resolvedPersonas keys ^id get {
+        val result = new org.eclipse.emf.common.util.BasicEList<AbstractPersona>()
+        for (persona : personas) {
+            val resolved = resolveReference(persona)
+            if (resolved !== null) result.add(resolved)
+        }
+        result
+    }
+    
+    op AbstractPersona resolveReference(AbstractPersona start) {
+        var AbstractPersona current = start
+        val seen = new java.util.HashSet<AbstractPersona>()
+        while (current instanceof PersonaReference) {
+            if (!seen.add(current)) {
+                return null  // cycle detected
+            }
+            current = (current as PersonaReference).target
+            if (current === null) return null  // dangling reference
+        }
+        return current
+    }    
         
 }
 
 class PersonaReference extends AbstractPersona {
+    
     refers Persona target    
 }
 
@@ -126,6 +151,7 @@ class Concern extends NamedPeriod, AbstractConcern {
 
 class ConcernReference extends AbstractConcern {
     
+    @Nasdanika(logicalContainment="true")         
     refers Concern target
     
 }
@@ -222,7 +248,10 @@ class Capability extends
 }
 
 class CapabilityReference extends AbstractCapability {
-    refers Capability target    
+    
+    @Nasdanika(logicalContainment="true")         
+    refers Capability target
+        
 }
 
 interface CapabilityDomain extends NamedElement, AbstractCapability {

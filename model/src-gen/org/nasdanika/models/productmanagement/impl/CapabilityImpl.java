@@ -2,10 +2,14 @@
  */
 package org.nasdanika.models.productmanagement.impl;
 
+import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
+import java.util.HashSet;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -24,6 +28,7 @@ import org.nasdanika.models.productmanagement.Evidence;
 import org.nasdanika.models.productmanagement.EvidenceDomain;
 import org.nasdanika.models.productmanagement.Lifecycle;
 import org.nasdanika.models.productmanagement.PersonaDomain;
+import org.nasdanika.models.productmanagement.PersonaReference;
 import org.nasdanika.models.productmanagement.ProductmanagementPackage;
 
 /**
@@ -36,6 +41,7 @@ import org.nasdanika.models.productmanagement.ProductmanagementPackage;
  * <ul>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getEvidence <em>Evidence</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getPersonas <em>Personas</em>}</li>
+ *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getResolvedPersonas <em>Resolved Personas</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getConcerns <em>Concerns</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getAddresses <em>Addresses</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getSubCapabilities <em>Sub Capabilities</em>}</li>
@@ -101,6 +107,30 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EList<AbstractPersona> getResolvedPersonas() {
+		BasicEList<AbstractPersona> _xblockexpression = null;
+		{
+			final BasicEList<AbstractPersona> result = new BasicEList<AbstractPersona>();
+			EList<AbstractPersona> _personas = this.getPersonas();
+			for (final AbstractPersona persona : _personas) {
+				{
+					final AbstractPersona resolved = this.resolveReference(persona);
+					if ((resolved != null)) {
+						result.add(resolved);
+					}
+				}
+			}
+			_xblockexpression = result;
+		}
+		return _xblockexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public EList<AbstractConcern> getConcerns() {
@@ -155,6 +185,31 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 	 * @generated
 	 */
 	@Override
+	public AbstractPersona resolveReference(final AbstractPersona start) {
+		AbstractPersona current = start;
+		final HashSet<AbstractPersona> seen = new HashSet<AbstractPersona>();
+		while ((current instanceof PersonaReference)) {
+			{
+				boolean _add = seen.add(current);
+				boolean _not = (!_add);
+				if (_not) {
+					return null;
+				}
+				current = ((PersonaReference) current).getTarget();
+				if ((current == null)) {
+					return null;
+				}
+			}
+		}
+		return current;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ProductmanagementPackage.CAPABILITY__EVIDENCE:
@@ -183,6 +238,8 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 				return getEvidence();
 			case ProductmanagementPackage.CAPABILITY__PERSONAS:
 				return getPersonas();
+			case ProductmanagementPackage.CAPABILITY__RESOLVED_PERSONAS:
+				return getResolvedPersonas();
 			case ProductmanagementPackage.CAPABILITY__CONCERNS:
 				return getConcerns();
 			case ProductmanagementPackage.CAPABILITY__ADDRESSES:
@@ -273,6 +330,8 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 				return !getEvidence().isEmpty();
 			case ProductmanagementPackage.CAPABILITY__PERSONAS:
 				return !getPersonas().isEmpty();
+			case ProductmanagementPackage.CAPABILITY__RESOLVED_PERSONAS:
+				return !getResolvedPersonas().isEmpty();
 			case ProductmanagementPackage.CAPABILITY__CONCERNS:
 				return !getConcerns().isEmpty();
 			case ProductmanagementPackage.CAPABILITY__ADDRESSES:
@@ -316,6 +375,7 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 		if (baseClass == PersonaDomain.class) {
 			switch (derivedFeatureID) {
 				case ProductmanagementPackage.CAPABILITY__PERSONAS: return ProductmanagementPackage.PERSONA_DOMAIN__PERSONAS;
+				case ProductmanagementPackage.CAPABILITY__RESOLVED_PERSONAS: return ProductmanagementPackage.PERSONA_DOMAIN__RESOLVED_PERSONAS;
 				default: return -1;
 			}
 		}
@@ -364,6 +424,7 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 		if (baseClass == PersonaDomain.class) {
 			switch (baseFeatureID) {
 				case ProductmanagementPackage.PERSONA_DOMAIN__PERSONAS: return ProductmanagementPackage.CAPABILITY__PERSONAS;
+				case ProductmanagementPackage.PERSONA_DOMAIN__RESOLVED_PERSONAS: return ProductmanagementPackage.CAPABILITY__RESOLVED_PERSONAS;
 				default: return -1;
 			}
 		}
@@ -379,6 +440,66 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+		if (baseClass == AbstractCapability.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == AbstractEvidence.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == EvidenceDomain.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == AbstractPersona.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == PersonaDomain.class) {
+			switch (baseOperationID) {
+				case ProductmanagementPackage.PERSONA_DOMAIN___RESOLVE_REFERENCE__ABSTRACTPERSONA: return ProductmanagementPackage.CAPABILITY___RESOLVE_REFERENCE__ABSTRACTPERSONA;
+				default: return -1;
+			}
+		}
+		if (baseClass == AbstractConcern.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == ConcernDomain.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		return super.eDerivedOperationID(baseOperationID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case ProductmanagementPackage.CAPABILITY___RESOLVE_REFERENCE__ABSTRACTPERSONA:
+				return resolveReference((AbstractPersona)arguments.get(0));
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //CapabilityImpl

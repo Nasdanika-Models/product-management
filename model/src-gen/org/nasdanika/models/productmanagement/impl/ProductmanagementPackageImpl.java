@@ -9,6 +9,7 @@ import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
 import org.eclipse.emf.ecore.EEnum;
+import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.EcorePackage;
@@ -690,6 +691,26 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	@Override
 	public EReference getPersonaDomain_Personas() {
 		return (EReference)personaDomainEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getPersonaDomain_ResolvedPersonas() {
+		return (EReference)personaDomainEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getPersonaDomain__ResolveReference__AbstractPersona() {
+		return personaDomainEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -1473,6 +1494,8 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 
 		personaDomainEClass = createEClass(PERSONA_DOMAIN);
 		createEReference(personaDomainEClass, PERSONA_DOMAIN__PERSONAS);
+		createEReference(personaDomainEClass, PERSONA_DOMAIN__RESOLVED_PERSONAS);
+		createEOperation(personaDomainEClass, PERSONA_DOMAIN___RESOLVE_REFERENCE__ABSTRACTPERSONA);
 
 		personaReferenceEClass = createEClass(PERSONA_REFERENCE);
 		createEReference(personaReferenceEClass, PERSONA_REFERENCE__TARGET);
@@ -1710,6 +1733,11 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		initEClass(personaDomainEClass, PersonaDomain.class, "PersonaDomain", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPersonaDomain_Personas(), this.getAbstractPersona(), null, "personas", null, 0, -1, PersonaDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getPersonaDomain_Personas().getEKeys().add(this.getStringIdentity_Id());
+		initEReference(getPersonaDomain_ResolvedPersonas(), this.getAbstractPersona(), null, "resolvedPersonas", null, 0, -1, PersonaDomain.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		getPersonaDomain_ResolvedPersonas().getEKeys().add(this.getStringIdentity_Id());
+
+		EOperation op = initEOperation(getPersonaDomain__ResolveReference__AbstractPersona(), this.getAbstractPersona(), "resolveReference", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getAbstractPersona(), "start", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(personaReferenceEClass, PersonaReference.class, "PersonaReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPersonaReference_Target(), this.getPersona(), null, "target", null, 0, 1, PersonaReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1843,6 +1871,8 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		createGenModelAnnotations();
 		// http://www.eclipse.org/emf/2011/Xcore
 		createXcoreAnnotations();
+		// urn:org.nasdanika
+		createUrnorgAnnotations();
 	}
 
 	/**
@@ -1870,6 +1900,18 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		   source,
 		   new String[] {
 			   "documentation", "*\nAlias URIs resolved relative to the parent URIs - can be absolute or opaque - global references.\nFor example: actors://john-smith.\nFor domains URIs can be used as anchors to merge domains from different sources.\nFor example, several teams may maintain capability domains with URI myorg://capabilities/developer-productivity\nWhen these definitions are assembled into the organization\'s product management model to generate documentation\nall of these domains are merged into a single logical domain."
+		   });
+		addAnnotation
+		  (getPersonaDomain__ResolveReference__AbstractPersona(),
+		   source,
+		   new String[] {
+			   "body", "<%org.nasdanika.models.productmanagement.AbstractPersona%> current = start;\nfinal <%java.util.HashSet%><<%org.nasdanika.models.productmanagement.AbstractPersona%>> seen = new <%java.util.HashSet%><<%org.nasdanika.models.productmanagement.AbstractPersona%>>();\nwhile ((current instanceof <%org.nasdanika.models.productmanagement.PersonaReference%>))\n{\n\t{\n\t\tboolean _add = seen.add(current);\n\t\tboolean _not = (!_add);\n\t\tif (_not)\n\t\t{\n\t\t\treturn null;\n\t\t}\n\t\tcurrent = ((<%org.nasdanika.models.productmanagement.PersonaReference%>) current).getTarget();\n\t\tif ((current == null))\n\t\t{\n\t\t\treturn null;\n\t\t}\n\t}\n}\nreturn current;"
+		   });
+		addAnnotation
+		  (getPersonaDomain_ResolvedPersonas(),
+		   source,
+		   new String[] {
+			   "get", "<%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractPersona%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractPersona%>> result = new <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractPersona%>>();\n\t<%org.eclipse.emf.common.util.EList%><<%org.nasdanika.models.productmanagement.AbstractPersona%>> _personas = this.getPersonas();\n\tfor (final <%org.nasdanika.models.productmanagement.AbstractPersona%> persona : _personas)\n\t{\n\t\t{\n\t\t\tfinal <%org.nasdanika.models.productmanagement.AbstractPersona%> resolved = this.resolveReference(persona);\n\t\t\tif ((resolved != null))\n\t\t\t{\n\t\t\t\tresult.add(resolved);\n\t\t\t}\n\t\t}\n\t}\n\t_xblockexpression = result;\n}\nreturn _xblockexpression;"
 		   });
 		addAnnotation
 		  (getConcern_AddressedBy(),
@@ -1906,6 +1948,40 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 			   "Ecore", "http://www.eclipse.org/emf/2002/Ecore",
 			   "GenModel", "http://www.eclipse.org/emf/2002/GenModel",
 			   "Nasdanika", "urn:org.nasdanika"
+		   });
+	}
+
+	/**
+	 * Initializes the annotations for <b>urn:org.nasdanika</b>.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	protected void createUrnorgAnnotations() {
+		String source = "urn:org.nasdanika";
+		addAnnotation
+		  (getPersonaDomain_Personas(),
+		   source,
+		   new String[] {
+			   "logicalContainment", "false"
+		   });
+		addAnnotation
+		  (getPersonaDomain_ResolvedPersonas(),
+		   source,
+		   new String[] {
+			   "logicalContainment", "true"
+		   });
+		addAnnotation
+		  (getConcernReference_Target(),
+		   source,
+		   new String[] {
+			   "logicalContainment", "true"
+		   });
+		addAnnotation
+		  (getCapabilityReference_Target(),
+		   source,
+		   new String[] {
+			   "logicalContainment", "true"
 		   });
 	}
 

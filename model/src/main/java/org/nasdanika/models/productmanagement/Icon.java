@@ -8,10 +8,13 @@ public enum Icon {
     PERSONA(ProductmanagementPackage.Literals.PERSONA, "avatar.svg"),
     PERSONA_DOMAIN(ProductmanagementPackage.Literals.PERSONA_DOMAIN, "people.svg"),
     CAPABILITY(ProductmanagementPackage.Literals.CAPABILITY, "capability.svg"),
+    CAPABILITY_DOMAIN(ProductmanagementPackage.Literals.CAPABILITY_DOMAIN, "capability.svg"),
     CONCERN(ProductmanagementPackage.Literals.CONCERN, "concern.svg"),
+    CONCERN_DOMAIN(ProductmanagementPackage.Literals.CONCERN_DOMAIN, "concern.svg"),
     PAIN_POINT(ProductmanagementPackage.Literals.PAIN_POINT, "pain.svg"),
     NEED(ProductmanagementPackage.Literals.NEED , "hand.svg"),
-    GOAL(ProductmanagementPackage.Literals.GOAL , "target.svg");
+    GOAL(ProductmanagementPackage.Literals.GOAL , "target.svg"),
+    PRODUCT_MODEL(ProductmanagementPackage.Literals.PRODUCT_MODEL , "product-model.svg");
 	
 	//Actor.java
 	//ActorDomain.java

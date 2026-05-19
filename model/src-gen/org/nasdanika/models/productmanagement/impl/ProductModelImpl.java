@@ -2,10 +2,14 @@
  */
 package org.nasdanika.models.productmanagement.impl;
 
+import java.lang.reflect.InvocationTargetException;
+
 import java.util.Collection;
+import java.util.HashSet;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
@@ -21,6 +25,7 @@ import org.nasdanika.models.productmanagement.ActorDomain;
 import org.nasdanika.models.productmanagement.CapabilityDomain;
 import org.nasdanika.models.productmanagement.CapabilityProviderDomain;
 import org.nasdanika.models.productmanagement.PersonaDomain;
+import org.nasdanika.models.productmanagement.PersonaReference;
 import org.nasdanika.models.productmanagement.ProductModel;
 import org.nasdanika.models.productmanagement.ProductmanagementPackage;
 
@@ -33,6 +38,7 @@ import org.nasdanika.models.productmanagement.ProductmanagementPackage;
  * </p>
  * <ul>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.ProductModelImpl#getPersonas <em>Personas</em>}</li>
+ *   <li>{@link org.nasdanika.models.productmanagement.impl.ProductModelImpl#getResolvedPersonas <em>Resolved Personas</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.ProductModelImpl#getCapabilities <em>Capabilities</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.ProductModelImpl#getCapabilityProviders <em>Capability Providers</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.ProductModelImpl#getActors <em>Actors</em>}</li>
@@ -76,6 +82,30 @@ public class ProductModelImpl extends NamedPeriodImpl implements ProductModel {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@Override
+	public EList<AbstractPersona> getResolvedPersonas() {
+		BasicEList<AbstractPersona> _xblockexpression = null;
+		{
+			final BasicEList<AbstractPersona> result = new BasicEList<AbstractPersona>();
+			EList<AbstractPersona> _personas = this.getPersonas();
+			for (final AbstractPersona persona : _personas) {
+				{
+					final AbstractPersona resolved = this.resolveReference(persona);
+					if ((resolved != null)) {
+						result.add(resolved);
+					}
+				}
+			}
+			_xblockexpression = result;
+		}
+		return _xblockexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@SuppressWarnings("unchecked")
 	@Override
 	public EList<AbstractCapability> getCapabilities() {
@@ -110,6 +140,31 @@ public class ProductModelImpl extends NamedPeriodImpl implements ProductModel {
 	 * @generated
 	 */
 	@Override
+	public AbstractPersona resolveReference(final AbstractPersona start) {
+		AbstractPersona current = start;
+		final HashSet<AbstractPersona> seen = new HashSet<AbstractPersona>();
+		while ((current instanceof PersonaReference)) {
+			{
+				boolean _add = seen.add(current);
+				boolean _not = (!_add);
+				if (_not) {
+					return null;
+				}
+				current = ((PersonaReference) current).getTarget();
+				if ((current == null)) {
+					return null;
+				}
+			}
+		}
+		return current;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ProductmanagementPackage.PRODUCT_MODEL__PERSONAS:
@@ -134,6 +189,8 @@ public class ProductModelImpl extends NamedPeriodImpl implements ProductModel {
 		switch (featureID) {
 			case ProductmanagementPackage.PRODUCT_MODEL__PERSONAS:
 				return getPersonas();
+			case ProductmanagementPackage.PRODUCT_MODEL__RESOLVED_PERSONAS:
+				return getResolvedPersonas();
 			case ProductmanagementPackage.PRODUCT_MODEL__CAPABILITIES:
 				return getCapabilities();
 			case ProductmanagementPackage.PRODUCT_MODEL__CAPABILITY_PROVIDERS:
@@ -207,6 +264,8 @@ public class ProductModelImpl extends NamedPeriodImpl implements ProductModel {
 		switch (featureID) {
 			case ProductmanagementPackage.PRODUCT_MODEL__PERSONAS:
 				return !getPersonas().isEmpty();
+			case ProductmanagementPackage.PRODUCT_MODEL__RESOLVED_PERSONAS:
+				return !getResolvedPersonas().isEmpty();
 			case ProductmanagementPackage.PRODUCT_MODEL__CAPABILITIES:
 				return !getCapabilities().isEmpty();
 			case ProductmanagementPackage.PRODUCT_MODEL__CAPABILITY_PROVIDERS:
@@ -232,6 +291,7 @@ public class ProductModelImpl extends NamedPeriodImpl implements ProductModel {
 		if (baseClass == PersonaDomain.class) {
 			switch (derivedFeatureID) {
 				case ProductmanagementPackage.PRODUCT_MODEL__PERSONAS: return ProductmanagementPackage.PERSONA_DOMAIN__PERSONAS;
+				case ProductmanagementPackage.PRODUCT_MODEL__RESOLVED_PERSONAS: return ProductmanagementPackage.PERSONA_DOMAIN__RESOLVED_PERSONAS;
 				default: return -1;
 			}
 		}
@@ -286,6 +346,7 @@ public class ProductModelImpl extends NamedPeriodImpl implements ProductModel {
 		if (baseClass == PersonaDomain.class) {
 			switch (baseFeatureID) {
 				case ProductmanagementPackage.PERSONA_DOMAIN__PERSONAS: return ProductmanagementPackage.PRODUCT_MODEL__PERSONAS;
+				case ProductmanagementPackage.PERSONA_DOMAIN__RESOLVED_PERSONAS: return ProductmanagementPackage.PRODUCT_MODEL__RESOLVED_PERSONAS;
 				default: return -1;
 			}
 		}
@@ -323,6 +384,71 @@ public class ProductModelImpl extends NamedPeriodImpl implements ProductModel {
 			}
 		}
 		return super.eDerivedStructuralFeatureID(baseFeatureID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
+		if (baseClass == AbstractPersona.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == PersonaDomain.class) {
+			switch (baseOperationID) {
+				case ProductmanagementPackage.PERSONA_DOMAIN___RESOLVE_REFERENCE__ABSTRACTPERSONA: return ProductmanagementPackage.PRODUCT_MODEL___RESOLVE_REFERENCE__ABSTRACTPERSONA;
+				default: return -1;
+			}
+		}
+		if (baseClass == AbstractCapability.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == CapabilityDomain.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == AbstractCapabilityProvider.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == CapabilityProviderDomain.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == AbstractActor.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		if (baseClass == ActorDomain.class) {
+			switch (baseOperationID) {
+				default: return -1;
+			}
+		}
+		return super.eDerivedOperationID(baseOperationID, baseClass);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case ProductmanagementPackage.PRODUCT_MODEL___RESOLVE_REFERENCE__ABSTRACTPERSONA:
+				return resolveReference((AbstractPersona)arguments.get(0));
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //ProductModelImpl

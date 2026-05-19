@@ -22,6 +22,7 @@ import org.nasdanika.models.app.gen.DynamicTableBuilder;
 import org.nasdanika.models.app.graph.WidgetFactory;
 import org.nasdanika.models.app.graph.emf.EObjectNodeProcessor;
 import org.nasdanika.models.bootstrap.Table;
+import org.nasdanika.models.productmanagement.Icon;
 import org.nasdanika.ncore.ModelElement;
 import org.nasdanika.ncore.NamedElement;
 
@@ -29,26 +30,8 @@ import org.nasdanika.ncore.NamedElement;
  * Base class for other processors with common functionality.
  * @param <T>
  */
-public abstract class ModelElementNodeProcessor<T extends EObject> extends EObjectNodeProcessor<T> {
-	
-//	public static final String GUARDRAIL_ICON = "https://crew-ai.models.nasdanika.org/images/barrier.svg";
-//	public static final String TOOL_ICON = "https://crew-ai.models.nasdanika.org/images/tool.svg";	
-//	public static final String TOOLS_ICON = "https://crew-ai.models.nasdanika.org/images/toolbox.svg";	
-//	public static final String TASK_ICON = "https://crew-ai.models.nasdanika.org/images/task.svg";	
-//	public static final String TASKS_ICON = "https://crew-ai.models.nasdanika.org/images/project-management.svg";	
-//	public static final String LLM_ICON = "https://crew-ai.models.nasdanika.org/images/ai.svg";	
-//	public static final String KNOWLDEGE_SOURCE_ICON = "https://crew-ai.models.nasdanika.org/images/book.svg";	
-//	public static final String FUNCTION_ICON = "https://crew-ai.models.nasdanika.org/images/settings.svg";	
-//	public static final String CREW_ICON = "https://crew-ai.models.nasdanika.org/images/navy.svg";	
-//	public static final String CONFIGURABLE_ICON = "https://crew-ai.models.nasdanika.org/images/web-management.svg";	
-//	public static final String CALLBACK_ICON = "https://crew-ai.models.nasdanika.org/images/callback.svg";	
-//	public static final String CODE_ICON = "https://crew-ai.models.nasdanika.org/images/script.svg";	
-//	public static final String AGENT_ICON = "https://crew-ai.models.nasdanika.org/images/software-agent.svg";
-//	public static final String BACKSTORY_ICON = "https://crew-ai.models.nasdanika.org/images/cv.svg";
-//	public static final String ROLE_ICON = "https://crew-ai.models.nasdanika.org/images/role.svg";
-//	public static final String GOAL_ICON = "https://crew-ai.models.nasdanika.org/images/business-plan.svg";
-//	public static final String DESCRIPTION_ICON = "https://crew-ai.models.nasdanika.org/images/instructions.svg";
-	
+public abstract class ModelElementNodeProcessor<T extends EObject> extends EObjectNodeProcessor<T> implements NodeProcessorMixIn<T> {
+		
 	protected Collection<DocumentationFactory> documentationFactories;
 	
 	protected ModelElementNodeProcessor(
@@ -112,7 +95,7 @@ public abstract class ModelElementNodeProcessor<T extends EObject> extends EObje
 		}		
 	}
 
-	protected String getIcon() {		
+	public String getIcon() {		
 		for (Map.Entry<String, String> representation: getRepresentations().entrySet()) {
 			if (AbstractDrawioFactory.IMAGE_REPRESENTATION.equals(representation.getKey())) {
 				String imageRepr = representation.getValue();
@@ -123,8 +106,8 @@ public abstract class ModelElementNodeProcessor<T extends EObject> extends EObje
 		return getTypeIcon();
 	}	
 	
-	protected String getTypeIcon() {
-		return null;
+	public String getTypeIcon() {
+		return Icon.getIcon(getTarget());
 	}
 	
 	/**
@@ -132,7 +115,7 @@ public abstract class ModelElementNodeProcessor<T extends EObject> extends EObje
 	 * @param parent
 	 * @return
 	 */
-	protected Action getRoleActionByLocation(
+	public Action getRoleActionByLocation(
 			Collection<? super Action> roleActions, 
 			String location, 
 			String text,
@@ -153,7 +136,7 @@ public abstract class ModelElementNodeProcessor<T extends EObject> extends EObje
 	 * @param parent
 	 * @return
 	 */
-	protected Action getRoleActionByName(
+	public Action getRoleActionByName(
 			Collection<? super Action> roleActions, 
 			String name, 
 			String text,
@@ -174,7 +157,7 @@ public abstract class ModelElementNodeProcessor<T extends EObject> extends EObje
 	 * @param parent
 	 * @return
 	 */
-	protected Action getRoleAction(
+	public Action getRoleAction(
 			Collection<? super Action> roleActions, 
 			Predicate<Object> predicate, 
 			String text,
@@ -199,20 +182,25 @@ public abstract class ModelElementNodeProcessor<T extends EObject> extends EObje
 	 * @param tableBuilder
 	 * @param progressMonitor
 	 */
-	protected void buildNamedElementColumns(DynamicTableBuilder<Entry<EReferenceConnection, WidgetFactory>> tableBuilder, ProgressMonitor progressMonitor) {
+	public void buildNamedElementColumns(DynamicTableBuilder<Entry<EReferenceConnection, WidgetFactory>> tableBuilder, ProgressMonitor progressMonitor) {
 		tableBuilder
 			.addStringColumnBuilder("name", true, false, "Name", endpoint -> targetNameLink(endpoint.getKey(), endpoint.getValue(), progressMonitor)) 
 			.addStringColumnBuilder("description", true, false, "Description", endpoint -> description(endpoint.getKey(), endpoint.getValue(), progressMonitor));
 	}
 	
-	protected String targetNameLink(EReferenceConnection connection, WidgetFactory widgetFactory, ProgressMonitor progressMonitor) {
+	public String targetNameLink(EReferenceConnection connection, WidgetFactory widgetFactory, ProgressMonitor progressMonitor) {
 		String linkStr = widgetFactory.createLinkString(progressMonitor);
 		return Util.isBlank(linkStr) ? ((NamedElement) connection.getTarget().get()).getName() : linkStr;
 	}
 	
-	protected String description(EReferenceConnection connection, WidgetFactory widgetFactory, ProgressMonitor progressMonitor) {
+	public String description(EReferenceConnection connection, WidgetFactory widgetFactory, ProgressMonitor progressMonitor) {
 		Object label = widgetFactory.createLabel(progressMonitor);
 		return label instanceof Label ? ((Label) label).getTooltip() : null;
-	}	
+	}
+	
+	@Override
+	public ModelElementNodeProcessor<T> self() {
+		return this;
+	}
 		
 }

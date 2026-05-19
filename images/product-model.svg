@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" width="20" height="20">
+  <title>Product Model</title>
+  <rect x="1.5" y="1.5" width="13" height="13"
+        rx="2" ry="2"
+        fill="#F4F1E8"
+        stroke="#5A5550"
+        stroke-width="0.8"/>
+  
+  <!-- Top-left: persona (small head + shoulders) -->
+  <circle cx="5" cy="5" r="1" fill="#E8A35C" stroke="#9E6428" stroke-width="0.3"/>
+  <path d="M 3.5 7.5 Q 3.5 6.3, 5 6.3 Q 6.5 6.3, 6.5 7.5 Z"
+        fill="#E8A35C" stroke="#9E6428" stroke-width="0.3"/>
+  
+  <!-- Top-right: capability (small hexagon) -->
+  <polygon points="11,3.5 12.6,4.4 12.6,6.1 11,7 9.4,6.1 9.4,4.4"
+           fill="#4A90C2" stroke="#2C5F87" stroke-width="0.3"/>
+  
+  <!-- Bottom-left: capability provider (hexagon with a small plug/connector) -->
+  <polygon points="5,9.5 6.4,10.3 6.4,11.7 5,12.5 3.6,11.7 3.6,10.3"
+           fill="#4A90C2" stroke="#2C5F87" stroke-width="0.3" opacity="0.55"/>
+  <rect x="6.4" y="10.7" width="1" height="0.6" fill="#2C5F87"/>
+  
+  <!-- Bottom-right: actor (small figure, slightly different from persona) -->
+  <circle cx="11" cy="10" r="0.9" fill="#7BA05B" stroke="#4A6B36" stroke-width="0.3"/>
+  <path d="M 9.7 12.5 Q 9.7 11.2, 11 11.2 Q 12.3 11.2, 12.3 12.5 Z"
+        fill="#7BA05B" stroke="#4A6B36" stroke-width="0.3"/>
+</svg>
