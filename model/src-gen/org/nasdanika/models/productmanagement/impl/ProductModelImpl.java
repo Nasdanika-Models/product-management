@@ -24,6 +24,7 @@ import org.nasdanika.models.productmanagement.AbstractPersona;
 import org.nasdanika.models.productmanagement.ActorDomain;
 import org.nasdanika.models.productmanagement.CapabilityDomain;
 import org.nasdanika.models.productmanagement.CapabilityProviderDomain;
+import org.nasdanika.models.productmanagement.CapabilityReference;
 import org.nasdanika.models.productmanagement.PersonaDomain;
 import org.nasdanika.models.productmanagement.PersonaReference;
 import org.nasdanika.models.productmanagement.ProductModel;
@@ -40,6 +41,7 @@ import org.nasdanika.models.productmanagement.ProductmanagementPackage;
  *   <li>{@link org.nasdanika.models.productmanagement.impl.ProductModelImpl#getPersonas <em>Personas</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.ProductModelImpl#getResolvedPersonas <em>Resolved Personas</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.ProductModelImpl#getCapabilities <em>Capabilities</em>}</li>
+ *   <li>{@link org.nasdanika.models.productmanagement.impl.ProductModelImpl#getResolvedCapabilities <em>Resolved Capabilities</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.ProductModelImpl#getCapabilityProviders <em>Capability Providers</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.ProductModelImpl#getActors <em>Actors</em>}</li>
  * </ul>
@@ -90,7 +92,7 @@ public class ProductModelImpl extends NamedPeriodImpl implements ProductModel {
 			EList<AbstractPersona> _personas = this.getPersonas();
 			for (final AbstractPersona persona : _personas) {
 				{
-					final AbstractPersona resolved = this.resolveReference(persona);
+					final AbstractPersona resolved = this.resolvePersonaReference(persona);
 					if ((resolved != null)) {
 						result.add(resolved);
 					}
@@ -110,6 +112,30 @@ public class ProductModelImpl extends NamedPeriodImpl implements ProductModel {
 	@Override
 	public EList<AbstractCapability> getCapabilities() {
 		return (EList<AbstractCapability>)eDynamicGet(ProductmanagementPackage.PRODUCT_MODEL__CAPABILITIES, ProductmanagementPackage.Literals.CAPABILITY_DOMAIN__CAPABILITIES, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<AbstractCapability> getResolvedCapabilities() {
+		BasicEList<AbstractCapability> _xblockexpression = null;
+		{
+			final BasicEList<AbstractCapability> result = new BasicEList<AbstractCapability>();
+			EList<AbstractCapability> _capabilities = this.getCapabilities();
+			for (final AbstractCapability capability : _capabilities) {
+				{
+					final AbstractCapability resolved = this.resolveCapabilityReference(capability);
+					if ((resolved != null)) {
+						result.add(resolved);
+					}
+				}
+			}
+			_xblockexpression = result;
+		}
+		return _xblockexpression;
 	}
 
 	/**
@@ -140,7 +166,32 @@ public class ProductModelImpl extends NamedPeriodImpl implements ProductModel {
 	 * @generated
 	 */
 	@Override
-	public AbstractPersona resolveReference(final AbstractPersona start) {
+	public AbstractCapability resolveCapabilityReference(final AbstractCapability start) {
+		AbstractCapability current = start;
+		final HashSet<AbstractCapability> seen = new HashSet<AbstractCapability>();
+		while ((current instanceof CapabilityReference)) {
+			{
+				boolean _add = seen.add(current);
+				boolean _not = (!_add);
+				if (_not) {
+					return null;
+				}
+				current = ((CapabilityReference)current).getTarget();
+				if ((current == null)) {
+					return null;
+				}
+			}
+		}
+		return current;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public AbstractPersona resolvePersonaReference(final AbstractPersona start) {
 		AbstractPersona current = start;
 		final HashSet<AbstractPersona> seen = new HashSet<AbstractPersona>();
 		while ((current instanceof PersonaReference)) {
@@ -150,7 +201,7 @@ public class ProductModelImpl extends NamedPeriodImpl implements ProductModel {
 				if (_not) {
 					return null;
 				}
-				current = ((PersonaReference) current).getTarget();
+				current = ((PersonaReference)current).getTarget();
 				if ((current == null)) {
 					return null;
 				}
@@ -193,6 +244,8 @@ public class ProductModelImpl extends NamedPeriodImpl implements ProductModel {
 				return getResolvedPersonas();
 			case ProductmanagementPackage.PRODUCT_MODEL__CAPABILITIES:
 				return getCapabilities();
+			case ProductmanagementPackage.PRODUCT_MODEL__RESOLVED_CAPABILITIES:
+				return getResolvedCapabilities();
 			case ProductmanagementPackage.PRODUCT_MODEL__CAPABILITY_PROVIDERS:
 				return getCapabilityProviders();
 			case ProductmanagementPackage.PRODUCT_MODEL__ACTORS:
@@ -268,6 +321,8 @@ public class ProductModelImpl extends NamedPeriodImpl implements ProductModel {
 				return !getResolvedPersonas().isEmpty();
 			case ProductmanagementPackage.PRODUCT_MODEL__CAPABILITIES:
 				return !getCapabilities().isEmpty();
+			case ProductmanagementPackage.PRODUCT_MODEL__RESOLVED_CAPABILITIES:
+				return !getResolvedCapabilities().isEmpty();
 			case ProductmanagementPackage.PRODUCT_MODEL__CAPABILITY_PROVIDERS:
 				return !getCapabilityProviders().isEmpty();
 			case ProductmanagementPackage.PRODUCT_MODEL__ACTORS:
@@ -303,6 +358,7 @@ public class ProductModelImpl extends NamedPeriodImpl implements ProductModel {
 		if (baseClass == CapabilityDomain.class) {
 			switch (derivedFeatureID) {
 				case ProductmanagementPackage.PRODUCT_MODEL__CAPABILITIES: return ProductmanagementPackage.CAPABILITY_DOMAIN__CAPABILITIES;
+				case ProductmanagementPackage.PRODUCT_MODEL__RESOLVED_CAPABILITIES: return ProductmanagementPackage.CAPABILITY_DOMAIN__RESOLVED_CAPABILITIES;
 				default: return -1;
 			}
 		}
@@ -358,6 +414,7 @@ public class ProductModelImpl extends NamedPeriodImpl implements ProductModel {
 		if (baseClass == CapabilityDomain.class) {
 			switch (baseFeatureID) {
 				case ProductmanagementPackage.CAPABILITY_DOMAIN__CAPABILITIES: return ProductmanagementPackage.PRODUCT_MODEL__CAPABILITIES;
+				case ProductmanagementPackage.CAPABILITY_DOMAIN__RESOLVED_CAPABILITIES: return ProductmanagementPackage.PRODUCT_MODEL__RESOLVED_CAPABILITIES;
 				default: return -1;
 			}
 		}
@@ -400,7 +457,7 @@ public class ProductModelImpl extends NamedPeriodImpl implements ProductModel {
 		}
 		if (baseClass == PersonaDomain.class) {
 			switch (baseOperationID) {
-				case ProductmanagementPackage.PERSONA_DOMAIN___RESOLVE_REFERENCE__ABSTRACTPERSONA: return ProductmanagementPackage.PRODUCT_MODEL___RESOLVE_REFERENCE__ABSTRACTPERSONA;
+				case ProductmanagementPackage.PERSONA_DOMAIN___RESOLVE_PERSONA_REFERENCE__ABSTRACTPERSONA: return ProductmanagementPackage.PRODUCT_MODEL___RESOLVE_PERSONA_REFERENCE__ABSTRACTPERSONA;
 				default: return -1;
 			}
 		}
@@ -411,6 +468,7 @@ public class ProductModelImpl extends NamedPeriodImpl implements ProductModel {
 		}
 		if (baseClass == CapabilityDomain.class) {
 			switch (baseOperationID) {
+				case ProductmanagementPackage.CAPABILITY_DOMAIN___RESOLVE_CAPABILITY_REFERENCE__ABSTRACTCAPABILITY: return ProductmanagementPackage.PRODUCT_MODEL___RESOLVE_CAPABILITY_REFERENCE__ABSTRACTCAPABILITY;
 				default: return -1;
 			}
 		}
@@ -445,8 +503,10 @@ public class ProductModelImpl extends NamedPeriodImpl implements ProductModel {
 	@Override
 	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
 		switch (operationID) {
-			case ProductmanagementPackage.PRODUCT_MODEL___RESOLVE_REFERENCE__ABSTRACTPERSONA:
-				return resolveReference((AbstractPersona)arguments.get(0));
+			case ProductmanagementPackage.PRODUCT_MODEL___RESOLVE_CAPABILITY_REFERENCE__ABSTRACTCAPABILITY:
+				return resolveCapabilityReference((AbstractCapability)arguments.get(0));
+			case ProductmanagementPackage.PRODUCT_MODEL___RESOLVE_PERSONA_REFERENCE__ABSTRACTPERSONA:
+				return resolvePersonaReference((AbstractPersona)arguments.get(0));
 		}
 		return super.eInvoke(operationID, arguments);
 	}

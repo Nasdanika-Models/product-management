@@ -54,6 +54,6 @@ public interface PersonaDomain extends NamedElement, AbstractPersona {
 	 * @model unique="false" startUnique="false"
 	 * @generated
 	 */
-	AbstractPersona resolveReference(AbstractPersona start);
+	AbstractPersona resolvePersonaReference(AbstractPersona start);
 
 } // PersonaDomain

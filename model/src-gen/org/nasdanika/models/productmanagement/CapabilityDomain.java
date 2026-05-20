@@ -14,6 +14,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.nasdanika.models.productmanagement.CapabilityDomain#getCapabilities <em>Capabilities</em>}</li>
+ *   <li>{@link org.nasdanika.models.productmanagement.CapabilityDomain#getResolvedCapabilities <em>Resolved Capabilities</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getCapabilityDomain()
@@ -28,9 +29,31 @@ public interface CapabilityDomain extends NamedElement, AbstractCapability {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Capabilities</em>' containment reference list.
 	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getCapabilityDomain_Capabilities()
-	 * @model containment="true"
+	 * @model containment="true" keys="id"
+	 *        annotation="urn:org.nasdanika logicalContainment='false'"
 	 * @generated
 	 */
 	EList<AbstractCapability> getCapabilities();
+
+	/**
+	 * Returns the value of the '<em><b>Resolved Capabilities</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.models.productmanagement.AbstractCapability}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the value of the '<em>Resolved Capabilities</em>' reference list.
+	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getCapabilityDomain_ResolvedCapabilities()
+	 * @model keys="id" transient="true" changeable="false" volatile="true" derived="true"
+	 *        annotation="urn:org.nasdanika logicalContainment='true'"
+	 * @generated
+	 */
+	EList<AbstractCapability> getResolvedCapabilities();
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @model unique="false" startUnique="false"
+	 * @generated
+	 */
+	AbstractCapability resolveCapabilityReference(AbstractCapability start);
 
 } // CapabilityDomain

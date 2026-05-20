@@ -15,15 +15,15 @@ import org.nasdanika.models.app.graph.WidgetFactory;
 import org.nasdanika.models.app.graph.emf.OutgoingReferenceBuilder;
 import org.nasdanika.models.productmanagement.ConcernDomain;
 import org.nasdanika.models.productmanagement.Icon;
+import org.nasdanika.models.productmanagement.NamedElement;
 import org.nasdanika.models.productmanagement.ProductmanagementPackage;
-import org.nasdanika.ncore.NamedElement;
 
 public interface ConcernDomainMixIn<T extends ConcernDomain> extends NodeProcessorMixIn<T> {
 	
 	@OutgoingReferenceBuilder(
 			nsURI = ProductmanagementPackage.eNS_URI,
 			classID = ProductmanagementPackage.CONCERN_DOMAIN,
-			referenceID = ProductmanagementPackage.CONCERN_DOMAIN__CONCERNS)
+			referenceID = ProductmanagementPackage.CONCERN_DOMAIN__RESOLVED_CONCERNS)
 	default void buildConcernsOutgoingReference(
 			EReference eReference,
 			List<Entry<EReferenceConnection, WidgetFactory>> referenceOutgoingEndpoints, 
@@ -63,7 +63,6 @@ public interface ConcernDomainMixIn<T extends ConcernDomain> extends NodeProcess
 				concernsAction.getContent().add(concernsTable);
 			}
 		}
-	}
-	
+	}	
 	
 }

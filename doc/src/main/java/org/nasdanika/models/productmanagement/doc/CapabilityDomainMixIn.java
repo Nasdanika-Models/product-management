@@ -15,15 +15,15 @@ import org.nasdanika.models.app.graph.WidgetFactory;
 import org.nasdanika.models.app.graph.emf.OutgoingReferenceBuilder;
 import org.nasdanika.models.productmanagement.CapabilityDomain;
 import org.nasdanika.models.productmanagement.Icon;
+import org.nasdanika.models.productmanagement.NamedElement;
 import org.nasdanika.models.productmanagement.ProductmanagementPackage;
-import org.nasdanika.ncore.NamedElement;
 
 public interface CapabilityDomainMixIn<T extends CapabilityDomain> extends NodeProcessorMixIn<T> {
 	
 	@OutgoingReferenceBuilder(
 			nsURI = ProductmanagementPackage.eNS_URI,
 			classID = ProductmanagementPackage.CAPABILITY_DOMAIN,
-			referenceID = ProductmanagementPackage.CAPABILITY_DOMAIN__CAPABILITIES)
+			referenceID = ProductmanagementPackage.CAPABILITY_DOMAIN__RESOLVED_CAPABILITIES)
 	default void buildCapabilitiesOutgoingReference(
 			EReference eReference,
 			List<Entry<EReferenceConnection, WidgetFactory>> referenceOutgoingEndpoints, 

@@ -104,20 +104,20 @@ interface PersonaDomain extends NamedElement, AbstractPersona {
     refers derived transient volatile readonly AbstractPersona[] resolvedPersonas keys ^id get {
         val result = new org.eclipse.emf.common.util.BasicEList<AbstractPersona>()
         for (persona : personas) {
-            val resolved = resolveReference(persona)
+            val resolved = resolvePersonaReference(persona)
             if (resolved !== null) result.add(resolved)
         }
         result
     }
     
-    op AbstractPersona resolveReference(AbstractPersona start) {
+    op AbstractPersona resolvePersonaReference(AbstractPersona start) {
         var AbstractPersona current = start
         val seen = new java.util.HashSet<AbstractPersona>()
         while (current instanceof PersonaReference) {
             if (!seen.add(current)) {
                 return null  // cycle detected
             }
-            current = (current as PersonaReference).target
+            current = current.target
             if (current === null) return null  // dangling reference
         }
         return current
@@ -158,7 +158,31 @@ class ConcernReference extends AbstractConcern {
 
 interface ConcernDomain extends AbstractConcern {
     
+    @Nasdanika(logicalContainment="false")         
     contains AbstractConcern[] concerns keys ^id
+    
+    @Nasdanika(logicalContainment="true")         
+    refers derived transient volatile readonly AbstractConcern[] resolvedConcerns keys ^id get {
+        val result = new org.eclipse.emf.common.util.BasicEList<AbstractConcern>()
+        for (concern : concerns) {
+            val resolved = resolveConcernReference(concern)
+            if (resolved !== null) result.add(resolved)
+        }
+        result
+    }
+    
+    op AbstractConcern resolveConcernReference(AbstractConcern start) {
+        var AbstractConcern current = start
+        val seen = new java.util.HashSet<AbstractConcern>()
+        while (current instanceof ConcernReference) {
+            if (!seen.add(current)) {
+                return null  // cycle detected
+            }
+            current = current.target
+            if (current === null) return null  // dangling reference
+        }
+        return current
+    }    
     
 }
 
@@ -255,7 +279,34 @@ class CapabilityReference extends AbstractCapability {
 }
 
 interface CapabilityDomain extends NamedElement, AbstractCapability {
-    contains AbstractCapability[] capabilities
+    
+    @Nasdanika(logicalContainment="false")         
+    contains AbstractCapability[] capabilities keys ^id
+       
+    @Nasdanika(logicalContainment="true")         
+    refers derived transient volatile readonly AbstractCapability[] resolvedCapabilities keys ^id get {
+        val result = new org.eclipse.emf.common.util.BasicEList<AbstractCapability>()
+        for (capability : capabilities) {
+            val resolved = resolveCapabilityReference(capability)
+            if (resolved !== null) result.add(resolved)
+        }
+        result
+    }
+    
+    op AbstractCapability resolveCapabilityReference(AbstractCapability start) {
+        var AbstractCapability current = start
+        val seen = new java.util.HashSet<AbstractCapability>()
+        while (current instanceof CapabilityReference) {
+            if (!seen.add(current)) {
+                return null  // cycle detected
+            }
+            current = current.target
+            if (current === null) return null  // dangling reference
+        }
+        return current
+        
+    }
+    
 }
 
 class AddressedConcerns extends ModelElement {

@@ -709,7 +709,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	 * @generated
 	 */
 	@Override
-	public EOperation getPersonaDomain__ResolveReference__AbstractPersona() {
+	public EOperation getPersonaDomain__ResolvePersonaReference__AbstractPersona() {
 		return personaDomainEClass.getEOperations().get(0);
 	}
 
@@ -801,6 +801,26 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	@Override
 	public EReference getConcernDomain_Concerns() {
 		return (EReference)concernDomainEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getConcernDomain_ResolvedConcerns() {
+		return (EReference)concernDomainEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getConcernDomain__ResolveConcernReference__AbstractConcern() {
+		return concernDomainEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -1041,6 +1061,26 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	@Override
 	public EReference getCapabilityDomain_Capabilities() {
 		return (EReference)capabilityDomainEClass.getEStructuralFeatures().get(0);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getCapabilityDomain_ResolvedCapabilities() {
+		return (EReference)capabilityDomainEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EOperation getCapabilityDomain__ResolveCapabilityReference__AbstractCapability() {
+		return capabilityDomainEClass.getEOperations().get(0);
 	}
 
 	/**
@@ -1495,7 +1535,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		personaDomainEClass = createEClass(PERSONA_DOMAIN);
 		createEReference(personaDomainEClass, PERSONA_DOMAIN__PERSONAS);
 		createEReference(personaDomainEClass, PERSONA_DOMAIN__RESOLVED_PERSONAS);
-		createEOperation(personaDomainEClass, PERSONA_DOMAIN___RESOLVE_REFERENCE__ABSTRACTPERSONA);
+		createEOperation(personaDomainEClass, PERSONA_DOMAIN___RESOLVE_PERSONA_REFERENCE__ABSTRACTPERSONA);
 
 		personaReferenceEClass = createEClass(PERSONA_REFERENCE);
 		createEReference(personaReferenceEClass, PERSONA_REFERENCE__TARGET);
@@ -1510,6 +1550,8 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 
 		concernDomainEClass = createEClass(CONCERN_DOMAIN);
 		createEReference(concernDomainEClass, CONCERN_DOMAIN__CONCERNS);
+		createEReference(concernDomainEClass, CONCERN_DOMAIN__RESOLVED_CONCERNS);
+		createEOperation(concernDomainEClass, CONCERN_DOMAIN___RESOLVE_CONCERN_REFERENCE__ABSTRACTCONCERN);
 
 		goalEClass = createEClass(GOAL);
 		createEReference(goalEClass, GOAL__SUPPORTING_NEEDS);
@@ -1544,6 +1586,8 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 
 		capabilityDomainEClass = createEClass(CAPABILITY_DOMAIN);
 		createEReference(capabilityDomainEClass, CAPABILITY_DOMAIN__CAPABILITIES);
+		createEReference(capabilityDomainEClass, CAPABILITY_DOMAIN__RESOLVED_CAPABILITIES);
+		createEOperation(capabilityDomainEClass, CAPABILITY_DOMAIN___RESOLVE_CAPABILITY_REFERENCE__ABSTRACTCAPABILITY);
 
 		addressedConcernsEClass = createEClass(ADDRESSED_CONCERNS);
 		createEReference(addressedConcernsEClass, ADDRESSED_CONCERNS__CONCERNS);
@@ -1736,7 +1780,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		initEReference(getPersonaDomain_ResolvedPersonas(), this.getAbstractPersona(), null, "resolvedPersonas", null, 0, -1, PersonaDomain.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		getPersonaDomain_ResolvedPersonas().getEKeys().add(this.getStringIdentity_Id());
 
-		EOperation op = initEOperation(getPersonaDomain__ResolveReference__AbstractPersona(), this.getAbstractPersona(), "resolveReference", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		EOperation op = initEOperation(getPersonaDomain__ResolvePersonaReference__AbstractPersona(), this.getAbstractPersona(), "resolvePersonaReference", 0, 1, !IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getAbstractPersona(), "start", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(personaReferenceEClass, PersonaReference.class, "PersonaReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1753,6 +1797,11 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		initEClass(concernDomainEClass, ConcernDomain.class, "ConcernDomain", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConcernDomain_Concerns(), this.getAbstractConcern(), null, "concerns", null, 0, -1, ConcernDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getConcernDomain_Concerns().getEKeys().add(this.getStringIdentity_Id());
+		initEReference(getConcernDomain_ResolvedConcerns(), this.getAbstractConcern(), null, "resolvedConcerns", null, 0, -1, ConcernDomain.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		getConcernDomain_ResolvedConcerns().getEKeys().add(this.getStringIdentity_Id());
+
+		op = initEOperation(getConcernDomain__ResolveConcernReference__AbstractConcern(), this.getAbstractConcern(), "resolveConcernReference", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getAbstractConcern(), "start", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(goalEClass, Goal.class, "Goal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getGoal_SupportingNeeds(), this.getSupportedGoals(), this.getSupportedGoals_Goals(), "supportingNeeds", null, 0, -1, Goal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1788,6 +1837,12 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 
 		initEClass(capabilityDomainEClass, CapabilityDomain.class, "CapabilityDomain", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCapabilityDomain_Capabilities(), this.getAbstractCapability(), null, "capabilities", null, 0, -1, CapabilityDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		getCapabilityDomain_Capabilities().getEKeys().add(this.getStringIdentity_Id());
+		initEReference(getCapabilityDomain_ResolvedCapabilities(), this.getAbstractCapability(), null, "resolvedCapabilities", null, 0, -1, CapabilityDomain.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		getCapabilityDomain_ResolvedCapabilities().getEKeys().add(this.getStringIdentity_Id());
+
+		op = initEOperation(getCapabilityDomain__ResolveCapabilityReference__AbstractCapability(), this.getAbstractCapability(), "resolveCapabilityReference", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		addEParameter(op, this.getAbstractCapability(), "start", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(addressedConcernsEClass, AddressedConcerns.class, "AddressedConcerns", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getAddressedConcerns_Concerns(), this.getConcern(), null, "concerns", null, 1, -1, AddressedConcerns.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1902,16 +1957,16 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 			   "documentation", "*\nAlias URIs resolved relative to the parent URIs - can be absolute or opaque - global references.\nFor example: actors://john-smith.\nFor domains URIs can be used as anchors to merge domains from different sources.\nFor example, several teams may maintain capability domains with URI myorg://capabilities/developer-productivity\nWhen these definitions are assembled into the organization\'s product management model to generate documentation\nall of these domains are merged into a single logical domain."
 		   });
 		addAnnotation
-		  (getPersonaDomain__ResolveReference__AbstractPersona(),
+		  (getPersonaDomain__ResolvePersonaReference__AbstractPersona(),
 		   source,
 		   new String[] {
-			   "body", "<%org.nasdanika.models.productmanagement.AbstractPersona%> current = start;\nfinal <%java.util.HashSet%><<%org.nasdanika.models.productmanagement.AbstractPersona%>> seen = new <%java.util.HashSet%><<%org.nasdanika.models.productmanagement.AbstractPersona%>>();\nwhile ((current instanceof <%org.nasdanika.models.productmanagement.PersonaReference%>))\n{\n\t{\n\t\tboolean _add = seen.add(current);\n\t\tboolean _not = (!_add);\n\t\tif (_not)\n\t\t{\n\t\t\treturn null;\n\t\t}\n\t\tcurrent = ((<%org.nasdanika.models.productmanagement.PersonaReference%>) current).getTarget();\n\t\tif ((current == null))\n\t\t{\n\t\t\treturn null;\n\t\t}\n\t}\n}\nreturn current;"
+			   "body", "<%org.nasdanika.models.productmanagement.AbstractPersona%> current = start;\nfinal <%java.util.HashSet%><<%org.nasdanika.models.productmanagement.AbstractPersona%>> seen = new <%java.util.HashSet%><<%org.nasdanika.models.productmanagement.AbstractPersona%>>();\nwhile ((current instanceof <%org.nasdanika.models.productmanagement.PersonaReference%>))\n{\n\t{\n\t\tboolean _add = seen.add(current);\n\t\tboolean _not = (!_add);\n\t\tif (_not)\n\t\t{\n\t\t\treturn null;\n\t\t}\n\t\tcurrent = ((<%org.nasdanika.models.productmanagement.PersonaReference%>)current).getTarget();\n\t\tif ((current == null))\n\t\t{\n\t\t\treturn null;\n\t\t}\n\t}\n}\nreturn current;"
 		   });
 		addAnnotation
 		  (getPersonaDomain_ResolvedPersonas(),
 		   source,
 		   new String[] {
-			   "get", "<%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractPersona%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractPersona%>> result = new <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractPersona%>>();\n\t<%org.eclipse.emf.common.util.EList%><<%org.nasdanika.models.productmanagement.AbstractPersona%>> _personas = this.getPersonas();\n\tfor (final <%org.nasdanika.models.productmanagement.AbstractPersona%> persona : _personas)\n\t{\n\t\t{\n\t\t\tfinal <%org.nasdanika.models.productmanagement.AbstractPersona%> resolved = this.resolveReference(persona);\n\t\t\tif ((resolved != null))\n\t\t\t{\n\t\t\t\tresult.add(resolved);\n\t\t\t}\n\t\t}\n\t}\n\t_xblockexpression = result;\n}\nreturn _xblockexpression;"
+			   "get", "<%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractPersona%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractPersona%>> result = new <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractPersona%>>();\n\t<%org.eclipse.emf.common.util.EList%><<%org.nasdanika.models.productmanagement.AbstractPersona%>> _personas = this.getPersonas();\n\tfor (final <%org.nasdanika.models.productmanagement.AbstractPersona%> persona : _personas)\n\t{\n\t\t{\n\t\t\tfinal <%org.nasdanika.models.productmanagement.AbstractPersona%> resolved = this.resolvePersonaReference(persona);\n\t\t\tif ((resolved != null))\n\t\t\t{\n\t\t\t\tresult.add(resolved);\n\t\t\t}\n\t\t}\n\t}\n\t_xblockexpression = result;\n}\nreturn _xblockexpression;"
 		   });
 		addAnnotation
 		  (getConcern_AddressedBy(),
@@ -1920,10 +1975,34 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 			   "documentation", "*\nAddressed by allows to explain how some external capabilities address\nconcerns.\nIt also allows to model capabilities within concerns to have a\nself-contained persona.\nIt can be used in acquisition/unification scenarios\nwhere shared capabilities are extracted (e.g. accounting or a custom script/tool)\nand unique are retained (e.g. the best clam chowder in town, report generation)"
 		   });
 		addAnnotation
+		  (getConcernDomain__ResolveConcernReference__AbstractConcern(),
+		   source,
+		   new String[] {
+			   "body", "<%org.nasdanika.models.productmanagement.AbstractConcern%> current = start;\nfinal <%java.util.HashSet%><<%org.nasdanika.models.productmanagement.AbstractConcern%>> seen = new <%java.util.HashSet%><<%org.nasdanika.models.productmanagement.AbstractConcern%>>();\nwhile ((current instanceof <%org.nasdanika.models.productmanagement.ConcernReference%>))\n{\n\t{\n\t\tboolean _add = seen.add(current);\n\t\tboolean _not = (!_add);\n\t\tif (_not)\n\t\t{\n\t\t\treturn null;\n\t\t}\n\t\tcurrent = ((<%org.nasdanika.models.productmanagement.ConcernReference%>)current).getTarget();\n\t\tif ((current == null))\n\t\t{\n\t\t\treturn null;\n\t\t}\n\t}\n}\nreturn current;"
+		   });
+		addAnnotation
+		  (getConcernDomain_ResolvedConcerns(),
+		   source,
+		   new String[] {
+			   "get", "<%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractConcern%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractConcern%>> result = new <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractConcern%>>();\n\t<%org.eclipse.emf.common.util.EList%><<%org.nasdanika.models.productmanagement.AbstractConcern%>> _concerns = this.getConcerns();\n\tfor (final <%org.nasdanika.models.productmanagement.AbstractConcern%> concern : _concerns)\n\t{\n\t\t{\n\t\t\tfinal <%org.nasdanika.models.productmanagement.AbstractConcern%> resolved = this.resolveConcernReference(concern);\n\t\t\tif ((resolved != null))\n\t\t\t{\n\t\t\t\tresult.add(resolved);\n\t\t\t}\n\t\t}\n\t}\n\t_xblockexpression = result;\n}\nreturn _xblockexpression;"
+		   });
+		addAnnotation
 		  (capabilityEClass,
 		   source,
 		   new String[] {
 			   "documentation", "*\nA capability extends PersonaDomain, ConcernDomain, and EvidenceDomain\nto support self-contained capability definitions. A capability may:\n - address concerns owned by external personas or other capabilities\n   (via AddressedConcerns)\n - introduce capability-specific personas (via PersonaDomain)\n - introduce concerns that exist by virtue of the capability itself,\n   not owned by any persona (via ConcernDomain)\n - carry the evidence supporting all of the above (via EvidenceDomain)\n - decompose into sub-capabilities (via subCapabilities)"
+		   });
+		addAnnotation
+		  (getCapabilityDomain__ResolveCapabilityReference__AbstractCapability(),
+		   source,
+		   new String[] {
+			   "body", "<%org.nasdanika.models.productmanagement.AbstractCapability%> current = start;\nfinal <%java.util.HashSet%><<%org.nasdanika.models.productmanagement.AbstractCapability%>> seen = new <%java.util.HashSet%><<%org.nasdanika.models.productmanagement.AbstractCapability%>>();\nwhile ((current instanceof <%org.nasdanika.models.productmanagement.CapabilityReference%>))\n{\n\t{\n\t\tboolean _add = seen.add(current);\n\t\tboolean _not = (!_add);\n\t\tif (_not)\n\t\t{\n\t\t\treturn null;\n\t\t}\n\t\tcurrent = ((<%org.nasdanika.models.productmanagement.CapabilityReference%>)current).getTarget();\n\t\tif ((current == null))\n\t\t{\n\t\t\treturn null;\n\t\t}\n\t}\n}\nreturn current;"
+		   });
+		addAnnotation
+		  (getCapabilityDomain_ResolvedCapabilities(),
+		   source,
+		   new String[] {
+			   "get", "<%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractCapability%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractCapability%>> result = new <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractCapability%>>();\n\t<%org.eclipse.emf.common.util.EList%><<%org.nasdanika.models.productmanagement.AbstractCapability%>> _capabilities = this.getCapabilities();\n\tfor (final <%org.nasdanika.models.productmanagement.AbstractCapability%> capability : _capabilities)\n\t{\n\t\t{\n\t\t\tfinal <%org.nasdanika.models.productmanagement.AbstractCapability%> resolved = this.resolveCapabilityReference(capability);\n\t\t\tif ((resolved != null))\n\t\t\t{\n\t\t\t\tresult.add(resolved);\n\t\t\t}\n\t\t}\n\t}\n\t_xblockexpression = result;\n}\nreturn _xblockexpression;"
 		   });
 		addAnnotation
 		  (evidenceEClass,
@@ -1978,7 +2057,31 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 			   "logicalContainment", "true"
 		   });
 		addAnnotation
+		  (getConcernDomain_Concerns(),
+		   source,
+		   new String[] {
+			   "logicalContainment", "false"
+		   });
+		addAnnotation
+		  (getConcernDomain_ResolvedConcerns(),
+		   source,
+		   new String[] {
+			   "logicalContainment", "true"
+		   });
+		addAnnotation
 		  (getCapabilityReference_Target(),
+		   source,
+		   new String[] {
+			   "logicalContainment", "true"
+		   });
+		addAnnotation
+		  (getCapabilityDomain_Capabilities(),
+		   source,
+		   new String[] {
+			   "logicalContainment", "false"
+		   });
+		addAnnotation
+		  (getCapabilityDomain_ResolvedCapabilities(),
 		   source,
 		   new String[] {
 			   "logicalContainment", "true"
