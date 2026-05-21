@@ -296,6 +296,32 @@ An agent translates that diff into change feeds scoped to a persona, a persona d
 
 The payoff is that consumers stay current without subscribing to everything. The model already knows what each persona cares about; the feed is a query over the diff filtered by the persona's concerns. Compared to broadcast announcement channels - which everyone eventually tunes out - the persona-scoped feed carries signal that compounds with use, because each notification arrives already framed in terms of the consumer's own goals, needs, and pain points.
 
+### Confidential strategy work within a federated model
+
+The federation described so far is openly readable - every assertion is attributable, citable, and consumable by anyone who imports the artifact. That property is desirable in many settings and inappropriate in others. Senior leadership reasoning about an upcoming acquisition, an organizational restructuring, a divestment, or a sensitive customer engagement cannot publish those concerns into a model the whole organization will read. In simple cases the consideration is held in a prompt or a slide deck and never enters the model at all; the reasoning that depends on it becomes opaque, and the model loses the very assertions that drive the largest decisions.
+
+The model supports confidential reasoning through transformation-based access control. The full federation is assembled in a protected environment - private repositories, on-prem stores, or local models that reference external public artifacts. An NSML transformation expressing the access policy of a particular audience produces the view that audience is permitted to see; elements and assertions outside the policy are not present in the produced view. The produced view is a self-contained model that flows through the same tooling as any other Maven-published model.
+
+The payoff is that confidentiality stops being a reason to exit the model. Senior leadership can articulate concerns in the full federation that the broader organization will not see. Hidden-agenda reasoning becomes structured, citable, and auditable within its permitted audience rather than informal and unrecoverable. The "publish without permission" property is preserved - an author can still publish a concern - but is now per-audience rather than all-or-nothing, so dissent can be voiced inside an appropriate circle rather than forced into either the public square or silence.
+
+Access control is also what makes agentic execution safe in confidential environments. An agent given a transformed view cannot reason over elements the transformation removed; the boundary of what the agent sees is identical to the boundary of what the user sees, by construction. Confidentiality is a property of the view, not a property the agent has to be trusted to respect.
+
+### Multi-tenant persona portals and partner-specific views
+
+An organization serving multiple business customers, partners, or internal lines of business often needs to publish capability information differently to different audiences. The same capability has different positioning, different evidence relevance, and different commitment context for each audience; some elements of the federation are specific to a single audience and must not leak to others.
+
+The model supports this through audience-scoped transformations. An organizational federation contains the union of capability declarations, persona definitions, evidence, and commitments. A per-audience NSML transformation produces the view that audience is entitled to consume - their own personas and concerns plus the shared capabilities of the organization, with confidentiality enforced structurally. Each audience receives a coherent, self-contained federated view; cross-audience leakage is impossible because the elements were never composed into the transformed view to begin with.
+
+A particular pattern this enables is the self-service persona portal: each consumer authors their own personas and concerns inside the portal, interacts with the model to find which shared capabilities address them, and never sees the persona or concern definitions of other consumers. The shared capabilities are common; the consumer-specific personas are private. The same mechanism that gates senior-leadership confidentiality gates per-tenant isolation, and the policy in both cases is an auditable NSML transformation rather than tribal knowledge about who is allowed to see what.
+
+### Interactive consultation through agent-backed operations
+
+A capability declaration on the model carries data: the concerns it addresses, its evidence, its dependencies, its lifecycle. A consumer reasoning over the model often wants more than data - they want to ask: "summarize this for my role," "find capabilities like this one for a different persona," "compare these three proposals on the dimensions that matter to me," "explain what changed since last quarter relative to my concerns."
+
+The model exposes these interactions as **operations** declared on the view rather than as freestanding chat conversations alongside it. An operation is part of the contract the view defines: it has a name, a typed signature, an access policy, and a backing implementation. The backing may be a hand-written service, a workflow, or - increasingly - an agent that operates over the same view the user is consuming.
+
+The payoff is that interactive consultation is grounded in the same structural model as the rest of the consumer experience. Conversations become invocations: each agent call has typed inputs and outputs, the view bounds what the agent can see, and the operation can be cited the same way an attribute or assertion can. Agentic execution stops being a parallel channel and becomes a first-class feature of the model the consumer is already reading. Combined with audience-scoped views, agent-backed operations make the model itself the interaction surface: data plus behavior, both bounded by the same access policy, both authored as part of the same transformation.
+
 ## Synergy versus competition
 
 A recognizable scenario in any sufficiently large engineering organization: two individuals or two teams independently arrive at similar product ideas, or propose capabilities that overlap in scope.
@@ -478,9 +504,17 @@ For the product management model, Waypoint flows carry persona-pull queries from
 
 For agentic execution, OpGraph means that an agent's work product is itself modeled - which capabilities it consulted, which providers it queried, which evidence it cited, which conclusions it drew, under which authority. The agent's output is auditable in the same shape as the product management model itself; the substrate that documents the product is the substrate that records how decisions were assembled about it.
 
+### Privacy and agent-backed operations
+
+Two NSML capabilities make this layer viable where openness is not acceptable and where consultation has to be more than a sidebar.
+
+**Access control through transformation** assembles the federation in a protected environment and produces audience-scoped views through NSML transformations whose policies are themselves auditable artifacts, expressible in terms of [Apache Shiro](https://shiro.models.nasdanika.org/) primitives (subjects, roles, groups, URI-based permissions). An agent reasoning over a produced view sees only what the view exposes; the user's confidentiality boundary is the agent's confidentiality boundary by construction rather than by trust.
+
+**Agent-backed operations** declared on a view turn interactive consultation into a first-class part of the consumer's contract with the model. Operations like "summarize this for my role" or "find capabilities like this for a different persona" are invocations on the view with typed signatures, citable provenance, and access bounds inherited from the view. Conversations stop being a parallel channel and become part of the structure; the model is the interaction surface, not an artifact about which interaction happens separately.
+
 ### Cost, ROI, and pull-driven prioritization
 
-The three components above are at the Elaborated lifecycle state. Their architectures are documented, their interactions are designed, and the implementation work is bounded.
+The components above are at the Elaborated lifecycle state. Their architectures are documented, their interactions are designed, and the implementation work is bounded.
 
 In the era of LLM-assisted development and coding agents, the implementation cost for this layer is on the order of a few hundred focused engineering hours. That is small in absolute terms, and very small relative to the productivity gain the product management model itself unlocks even without the execution layer. The ROI is asymmetric: the substrate is already useful as a reasoning environment for humans and LLMs; the execution layer turns that environment into first-class infrastructure that workflows can be built on. Adoption of the substrate is what justifies completing the layer above it.
 
