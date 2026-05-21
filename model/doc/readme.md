@@ -7,6 +7,23 @@ A pragmatic, just-enough Xcore metamodel for product management as code. Element
 
 [TOC levels=6]
 
+## Executive summary
+
+Most product strategy work goes into *push*: positioning statements, feature briefs, vendor pitches, competitive landscape decks, talking points prepared for the next steering committee. Every capability owner pushes a narrative; every consumer absorbs whichever narrative reached them first or was packaged most insistently. Decisions get made on rhetoric, and the rhetoric is optimized for the room rather than for the consumer.
+
+The product management model flips the direction. Personas - the consumers - articulate concerns: goals to reach, needs to satisfy, pain points to resolve. Capabilities are *pulled* by those concerns. The question "what addresses this concern of this persona, with what evidence, under whose authority, at what maturity?" has a queryable answer over the federated graph. Positioning, executive summaries, and adoption decisions become derived views of the model rather than separately authored artifacts that drift out of sync with what is actually built.
+
+Engineers will recognize the shift. It is the same shift as **reactive streams with back-pressure** (consumers signal demand, producers respond) over synchronous push, and as **backward chaining** (start from the goal, trace back to whichever facts and rules satisfy it) over forward-chaining production systems. The [Nasdanika Capability framework](https://docs.nasdanika.org/capability/) operates on the same principle: capability requests are satisfied by whichever providers can serve them, discovered at the point of need rather than wired in advance.
+
+Four consequences follow that are hard to obtain in the push mode:
+
+- **Decisions cite the model rather than the loudest voice.** Evaluating a proposal becomes a query over personas, concerns, evidence, dependencies, and authority. The arena moves from rhetoric to structure.
+- **Internal and external offerings are evaluated on equal terms.** A vendor product, an internal platform, and an early-stage internal proposal enter the model in the same shape. The political asymmetry that otherwise favors the vendor narrative is removed from the input stage.
+- **Communication is calibrated to the audience by construction.** A senior leader, an architect, and a delivery lead each see the view of the same capability that fits their level of abstraction, derived from one model. The simplification is no longer lossy; the next layer of detail is one link away.
+- **AI assistance becomes useful where it previously stalled.** An agent reasoning over a typed federated graph can answer pull queries with citations, route follow-ups deterministically, and operate as a first-class consumer alongside humans.
+
+The remainder of this page describes the metamodel, the use cases that motivated its design, and the execution layer that will carry persona-pull queries from articulation to assembled response.
+
 ## What this is, in its own terms
 
 This metamodel is itself a product. The page you are reading is the first slice of its own product management model - applied recursively.
@@ -195,6 +212,112 @@ Every assertion has provenance; every lifecycle transition has an asserting auth
 The payoff is that audit is a query rather than an interview. 
 The model is the same model used for everyday decisions, not a separate artifact prepared for compliance - which means the audit reflects how the organization actually operates, not how it presented itself for the review.
 
+### Synergy discovery
+
+A product portfolio of any size accumulates capabilities at different stages of maturity - some shipped, some in pilot, some in design, some only proposed.
+The opportunities that compound value are rarely the individual capabilities; they are the *combinations* - a shipped capability A whose outcomes happen to satisfy a dependency of an in-design capability B, or a pair of early-stage capabilities C and D that, taken together, address a market segment neither was scoped to serve alone.
+
+These cross-capability synergies are systematically under-discovered in organizations of any nontrivial size. 
+Not because portfolio owners are inattentive, but because the discovery work scales with the *combinations* of capabilities, not with the count - and human attention does not. 
+By the time a portfolio has dozens of capabilities across multiple maturity tiers, the space of plausible synergy candidates is larger than any review meeting can cover.
+
+The product management model addresses this by making the portfolio machine-readable.
+Each capability declares its outcomes, dependencies, beneficiaries, and current maturity.
+An AI agent traversing this graph can systematically enumerate candidate synergies - combinations of capabilities whose outcomes satisfy each other's dependencies, whose beneficiaries overlap, or whose composition opens a use case neither member supports alone.
+
+The traversal is configurable along the dimensions that matter to the reviewer:
+
+- **Maturity band.** Restrict the search to shipped-only synergies (near-term opportunities), or open it to early-stage capabilities (strategic foresight). A common pattern is two passes: one over available capabilities for immediate roadmap input, one over the union of available and proposed capabilities for portfolio-shaping decisions.
+- **Search depth.** Pairwise synergies are cheap to enumerate; three- and four-way compositions grow combinatorially but often surface the most interesting candidates. The agent can be bounded by depth, by predicted value, or by a budget.
+- **Scope.** A portfolio owner reviewing a single product line will scope the agent to that line; a CTO reviewing the company portfolio will not.
+
+The agent's output is a ranked list of synergy candidates, each with a traceable rationale grounded in the model - which capabilities are involved, which of their declared outcomes and dependencies align, and which maturity transitions would be required to realize the synergy.
+The artifact is *evidence for a human decision*, not an autonomous portfolio change.
+
+The value is asymmetric: discovery scales beyond human attention, while the decisions remain with humans informed by candidate proposals they would not have generated on their own.
+
+### Pull-driven inquiry and discovery
+
+Most product communication is push: vendors and internal teams describe their offerings on their own terms, in their own sequence, at the level of detail they choose. Consumers receive whichever narrative reached them first or was packaged most attractively, and triangulate among them on their own time.
+
+The model supports pull. A consumer articulates a concern - a goal, a need, a pain point - and the capabilities that address it surface from the federated graph with provenance, evidence, dependencies, lifecycle state, and asserting authority. The order of presentation is driven by structural fit rather than by which capability owner had the better speaker on the day.
+
+The payoff is that discovery becomes consumer-led. Capability owners no longer compete for attention; their capabilities are found when, and because, their addressed concerns match what a consumer is asking for. A capability that addresses a real concern is discoverable even if its owner is not the loudest voice in the room. The pattern mirrors backward chaining in inference systems and reactive streams with back-pressure - structurally well-understood inversions of the push default.
+
+### Briefings calibrated to the audience's level of abstraction
+
+A familiar friction in management briefings: a senior stakeholder asks for an update, the engineer simplifies the proposal to fit the available time, the stakeholder hears "this is simple" and asks why it is taking so long, the engineer begins explaining the detail that was simplified out, and the conversation degrades on both sides. The underlying problem is not that either party is wrong - it is that "WHAT" and "HOW" live at different levels of abstraction, and the same artifact rarely serves both audiences well.
+
+The model separates these layers structurally. A senior stakeholder operates at the persona-concern-capability layer; a delivery team operates at the capability-provider-dependency layer; an architect operates across both. The same model serves all three views, with each view derived rather than re-authored. A trusted "WHAT" answer for an executive does not require flattening the underlying detail - it sits one link above it.
+
+The payoff is that briefings stop being lossy. A summary assembled from the model presents the layer appropriate to the audience, with traceable links into the layer below for any reader who wants to descend. The "if it is so simple, why is it taking so long?" misreading does not arise, because the simpler view is *visibly* the head of a deeper structure rather than a claim that the work itself is small. Trust between layers is sustained by the structural integrity of the model rather than by the rhetorical skill of whoever happens to be presenting on a given day. The pattern is particularly valuable for managing senior contributors whose judgment is grounded in detail they cannot easily articulate on demand - the *coup d'œil* of an experienced engineer becomes legible to a manager who is not expected to share that intuition.
+
+### Decisions grounded in evidence rather than opinion flow
+
+In organizations where shared structural representation is absent, information about products, vendors, and approaches propagates through informal channels: someone read an article, someone heard at a conference, someone in authority mentioned a name in passing. These channels carry real signal, but the signal is opinion-shaped and authority-shaped rather than evidence-shaped. A claim that "everyone is moving to X" is indistinguishable, in the absence of structure, from the original source being a single trade publication or a single conversation. The dynamic is analogous to chemical signalling in a microbial mat - informational, but undirected and lossy compared to a nervous system.
+
+The model replaces opinion flow with structural reasoning. A candidate solution - whether surfaced through informal channels or proposed internally - is evaluated against the persona concerns it would address, the evidence supporting those concerns, the dependencies and prerequisites it carries, and the authority making each claim about it. "We should adopt X" becomes a query with an auditable answer rather than a social statement.
+
+The payoff is not that informal channels disappear - they will not, and should not - but that proposals reaching the decision point arrive there with their evidentiary basis attached. The trail from "we chose X" back to "because persona Y's concern Z is supported by capability X's claim W, asserted by authority V" is queryable. Choices made on weaker grounds remain visible as such, and the unspoken weight previously carried by who-said-it is rebalanced against what-can-be-shown.
+
+### Symmetric evaluation of vendor and internal offerings
+
+A pattern recognizable in any organization with hierarchical accountability: in a meeting attended by peers and a manager, it is politically safer to propose a solution from a large external vendor than a comparable proposal from one's own team. The vendor proposal carries the implicit endorsement of the vendor's market position; the internal proposal carries the explicit endorsement of the proposer, with the associated career risk if the proposal does not work out. The asymmetry biases selection toward external offerings independent of fit. A solution that is a poor match for the concerns at hand can still be the preferred recommendation, simply because recommending it costs the recommender less.
+
+The model represents both candidates in the same shape: personas addressed, concerns addressed, evidence supporting each address, dependencies and prerequisites, lifecycle state, asserting authority. A vendor offering becomes a capability provider on the same graph as an internal team. A senior leader reading the model sees both candidates on the same axes, with fit, evidence, and dependency footprint visible structurally rather than narratively.
+
+The payoff is twofold. The first is local: the choice between candidates is made on documented fit rather than on the perceived safety of proposing one or the other. The second is structural: the political cost of endorsing an internal proposal is reduced because the endorsement is by reference to the model rather than by personal vouching. A manager defending an internal proposal does not have to argue against the vendor's market presence; they reference the rows in the table where the internal proposal addresses concerns the vendor does not.
+
+The same mechanism raises the ceiling on what an organization can collectively endorse. When an internal team's work is opaque to the next layer up, that layer becomes the de facto upper bound on what gets recognized - the team's contribution is capped at its manager's ability to articulate it. When the work is legible in the same model the senior layer already uses to view the vendor landscape, the team's capabilities are evaluated on their own terms rather than filtered through any single individual's understanding of them.
+
+### Persona-anchored positioning
+
+Considerable effort in product organizations is spent authoring positioning statements and then defending them. The work is usually anchored to a market narrative - "we are the X for Y who want Z" - and lives in slide decks that drift out of sync with the underlying product over time. The positioning is then re-stated, re-debated, and re-published, often without the underlying capabilities changing.
+
+The model treats positioning as a derived view rather than an authored artifact. A persona asking "what is this capability for?" receives an answer assembled from the model: which of that persona's concerns the capability addresses, what evidence supports each address, which alternatives exist in the federation, where this capability sits in lifecycle, what dependencies it carries. Two personas asking the same capability the same question can receive different, correct answers - because the capability legitimately means different things to different consumers, and the model captures both meanings rather than averaging them into a single statement that fits neither.
+
+The payoff is that positioning stops being a maintenance burden. The capability's positioning toward any persona is whatever the model says about it at that moment. When the capability's concerns, evidence, or dependencies change, every persona-anchored view of it updates without anyone editing a deck. Positioning becomes pull-driven for the same reason discovery does: the consumer's persona, not the producer's narrative, is the index into what is said.
+
+### Persona-tailored executive summaries
+
+A consistent observation in capability development is that the people building a capability are usually the wrong people to write its executive summary. They know it too well to compress it; they explain its mechanism when an executive needs its outcome; they over-qualify and under-state. The result is summaries that fail the audience they were written for.
+
+An LLM with access to the model can produce executive summaries the capability owner cannot. The summary is assembled from the persona-concern-capability graph and the evidence attached to it, not from the owner's intuition about what should be said. Citations attach to specific elements at specific versions, so the summary remains verifiable.
+
+The advanced form is persona-aware: the same capability produces a different summary for a senior leader (portfolio context, consolidation candidates, evidence of adoption), an architect (dependency footprint, lifecycle interactions with adjacent capabilities), and a delivery lead (commitments, prerequisites already available, remaining gaps). The summary is calibrated to what the requester's persona cares about rather than to a generic audience.
+
+The payoff is informational: stakeholders read summaries that address their concerns at their level of abstraction. There is also a softer payoff that organizations will recognize: the friction in a contributor explaining their own work to a senior stakeholder - the implicit status negotiation that often colors such exchanges - is replaced by a generated artifact whose tone is uniform regardless of who asked. The conversation that follows is about the content rather than about the contributor.
+
+### Persona-scoped change feeds
+
+The model is under version control. Comparing two points in its history produces a structural diff: capabilities added or withdrawn, lifecycle states moved, dependencies introduced or removed, authorities asserting new positions. The diff is precise because the model is precise.
+
+An agent translates that diff into change feeds scoped to a persona, a persona domain, or a capability domain. A subscriber receives notifications limited to changes that affect them, with the impact written in their terms. An enterprise architect sees lifecycle moves and dependency churn; a platform consumer sees commitments that affect downstream plans; a senior leader sees consolidation candidates and adoption shifts; a capability owner sees citations into their own capability from elsewhere in the federation.
+
+The payoff is that consumers stay current without subscribing to everything. The model already knows what each persona cares about; the feed is a query over the diff filtered by the persona's concerns. Compared to broadcast announcement channels - which everyone eventually tunes out - the persona-scoped feed carries signal that compounds with use, because each notification arrives already framed in terms of the consumer's own goals, needs, and pain points.
+
+## Synergy versus competition
+
+A recognizable scenario in any sufficiently large engineering organization: two individuals or two teams independently arrive at similar product ideas, or propose capabilities that overlap in scope.
+The current default outcome is competitive - each side defends its proposal by surfacing weaknesses in the other, and resources, attention, and political capital flow to whichever proposal survives the comparison.
+One "wins"; the other is shelved, often with the loser's underlying insight lost to the organization.
+
+This pattern is well-understood as a failure mode, and yet it persists because the alternative - structured comparison and reconciliation - is expensive in the absence of a shared representation.
+Without a common artifact, two proposals are two narratives; the comparison is rhetorical, and rhetorical comparisons reward defensive posture over informational completeness.
+
+The product management model changes the medium in which proposals exist.
+Both proposals enter the model as candidate capabilities with explicit scope, outcomes, dependencies, target beneficiaries, and assumed market or operational context. Overlap and divergence are no longer assertions to be argued; they are properties of the model that can be computed and displayed.
+
+Three consequences follow:
+
+* First, leadership sees the comparison in the same form they see the rest of the portfolio. The decision input is structural, not rhetorical: where the proposals overlap, where they diverge, which dependencies they share, what outcomes each uniquely contributes. AI assistance over the model can synthesize this view on demand and answer follow-up questions ("which of these proposals' dependencies are satisfied by existing capabilities?") without re-litigation.
+* Second, the disagreement itself is preserved as documented context. A decision to advance one proposal and pause the other is reversible in a meaningful way, because the rejected proposal is not lost - it remains in the model with its scope and rationale intact, available when context changes.
+* Third - and this is the outcome that is hardest to achieve in the rhetorical mode - the proposals' authors often discover that their ideas are *complementary* rather than competing. Two capabilities that looked like duplicates in a slide deck frequently reveal, once decomposed into outcomes and dependencies, that they address different beneficiaries or different stages of the same user journey. The model surfaces this. The collaboration that becomes possible at that point - defining the two capabilities as a coordinated pair, with explicit interfaces - is a structurally better outcome than either proposal alone.
+
+The use case does not claim to remove all competition for resources, nor should it.
+Some proposals genuinely conflict, and the organization must choose.
+The claim is narrower: that the structured-model representation moves the conflict to terrain where the decision can be made on documented analysis, and where collaboration is at least *available* as an outcome - which, in the rhetorical mode, it typically is not.
+
 ## Design
 
 The metamodel reflects a set of design choices that, together, distinguish it from roadmap tools, EA modeling tools, and idea-management systems. 
@@ -330,6 +453,38 @@ The agent operates on a context tailored to its task rather than on the whole fe
 NSML itself is an Elaborated capability in the Nasdanika roadmap: designed in detail, not yet built.
 It is published as a lot on a street in a new neighborhood - the architecture is staked out, and construction begins when the first consumer signs a contract for it. 
 This is the pull lifecycle the metamodel supports: capabilities can be visible, elaborated, and citable before they exist as code, so demand and supply meet on the same artifact.
+
+## Agentic execution - designed, not yet built
+
+Everything above describes the substrate: a federated, version-controlled, AI-readable model of personas, concerns, capabilities, providers, evidence, lifecycle, and authority. The substrate is useful in its own right - the "Try the metamodel without installing anything" path below shows that even without dedicated tooling, the structure improves human and LLM-assisted reasoning over product strategy.
+
+The next layer is execution: turning a persona-pull query ("I have this concern; what is available, by whom, at what maturity, under what evidence?") into an assembled response with traceable provenance, and beyond that into agentic workflows that act on the model. Three Nasdanika components are designed for this layer. None of them are yet implemented; all of them are documented, scoped, and citable as Elaborated capabilities in the Nasdanika roadmap.
+
+### NSML - Nasdanika Semantic Mapping Language
+
+[NSML](https://github.com/Nasdanika-Models/nasdanika-semantic-mapping-language) declaratively transforms regions of the federated model into [semantic context models](https://medium.com/nasdanika/why-we-need-a-semantic-context-model-ae231d8004e3) - focused, agent-shaped views derived from the full model through mapping rules. NSML is to Ecore what XSLT is to XML: a transformation language whose source is a typed graph and whose target is another typed graph.
+
+In the product-management context, NSML is the mechanism by which a large federated model is reduced to the slice an agent needs for a particular task. A pull query for "capabilities addressing the FinOps Lead persona's cost-attribution concerns, with available evidence, at Available or In Development maturity" becomes an NSML transformation that materializes precisely that slice. The agent reasons over the slice; the rest of the federation is not loaded.
+
+### Waypoint - flow orchestration
+
+[Waypoint](https://github.com/Nasdanika/waypoint) is a flow-based orchestration framework. In agentic terms, a Waypoint flow composes capability invocations, tool calls, model traversals, and LLM steps into a directed graph whose execution is observable and resumable.
+
+For the product management model, Waypoint flows carry persona-pull queries from articulation to assembled response. A query enters a flow; an NSML transformation produces the relevant slice; an LLM step assembles a candidate response over the slice; downstream steps attach citations, validate against lifecycle and authority constraints, and produce a verifiable artifact. The flow itself is a first-class artifact, citable from the model, so the question "how did this answer come to be?" has a structural answer rather than a transcript.
+
+### OpGraph - generic execution graph
+
+[OpGraph](https://op-graph.models.nasdanika.org/) is a generic execution model: every operation is a node in a typed graph whose edges carry inputs, outputs, dependencies, and provenance. OpGraph is the substrate on which Waypoint flows execute, and on which any other operational pipeline expressible as a typed graph can run.
+
+For agentic execution, OpGraph means that an agent's work product is itself modeled - which capabilities it consulted, which providers it queried, which evidence it cited, which conclusions it drew, under which authority. The agent's output is auditable in the same shape as the product management model itself; the substrate that documents the product is the substrate that records how decisions were assembled about it.
+
+### Cost, ROI, and pull-driven prioritization
+
+The three components above are at the Elaborated lifecycle state. Their architectures are documented, their interactions are designed, and the implementation work is bounded.
+
+In the era of LLM-assisted development and coding agents, the implementation cost for this layer is on the order of a few hundred focused engineering hours. That is small in absolute terms, and very small relative to the productivity gain the product management model itself unlocks even without the execution layer. The ROI is asymmetric: the substrate is already useful as a reasoning environment for humans and LLMs; the execution layer turns that environment into first-class infrastructure that workflows can be built on. Adoption of the substrate is what justifies completing the layer above it.
+
+The investment is consistent with the pull lifecycle the metamodel supports. NSML, Waypoint, and OpGraph are visible, elaborated, and citable before they exist as code. When the first consumer signs a contract for them - a real persona-pull workload in a real organization that justifies turning the design into a runtime - construction begins on the same artifact the design was published on. Demand and supply meet on the model that describes them, and the implementation effort is sized to be repaid in weeks rather than years of operation.
 
 ## How to build on this
 
