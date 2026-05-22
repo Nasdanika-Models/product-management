@@ -1,13 +1,16 @@
 package org.nasdanika.models.productmanagement.doc;
 
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Map;
+import java.util.Optional;
 import java.util.Map.Entry;
 import java.util.function.Predicate;
 
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.nasdanika.common.Content;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.DocumentationFactory;
 import org.nasdanika.common.ProgressMonitor;
@@ -23,8 +26,8 @@ import org.nasdanika.models.app.graph.WidgetFactory;
 import org.nasdanika.models.app.graph.emf.EObjectNodeProcessor;
 import org.nasdanika.models.bootstrap.Table;
 import org.nasdanika.models.productmanagement.Icon;
-import org.nasdanika.ncore.ModelElement;
-import org.nasdanika.ncore.NamedElement;
+import org.nasdanika.models.productmanagement.ModelElement;
+import org.nasdanika.models.productmanagement.NamedElement;
 
 /**
  * Base class for other processors with common functionality.
@@ -63,6 +66,31 @@ public abstract class ModelElementNodeProcessor<T extends EObject> extends EObje
 		if (propertiesTable != null) {
 			action.getContent().add(0, propertiesTable);
 		}
+		
+		if (documentationFactories != null && !documentationFactories.isEmpty()) {
+			T target = getTarget();
+			if (target instanceof ModelElement modelElement) {
+				String doc = modelElement.getDocumentation();
+				if (!Util.isBlank(doc)) {
+					Optional<DocumentationFactory> dfo = documentationFactories
+							.stream()
+							.filter(df -> df.canHandle(Content.MARKDOWN))
+							.findAny();
+						
+					if (dfo.isPresent()) {
+						Collection<EObject> documentation = dfo.get().createDocumentation(
+								target, 
+								doc, 
+								Content.MARKDOWN, 
+								target.eResource() == null ? null : target.eResource().getURI(),
+								Collections.<String,String>emptyMap()::get,
+								progressMonitor);
+	
+						action.getContent().addAll(documentation);
+					}
+				}
+			}
+		}		
 						
 		return action;
 	}
@@ -88,9 +116,6 @@ public abstract class ModelElementNodeProcessor<T extends EObject> extends EObje
 		if (source == getTarget()) {
 			if (Util.isBlank(label.getIcon())) {
 				label.setIcon(getIcon());
-			}
-			if (Util.isBlank(label.getTooltip()) && source instanceof ModelElement) {
-				label.setTooltip(((ModelElement) source).getDescription());
 			}
 		}		
 	}

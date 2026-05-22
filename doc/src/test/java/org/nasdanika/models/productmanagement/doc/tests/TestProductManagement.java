@@ -74,12 +74,14 @@ public class TestProductManagement {
 		Goal goal = factory.createGoal();
 		goal.setId("reduce-manual-reporting");
 		goal.setName("Reduce time spent on manual reporting");
+		goal.setDocumentation("Explains the goal in more detail");
 		externalPersona.getConcerns().add(goal);
 
 		// Need: access to automated data aggregation tools - supports the goal
 		Need need = factory.createNeed();
 		need.setId("automated-data-aggregation");
 		need.setName("Access to automated data aggregation tools");
+		need.setDocumentation("Explains the need in more detail");
 		SupportedGoals supportedGoals = factory.createSupportedGoals();
 		supportedGoals.getGoals().add(goal);
 		need.getSupports().add(supportedGoals);
@@ -89,6 +91,7 @@ public class TestProductManagement {
 		PainPoint painPoint = factory.createPainPoint();
 		painPoint.setId("siloed-data-systems");
 		painPoint.setName("Data is siloed across incompatible systems");
+		painPoint.setDocumentation("Explains the pain point in more detail");
 		ViolatedNeeds violatedNeeds = factory.createViolatedNeeds();
 		violatedNeeds.getNeeds().add(need);
 		painPoint.getViolates().add(violatedNeeds);
@@ -103,6 +106,7 @@ public class TestProductManagement {
 		Capability capability = factory.createCapability();
 		capability.setId("automated-data-aggregation");
 		capability.setName("Automated Data Aggregation");
+		capability.setDocumentation("Provides access to automated data aggregation tools");
 		capability.setLifecycle(Lifecycle.IN_PROGRESS);
 		AddressedConcerns addressedConcerns = factory.createAddressedConcerns();
 		addressedConcerns.getConcerns().add(need);
