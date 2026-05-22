@@ -5,6 +5,7 @@ module org.nasdanika.models.productmanagement.doc {
 		
 	requires transitive org.nasdanika.models.productmanagement;
 	requires transitive org.nasdanika.models.ecore.graph;
+	requires org.apache.commons.text;
 	
 	exports org.nasdanika.models.productmanagement.doc;
 	opens org.nasdanika.models.productmanagement.doc; // For loading resources

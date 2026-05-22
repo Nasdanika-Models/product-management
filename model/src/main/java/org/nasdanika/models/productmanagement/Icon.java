@@ -74,15 +74,14 @@ public enum Icon {
     public String toString() {
         return url;
     }
-
     /**
-     * Returns the most specific matching icon for the given EObject.
+     * Returns the most specific matching icon for the given EClass.
      * Among matching icons, prefers the one whose EClass is a subtype of others.
      * If no supertype relationship exists between two candidates, the first one wins.
      */
-    public static String getIcon(EObject eObject) {
+    public static String getTypeIcon(EClass eClass) {
         return java.util.Arrays.stream(values())
-            .filter(icon -> icon.eClass != null && icon.eClass.isInstance(eObject))
+            .filter(icon -> icon.eClass != null && icon.eClass.isSuperTypeOf(eClass))
             .reduce((a, b) -> {
                 // b is more specific if a.eClass is a supertype of b.eClass
                 if (b.eClass.getEAllSuperTypes().contains(a.eClass)) {
@@ -97,6 +96,15 @@ public enum Icon {
             })
             .map(Icon::getUrl)
             .orElse(null);
+    }
+
+    /**
+     * Returns the most specific matching icon for the given EObject.
+     * Among matching icons, prefers the one whose EClass is a subtype of others.
+     * If no supertype relationship exists between two candidates, the first one wins.
+     */
+    public static String getIcon(EObject eObject) {
+    	return eObject != null ? getTypeIcon(eObject.eClass()) : null;
     }
 
 }

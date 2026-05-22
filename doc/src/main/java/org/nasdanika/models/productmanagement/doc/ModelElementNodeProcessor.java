@@ -3,16 +3,18 @@ package org.nasdanika.models.productmanagement.doc;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Map;
-import java.util.Optional;
 import java.util.Map.Entry;
+import java.util.Optional;
 import java.util.function.Predicate;
 
+import org.apache.commons.text.StringEscapeUtils;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
 import org.nasdanika.common.Content;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.DocumentationFactory;
+import org.nasdanika.common.MarkdownHelper;
 import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.Util;
 import org.nasdanika.drawio.emf.AbstractDrawioFactory;
@@ -94,29 +96,33 @@ public abstract class ModelElementNodeProcessor<T extends EObject> extends EObje
 						
 		return action;
 	}
+	
+	/**
+	 * Override to customize name, e.g. replace blank name with some generated name
+	 * @param namedElement
+	 * @return
+	 */
+	protected String getName(NamedElement namedElement) {
+		return namedElement.getName();
+	}	
 		
 	@Override
 	public void configureLabel(Object source, Label label, ProgressMonitor progressMonitor) {
 		super.configureLabel(source, label, progressMonitor);
-//		if (source == getTarget() && label instanceof Link) {
-//			String location = ((Link) label).getLocation();
-//			URI uri = getUri();
-//			if (uri != null 
-//					&& location != null 
-//					&& uri.toString().equals(location)) {
-//				
-//				if (Util.isBlank(label.getIcon())) {
-//					label.setIcon(getIcon());
-//				}
-//				if (Util.isBlank(label.getTooltip()) && source instanceof ModelElement) {
-//					label.setTooltip(((ModelElement) source).getDescription());
-//				}
-//			}
-//		}		
+		if (source instanceof NamedElement namedElement && Util.isBlank(label.getText())) {
+			label.setText(StringEscapeUtils.escapeHtml4(getName(namedElement)));
+		}
 		if (source == getTarget()) {
 			if (Util.isBlank(label.getIcon())) {
 				label.setIcon(getIcon());
 			}
+		}		
+		if (Util.isBlank(label.getTooltip()) && source instanceof ModelElement modelElement) {
+			String doc = modelElement.getDocumentation();
+			if (!Util.isBlank(doc)) {
+				String firstPlainTextSentence = MarkdownHelper.INSTANCE.firstPlainTextSentence(doc);
+				label.setTooltip(firstPlainTextSentence);				
+			} 
 		}		
 	}
 

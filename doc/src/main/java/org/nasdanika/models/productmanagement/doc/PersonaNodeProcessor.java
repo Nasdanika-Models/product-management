@@ -22,4 +22,14 @@ public class PersonaNodeProcessor extends NamedPeriodNodeProcessor<Persona> impl
 		super(config, context, prototypeProvider, documentationFactories);
 	}	
 	
+	@Override
+	public boolean isConcernSection() {
+		return true;
+	}
+	
+	@Override
+	public boolean isConcernsByType() {
+		return true;
+	}
+	
 }
