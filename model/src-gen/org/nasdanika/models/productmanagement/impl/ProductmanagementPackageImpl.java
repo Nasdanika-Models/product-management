@@ -645,6 +645,16 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	 * @generated
 	 */
 	@Override
+	public EReference getModelElement_Fasets() {
+		return (EReference)modelElementEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EClass getNamedElement() {
 		return namedElementEClass;
 	}
@@ -875,7 +885,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	 * @generated
 	 */
 	@Override
-	public EReference getGoal_SupportingNeeds() {
+	public EReference getGoal_SupportedBy() {
 		return (EReference)goalEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -885,8 +895,28 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	 * @generated
 	 */
 	@Override
-	public EReference getGoal_Blockers() {
+	public EReference getGoal_AllSupportedBy() {
 		return (EReference)goalEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getGoal_BlockedBy() {
+		return (EReference)goalEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getGoal_AllBlockedBy() {
+		return (EReference)goalEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -915,8 +945,28 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	 * @generated
 	 */
 	@Override
-	public EReference getNeed_ViolatedBy() {
+	public EReference getNeed_AllSupports() {
 		return (EReference)needEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getNeed_ViolatedBy() {
+		return (EReference)needEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getNeed_AllViolatedBy() {
+		return (EReference)needEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -945,8 +995,28 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	 * @generated
 	 */
 	@Override
-	public EReference getPainPoint_Violates() {
+	public EReference getPainPoint_AllBlocks() {
 		return (EReference)painPointEClass.getEStructuralFeatures().get(1);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getPainPoint_Violates() {
+		return (EReference)painPointEClass.getEStructuralFeatures().get(2);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getPainPoint_AllViolates() {
+		return (EReference)painPointEClass.getEStructuralFeatures().get(3);
 	}
 
 	/**
@@ -975,7 +1045,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	 * @generated
 	 */
 	@Override
-	public EReference getCapability_AddressedConcerns() {
+	public EReference getCapability_Addresses() {
 		return (EReference)capabilityEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -985,7 +1055,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	 * @generated
 	 */
 	@Override
-	public EReference getCapability_AllAddressedConcerns() {
+	public EReference getCapability_AllAddresses() {
 		return (EReference)capabilityEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -1492,6 +1562,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		createEAttribute(modelElementEClass, MODEL_ELEMENT__DOC_REF);
 		createEAttribute(modelElementEClass, MODEL_ELEMENT__DOC_FORMAT);
 		createEAttribute(modelElementEClass, MODEL_ELEMENT__URIS);
+		createEReference(modelElementEClass, MODEL_ELEMENT__FASETS);
 
 		namedElementEClass = createEClass(NAMED_ELEMENT);
 		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
@@ -1527,22 +1598,28 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		createEOperation(concernDomainEClass, CONCERN_DOMAIN___RESOLVE_CONCERN_REFERENCE__ABSTRACTCONCERN);
 
 		goalEClass = createEClass(GOAL);
-		createEReference(goalEClass, GOAL__SUPPORTING_NEEDS);
-		createEReference(goalEClass, GOAL__BLOCKERS);
+		createEReference(goalEClass, GOAL__SUPPORTED_BY);
+		createEReference(goalEClass, GOAL__ALL_SUPPORTED_BY);
+		createEReference(goalEClass, GOAL__BLOCKED_BY);
+		createEReference(goalEClass, GOAL__ALL_BLOCKED_BY);
 
 		needEClass = createEClass(NEED);
 		createEReference(needEClass, NEED__SUPPORTS);
+		createEReference(needEClass, NEED__ALL_SUPPORTS);
 		createEReference(needEClass, NEED__VIOLATED_BY);
+		createEReference(needEClass, NEED__ALL_VIOLATED_BY);
 
 		painPointEClass = createEClass(PAIN_POINT);
 		createEReference(painPointEClass, PAIN_POINT__BLOCKS);
+		createEReference(painPointEClass, PAIN_POINT__ALL_BLOCKS);
 		createEReference(painPointEClass, PAIN_POINT__VIOLATES);
+		createEReference(painPointEClass, PAIN_POINT__ALL_VIOLATES);
 
 		abstractCapabilityEClass = createEClass(ABSTRACT_CAPABILITY);
 
 		capabilityEClass = createEClass(CAPABILITY);
-		createEReference(capabilityEClass, CAPABILITY__ADDRESSED_CONCERNS);
-		createEReference(capabilityEClass, CAPABILITY__ALL_ADDRESSED_CONCERNS);
+		createEReference(capabilityEClass, CAPABILITY__ADDRESSES);
+		createEReference(capabilityEClass, CAPABILITY__ALL_ADDRESSES);
 		createEReference(capabilityEClass, CAPABILITY__SUB_CAPABILITIES);
 		createEAttribute(capabilityEClass, CAPABILITY__LIFECYCLE);
 
@@ -1734,6 +1811,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		initEAttribute(getModelElement_DocRef(), theEcorePackage.getEString(), "docRef", null, 0, 1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getModelElement_DocFormat(), theEcorePackage.getEString(), "docFormat", null, 0, 1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getModelElement_Uris(), theEcorePackage.getEString(), "uris", null, 0, -1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getModelElement_Fasets(), theEcorePackage.getEObject(), null, "fasets", null, 0, -1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNamedElement_Name(), theEcorePackage.getEString(), "name", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1777,22 +1855,28 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		addEParameter(op, this.getAbstractConcern(), "start", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(goalEClass, Goal.class, "Goal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getGoal_SupportingNeeds(), this.getConcernReference(), null, "supportingNeeds", null, 0, -1, Goal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getGoal_Blockers(), this.getConcernReference(), null, "blockers", null, 0, -1, Goal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGoal_SupportedBy(), this.getConcernReference(), null, "supportedBy", null, 0, -1, Goal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGoal_AllSupportedBy(), this.getNeed(), null, "allSupportedBy", null, 0, -1, Goal.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getGoal_BlockedBy(), this.getConcernReference(), null, "blockedBy", null, 0, -1, Goal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getGoal_AllBlockedBy(), this.getPainPoint(), null, "allBlockedBy", null, 0, -1, Goal.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(needEClass, Need.class, "Need", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getNeed_Supports(), this.getConcernReference(), null, "supports", null, 0, -1, Need.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNeed_AllSupports(), this.getGoal(), null, "allSupports", null, 0, -1, Need.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getNeed_ViolatedBy(), this.getConcernReference(), null, "violatedBy", null, 0, -1, Need.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getNeed_AllViolatedBy(), this.getPainPoint(), null, "allViolatedBy", null, 0, -1, Need.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(painPointEClass, PainPoint.class, "PainPoint", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPainPoint_Blocks(), this.getConcernReference(), null, "blocks", null, 0, -1, PainPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPainPoint_AllBlocks(), this.getGoal(), null, "allBlocks", null, 0, -1, PainPoint.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getPainPoint_Violates(), this.getConcernReference(), null, "violates", null, 0, -1, PainPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getPainPoint_AllViolates(), this.getNeed(), null, "allViolates", null, 0, -1, PainPoint.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractCapabilityEClass, AbstractCapability.class, "AbstractCapability", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(capabilityEClass, Capability.class, "Capability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCapability_AddressedConcerns(), this.getAbstractConcern(), null, "addressedConcerns", null, 0, -1, Capability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCapability_AllAddressedConcerns(), this.getAbstractConcern(), null, "allAddressedConcerns", null, 0, -1, Capability.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getCapability_Addresses(), this.getAbstractConcern(), null, "addresses", null, 0, -1, Capability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCapability_AllAddresses(), this.getAbstractConcern(), null, "allAddresses", null, 0, -1, Capability.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getCapability_SubCapabilities(), this.getAbstractCapability(), null, "subCapabilities", null, 0, -1, Capability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getCapability_SubCapabilities().getEKeys().add(this.getStringIdentity_Id());
 		initEAttribute(getCapability_Lifecycle(), this.getLifecycle(), "lifecycle", null, 0, 1, Capability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1943,6 +2027,12 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 			   "documentation", "*\nAlias URIs resolved relative to the parent URIs - can be absolute or opaque - global references.\nFor example: actors://john-smith.\nFor domains URIs can be used as anchors to merge domains from different sources.\nFor example, several teams may maintain capability domains with URI myorg://capabilities/developer-productivity\nWhen these definitions are assembled into the organization\'s product management model to generate documentation\nall of these domains are merged into a single logical domain."
 		   });
 		addAnnotation
+		  (getModelElement_Fasets(),
+		   source,
+		   new String[] {
+			   "documentation", "*\nExtension-specific configuration associated with a model element.\nFor example, geometry and color for a diagram facet,\nWeight for a prioritization facet."
+		   });
+		addAnnotation
 		  (getPersonaDomain__ResolvePersonaReference__AbstractPersona(),
 		   source,
 		   new String[] {
@@ -1965,7 +2055,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		   source,
 		   new String[] {
 			   "documentation", "*\nAddressed concerns from this capability plus addressedBy from concerns",
-			   "get", "<%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractCapability%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractCapability%>> result = new <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractCapability%>>();\n\tresult.addAll(this.getAddressedBy());\n\t<%org.eclipse.emf.common.util.EList%><<%org.eclipse.emf.ecore.EObject%>> _referrers = this.getReferrers(<%org.nasdanika.models.productmanagement.ProductmanagementPackage.Literals%>.CAPABILITY__ADDRESSED_CONCERNS);\n\tfor (final <%org.eclipse.emf.ecore.EObject%> referrer : _referrers)\n\t{\n\t\tif ((referrer instanceof <%org.nasdanika.models.productmanagement.AbstractCapability%>))\n\t\t{\n\t\t\tresult.add(((<%org.nasdanika.models.productmanagement.AbstractCapability%>)referrer));\n\t\t}\n\t}\n\t_xblockexpression = result;\n}\nreturn _xblockexpression;"
+			   "get", "<%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractCapability%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractCapability%>> result = new <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractCapability%>>();\n\tresult.addAll(this.getAddressedBy());\n\t<%org.eclipse.emf.common.util.EList%><<%org.eclipse.emf.ecore.EObject%>> _referrers = this.getReferrers(<%org.nasdanika.models.productmanagement.ProductmanagementPackage.Literals%>.CAPABILITY__ADDRESSES);\n\tfor (final <%org.eclipse.emf.ecore.EObject%> referrer : _referrers)\n\t{\n\t\tif ((referrer instanceof <%org.nasdanika.models.productmanagement.AbstractCapability%>))\n\t\t{\n\t\t\tresult.add(((<%org.nasdanika.models.productmanagement.AbstractCapability%>)referrer));\n\t\t}\n\t}\n\t_xblockexpression = result;\n}\nreturn _xblockexpression;"
 		   });
 		addAnnotation
 		  (getConcernDomain__ResolveConcernReference__AbstractConcern(),
@@ -1980,16 +2070,30 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 			   "get", "<%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractConcern%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractConcern%>> result = new <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractConcern%>>();\n\t<%org.eclipse.emf.common.util.EList%><<%org.nasdanika.models.productmanagement.AbstractConcern%>> _concerns = this.getConcerns();\n\tfor (final <%org.nasdanika.models.productmanagement.AbstractConcern%> concern : _concerns)\n\t{\n\t\t{\n\t\t\tfinal <%org.nasdanika.models.productmanagement.AbstractConcern%> resolved = this.resolveConcernReference(concern);\n\t\t\tif ((resolved != null))\n\t\t\t{\n\t\t\t\tresult.add(resolved);\n\t\t\t}\n\t\t}\n\t}\n\t_xblockexpression = result;\n}\nreturn _xblockexpression;"
 		   });
 		addAnnotation
-		  (getGoal_SupportingNeeds(),
+		  (getGoal_SupportedBy(),
 		   source,
 		   new String[] {
 			   "documentation", "*\nReferences to needs supporting this goal"
 		   });
 		addAnnotation
-		  (getGoal_Blockers(),
+		  (getGoal_AllSupportedBy(),
+		   source,
+		   new String[] {
+			   "documentation", "*\nSupporting needs from this goal plus supports from needs",
+			   "get", "<%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.Need%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.Need%>> result = new <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.Need%>>();\n\t<%org.eclipse.emf.common.util.EList%><<%org.nasdanika.models.productmanagement.ConcernReference%>> _supportedBy = this.getSupportedBy();\n\tfor (final <%org.nasdanika.models.productmanagement.ConcernReference%> ref : _supportedBy)\n\t{\n\t\t{\n\t\t\t<%org.nasdanika.models.productmanagement.Concern%> target = ref.getTarget();\n\t\t\tif ((target instanceof <%org.nasdanika.models.productmanagement.Need%>))\n\t\t\t{\n\t\t\t\tresult.add(((<%org.nasdanika.models.productmanagement.Need%>)target));\n\t\t\t}\n\t\t}\n\t}\n\t<%org.eclipse.emf.common.util.EList%><<%org.eclipse.emf.ecore.EObject%>> _referrers = this.getReferrers(<%org.nasdanika.models.productmanagement.ProductmanagementPackage.Literals%>.NEED__SUPPORTS);\n\tfor (final <%org.eclipse.emf.ecore.EObject%> referrer : _referrers)\n\t{\n\t\tif ((referrer instanceof <%org.nasdanika.models.productmanagement.Need%>))\n\t\t{\n\t\t\tresult.add(((<%org.nasdanika.models.productmanagement.Need%>)referrer));\n\t\t}\n\t}\n\t_xblockexpression = result;\n}\nreturn _xblockexpression;"
+		   });
+		addAnnotation
+		  (getGoal_BlockedBy(),
 		   source,
 		   new String[] {
 			   "documentation", "*\nReferences to pain points blocking this goal"
+		   });
+		addAnnotation
+		  (getGoal_AllBlockedBy(),
+		   source,
+		   new String[] {
+			   "documentation", "*\nBlockedBy from this goal plus blocks from pain points",
+			   "get", "<%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.PainPoint%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.PainPoint%>> result = new <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.PainPoint%>>();\n\t<%org.eclipse.emf.common.util.EList%><<%org.nasdanika.models.productmanagement.ConcernReference%>> _blockedBy = this.getBlockedBy();\n\tfor (final <%org.nasdanika.models.productmanagement.ConcernReference%> ref : _blockedBy)\n\t{\n\t\t{\n\t\t\t<%org.nasdanika.models.productmanagement.Concern%> target = ref.getTarget();\n\t\t\tif ((target instanceof <%org.nasdanika.models.productmanagement.PainPoint%>))\n\t\t\t{\n\t\t\t\tresult.add(((<%org.nasdanika.models.productmanagement.PainPoint%>)target));\n\t\t\t}\n\t\t}\n\t}\n\t<%org.eclipse.emf.common.util.EList%><<%org.eclipse.emf.ecore.EObject%>> _referrers = this.getReferrers(<%org.nasdanika.models.productmanagement.ProductmanagementPackage.Literals%>.PAIN_POINT__BLOCKS);\n\tfor (final <%org.eclipse.emf.ecore.EObject%> referrer : _referrers)\n\t{\n\t\tif ((referrer instanceof <%org.nasdanika.models.productmanagement.PainPoint%>))\n\t\t{\n\t\t\tresult.add(((<%org.nasdanika.models.productmanagement.PainPoint%>)referrer));\n\t\t}\n\t}\n\t_xblockexpression = result;\n}\nreturn _xblockexpression;"
 		   });
 		addAnnotation
 		  (getNeed_Supports(),
@@ -1998,10 +2102,38 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 			   "documentation", "*\nGoals supported by this need"
 		   });
 		addAnnotation
+		  (getNeed_AllSupports(),
+		   source,
+		   new String[] {
+			   "documentation", "*\nSupports from this need plus supportingNeeds from goals",
+			   "get", "<%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.Goal%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.Goal%>> result = new <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.Goal%>>();\n\t<%org.eclipse.emf.common.util.EList%><<%org.nasdanika.models.productmanagement.ConcernReference%>> _supports = this.getSupports();\n\tfor (final <%org.nasdanika.models.productmanagement.ConcernReference%> ref : _supports)\n\t{\n\t\t{\n\t\t\t<%org.nasdanika.models.productmanagement.Concern%> target = ref.getTarget();\n\t\t\tif ((target instanceof <%org.nasdanika.models.productmanagement.Goal%>))\n\t\t\t{\n\t\t\t\tresult.add(((<%org.nasdanika.models.productmanagement.Goal%>)target));\n\t\t\t}\n\t\t}\n\t}\n\t<%org.eclipse.emf.common.util.EList%><<%org.eclipse.emf.ecore.EObject%>> _referrers = this.getReferrers(<%org.nasdanika.models.productmanagement.ProductmanagementPackage.Literals%>.GOAL__SUPPORTED_BY);\n\tfor (final <%org.eclipse.emf.ecore.EObject%> referrer : _referrers)\n\t{\n\t\tif ((referrer instanceof <%org.nasdanika.models.productmanagement.Goal%>))\n\t\t{\n\t\t\tresult.add(((<%org.nasdanika.models.productmanagement.Goal%>)referrer));\n\t\t}\n\t}\n\t_xblockexpression = result;\n}\nreturn _xblockexpression;"
+		   });
+		addAnnotation
 		  (getNeed_ViolatedBy(),
 		   source,
 		   new String[] {
 			   "documentation", "*\nReferences to pain points violating this need\nwith an optional documentation explaining\nhow the need is violated"
+		   });
+		addAnnotation
+		  (getNeed_AllViolatedBy(),
+		   source,
+		   new String[] {
+			   "documentation", "*\nViolatedBy from this need plus violates from pain points",
+			   "get", "<%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.PainPoint%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.PainPoint%>> result = new <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.PainPoint%>>();\n\t<%org.eclipse.emf.common.util.EList%><<%org.nasdanika.models.productmanagement.ConcernReference%>> _violatedBy = this.getViolatedBy();\n\tfor (final <%org.nasdanika.models.productmanagement.ConcernReference%> ref : _violatedBy)\n\t{\n\t\t{\n\t\t\t<%org.nasdanika.models.productmanagement.Concern%> target = ref.getTarget();\n\t\t\tif ((target instanceof <%org.nasdanika.models.productmanagement.PainPoint%>))\n\t\t\t{\n\t\t\t\tresult.add(((<%org.nasdanika.models.productmanagement.PainPoint%>)target));\n\t\t\t}\n\t\t}\n\t}\n\t<%org.eclipse.emf.common.util.EList%><<%org.eclipse.emf.ecore.EObject%>> _referrers = this.getReferrers(<%org.nasdanika.models.productmanagement.ProductmanagementPackage.Literals%>.PAIN_POINT__VIOLATES);\n\tfor (final <%org.eclipse.emf.ecore.EObject%> referrer : _referrers)\n\t{\n\t\tif ((referrer instanceof <%org.nasdanika.models.productmanagement.PainPoint%>))\n\t\t{\n\t\t\tresult.add(((<%org.nasdanika.models.productmanagement.PainPoint%>)referrer));\n\t\t}\n\t}\n\t_xblockexpression = result;\n}\nreturn _xblockexpression;"
+		   });
+		addAnnotation
+		  (getPainPoint_AllBlocks(),
+		   source,
+		   new String[] {
+			   "documentation", "*\nBlocks from this pain point plus blockers from pain points",
+			   "get", "<%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.Goal%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.Goal%>> result = new <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.Goal%>>();\n\t<%org.eclipse.emf.common.util.EList%><<%org.nasdanika.models.productmanagement.ConcernReference%>> _blocks = this.getBlocks();\n\tfor (final <%org.nasdanika.models.productmanagement.ConcernReference%> ref : _blocks)\n\t{\n\t\t{\n\t\t\t<%org.nasdanika.models.productmanagement.Concern%> target = ref.getTarget();\n\t\t\tif ((target instanceof <%org.nasdanika.models.productmanagement.Goal%>))\n\t\t\t{\n\t\t\t\tresult.add(((<%org.nasdanika.models.productmanagement.Goal%>)target));\n\t\t\t}\n\t\t}\n\t}\n\t<%org.eclipse.emf.common.util.EList%><<%org.eclipse.emf.ecore.EObject%>> _referrers = this.getReferrers(<%org.nasdanika.models.productmanagement.ProductmanagementPackage.Literals%>.GOAL__BLOCKED_BY);\n\tfor (final <%org.eclipse.emf.ecore.EObject%> referrer : _referrers)\n\t{\n\t\tif ((referrer instanceof <%org.nasdanika.models.productmanagement.Goal%>))\n\t\t{\n\t\t\tresult.add(((<%org.nasdanika.models.productmanagement.Goal%>)referrer));\n\t\t}\n\t}\n\t_xblockexpression = result;\n}\nreturn _xblockexpression;"
+		   });
+		addAnnotation
+		  (getPainPoint_AllViolates(),
+		   source,
+		   new String[] {
+			   "documentation", "*\nBlocks from this pain point plus blockers from pain points",
+			   "get", "<%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.Need%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.Need%>> result = new <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.Need%>>();\n\t<%org.eclipse.emf.common.util.EList%><<%org.nasdanika.models.productmanagement.ConcernReference%>> _violates = this.getViolates();\n\tfor (final <%org.nasdanika.models.productmanagement.ConcernReference%> ref : _violates)\n\t{\n\t\t{\n\t\t\t<%org.nasdanika.models.productmanagement.Concern%> target = ref.getTarget();\n\t\t\tif ((target instanceof <%org.nasdanika.models.productmanagement.Need%>))\n\t\t\t{\n\t\t\t\tresult.add(((<%org.nasdanika.models.productmanagement.Need%>)target));\n\t\t\t}\n\t\t}\n\t}\n\t<%org.eclipse.emf.common.util.EList%><<%org.eclipse.emf.ecore.EObject%>> _referrers = this.getReferrers(<%org.nasdanika.models.productmanagement.ProductmanagementPackage.Literals%>.NEED__VIOLATED_BY);\n\tfor (final <%org.eclipse.emf.ecore.EObject%> referrer : _referrers)\n\t{\n\t\tif ((referrer instanceof <%org.nasdanika.models.productmanagement.Need%>))\n\t\t{\n\t\t\tresult.add(((<%org.nasdanika.models.productmanagement.Need%>)referrer));\n\t\t}\n\t}\n\t_xblockexpression = result;\n}\nreturn _xblockexpression;"
 		   });
 		addAnnotation
 		  (capabilityEClass,
@@ -2010,11 +2142,11 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 			   "documentation", "*\nA capability extends PersonaDomain, ConcernDomain, and EvidenceDomain\nto support self-contained capability definitions. A capability may:\n - address concerns owned by external personas or other capabilities\n   (via AddressedConcerns)\n - introduce capability-specific personas (via PersonaDomain)\n - introduce concerns that exist by virtue of the capability itself,\n   not owned by any persona (via ConcernDomain)\n - carry the evidence supporting all of the above (via EvidenceDomain)\n - decompose into sub-capabilities (via subCapabilities)"
 		   });
 		addAnnotation
-		  (getCapability_AllAddressedConcerns(),
+		  (getCapability_AllAddresses(),
 		   source,
 		   new String[] {
 			   "documentation", "*\nAddressed concerns from this capability plus addressedBy from concerns",
-			   "get", "<%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractConcern%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractConcern%>> result = new <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractConcern%>>();\n\tresult.addAll(this.getAddressedConcerns());\n\t<%org.eclipse.emf.common.util.EList%><<%org.eclipse.emf.ecore.EObject%>> _referrers = this.getReferrers(<%org.nasdanika.models.productmanagement.ProductmanagementPackage.Literals%>.CONCERN__ADDRESSED_BY);\n\tfor (final <%org.eclipse.emf.ecore.EObject%> referrer : _referrers)\n\t{\n\t\tif ((referrer instanceof <%org.nasdanika.models.productmanagement.AbstractConcern%>))\n\t\t{\n\t\t\tresult.add(((<%org.nasdanika.models.productmanagement.AbstractConcern%>)referrer));\n\t\t}\n\t}\n\t_xblockexpression = result;\n}\nreturn _xblockexpression;"
+			   "get", "<%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractConcern%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractConcern%>> result = new <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractConcern%>>();\n\tresult.addAll(this.getAddresses());\n\t<%org.eclipse.emf.common.util.EList%><<%org.eclipse.emf.ecore.EObject%>> _referrers = this.getReferrers(<%org.nasdanika.models.productmanagement.ProductmanagementPackage.Literals%>.CONCERN__ADDRESSED_BY);\n\tfor (final <%org.eclipse.emf.ecore.EObject%> referrer : _referrers)\n\t{\n\t\tif ((referrer instanceof <%org.nasdanika.models.productmanagement.AbstractConcern%>))\n\t\t{\n\t\t\tresult.add(((<%org.nasdanika.models.productmanagement.AbstractConcern%>)referrer));\n\t\t}\n\t}\n\t_xblockexpression = result;\n}\nreturn _xblockexpression;"
 		   });
 		addAnnotation
 		  (capabilityReferenceEClass,
@@ -2081,12 +2213,6 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 			   "logicalContainment", "true"
 		   });
 		addAnnotation
-		  (getConcernReference_Target(),
-		   source,
-		   new String[] {
-			   "logicalContainment", "true"
-		   });
-		addAnnotation
 		  (getConcernDomain_Concerns(),
 		   source,
 		   new String[] {
@@ -2094,12 +2220,6 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		   });
 		addAnnotation
 		  (getConcernDomain_ResolvedConcerns(),
-		   source,
-		   new String[] {
-			   "logicalContainment", "true"
-		   });
-		addAnnotation
-		  (getCapabilityReference_Target(),
 		   source,
 		   new String[] {
 			   "logicalContainment", "true"

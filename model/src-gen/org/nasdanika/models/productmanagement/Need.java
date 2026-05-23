@@ -14,7 +14,9 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.nasdanika.models.productmanagement.Need#getSupports <em>Supports</em>}</li>
+ *   <li>{@link org.nasdanika.models.productmanagement.Need#getAllSupports <em>All Supports</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.Need#getViolatedBy <em>Violated By</em>}</li>
+ *   <li>{@link org.nasdanika.models.productmanagement.Need#getAllViolatedBy <em>All Violated By</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getNeed()
@@ -39,6 +41,22 @@ public interface Need extends Concern {
 	EList<ConcernReference> getSupports();
 
 	/**
+	 * Returns the value of the '<em><b>All Supports</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.models.productmanagement.Goal}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * *
+	 * Supports from this need plus supportingNeeds from goals
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>All Supports</em>' reference list.
+	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getNeed_AllSupports()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	EList<Goal> getAllSupports();
+
+	/**
 	 * Returns the value of the '<em><b>Violated By</b></em>' containment reference list.
 	 * The list contents are of type {@link org.nasdanika.models.productmanagement.ConcernReference}.
 	 * <!-- begin-user-doc -->
@@ -55,5 +73,21 @@ public interface Need extends Concern {
 	 * @generated
 	 */
 	EList<ConcernReference> getViolatedBy();
+
+	/**
+	 * Returns the value of the '<em><b>All Violated By</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.models.productmanagement.PainPoint}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * *
+	 * ViolatedBy from this need plus violates from pain points
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>All Violated By</em>' reference list.
+	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getNeed_AllViolatedBy()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	EList<PainPoint> getAllViolatedBy();
 
 } // Need

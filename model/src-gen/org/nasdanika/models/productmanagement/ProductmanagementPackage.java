@@ -346,13 +346,22 @@ public interface ProductmanagementPackage extends EPackage {
 	int MODEL_ELEMENT__URIS = STRING_IDENTITY_FEATURE_COUNT + 3;
 
 	/**
+	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_ELEMENT__FASETS = STRING_IDENTITY_FEATURE_COUNT + 4;
+
+	/**
 	 * The number of structural features of the '<em>Model Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT_FEATURE_COUNT = STRING_IDENTITY_FEATURE_COUNT + 4;
+	int MODEL_ELEMENT_FEATURE_COUNT = STRING_IDENTITY_FEATURE_COUNT + 5;
 
 	/**
 	 * The operation id for the '<em>Collect</em>' operation.
@@ -435,6 +444,15 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int NAMED_ELEMENT__URIS = MODEL_ELEMENT__URIS;
+
+	/**
+	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT__FASETS = MODEL_ELEMENT__FASETS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -535,6 +553,15 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int NAMED_PERIOD__URIS = NAMED_ELEMENT__URIS;
+
+	/**
+	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_PERIOD__FASETS = NAMED_ELEMENT__FASETS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -662,6 +689,15 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int PRODUCT_MODEL__URIS = NAMED_PERIOD__URIS;
+
+	/**
+	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_MODEL__FASETS = NAMED_PERIOD__FASETS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -863,6 +899,15 @@ public interface ProductmanagementPackage extends EPackage {
 	int ABSTRACT_PERSONA__URIS = MODEL_ELEMENT__URIS;
 
 	/**
+	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_PERSONA__FASETS = MODEL_ELEMENT__FASETS;
+
+	/**
 	 * The number of structural features of the '<em>Abstract Persona</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -952,6 +997,15 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int PERSONA__URIS = NAMED_PERIOD__URIS;
+
+	/**
+	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA__FASETS = NAMED_PERIOD__FASETS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1108,6 +1162,15 @@ public interface ProductmanagementPackage extends EPackage {
 	int PERSONA_DOMAIN__URIS = NAMED_ELEMENT__URIS;
 
 	/**
+	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA_DOMAIN__FASETS = NAMED_ELEMENT__FASETS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1235,6 +1298,15 @@ public interface ProductmanagementPackage extends EPackage {
 	int PERSONA_REFERENCE__URIS = ABSTRACT_PERSONA__URIS;
 
 	/**
+	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA_REFERENCE__FASETS = ABSTRACT_PERSONA__FASETS;
+
+	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1335,6 +1407,15 @@ public interface ProductmanagementPackage extends EPackage {
 	int ABSTRACT_CONCERN__URIS = MODEL_ELEMENT__URIS;
 
 	/**
+	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CONCERN__FASETS = MODEL_ELEMENT__FASETS;
+
+	/**
 	 * The number of structural features of the '<em>Abstract Concern</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1424,6 +1505,15 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONCERN__URIS = NAMED_PERIOD__URIS;
+
+	/**
+	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN__FASETS = NAMED_PERIOD__FASETS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1571,6 +1661,15 @@ public interface ProductmanagementPackage extends EPackage {
 	int CONCERN_REFERENCE__URIS = ABSTRACT_CONCERN__URIS;
 
 	/**
+	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN_REFERENCE__FASETS = ABSTRACT_CONCERN__FASETS;
+
+	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1669,6 +1768,15 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONCERN_DOMAIN__URIS = ABSTRACT_CONCERN__URIS;
+
+	/**
+	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN_DOMAIN__FASETS = ABSTRACT_CONCERN__FASETS;
 
 	/**
 	 * The feature id for the '<em><b>Concerns</b></em>' containment reference list.
@@ -1789,6 +1897,15 @@ public interface ProductmanagementPackage extends EPackage {
 	int GOAL__URIS = CONCERN__URIS;
 
 	/**
+	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL__FASETS = CONCERN__FASETS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1843,22 +1960,40 @@ public interface ProductmanagementPackage extends EPackage {
 	int GOAL__ALL_ADDRESSED_BY = CONCERN__ALL_ADDRESSED_BY;
 
 	/**
-	 * The feature id for the '<em><b>Supporting Needs</b></em>' reference list.
+	 * The feature id for the '<em><b>Supported By</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GOAL__SUPPORTING_NEEDS = CONCERN_FEATURE_COUNT + 0;
+	int GOAL__SUPPORTED_BY = CONCERN_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Blockers</b></em>' reference list.
+	 * The feature id for the '<em><b>All Supported By</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GOAL__BLOCKERS = CONCERN_FEATURE_COUNT + 1;
+	int GOAL__ALL_SUPPORTED_BY = CONCERN_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Blocked By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL__BLOCKED_BY = CONCERN_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>All Blocked By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL__ALL_BLOCKED_BY = CONCERN_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Goal</em>' class.
@@ -1867,7 +2002,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GOAL_FEATURE_COUNT = CONCERN_FEATURE_COUNT + 2;
+	int GOAL_FEATURE_COUNT = CONCERN_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Collect</em>' operation.
@@ -1952,6 +2087,15 @@ public interface ProductmanagementPackage extends EPackage {
 	int NEED__URIS = CONCERN__URIS;
 
 	/**
+	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NEED__FASETS = CONCERN__FASETS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2015,13 +2159,31 @@ public interface ProductmanagementPackage extends EPackage {
 	int NEED__SUPPORTS = CONCERN_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>All Supports</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NEED__ALL_SUPPORTS = CONCERN_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Violated By</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NEED__VIOLATED_BY = CONCERN_FEATURE_COUNT + 1;
+	int NEED__VIOLATED_BY = CONCERN_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>All Violated By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NEED__ALL_VIOLATED_BY = CONCERN_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Need</em>' class.
@@ -2030,7 +2192,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NEED_FEATURE_COUNT = CONCERN_FEATURE_COUNT + 2;
+	int NEED_FEATURE_COUNT = CONCERN_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Collect</em>' operation.
@@ -2115,6 +2277,15 @@ public interface ProductmanagementPackage extends EPackage {
 	int PAIN_POINT__URIS = CONCERN__URIS;
 
 	/**
+	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAIN_POINT__FASETS = CONCERN__FASETS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2178,13 +2349,31 @@ public interface ProductmanagementPackage extends EPackage {
 	int PAIN_POINT__BLOCKS = CONCERN_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>All Blocks</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAIN_POINT__ALL_BLOCKS = CONCERN_FEATURE_COUNT + 1;
+
+	/**
 	 * The feature id for the '<em><b>Violates</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int PAIN_POINT__VIOLATES = CONCERN_FEATURE_COUNT + 1;
+	int PAIN_POINT__VIOLATES = CONCERN_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>All Violates</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAIN_POINT__ALL_VIOLATES = CONCERN_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Pain Point</em>' class.
@@ -2193,7 +2382,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int PAIN_POINT_FEATURE_COUNT = CONCERN_FEATURE_COUNT + 2;
+	int PAIN_POINT_FEATURE_COUNT = CONCERN_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Collect</em>' operation.
@@ -2276,6 +2465,15 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int ABSTRACT_CAPABILITY__URIS = MODEL_ELEMENT__URIS;
+
+	/**
+	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CAPABILITY__FASETS = MODEL_ELEMENT__FASETS;
 
 	/**
 	 * The number of structural features of the '<em>Abstract Capability</em>' class.
@@ -2369,6 +2567,15 @@ public interface ProductmanagementPackage extends EPackage {
 	int CAPABILITY__URIS = NAMED_PERIOD__URIS;
 
 	/**
+	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY__FASETS = NAMED_PERIOD__FASETS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2450,22 +2657,22 @@ public interface ProductmanagementPackage extends EPackage {
 	int CAPABILITY__RESOLVED_CONCERNS = NAMED_PERIOD_FEATURE_COUNT + 4;
 
 	/**
-	 * The feature id for the '<em><b>Addressed Concerns</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Addresses</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY__ADDRESSED_CONCERNS = NAMED_PERIOD_FEATURE_COUNT + 5;
+	int CAPABILITY__ADDRESSES = NAMED_PERIOD_FEATURE_COUNT + 5;
 
 	/**
-	 * The feature id for the '<em><b>All Addressed Concerns</b></em>' reference list.
+	 * The feature id for the '<em><b>All Addresses</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY__ALL_ADDRESSED_CONCERNS = NAMED_PERIOD_FEATURE_COUNT + 6;
+	int CAPABILITY__ALL_ADDRESSES = NAMED_PERIOD_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Sub Capabilities</b></em>' containment reference list.
@@ -2595,6 +2802,15 @@ public interface ProductmanagementPackage extends EPackage {
 	int CAPABILITY_REFERENCE__URIS = MODEL_ELEMENT__URIS;
 
 	/**
+	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_REFERENCE__FASETS = MODEL_ELEMENT__FASETS;
+
+	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2693,6 +2909,15 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAPABILITY_DOMAIN__URIS = NAMED_ELEMENT__URIS;
+
+	/**
+	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_DOMAIN__FASETS = NAMED_ELEMENT__FASETS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2820,6 +3045,15 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAPABILITY_DEPENDENCY__URIS = MODEL_ELEMENT__URIS;
+
+	/**
+	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_DEPENDENCY__FASETS = MODEL_ELEMENT__FASETS;
 
 	/**
 	 * The feature id for the '<em><b>Capabilities</b></em>' reference list.
@@ -2995,6 +3229,15 @@ public interface ProductmanagementPackage extends EPackage {
 	int CAPABILITY_PROVIDER__URIS = NAMED_PERIOD__URIS;
 
 	/**
+	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_PROVIDER__FASETS = NAMED_PERIOD__FASETS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3147,6 +3390,15 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAPABILITY_PROVIDER_DOMAIN__URIS = NAMED_ELEMENT__URIS;
+
+	/**
+	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_PROVIDER_DOMAIN__FASETS = NAMED_ELEMENT__FASETS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3320,6 +3572,15 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROVIDED_CAPABILITY__URIS = NAMED_PERIOD__URIS;
+
+	/**
+	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROVIDED_CAPABILITY__FASETS = NAMED_PERIOD__FASETS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3522,6 +3783,15 @@ public interface ProductmanagementPackage extends EPackage {
 	int EVIDENCE__URIS = NAMED_PERIOD__URIS;
 
 	/**
+	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVIDENCE__FASETS = NAMED_PERIOD__FASETS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3649,6 +3919,15 @@ public interface ProductmanagementPackage extends EPackage {
 	int EVIDENCE_DOMAIN__URIS = NAMED_ELEMENT__URIS;
 
 	/**
+	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVIDENCE_DOMAIN__FASETS = NAMED_ELEMENT__FASETS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3756,6 +4035,15 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int REQUIRED_CAPABILITY__URIS = NAMED_PERIOD__URIS;
+
+	/**
+	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIRED_CAPABILITY__FASETS = NAMED_PERIOD__FASETS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3892,6 +4180,15 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int VERSION__URIS = NAMED_PERIOD__URIS;
+
+	/**
+	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERSION__FASETS = NAMED_PERIOD__FASETS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4056,6 +4353,15 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int ROLE__URIS = NAMED_PERIOD__URIS;
+
+	/**
+	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE__FASETS = NAMED_PERIOD__FASETS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4322,6 +4628,15 @@ public interface ProductmanagementPackage extends EPackage {
 	int ACTOR__URIS = NAMED_PERIOD__URIS;
 
 	/**
+	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__FASETS = NAMED_PERIOD__FASETS;
+
+	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4447,6 +4762,15 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACTOR_DOMAIN__URIS = NAMED_ELEMENT__URIS;
+
+	/**
+	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR_DOMAIN__FASETS = NAMED_ELEMENT__FASETS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4757,6 +5081,17 @@ public interface ProductmanagementPackage extends EPackage {
 	EAttribute getModelElement_Uris();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.ModelElement#getFasets <em>Fasets</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Fasets</em>'.
+	 * @see org.nasdanika.models.productmanagement.ModelElement#getFasets()
+	 * @see #getModelElement()
+	 * @generated
+	 */
+	EReference getModelElement_Fasets();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.NamedElement <em>Named Element</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4996,26 +5331,48 @@ public interface ProductmanagementPackage extends EPackage {
 	EClass getGoal();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Goal#getSupportingNeeds <em>Supporting Needs</em>}'.
+	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Goal#getSupportedBy <em>Supported By</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Supporting Needs</em>'.
-	 * @see org.nasdanika.models.productmanagement.Goal#getSupportingNeeds()
+	 * @return the meta object for the reference list '<em>Supported By</em>'.
+	 * @see org.nasdanika.models.productmanagement.Goal#getSupportedBy()
 	 * @see #getGoal()
 	 * @generated
 	 */
-	EReference getGoal_SupportingNeeds();
+	EReference getGoal_SupportedBy();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Goal#getBlockers <em>Blockers</em>}'.
+	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Goal#getAllSupportedBy <em>All Supported By</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Blockers</em>'.
-	 * @see org.nasdanika.models.productmanagement.Goal#getBlockers()
+	 * @return the meta object for the reference list '<em>All Supported By</em>'.
+	 * @see org.nasdanika.models.productmanagement.Goal#getAllSupportedBy()
 	 * @see #getGoal()
 	 * @generated
 	 */
-	EReference getGoal_Blockers();
+	EReference getGoal_AllSupportedBy();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Goal#getBlockedBy <em>Blocked By</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Blocked By</em>'.
+	 * @see org.nasdanika.models.productmanagement.Goal#getBlockedBy()
+	 * @see #getGoal()
+	 * @generated
+	 */
+	EReference getGoal_BlockedBy();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Goal#getAllBlockedBy <em>All Blocked By</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>All Blocked By</em>'.
+	 * @see org.nasdanika.models.productmanagement.Goal#getAllBlockedBy()
+	 * @see #getGoal()
+	 * @generated
+	 */
+	EReference getGoal_AllBlockedBy();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.Need <em>Need</em>}'.
@@ -5039,6 +5396,17 @@ public interface ProductmanagementPackage extends EPackage {
 	EReference getNeed_Supports();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Need#getAllSupports <em>All Supports</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>All Supports</em>'.
+	 * @see org.nasdanika.models.productmanagement.Need#getAllSupports()
+	 * @see #getNeed()
+	 * @generated
+	 */
+	EReference getNeed_AllSupports();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.Need#getViolatedBy <em>Violated By</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5048,6 +5416,17 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getNeed_ViolatedBy();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Need#getAllViolatedBy <em>All Violated By</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>All Violated By</em>'.
+	 * @see org.nasdanika.models.productmanagement.Need#getAllViolatedBy()
+	 * @see #getNeed()
+	 * @generated
+	 */
+	EReference getNeed_AllViolatedBy();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.PainPoint <em>Pain Point</em>}'.
@@ -5071,6 +5450,17 @@ public interface ProductmanagementPackage extends EPackage {
 	EReference getPainPoint_Blocks();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.PainPoint#getAllBlocks <em>All Blocks</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>All Blocks</em>'.
+	 * @see org.nasdanika.models.productmanagement.PainPoint#getAllBlocks()
+	 * @see #getPainPoint()
+	 * @generated
+	 */
+	EReference getPainPoint_AllBlocks();
+
+	/**
 	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.PainPoint#getViolates <em>Violates</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5080,6 +5470,17 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 */
 	EReference getPainPoint_Violates();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.PainPoint#getAllViolates <em>All Violates</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>All Violates</em>'.
+	 * @see org.nasdanika.models.productmanagement.PainPoint#getAllViolates()
+	 * @see #getPainPoint()
+	 * @generated
+	 */
+	EReference getPainPoint_AllViolates();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.AbstractCapability <em>Abstract Capability</em>}'.
@@ -5102,26 +5503,26 @@ public interface ProductmanagementPackage extends EPackage {
 	EClass getCapability();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.Capability#getAddressedConcerns <em>Addressed Concerns</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.Capability#getAddresses <em>Addresses</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Addressed Concerns</em>'.
-	 * @see org.nasdanika.models.productmanagement.Capability#getAddressedConcerns()
+	 * @return the meta object for the containment reference list '<em>Addresses</em>'.
+	 * @see org.nasdanika.models.productmanagement.Capability#getAddresses()
 	 * @see #getCapability()
 	 * @generated
 	 */
-	EReference getCapability_AddressedConcerns();
+	EReference getCapability_Addresses();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Capability#getAllAddressedConcerns <em>All Addressed Concerns</em>}'.
+	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Capability#getAllAddresses <em>All Addresses</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>All Addressed Concerns</em>'.
-	 * @see org.nasdanika.models.productmanagement.Capability#getAllAddressedConcerns()
+	 * @return the meta object for the reference list '<em>All Addresses</em>'.
+	 * @see org.nasdanika.models.productmanagement.Capability#getAllAddresses()
 	 * @see #getCapability()
 	 * @generated
 	 */
-	EReference getCapability_AllAddressedConcerns();
+	EReference getCapability_AllAddresses();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.Capability#getSubCapabilities <em>Sub Capabilities</em>}'.
@@ -5790,6 +6191,14 @@ public interface ProductmanagementPackage extends EPackage {
 		EAttribute MODEL_ELEMENT__URIS = eINSTANCE.getModelElement_Uris();
 
 		/**
+		 * The meta object literal for the '<em><b>Fasets</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference MODEL_ELEMENT__FASETS = eINSTANCE.getModelElement_Fasets();
+
+		/**
 		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.NamedElementImpl <em>Named Element</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -5998,20 +6407,36 @@ public interface ProductmanagementPackage extends EPackage {
 		EClass GOAL = eINSTANCE.getGoal();
 
 		/**
-		 * The meta object literal for the '<em><b>Supporting Needs</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Supported By</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GOAL__SUPPORTING_NEEDS = eINSTANCE.getGoal_SupportingNeeds();
+		EReference GOAL__SUPPORTED_BY = eINSTANCE.getGoal_SupportedBy();
 
 		/**
-		 * The meta object literal for the '<em><b>Blockers</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>All Supported By</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference GOAL__BLOCKERS = eINSTANCE.getGoal_Blockers();
+		EReference GOAL__ALL_SUPPORTED_BY = eINSTANCE.getGoal_AllSupportedBy();
+
+		/**
+		 * The meta object literal for the '<em><b>Blocked By</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GOAL__BLOCKED_BY = eINSTANCE.getGoal_BlockedBy();
+
+		/**
+		 * The meta object literal for the '<em><b>All Blocked By</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference GOAL__ALL_BLOCKED_BY = eINSTANCE.getGoal_AllBlockedBy();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.NeedImpl <em>Need</em>}' class.
@@ -6032,12 +6457,28 @@ public interface ProductmanagementPackage extends EPackage {
 		EReference NEED__SUPPORTS = eINSTANCE.getNeed_Supports();
 
 		/**
+		 * The meta object literal for the '<em><b>All Supports</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NEED__ALL_SUPPORTS = eINSTANCE.getNeed_AllSupports();
+
+		/**
 		 * The meta object literal for the '<em><b>Violated By</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference NEED__VIOLATED_BY = eINSTANCE.getNeed_ViolatedBy();
+
+		/**
+		 * The meta object literal for the '<em><b>All Violated By</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference NEED__ALL_VIOLATED_BY = eINSTANCE.getNeed_AllViolatedBy();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.PainPointImpl <em>Pain Point</em>}' class.
@@ -6058,12 +6499,28 @@ public interface ProductmanagementPackage extends EPackage {
 		EReference PAIN_POINT__BLOCKS = eINSTANCE.getPainPoint_Blocks();
 
 		/**
+		 * The meta object literal for the '<em><b>All Blocks</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PAIN_POINT__ALL_BLOCKS = eINSTANCE.getPainPoint_AllBlocks();
+
+		/**
 		 * The meta object literal for the '<em><b>Violates</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
 		EReference PAIN_POINT__VIOLATES = eINSTANCE.getPainPoint_Violates();
+
+		/**
+		 * The meta object literal for the '<em><b>All Violates</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference PAIN_POINT__ALL_VIOLATES = eINSTANCE.getPainPoint_AllViolates();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.AbstractCapability <em>Abstract Capability</em>}' class.
@@ -6086,20 +6543,20 @@ public interface ProductmanagementPackage extends EPackage {
 		EClass CAPABILITY = eINSTANCE.getCapability();
 
 		/**
-		 * The meta object literal for the '<em><b>Addressed Concerns</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Addresses</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CAPABILITY__ADDRESSED_CONCERNS = eINSTANCE.getCapability_AddressedConcerns();
+		EReference CAPABILITY__ADDRESSES = eINSTANCE.getCapability_Addresses();
 
 		/**
-		 * The meta object literal for the '<em><b>All Addressed Concerns</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>All Addresses</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CAPABILITY__ALL_ADDRESSED_CONCERNS = eINSTANCE.getCapability_AllAddressedConcerns();
+		EReference CAPABILITY__ALL_ADDRESSES = eINSTANCE.getCapability_AllAddresses();
 
 		/**
 		 * The meta object literal for the '<em><b>Sub Capabilities</b></em>' containment reference list feature.

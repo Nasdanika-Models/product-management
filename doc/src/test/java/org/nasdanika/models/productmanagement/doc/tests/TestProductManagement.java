@@ -115,9 +115,9 @@ public class TestProductManagement {
 		addressedConcerns.setTarget(need);
 		String capabilityDocRef = "automated-data-aggregation.md";
 		addressedConcerns.setDocRef(capabilityDocRef);		
-		capability.getAddressedConcerns().add(addressedConcerns);		
+		capability.getAddresses().add(addressedConcerns);		
 		
-		assertEquals(1, capability.getAllAddressedConcerns().size());
+		assertEquals(1, capability.getAllAddresses().size());
 						
 		CapabilityReference capabilityReferenece = factory.createCapabilityReference();
 		capabilityReferenece.setTarget(capability);

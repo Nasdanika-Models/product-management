@@ -128,6 +128,13 @@ abstract class ModelElement extends StringIdentity {
      * all of these domains are merged into a single logical domain.
      */
     String[] uris
+    
+    /**
+     * Extension-specific configuration associated with a model element.
+     * For example, geometry and color for a diagram facet,
+     * Weight for a prioritization facet.
+     */
+    contains EObject[] fasets
 
 }
 
@@ -217,7 +224,7 @@ class Concern extends NamedPeriod, AbstractConcern {
     refers derived transient volatile readonly AbstractCapability[] allAddressedBy get {
         val result = new org.eclipse.emf.common.util.BasicEList<AbstractCapability>()
         result.addAll(addressedBy)
-        for (referrer : getReferrers(ProductmanagementPackage.Literals.CAPABILITY__ADDRESSED_CONCERNS)) {
+        for (referrer : getReferrers(ProductmanagementPackage.Literals.CAPABILITY__ADDRESSES)) {
             if (referrer instanceof AbstractCapability) {
                 result.add(referrer)
             }
@@ -229,7 +236,7 @@ class Concern extends NamedPeriod, AbstractConcern {
 
 class ConcernReference extends AbstractConcern {
     
-    @Nasdanika(logicalContainment="true")         
+    //@Nasdanika(logicalContainment="true")         
     refers Concern target
     
 }
@@ -269,12 +276,52 @@ class Goal extends Concern {
     /**
      * References to needs supporting this goal
      */
-    refers ConcernReference[] supportingNeeds
+    refers ConcernReference[] supportedBy
     
+    /**
+     * Supporting needs from this goal plus supports from needs
+     */
+    refers derived transient volatile readonly Need[] allSupportedBy get {
+        val result = new org.eclipse.emf.common.util.BasicEList<Need>()
+        for (ref : supportedBy) {
+            var target = ref.target
+            if (target instanceof Need) {
+                result.add(target)
+            }
+        }
+        
+        for (referrer : getReferrers(ProductmanagementPackage.Literals.NEED__SUPPORTS)) {
+            if (referrer instanceof Need) {
+                result.add(referrer)
+            }
+        }
+        result
+    }    
+        
     /**
      * References to pain points blocking this goal
      */
-    refers ConcernReference[] blockers
+    refers ConcernReference[] blockedBy
+    
+    /**
+     * BlockedBy from this goal plus blocks from pain points
+     */
+    refers derived transient volatile readonly PainPoint[] allBlockedBy get {
+        val result = new org.eclipse.emf.common.util.BasicEList<PainPoint>()
+        for (ref : blockedBy) {
+            var target = ref.target
+            if (target instanceof PainPoint) {
+                result.add(target)
+            }
+        }
+        
+        for (referrer : getReferrers(ProductmanagementPackage.Literals.PAIN_POINT__BLOCKS)) {
+            if (referrer instanceof PainPoint) {
+                result.add(referrer)
+            }
+        }
+        result
+    }    
     
 }
 
@@ -286,11 +333,50 @@ class Need extends Concern {
     contains ConcernReference[] supports
     
     /**
+     * Supports from this need plus supportingNeeds from goals
+     */
+    refers derived transient volatile readonly Goal[] allSupports get {
+        val result = new org.eclipse.emf.common.util.BasicEList<Goal>()
+        for (ref : supports) {
+            var target = ref.target
+            if (target instanceof Goal) {
+                result.add(target)
+            }
+        }
+        
+        for (referrer : getReferrers(ProductmanagementPackage.Literals.GOAL__SUPPORTED_BY)) {
+            if (referrer instanceof Goal) {
+                result.add(referrer)
+            }
+        }
+        result
+    }    
+    
+    /**
      * References to pain points violating this need
      * with an optional documentation explaining
      * how the need is violated
      */
     contains ConcernReference[] violatedBy
+        
+    /**
+     * ViolatedBy from this need plus violates from pain points
+     */
+    refers derived transient volatile readonly PainPoint[] allViolatedBy get {
+        val result = new org.eclipse.emf.common.util.BasicEList<PainPoint>()
+        for (ref : violatedBy) {
+            var target = ref.target
+            if (target instanceof PainPoint) {
+                result.add(target)
+            }
+        }
+        for (referrer : getReferrers(ProductmanagementPackage.Literals.PAIN_POINT__VIOLATES)) {
+            if (referrer instanceof PainPoint) {
+                result.add(referrer)
+            }
+        }
+        result
+    }        
     
 }
 
@@ -298,7 +384,47 @@ class PainPoint extends Concern {
     
     contains ConcernReference[] blocks
     
-    contains ConcernReference[] violates        
+    /**
+     * Blocks from this pain point plus blockers from pain points
+     */
+    refers derived transient volatile readonly Goal[] allBlocks get {
+        val result = new org.eclipse.emf.common.util.BasicEList<Goal>()
+        for (ref : blocks) {
+            var target = ref.target
+            if (target instanceof Goal) {
+                result.add(target)
+            }
+        }
+        
+        for (referrer : getReferrers(ProductmanagementPackage.Literals.GOAL__BLOCKED_BY)) {
+            if (referrer instanceof Goal) {
+                result.add(referrer)
+            }
+        }
+        result
+    }        
+    
+    contains ConcernReference[] violates
+            
+    /**
+     * Blocks from this pain point plus blockers from pain points
+     */
+    refers derived transient volatile readonly Need[] allViolates get {
+        val result = new org.eclipse.emf.common.util.BasicEList<Need>()
+        for (ref : violates) {
+            var target = ref.target
+            if (target instanceof Need) {
+                result.add(target)
+            }
+        }
+        
+        for (referrer : getReferrers(ProductmanagementPackage.Literals.NEED__VIOLATED_BY)) {
+            if (referrer instanceof Need) {
+                result.add(referrer)
+            }
+        }
+        result
+    }            
     
 }
 
@@ -337,14 +463,14 @@ class Capability extends
     PersonaDomain, 
     ConcernDomain {
     
-    contains AbstractConcern[] addressedConcerns
+    contains AbstractConcern[] addresses
 
     /**
      * Addressed concerns from this capability plus addressedBy from concerns
      */
-    refers derived transient volatile readonly AbstractConcern[] allAddressedConcerns get {
+    refers derived transient volatile readonly AbstractConcern[] allAddresses get {
         val result = new org.eclipse.emf.common.util.BasicEList<AbstractConcern>()
-        result.addAll(addressedConcerns)
+        result.addAll(addresses)
         for (referrer : getReferrers(ProductmanagementPackage.Literals.CONCERN__ADDRESSED_BY)) {
             if (referrer instanceof AbstractConcern) {
                 result.add(referrer)
@@ -365,7 +491,7 @@ class Capability extends
  */
 class CapabilityReference extends ModelElement, AbstractCapability {
     
-    @Nasdanika(logicalContainment="true")         
+    //@Nasdanika(logicalContainment="true")         
     refers Capability target
         
 }
@@ -513,3 +639,7 @@ class ActorDomain extends NamedElement, AbstractActor {
 }
 
 // Party with contact methods...
+
+// Product
+
+// Marked segment

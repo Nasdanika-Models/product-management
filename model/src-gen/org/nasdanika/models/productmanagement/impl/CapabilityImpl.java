@@ -47,8 +47,8 @@ import org.nasdanika.models.productmanagement.ProductmanagementPackage.Literals;
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getResolvedPersonas <em>Resolved Personas</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getConcerns <em>Concerns</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getResolvedConcerns <em>Resolved Concerns</em>}</li>
- *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getAddressedConcerns <em>Addressed Concerns</em>}</li>
- *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getAllAddressedConcerns <em>All Addressed Concerns</em>}</li>
+ *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getAddresses <em>Addresses</em>}</li>
+ *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getAllAddresses <em>All Addresses</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getSubCapabilities <em>Sub Capabilities</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getLifecycle <em>Lifecycle</em>}</li>
  * </ul>
@@ -173,8 +173,8 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public EList<AbstractConcern> getAddressedConcerns() {
-		return (EList<AbstractConcern>)eDynamicGet(ProductmanagementPackage.CAPABILITY__ADDRESSED_CONCERNS, ProductmanagementPackage.Literals.CAPABILITY__ADDRESSED_CONCERNS, true, true);
+	public EList<AbstractConcern> getAddresses() {
+		return (EList<AbstractConcern>)eDynamicGet(ProductmanagementPackage.CAPABILITY__ADDRESSES, ProductmanagementPackage.Literals.CAPABILITY__ADDRESSES, true, true);
 	}
 
 	/**
@@ -183,11 +183,11 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 	 * @generated
 	 */
 	@Override
-	public EList<AbstractConcern> getAllAddressedConcerns() {
+	public EList<AbstractConcern> getAllAddresses() {
 		BasicEList<AbstractConcern> _xblockexpression = null;
 		{
 			final BasicEList<AbstractConcern> result = new BasicEList<AbstractConcern>();
-			result.addAll(this.getAddressedConcerns());
+			result.addAll(this.getAddresses());
 			EList<EObject> _referrers = this.getReferrers(Literals.CONCERN__ADDRESSED_BY);
 			for (final EObject referrer : _referrers) {
 				if ((referrer instanceof AbstractConcern)) {
@@ -294,8 +294,8 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 				return ((InternalEList<?>)getPersonas()).basicRemove(otherEnd, msgs);
 			case ProductmanagementPackage.CAPABILITY__CONCERNS:
 				return ((InternalEList<?>)getConcerns()).basicRemove(otherEnd, msgs);
-			case ProductmanagementPackage.CAPABILITY__ADDRESSED_CONCERNS:
-				return ((InternalEList<?>)getAddressedConcerns()).basicRemove(otherEnd, msgs);
+			case ProductmanagementPackage.CAPABILITY__ADDRESSES:
+				return ((InternalEList<?>)getAddresses()).basicRemove(otherEnd, msgs);
 			case ProductmanagementPackage.CAPABILITY__SUB_CAPABILITIES:
 				return ((InternalEList<?>)getSubCapabilities()).basicRemove(otherEnd, msgs);
 		}
@@ -320,10 +320,10 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 				return getConcerns();
 			case ProductmanagementPackage.CAPABILITY__RESOLVED_CONCERNS:
 				return getResolvedConcerns();
-			case ProductmanagementPackage.CAPABILITY__ADDRESSED_CONCERNS:
-				return getAddressedConcerns();
-			case ProductmanagementPackage.CAPABILITY__ALL_ADDRESSED_CONCERNS:
-				return getAllAddressedConcerns();
+			case ProductmanagementPackage.CAPABILITY__ADDRESSES:
+				return getAddresses();
+			case ProductmanagementPackage.CAPABILITY__ALL_ADDRESSES:
+				return getAllAddresses();
 			case ProductmanagementPackage.CAPABILITY__SUB_CAPABILITIES:
 				return getSubCapabilities();
 			case ProductmanagementPackage.CAPABILITY__LIFECYCLE:
@@ -353,9 +353,9 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 				getConcerns().clear();
 				getConcerns().addAll((Collection<? extends AbstractConcern>)newValue);
 				return;
-			case ProductmanagementPackage.CAPABILITY__ADDRESSED_CONCERNS:
-				getAddressedConcerns().clear();
-				getAddressedConcerns().addAll((Collection<? extends AbstractConcern>)newValue);
+			case ProductmanagementPackage.CAPABILITY__ADDRESSES:
+				getAddresses().clear();
+				getAddresses().addAll((Collection<? extends AbstractConcern>)newValue);
 				return;
 			case ProductmanagementPackage.CAPABILITY__SUB_CAPABILITIES:
 				getSubCapabilities().clear();
@@ -385,8 +385,8 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 			case ProductmanagementPackage.CAPABILITY__CONCERNS:
 				getConcerns().clear();
 				return;
-			case ProductmanagementPackage.CAPABILITY__ADDRESSED_CONCERNS:
-				getAddressedConcerns().clear();
+			case ProductmanagementPackage.CAPABILITY__ADDRESSES:
+				getAddresses().clear();
 				return;
 			case ProductmanagementPackage.CAPABILITY__SUB_CAPABILITIES:
 				getSubCapabilities().clear();
@@ -416,10 +416,10 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 				return !getConcerns().isEmpty();
 			case ProductmanagementPackage.CAPABILITY__RESOLVED_CONCERNS:
 				return !getResolvedConcerns().isEmpty();
-			case ProductmanagementPackage.CAPABILITY__ADDRESSED_CONCERNS:
-				return !getAddressedConcerns().isEmpty();
-			case ProductmanagementPackage.CAPABILITY__ALL_ADDRESSED_CONCERNS:
-				return !getAllAddressedConcerns().isEmpty();
+			case ProductmanagementPackage.CAPABILITY__ADDRESSES:
+				return !getAddresses().isEmpty();
+			case ProductmanagementPackage.CAPABILITY__ALL_ADDRESSES:
+				return !getAllAddresses().isEmpty();
 			case ProductmanagementPackage.CAPABILITY__SUB_CAPABILITIES:
 				return !getSubCapabilities().isEmpty();
 			case ProductmanagementPackage.CAPABILITY__LIFECYCLE:

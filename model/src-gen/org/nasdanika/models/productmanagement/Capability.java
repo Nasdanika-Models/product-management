@@ -26,8 +26,8 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.models.productmanagement.Capability#getAddressedConcerns <em>Addressed Concerns</em>}</li>
- *   <li>{@link org.nasdanika.models.productmanagement.Capability#getAllAddressedConcerns <em>All Addressed Concerns</em>}</li>
+ *   <li>{@link org.nasdanika.models.productmanagement.Capability#getAddresses <em>Addresses</em>}</li>
+ *   <li>{@link org.nasdanika.models.productmanagement.Capability#getAllAddresses <em>All Addresses</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.Capability#getSubCapabilities <em>Sub Capabilities</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.Capability#getLifecycle <em>Lifecycle</em>}</li>
  * </ul>
@@ -38,19 +38,19 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Capability extends NamedPeriod, AbstractCapability, EvidenceDomain, PersonaDomain, ConcernDomain {
 	/**
-	 * Returns the value of the '<em><b>Addressed Concerns</b></em>' containment reference list.
+	 * Returns the value of the '<em><b>Addresses</b></em>' containment reference list.
 	 * The list contents are of type {@link org.nasdanika.models.productmanagement.AbstractConcern}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Addressed Concerns</em>' containment reference list.
-	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getCapability_AddressedConcerns()
+	 * @return the value of the '<em>Addresses</em>' containment reference list.
+	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getCapability_Addresses()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<AbstractConcern> getAddressedConcerns();
+	EList<AbstractConcern> getAddresses();
 
 	/**
-	 * Returns the value of the '<em><b>All Addressed Concerns</b></em>' reference list.
+	 * Returns the value of the '<em><b>All Addresses</b></em>' reference list.
 	 * The list contents are of type {@link org.nasdanika.models.productmanagement.AbstractConcern}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -58,12 +58,12 @@ public interface Capability extends NamedPeriod, AbstractCapability, EvidenceDom
 	 * *
 	 * Addressed concerns from this capability plus addressedBy from concerns
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>All Addressed Concerns</em>' reference list.
-	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getCapability_AllAddressedConcerns()
+	 * @return the value of the '<em>All Addresses</em>' reference list.
+	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getCapability_AllAddresses()
 	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 * @generated
 	 */
-	EList<AbstractConcern> getAllAddressedConcerns();
+	EList<AbstractConcern> getAllAddresses();
 
 	/**
 	 * Returns the value of the '<em><b>Sub Capabilities</b></em>' containment reference list.

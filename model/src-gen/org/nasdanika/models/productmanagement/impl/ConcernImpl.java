@@ -77,7 +77,7 @@ public class ConcernImpl extends NamedPeriodImpl implements Concern {
 		{
 			final BasicEList<AbstractCapability> result = new BasicEList<AbstractCapability>();
 			result.addAll(this.getAddressedBy());
-			EList<EObject> _referrers = this.getReferrers(Literals.CAPABILITY__ADDRESSED_CONCERNS);
+			EList<EObject> _referrers = this.getReferrers(Literals.CAPABILITY__ADDRESSES);
 			for (final EObject referrer : _referrers) {
 				if ((referrer instanceof AbstractCapability)) {
 					result.add(((AbstractCapability)referrer));

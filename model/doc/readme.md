@@ -167,6 +167,21 @@ Lifecycle assertions show which are Available, which are In Development, which a
 The payoff is that duplication is visible structurally rather than discovered politically.
 Consolidation decisions can reference the model: which capabilities have evidence, which have providers, which address concerns no other capability addresses. The model does not make the decision; it makes the decision defensible.
 
+### Graph-driven portfolio visualization and build-order navigation
+
+A portfolio of any size accumulates more candidate capabilities than any reviewer can hold in their head at once. Spreadsheets and roadmap tools collapse the richness into linear lists ordered on one or two visible columns; the relationships that actually drive prioritization - which capabilities serve which personas, which depend on which, what is already built versus still to be built, what each capability would cost to bring online - survive only in the heads of the people who wrote the rows.
+
+The federated model carries those relationships explicitly. A graph view materializes them as a navigable picture rather than a flattened table. In a typical encoding, personas are assigned colors; capabilities take their color from the personas whose concerns they address - blended where they address several - with saturation proportional to the value the capability delivers to those concerns. Node size encodes the effort to build the capability; border thickness encodes the cost of unbuilt dependencies that would need to come first. The view can be filtered to capabilities that are not yet available, surfacing the *frontier* of the portfolio: the terminal nodes where building unlocks the most value for the least cost. The same picture answers questions a spreadsheet cannot, because frontier-of-a-table is not a thing - which unbuilt capability sits closest to delivering the most value to the personas that matter most, and which build sequence reaches it most cheaply.
+
+The graph is generated from the model rather than authored alongside it. Multiple rendering targets - interactive 2D & 3D graphs, Draw.io, PlantUML - fall out of a generic diagram intermediate so the visualization is a function of the model rather than of any single tool.
+A capability page is reachable by drilling into its node; on that page, the value-by-persona breakdown, the dependency tree, the evidence, and the lifecycle history are derived from the same source the graph was.
+An accompanying table view sits next to the graph for readers who want sortable columns; the two views are reflections of one model, not two artifacts to maintain.
+
+The payoff is that portfolio decisions stop being negotiations over which row to look at first.
+Structural fit, build cost, and the dependency order that unlocks compound value are visible at once, in the same picture.
+A reviewer who reads graphs better than tables can read the graph; a senior leader who skims sees the headline at a glance; an engineer who wants the detail follows the link from a node into the underlying capability page.
+The investment in the visualization pays back across every audience that consumes the model, because the model itself does not have to be re-shaped for any of them.
+
 ### Formalized innovation
 
 An internal innovator articulates a persona and a set of concerns no existing capability addresses, proposes a capability, and elaborates it - declaring prerequisites, dependencies, evidence, and the authority asserting each. 
@@ -321,6 +336,39 @@ A capability declaration on the model carries data: the concerns it addresses, i
 The model exposes these interactions as **operations** declared on the view rather than as freestanding chat conversations alongside it. An operation is part of the contract the view defines: it has a name, a typed signature, an access policy, and a backing implementation. The backing may be a hand-written service, a workflow, or - increasingly - an agent that operates over the same view the user is consuming.
 
 The payoff is that interactive consultation is grounded in the same structural model as the rest of the consumer experience. Conversations become invocations: each agent call has typed inputs and outputs, the view bounds what the agent can see, and the operation can be cited the same way an attribute or assertion can. Agentic execution stops being a parallel channel and becomes a first-class feature of the model the consumer is already reading. Combined with audience-scoped views, agent-backed operations make the model itself the interaction surface: data plus behavior, both bounded by the same access policy, both authored as part of the same transformation.
+
+### Crowdfunded prioritization of shared capabilities
+
+In organizations with shared services, capabilities that benefit many teams but belong to none face a familiar funding problem.
+No business line wants to budget for a capability whose consumers sit largely elsewhere; the beneficiaries each rationally prefer that someone else funds it.
+The pathology - tragedy of the commons, infrastructure under-investment, "shared services means shared underfunding" - persists because the usual remediation requires central authority and visibility the federated model does not assume.
+
+The model supports an alternative: a credit-based marketplace layered on the capability graph.
+Consumers acquire credits - by purchase, by contribution of work, or by other organizational mechanisms - and allocate them to capabilities they want built.
+When the credit balance committed to a capability reaches the threshold its owner has posted, construction begins.
+Allocations are *binding* once made; the commitment of real resources is what distinguishes a market from a poll.
+
+The non-obvious mechanism is in the dependency graph.
+A capability that depends on an unbuilt foundation propagates a fraction of its committed credits upstream to the foundation, weighted by the strength of the dependency.
+A consumer funding the feature they actually need contributes, by construction, to the infrastructure that feature requires - *without anyone advocating for the infrastructure separately*.
+Shared services accumulate credits as a side effect of demand for the capabilities built on top of them.
+The pathology where no one wants to fund the foundation directly is structurally circumvented: the foundation is funded by everyone whose feature depends on it, in proportion to how much they depend on it.
+The graph context is what enables this.
+General-purpose crowdfunding platforms cannot do it because they have no model of how the funded objects relate to each other; the capability marketplace can because the relations are first-class on the model the marketplace runs over.
+
+Contributors who deliver capabilities can be paid in credits redeemable for premium features.
+The flow closes: consumers with concerns acquire credits and direct them at capabilities; builders earn credits by delivering capabilities; credits buy access to premium features whose value anchors the system.
+Non-fungible attribution - founding-funder recognition, per-capability contributor credit - is a separate object from the fungible voting currency and is best modeled separately.
+
+Several design questions are open and resolved per deployment rather than baked into the metamodel.
+Sizing capabilities in credits is left to the capability owner; market discipline emerges as consumers decide whether to fund at the posted price.
+Conversion between credits and money is local: in a corporate context credits may attach to internal budgets, while in an open community they may be sold for cash.
+All-or-nothing funding with explicit refund or expiry rules is cleaner than partial funding.
+Sybil resistance, conflict-of-interest disclosure, and the cascade weight on each dependency edge are policy choices the deployment makes, not mechanisms the model imposes.
+The marketplace requires liquidity to function and is therefore a *late* feature of the platform - useful once a meaningful population of users and capabilities exists to give votes weight, not before.
+
+The payoff is that prioritization stops being a top-down allocation question and becomes a market over the capability graph - with the graph's structure (dependencies, beneficiaries, lifecycle states) doing work that pure crowdfunding cannot do, because pure crowdfunding has no model of how the funded objects relate.
+Demand and supply meet on the same artifact that describes both.
 
 ## Synergy versus competition
 
