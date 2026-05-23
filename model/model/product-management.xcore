@@ -166,7 +166,7 @@ class Persona extends NamedPeriod, AbstractPersona, ConcernDomain {
     
 }
 
-interface PersonaDomain extends NamedElement, AbstractPersona {
+class PersonaDomain extends NamedElement, AbstractPersona {
     
     @Nasdanika(logicalContainment="false")         
     contains AbstractPersona[] personas keys ^id
@@ -241,7 +241,7 @@ class ConcernReference extends AbstractConcern {
     
 }
 
-interface ConcernDomain extends AbstractConcern {
+class ConcernDomain extends AbstractConcern {
     
     @Nasdanika(logicalContainment="false")         
     contains AbstractConcern[] concerns keys ^id
@@ -481,6 +481,33 @@ class Capability extends
     
     contains AbstractCapability[] subCapabilities keys ^id  // composition
     
+    /**
+     * Dependencies as an abstract capability allows to 
+     * model self-contained capabilities with inline dependencies
+     * and even dependency domains.
+     * When federated, such inline capabilities can be 
+     * either replaced with CapabilityReference or CapabilityDependency
+     * or use URIs to de-dup multiple definitions into one logical definition
+     */
+    contains AbstractCapability[] dependencies
+    
+    /**
+     * Capabilities depending on this capability, excludes containment. 
+     * Returns capability references, including capability dependencies, with target pointing
+     * to this capability and contained by the dependencies reference.  
+     */
+    refers derived transient volatile readonly CapabilityReference[] dependents get {
+        val result = new org.eclipse.emf.common.util.BasicEList<CapabilityReference>()
+        for (referrer : getReferrers(ProductmanagementPackage.Literals.CAPABILITY_REFERENCE__TARGET)) {
+            if (referrer.eContainmentFeature() === ProductmanagementPackage.Literals.CAPABILITY__DEPENDENCIES) {
+                if (referrer instanceof CapabilityReference) {
+                    result.add(referrer)
+                }                
+            }
+        }
+        result
+    }    
+    
     Lifecycle lifecycle
         
 }
@@ -496,7 +523,7 @@ class CapabilityReference extends ModelElement, AbstractCapability {
         
 }
 
-interface CapabilityDomain extends NamedElement, AbstractCapability {
+class CapabilityDomain extends NamedElement, AbstractCapability {
     
     @Nasdanika(logicalContainment="false")         
     contains AbstractCapability[] capabilities keys ^id
@@ -527,10 +554,11 @@ interface CapabilityDomain extends NamedElement, AbstractCapability {
     
 }
 
-class CapabilityDependency extends ModelElement {
-    refers Capability[1..*] capabilities
+class CapabilityDependency extends CapabilityReference {
+    
     DependencyKind kind  // PREREQUISITE, ENHANCES, CONFLICTS_WITH
     boolean optional
+    
 }
 
 enum DependencyKind {
@@ -555,7 +583,7 @@ class CapabilityProvider extends NamedPeriod, AbstractCapabilityProvider {
     
 }
 
-interface CapabilityProviderDomain extends NamedElement, AbstractCapabilityProvider {
+class CapabilityProviderDomain extends NamedElement, AbstractCapabilityProvider {
     
     contains AbstractCapabilityProvider[] capabilityProviders
     
@@ -584,7 +612,7 @@ class Evidence extends NamedPeriod, AbstractEvidence {
     
 }
 
-interface EvidenceDomain extends NamedElement, AbstractEvidence {
+class EvidenceDomain extends NamedElement, AbstractEvidence {
     
     contains Evidence[] evidence keys ^id
     

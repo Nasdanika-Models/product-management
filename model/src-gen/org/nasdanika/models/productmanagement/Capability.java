@@ -29,6 +29,8 @@ import org.eclipse.emf.common.util.EList;
  *   <li>{@link org.nasdanika.models.productmanagement.Capability#getAddresses <em>Addresses</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.Capability#getAllAddresses <em>All Addresses</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.Capability#getSubCapabilities <em>Sub Capabilities</em>}</li>
+ *   <li>{@link org.nasdanika.models.productmanagement.Capability#getDependencies <em>Dependencies</em>}</li>
+ *   <li>{@link org.nasdanika.models.productmanagement.Capability#getDependents <em>Dependents</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.Capability#getLifecycle <em>Lifecycle</em>}</li>
  * </ul>
  *
@@ -76,6 +78,45 @@ public interface Capability extends NamedPeriod, AbstractCapability, EvidenceDom
 	 * @generated
 	 */
 	EList<AbstractCapability> getSubCapabilities();
+
+	/**
+	 * Returns the value of the '<em><b>Dependencies</b></em>' containment reference list.
+	 * The list contents are of type {@link org.nasdanika.models.productmanagement.AbstractCapability}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * *
+	 * Dependencies as an abstract capability allows to
+	 * model self-contained capabilities with inline dependencies
+	 * and even dependency domains.
+	 * When federated, such inline capabilities can be
+	 * either replaced with CapabilityReference or CapabilityDependency
+	 * or use URIs to de-dup multiple definitions into one logical definition
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Dependencies</em>' containment reference list.
+	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getCapability_Dependencies()
+	 * @model containment="true"
+	 * @generated
+	 */
+	EList<AbstractCapability> getDependencies();
+
+	/**
+	 * Returns the value of the '<em><b>Dependents</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.models.productmanagement.CapabilityReference}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * *
+	 * Capabilities depending on this capability, excludes containment.
+	 * Returns capability references, including capability dependencies, with target pointing
+	 * to this capability and contained by the dependencies reference.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Dependents</em>' reference list.
+	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getCapability_Dependents()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	EList<CapabilityReference> getDependents();
 
 	/**
 	 * Returns the value of the '<em><b>Lifecycle</b></em>' attribute.

@@ -1075,8 +1075,28 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	 * @generated
 	 */
 	@Override
+	public EReference getCapability_Dependencies() {
+		return (EReference)capabilityEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EReference getCapability_Dependents() {
+		return (EReference)capabilityEClass.getEStructuralFeatures().get(4);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public EAttribute getCapability_Lifecycle() {
-		return (EAttribute)capabilityEClass.getEStructuralFeatures().get(3);
+		return (EAttribute)capabilityEClass.getEStructuralFeatures().get(5);
 	}
 
 	/**
@@ -1155,18 +1175,8 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	 * @generated
 	 */
 	@Override
-	public EReference getCapabilityDependency_Capabilities() {
-		return (EReference)capabilityDependencyEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EAttribute getCapabilityDependency_Kind() {
-		return (EAttribute)capabilityDependencyEClass.getEStructuralFeatures().get(1);
+		return (EAttribute)capabilityDependencyEClass.getEStructuralFeatures().get(0);
 	}
 
 	/**
@@ -1176,7 +1186,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	 */
 	@Override
 	public EAttribute getCapabilityDependency_Optional() {
-		return (EAttribute)capabilityDependencyEClass.getEStructuralFeatures().get(2);
+		return (EAttribute)capabilityDependencyEClass.getEStructuralFeatures().get(1);
 	}
 
 	/**
@@ -1621,6 +1631,8 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		createEReference(capabilityEClass, CAPABILITY__ADDRESSES);
 		createEReference(capabilityEClass, CAPABILITY__ALL_ADDRESSES);
 		createEReference(capabilityEClass, CAPABILITY__SUB_CAPABILITIES);
+		createEReference(capabilityEClass, CAPABILITY__DEPENDENCIES);
+		createEReference(capabilityEClass, CAPABILITY__DEPENDENTS);
 		createEAttribute(capabilityEClass, CAPABILITY__LIFECYCLE);
 
 		capabilityReferenceEClass = createEClass(CAPABILITY_REFERENCE);
@@ -1632,7 +1644,6 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		createEOperation(capabilityDomainEClass, CAPABILITY_DOMAIN___RESOLVE_CAPABILITY_REFERENCE__ABSTRACTCAPABILITY);
 
 		capabilityDependencyEClass = createEClass(CAPABILITY_DEPENDENCY);
-		createEReference(capabilityDependencyEClass, CAPABILITY_DEPENDENCY__CAPABILITIES);
 		createEAttribute(capabilityDependencyEClass, CAPABILITY_DEPENDENCY__KIND);
 		createEAttribute(capabilityDependencyEClass, CAPABILITY_DEPENDENCY__OPTIONAL);
 
@@ -1756,7 +1767,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		capabilityReferenceEClass.getESuperTypes().add(this.getAbstractCapability());
 		capabilityDomainEClass.getESuperTypes().add(this.getNamedElement());
 		capabilityDomainEClass.getESuperTypes().add(this.getAbstractCapability());
-		capabilityDependencyEClass.getESuperTypes().add(this.getModelElement());
+		capabilityDependencyEClass.getESuperTypes().add(this.getCapabilityReference());
 		abstractCapabilityProviderEClass.getESuperTypes().add(this.getStringIdentity());
 		capabilityProviderEClass.getESuperTypes().add(this.getNamedPeriod());
 		capabilityProviderEClass.getESuperTypes().add(this.getAbstractCapabilityProvider());
@@ -1824,7 +1835,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 
 		initEClass(personaEClass, Persona.class, "Persona", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(personaDomainEClass, PersonaDomain.class, "PersonaDomain", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(personaDomainEClass, PersonaDomain.class, "PersonaDomain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPersonaDomain_Personas(), this.getAbstractPersona(), null, "personas", null, 0, -1, PersonaDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getPersonaDomain_Personas().getEKeys().add(this.getStringIdentity_Id());
 		initEReference(getPersonaDomain_ResolvedPersonas(), this.getAbstractPersona(), null, "resolvedPersonas", null, 0, -1, PersonaDomain.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
@@ -1845,7 +1856,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		initEClass(concernReferenceEClass, ConcernReference.class, "ConcernReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConcernReference_Target(), this.getConcern(), null, "target", null, 0, 1, ConcernReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(concernDomainEClass, ConcernDomain.class, "ConcernDomain", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(concernDomainEClass, ConcernDomain.class, "ConcernDomain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConcernDomain_Concerns(), this.getAbstractConcern(), null, "concerns", null, 0, -1, ConcernDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getConcernDomain_Concerns().getEKeys().add(this.getStringIdentity_Id());
 		initEReference(getConcernDomain_ResolvedConcerns(), this.getAbstractConcern(), null, "resolvedConcerns", null, 0, -1, ConcernDomain.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
@@ -1879,12 +1890,14 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		initEReference(getCapability_AllAddresses(), this.getAbstractConcern(), null, "allAddresses", null, 0, -1, Capability.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getCapability_SubCapabilities(), this.getAbstractCapability(), null, "subCapabilities", null, 0, -1, Capability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getCapability_SubCapabilities().getEKeys().add(this.getStringIdentity_Id());
+		initEReference(getCapability_Dependencies(), this.getAbstractCapability(), null, "dependencies", null, 0, -1, Capability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getCapability_Dependents(), this.getCapabilityReference(), null, "dependents", null, 0, -1, Capability.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCapability_Lifecycle(), this.getLifecycle(), "lifecycle", null, 0, 1, Capability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(capabilityReferenceEClass, CapabilityReference.class, "CapabilityReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCapabilityReference_Target(), this.getCapability(), null, "target", null, 0, 1, CapabilityReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(capabilityDomainEClass, CapabilityDomain.class, "CapabilityDomain", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(capabilityDomainEClass, CapabilityDomain.class, "CapabilityDomain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCapabilityDomain_Capabilities(), this.getAbstractCapability(), null, "capabilities", null, 0, -1, CapabilityDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getCapabilityDomain_Capabilities().getEKeys().add(this.getStringIdentity_Id());
 		initEReference(getCapabilityDomain_ResolvedCapabilities(), this.getAbstractCapability(), null, "resolvedCapabilities", null, 0, -1, CapabilityDomain.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
@@ -1894,7 +1907,6 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		addEParameter(op, this.getAbstractCapability(), "start", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(capabilityDependencyEClass, CapabilityDependency.class, "CapabilityDependency", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCapabilityDependency_Capabilities(), this.getCapability(), null, "capabilities", null, 1, -1, CapabilityDependency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCapabilityDependency_Kind(), this.getDependencyKind(), "kind", null, 0, 1, CapabilityDependency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCapabilityDependency_Optional(), theEcorePackage.getEBoolean(), "optional", null, 0, 1, CapabilityDependency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1905,7 +1917,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		initEReference(getCapabilityProvider_Requires(), this.getRequiredCapability(), null, "requires", null, 0, -1, CapabilityProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCapabilityProvider_Lifecycle(), this.getLifecycle(), "lifecycle", null, 0, 1, CapabilityProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
-		initEClass(capabilityProviderDomainEClass, CapabilityProviderDomain.class, "CapabilityProviderDomain", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(capabilityProviderDomainEClass, CapabilityProviderDomain.class, "CapabilityProviderDomain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCapabilityProviderDomain_CapabilityProviders(), this.getAbstractCapabilityProvider(), null, "capabilityProviders", null, 0, -1, CapabilityProviderDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(capabilityProviderReferenceEClass, CapabilityProviderReference.class, "CapabilityProviderReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1918,7 +1930,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 
 		initEClass(evidenceEClass, Evidence.class, "Evidence", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
-		initEClass(evidenceDomainEClass, EvidenceDomain.class, "EvidenceDomain", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEClass(evidenceDomainEClass, EvidenceDomain.class, "EvidenceDomain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getEvidenceDomain_Evidence(), this.getEvidence(), null, "evidence", null, 0, -1, EvidenceDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		getEvidenceDomain_Evidence().getEKeys().add(this.getStringIdentity_Id());
 
@@ -2147,6 +2159,19 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		   new String[] {
 			   "documentation", "*\nAddressed concerns from this capability plus addressedBy from concerns",
 			   "get", "<%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractConcern%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractConcern%>> result = new <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractConcern%>>();\n\tresult.addAll(this.getAddresses());\n\t<%org.eclipse.emf.common.util.EList%><<%org.eclipse.emf.ecore.EObject%>> _referrers = this.getReferrers(<%org.nasdanika.models.productmanagement.ProductmanagementPackage.Literals%>.CONCERN__ADDRESSED_BY);\n\tfor (final <%org.eclipse.emf.ecore.EObject%> referrer : _referrers)\n\t{\n\t\tif ((referrer instanceof <%org.nasdanika.models.productmanagement.AbstractConcern%>))\n\t\t{\n\t\t\tresult.add(((<%org.nasdanika.models.productmanagement.AbstractConcern%>)referrer));\n\t\t}\n\t}\n\t_xblockexpression = result;\n}\nreturn _xblockexpression;"
+		   });
+		addAnnotation
+		  (getCapability_Dependencies(),
+		   source,
+		   new String[] {
+			   "documentation", "*\nDependencies as an abstract capability allows to\nmodel self-contained capabilities with inline dependencies\nand even dependency domains.\nWhen federated, such inline capabilities can be\neither replaced with CapabilityReference or CapabilityDependency\nor use URIs to de-dup multiple definitions into one logical definition"
+		   });
+		addAnnotation
+		  (getCapability_Dependents(),
+		   source,
+		   new String[] {
+			   "documentation", "*\nCapabilities depending on this capability, excludes containment.\nReturns capability references, including capability dependencies, with target pointing\nto this capability and contained by the dependencies reference.",
+			   "get", "<%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.CapabilityReference%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.CapabilityReference%>> result = new <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.CapabilityReference%>>();\n\t<%org.eclipse.emf.common.util.EList%><<%org.eclipse.emf.ecore.EObject%>> _referrers = this.getReferrers(<%org.nasdanika.models.productmanagement.ProductmanagementPackage.Literals%>.CAPABILITY_REFERENCE__TARGET);\n\tfor (final <%org.eclipse.emf.ecore.EObject%> referrer : _referrers)\n\t{\n\t\t<%org.eclipse.emf.ecore.EReference%> _eContainmentFeature = referrer.eContainmentFeature();\n\t\tboolean _tripleEquals = (_eContainmentFeature == <%org.nasdanika.models.productmanagement.ProductmanagementPackage.Literals%>.CAPABILITY__DEPENDENCIES);\n\t\tif (_tripleEquals)\n\t\t{\n\t\t\tif ((referrer instanceof <%org.nasdanika.models.productmanagement.CapabilityReference%>))\n\t\t\t{\n\t\t\t\tresult.add(((<%org.nasdanika.models.productmanagement.CapabilityReference%>)referrer));\n\t\t\t}\n\t\t}\n\t}\n\t_xblockexpression = result;\n}\nreturn _xblockexpression;"
 		   });
 		addAnnotation
 		  (capabilityReferenceEClass,

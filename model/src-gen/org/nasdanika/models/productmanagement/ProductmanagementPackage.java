@@ -1107,10 +1107,10 @@ public interface ProductmanagementPackage extends EPackage {
 	int PERSONA_OPERATION_COUNT = NAMED_PERIOD_OPERATION_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.PersonaDomain <em>Persona Domain</em>}' class.
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.PersonaDomainImpl <em>Persona Domain</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.models.productmanagement.PersonaDomain
+	 * @see org.nasdanika.models.productmanagement.impl.PersonaDomainImpl
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getPersonaDomain()
 	 * @generated
 	 */
@@ -1715,10 +1715,10 @@ public interface ProductmanagementPackage extends EPackage {
 	int CONCERN_REFERENCE_OPERATION_COUNT = ABSTRACT_CONCERN_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.ConcernDomain <em>Concern Domain</em>}' class.
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.ConcernDomainImpl <em>Concern Domain</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.models.productmanagement.ConcernDomain
+	 * @see org.nasdanika.models.productmanagement.impl.ConcernDomainImpl
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getConcernDomain()
 	 * @generated
 	 */
@@ -2684,13 +2684,31 @@ public interface ProductmanagementPackage extends EPackage {
 	int CAPABILITY__SUB_CAPABILITIES = NAMED_PERIOD_FEATURE_COUNT + 7;
 
 	/**
+	 * The feature id for the '<em><b>Dependencies</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY__DEPENDENCIES = NAMED_PERIOD_FEATURE_COUNT + 8;
+
+	/**
+	 * The feature id for the '<em><b>Dependents</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY__DEPENDENTS = NAMED_PERIOD_FEATURE_COUNT + 9;
+
+	/**
 	 * The feature id for the '<em><b>Lifecycle</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY__LIFECYCLE = NAMED_PERIOD_FEATURE_COUNT + 8;
+	int CAPABILITY__LIFECYCLE = NAMED_PERIOD_FEATURE_COUNT + 10;
 
 	/**
 	 * The number of structural features of the '<em>Capability</em>' class.
@@ -2699,7 +2717,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 9;
+	int CAPABILITY_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 11;
 
 	/**
 	 * The operation id for the '<em>Collect</em>' operation.
@@ -2856,10 +2874,10 @@ public interface ProductmanagementPackage extends EPackage {
 	int CAPABILITY_REFERENCE_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.CapabilityDomain <em>Capability Domain</em>}' class.
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.CapabilityDomainImpl <em>Capability Domain</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.models.productmanagement.CapabilityDomain
+	 * @see org.nasdanika.models.productmanagement.impl.CapabilityDomainImpl
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityDomain()
 	 * @generated
 	 */
@@ -3008,7 +3026,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_DEPENDENCY__ID = MODEL_ELEMENT__ID;
+	int CAPABILITY_DEPENDENCY__ID = CAPABILITY_REFERENCE__ID;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -3017,7 +3035,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_DEPENDENCY__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
+	int CAPABILITY_DEPENDENCY__DOCUMENTATION = CAPABILITY_REFERENCE__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
@@ -3026,7 +3044,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_DEPENDENCY__DOC_REF = MODEL_ELEMENT__DOC_REF;
+	int CAPABILITY_DEPENDENCY__DOC_REF = CAPABILITY_REFERENCE__DOC_REF;
 
 	/**
 	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
@@ -3035,7 +3053,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_DEPENDENCY__DOC_FORMAT = MODEL_ELEMENT__DOC_FORMAT;
+	int CAPABILITY_DEPENDENCY__DOC_FORMAT = CAPABILITY_REFERENCE__DOC_FORMAT;
 
 	/**
 	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
@@ -3044,7 +3062,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_DEPENDENCY__URIS = MODEL_ELEMENT__URIS;
+	int CAPABILITY_DEPENDENCY__URIS = CAPABILITY_REFERENCE__URIS;
 
 	/**
 	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
@@ -3053,16 +3071,16 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_DEPENDENCY__FASETS = MODEL_ELEMENT__FASETS;
+	int CAPABILITY_DEPENDENCY__FASETS = CAPABILITY_REFERENCE__FASETS;
 
 	/**
-	 * The feature id for the '<em><b>Capabilities</b></em>' reference list.
+	 * The feature id for the '<em><b>Target</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_DEPENDENCY__CAPABILITIES = MODEL_ELEMENT_FEATURE_COUNT + 0;
+	int CAPABILITY_DEPENDENCY__TARGET = CAPABILITY_REFERENCE__TARGET;
 
 	/**
 	 * The feature id for the '<em><b>Kind</b></em>' attribute.
@@ -3071,7 +3089,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_DEPENDENCY__KIND = MODEL_ELEMENT_FEATURE_COUNT + 1;
+	int CAPABILITY_DEPENDENCY__KIND = CAPABILITY_REFERENCE_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Optional</b></em>' attribute.
@@ -3080,7 +3098,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_DEPENDENCY__OPTIONAL = MODEL_ELEMENT_FEATURE_COUNT + 2;
+	int CAPABILITY_DEPENDENCY__OPTIONAL = CAPABILITY_REFERENCE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Capability Dependency</em>' class.
@@ -3089,7 +3107,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_DEPENDENCY_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 3;
+	int CAPABILITY_DEPENDENCY_FEATURE_COUNT = CAPABILITY_REFERENCE_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Collect</em>' operation.
@@ -3098,7 +3116,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_DEPENDENCY___COLLECT__OBJECT_EREFERENCE_ELIST = MODEL_ELEMENT___COLLECT__OBJECT_EREFERENCE_ELIST;
+	int CAPABILITY_DEPENDENCY___COLLECT__OBJECT_EREFERENCE_ELIST = CAPABILITY_REFERENCE___COLLECT__OBJECT_EREFERENCE_ELIST;
 
 	/**
 	 * The operation id for the '<em>Get Referrers</em>' operation.
@@ -3107,7 +3125,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_DEPENDENCY___GET_REFERRERS__EREFERENCE = MODEL_ELEMENT___GET_REFERRERS__EREFERENCE;
+	int CAPABILITY_DEPENDENCY___GET_REFERRERS__EREFERENCE = CAPABILITY_REFERENCE___GET_REFERRERS__EREFERENCE;
 
 	/**
 	 * The number of operations of the '<em>Capability Dependency</em>' class.
@@ -3116,7 +3134,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_DEPENDENCY_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
+	int CAPABILITY_DEPENDENCY_OPERATION_COUNT = CAPABILITY_REFERENCE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.AbstractCapabilityProvider <em>Abstract Capability Provider</em>}' class.
@@ -3337,10 +3355,10 @@ public interface ProductmanagementPackage extends EPackage {
 	int CAPABILITY_PROVIDER_OPERATION_COUNT = NAMED_PERIOD_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.CapabilityProviderDomain <em>Capability Provider Domain</em>}' class.
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.CapabilityProviderDomainImpl <em>Capability Provider Domain</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.models.productmanagement.CapabilityProviderDomain
+	 * @see org.nasdanika.models.productmanagement.impl.CapabilityProviderDomainImpl
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityProviderDomain()
 	 * @generated
 	 */
@@ -3864,10 +3882,10 @@ public interface ProductmanagementPackage extends EPackage {
 	int EVIDENCE_OPERATION_COUNT = NAMED_PERIOD_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.EvidenceDomain <em>Evidence Domain</em>}' class.
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.EvidenceDomainImpl <em>Evidence Domain</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.models.productmanagement.EvidenceDomain
+	 * @see org.nasdanika.models.productmanagement.impl.EvidenceDomainImpl
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getEvidenceDomain()
 	 * @generated
 	 */
@@ -5536,6 +5554,28 @@ public interface ProductmanagementPackage extends EPackage {
 	EReference getCapability_SubCapabilities();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.Capability#getDependencies <em>Dependencies</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Dependencies</em>'.
+	 * @see org.nasdanika.models.productmanagement.Capability#getDependencies()
+	 * @see #getCapability()
+	 * @generated
+	 */
+	EReference getCapability_Dependencies();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Capability#getDependents <em>Dependents</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Dependents</em>'.
+	 * @see org.nasdanika.models.productmanagement.Capability#getDependents()
+	 * @see #getCapability()
+	 * @generated
+	 */
+	EReference getCapability_Dependents();
+
+	/**
 	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.Capability#getLifecycle <em>Lifecycle</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5618,17 +5658,6 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getCapabilityDependency();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.CapabilityDependency#getCapabilities <em>Capabilities</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Capabilities</em>'.
-	 * @see org.nasdanika.models.productmanagement.CapabilityDependency#getCapabilities()
-	 * @see #getCapabilityDependency()
-	 * @generated
-	 */
-	EReference getCapabilityDependency_Capabilities();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.CapabilityDependency#getKind <em>Kind</em>}'.
@@ -6257,10 +6286,10 @@ public interface ProductmanagementPackage extends EPackage {
 		EClass PERSONA = eINSTANCE.getPersona();
 
 		/**
-		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.PersonaDomain <em>Persona Domain</em>}' class.
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.PersonaDomainImpl <em>Persona Domain</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.models.productmanagement.PersonaDomain
+		 * @see org.nasdanika.models.productmanagement.impl.PersonaDomainImpl
 		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getPersonaDomain()
 		 * @generated
 		 */
@@ -6363,10 +6392,10 @@ public interface ProductmanagementPackage extends EPackage {
 		EReference CONCERN_REFERENCE__TARGET = eINSTANCE.getConcernReference_Target();
 
 		/**
-		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.ConcernDomain <em>Concern Domain</em>}' class.
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.ConcernDomainImpl <em>Concern Domain</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.models.productmanagement.ConcernDomain
+		 * @see org.nasdanika.models.productmanagement.impl.ConcernDomainImpl
 		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getConcernDomain()
 		 * @generated
 		 */
@@ -6567,6 +6596,22 @@ public interface ProductmanagementPackage extends EPackage {
 		EReference CAPABILITY__SUB_CAPABILITIES = eINSTANCE.getCapability_SubCapabilities();
 
 		/**
+		 * The meta object literal for the '<em><b>Dependencies</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CAPABILITY__DEPENDENCIES = eINSTANCE.getCapability_Dependencies();
+
+		/**
+		 * The meta object literal for the '<em><b>Dependents</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CAPABILITY__DEPENDENTS = eINSTANCE.getCapability_Dependents();
+
+		/**
 		 * The meta object literal for the '<em><b>Lifecycle</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6593,10 +6638,10 @@ public interface ProductmanagementPackage extends EPackage {
 		EReference CAPABILITY_REFERENCE__TARGET = eINSTANCE.getCapabilityReference_Target();
 
 		/**
-		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.CapabilityDomain <em>Capability Domain</em>}' class.
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.CapabilityDomainImpl <em>Capability Domain</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.models.productmanagement.CapabilityDomain
+		 * @see org.nasdanika.models.productmanagement.impl.CapabilityDomainImpl
 		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityDomain()
 		 * @generated
 		 */
@@ -6635,14 +6680,6 @@ public interface ProductmanagementPackage extends EPackage {
 		 * @generated
 		 */
 		EClass CAPABILITY_DEPENDENCY = eINSTANCE.getCapabilityDependency();
-
-		/**
-		 * The meta object literal for the '<em><b>Capabilities</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference CAPABILITY_DEPENDENCY__CAPABILITIES = eINSTANCE.getCapabilityDependency_Capabilities();
 
 		/**
 		 * The meta object literal for the '<em><b>Kind</b></em>' attribute feature.
@@ -6705,10 +6742,10 @@ public interface ProductmanagementPackage extends EPackage {
 		EAttribute CAPABILITY_PROVIDER__LIFECYCLE = eINSTANCE.getCapabilityProvider_Lifecycle();
 
 		/**
-		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.CapabilityProviderDomain <em>Capability Provider Domain</em>}' class.
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.CapabilityProviderDomainImpl <em>Capability Provider Domain</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.models.productmanagement.CapabilityProviderDomain
+		 * @see org.nasdanika.models.productmanagement.impl.CapabilityProviderDomainImpl
 		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityProviderDomain()
 		 * @generated
 		 */
@@ -6779,10 +6816,10 @@ public interface ProductmanagementPackage extends EPackage {
 		EClass EVIDENCE = eINSTANCE.getEvidence();
 
 		/**
-		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.EvidenceDomain <em>Evidence Domain</em>}' class.
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.EvidenceDomainImpl <em>Evidence Domain</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.models.productmanagement.EvidenceDomain
+		 * @see org.nasdanika.models.productmanagement.impl.EvidenceDomainImpl
 		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getEvidenceDomain()
 		 * @generated
 		 */

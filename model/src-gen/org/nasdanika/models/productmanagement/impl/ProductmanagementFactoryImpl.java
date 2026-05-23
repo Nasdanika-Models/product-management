@@ -64,19 +64,24 @@ public class ProductmanagementFactoryImpl extends EFactoryImpl implements Produc
 			case ProductmanagementPackage.PERIOD: return createPeriod();
 			case ProductmanagementPackage.PRODUCT_MODEL: return createProductModel();
 			case ProductmanagementPackage.PERSONA: return createPersona();
+			case ProductmanagementPackage.PERSONA_DOMAIN: return createPersonaDomain();
 			case ProductmanagementPackage.PERSONA_REFERENCE: return createPersonaReference();
 			case ProductmanagementPackage.CONCERN: return createConcern();
 			case ProductmanagementPackage.CONCERN_REFERENCE: return createConcernReference();
+			case ProductmanagementPackage.CONCERN_DOMAIN: return createConcernDomain();
 			case ProductmanagementPackage.GOAL: return createGoal();
 			case ProductmanagementPackage.NEED: return createNeed();
 			case ProductmanagementPackage.PAIN_POINT: return createPainPoint();
 			case ProductmanagementPackage.CAPABILITY: return createCapability();
 			case ProductmanagementPackage.CAPABILITY_REFERENCE: return createCapabilityReference();
+			case ProductmanagementPackage.CAPABILITY_DOMAIN: return createCapabilityDomain();
 			case ProductmanagementPackage.CAPABILITY_DEPENDENCY: return createCapabilityDependency();
 			case ProductmanagementPackage.CAPABILITY_PROVIDER: return createCapabilityProvider();
+			case ProductmanagementPackage.CAPABILITY_PROVIDER_DOMAIN: return createCapabilityProviderDomain();
 			case ProductmanagementPackage.CAPABILITY_PROVIDER_REFERENCE: return createCapabilityProviderReference();
 			case ProductmanagementPackage.PROVIDED_CAPABILITY: return createProvidedCapability();
 			case ProductmanagementPackage.EVIDENCE: return createEvidence();
+			case ProductmanagementPackage.EVIDENCE_DOMAIN: return createEvidenceDomain();
 			case ProductmanagementPackage.REQUIRED_CAPABILITY: return createRequiredCapability();
 			case ProductmanagementPackage.VERSION: return createVersion();
 			case ProductmanagementPackage.ROLE: return createRole();
@@ -180,6 +185,17 @@ public class ProductmanagementFactoryImpl extends EFactoryImpl implements Produc
 	 * @generated
 	 */
 	@Override
+	public PersonaDomain createPersonaDomain() {
+		PersonaDomainImpl personaDomain = new PersonaDomainImpl();
+		return personaDomain;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public PersonaReference createPersonaReference() {
 		PersonaReferenceImpl personaReference = new PersonaReferenceImpl();
 		return personaReference;
@@ -205,6 +221,17 @@ public class ProductmanagementFactoryImpl extends EFactoryImpl implements Produc
 	public ConcernReference createConcernReference() {
 		ConcernReferenceImpl concernReference = new ConcernReferenceImpl();
 		return concernReference;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public ConcernDomain createConcernDomain() {
+		ConcernDomainImpl concernDomain = new ConcernDomainImpl();
+		return concernDomain;
 	}
 
 	/**
@@ -268,6 +295,17 @@ public class ProductmanagementFactoryImpl extends EFactoryImpl implements Produc
 	 * @generated
 	 */
 	@Override
+	public CapabilityDomain createCapabilityDomain() {
+		CapabilityDomainImpl capabilityDomain = new CapabilityDomainImpl();
+		return capabilityDomain;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public CapabilityDependency createCapabilityDependency() {
 		CapabilityDependencyImpl capabilityDependency = new CapabilityDependencyImpl();
 		return capabilityDependency;
@@ -282,6 +320,17 @@ public class ProductmanagementFactoryImpl extends EFactoryImpl implements Produc
 	public CapabilityProvider createCapabilityProvider() {
 		CapabilityProviderImpl capabilityProvider = new CapabilityProviderImpl();
 		return capabilityProvider;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public CapabilityProviderDomain createCapabilityProviderDomain() {
+		CapabilityProviderDomainImpl capabilityProviderDomain = new CapabilityProviderDomainImpl();
+		return capabilityProviderDomain;
 	}
 
 	/**
@@ -315,6 +364,17 @@ public class ProductmanagementFactoryImpl extends EFactoryImpl implements Produc
 	public Evidence createEvidence() {
 		EvidenceImpl evidence = new EvidenceImpl();
 		return evidence;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EvidenceDomain createEvidenceDomain() {
+		EvidenceDomainImpl evidenceDomain = new EvidenceDomainImpl();
+		return evidenceDomain;
 	}
 
 	/**

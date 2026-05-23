@@ -14,6 +14,7 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -23,6 +24,7 @@ import org.nasdanika.models.productmanagement.AbstractConcern;
 import org.nasdanika.models.productmanagement.AbstractEvidence;
 import org.nasdanika.models.productmanagement.AbstractPersona;
 import org.nasdanika.models.productmanagement.Capability;
+import org.nasdanika.models.productmanagement.CapabilityReference;
 import org.nasdanika.models.productmanagement.ConcernDomain;
 import org.nasdanika.models.productmanagement.ConcernReference;
 import org.nasdanika.models.productmanagement.Evidence;
@@ -50,6 +52,8 @@ import org.nasdanika.models.productmanagement.ProductmanagementPackage.Literals;
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getAddresses <em>Addresses</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getAllAddresses <em>All Addresses</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getSubCapabilities <em>Sub Capabilities</em>}</li>
+ *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getDependencies <em>Dependencies</em>}</li>
+ *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getDependents <em>Dependents</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getLifecycle <em>Lifecycle</em>}</li>
  * </ul>
  *
@@ -215,6 +219,42 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
+	@SuppressWarnings("unchecked")
+	@Override
+	public EList<AbstractCapability> getDependencies() {
+		return (EList<AbstractCapability>)eDynamicGet(ProductmanagementPackage.CAPABILITY__DEPENDENCIES, ProductmanagementPackage.Literals.CAPABILITY__DEPENDENCIES, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<CapabilityReference> getDependents() {
+		BasicEList<CapabilityReference> _xblockexpression = null;
+		{
+			final BasicEList<CapabilityReference> result = new BasicEList<CapabilityReference>();
+			EList<EObject> _referrers = this.getReferrers(Literals.CAPABILITY_REFERENCE__TARGET);
+			for (final EObject referrer : _referrers) {
+				EReference _eContainmentFeature = referrer.eContainmentFeature();
+				boolean _tripleEquals = (_eContainmentFeature == Literals.CAPABILITY__DEPENDENCIES);
+				if (_tripleEquals) {
+					if ((referrer instanceof CapabilityReference)) {
+						result.add(((CapabilityReference)referrer));
+					}
+				}
+			}
+			_xblockexpression = result;
+		}
+		return _xblockexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
 	@Override
 	public Lifecycle getLifecycle() {
 		return (Lifecycle)eDynamicGet(ProductmanagementPackage.CAPABILITY__LIFECYCLE, ProductmanagementPackage.Literals.CAPABILITY__LIFECYCLE, true, true);
@@ -298,6 +338,8 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 				return ((InternalEList<?>)getAddresses()).basicRemove(otherEnd, msgs);
 			case ProductmanagementPackage.CAPABILITY__SUB_CAPABILITIES:
 				return ((InternalEList<?>)getSubCapabilities()).basicRemove(otherEnd, msgs);
+			case ProductmanagementPackage.CAPABILITY__DEPENDENCIES:
+				return ((InternalEList<?>)getDependencies()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -326,6 +368,10 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 				return getAllAddresses();
 			case ProductmanagementPackage.CAPABILITY__SUB_CAPABILITIES:
 				return getSubCapabilities();
+			case ProductmanagementPackage.CAPABILITY__DEPENDENCIES:
+				return getDependencies();
+			case ProductmanagementPackage.CAPABILITY__DEPENDENTS:
+				return getDependents();
 			case ProductmanagementPackage.CAPABILITY__LIFECYCLE:
 				return getLifecycle();
 		}
@@ -361,6 +407,10 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 				getSubCapabilities().clear();
 				getSubCapabilities().addAll((Collection<? extends AbstractCapability>)newValue);
 				return;
+			case ProductmanagementPackage.CAPABILITY__DEPENDENCIES:
+				getDependencies().clear();
+				getDependencies().addAll((Collection<? extends AbstractCapability>)newValue);
+				return;
 			case ProductmanagementPackage.CAPABILITY__LIFECYCLE:
 				setLifecycle((Lifecycle)newValue);
 				return;
@@ -390,6 +440,9 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 				return;
 			case ProductmanagementPackage.CAPABILITY__SUB_CAPABILITIES:
 				getSubCapabilities().clear();
+				return;
+			case ProductmanagementPackage.CAPABILITY__DEPENDENCIES:
+				getDependencies().clear();
 				return;
 			case ProductmanagementPackage.CAPABILITY__LIFECYCLE:
 				setLifecycle(LIFECYCLE_EDEFAULT);
@@ -422,6 +475,10 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 				return !getAllAddresses().isEmpty();
 			case ProductmanagementPackage.CAPABILITY__SUB_CAPABILITIES:
 				return !getSubCapabilities().isEmpty();
+			case ProductmanagementPackage.CAPABILITY__DEPENDENCIES:
+				return !getDependencies().isEmpty();
+			case ProductmanagementPackage.CAPABILITY__DEPENDENTS:
+				return !getDependents().isEmpty();
 			case ProductmanagementPackage.CAPABILITY__LIFECYCLE:
 				return getLifecycle() != LIFECYCLE_EDEFAULT;
 		}

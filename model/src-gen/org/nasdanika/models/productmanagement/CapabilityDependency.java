@@ -2,7 +2,6 @@
  */
 package org.nasdanika.models.productmanagement;
 
-import org.eclipse.emf.common.util.EList;
 
 /**
  * <!-- begin-user-doc -->
@@ -13,7 +12,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.models.productmanagement.CapabilityDependency#getCapabilities <em>Capabilities</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.CapabilityDependency#getKind <em>Kind</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.CapabilityDependency#isOptional <em>Optional</em>}</li>
  * </ul>
@@ -22,19 +20,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface CapabilityDependency extends ModelElement {
-	/**
-	 * Returns the value of the '<em><b>Capabilities</b></em>' reference list.
-	 * The list contents are of type {@link org.nasdanika.models.productmanagement.Capability}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Capabilities</em>' reference list.
-	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getCapabilityDependency_Capabilities()
-	 * @model required="true"
-	 * @generated
-	 */
-	EList<Capability> getCapabilities();
-
+public interface CapabilityDependency extends CapabilityReference {
 	/**
 	 * Returns the value of the '<em><b>Kind</b></em>' attribute.
 	 * The literals are from the enumeration {@link org.nasdanika.models.productmanagement.DependencyKind}.

@@ -18,7 +18,7 @@ import org.eclipse.emf.common.util.EList;
  * </ul>
  *
  * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getPersonaDomain()
- * @model interface="true" abstract="true"
+ * @model
  * @generated
  */
 public interface PersonaDomain extends NamedElement, AbstractPersona {

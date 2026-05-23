@@ -320,6 +320,8 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 			case ProductmanagementPackage.CAPABILITY_DEPENDENCY: {
 				CapabilityDependency capabilityDependency = (CapabilityDependency)theEObject;
 				T result = caseCapabilityDependency(capabilityDependency);
+				if (result == null) result = caseCapabilityReference(capabilityDependency);
+				if (result == null) result = caseAbstractCapability(capabilityDependency);
 				if (result == null) result = caseModelElement(capabilityDependency);
 				if (result == null) result = caseStringIdentity(capabilityDependency);
 				if (result == null) result = caseReferrable(capabilityDependency);
