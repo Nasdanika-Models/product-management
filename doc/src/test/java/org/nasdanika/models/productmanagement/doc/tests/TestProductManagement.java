@@ -1,6 +1,10 @@
 package org.nasdanika.models.productmanagement.doc.tests;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
+
 import java.io.File;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
 import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.resource.Resource;
@@ -12,10 +16,9 @@ import org.nasdanika.capability.ServiceCapabilityFactory.Requirement;
 import org.nasdanika.capability.emf.ResourceSetRequirement;
 import org.nasdanika.common.PrintStreamProgressMonitor;
 import org.nasdanika.common.ProgressMonitor;
-import org.nasdanika.models.productmanagement.AddressedConcerns;
-import org.nasdanika.models.productmanagement.BlockedGoals;
 import org.nasdanika.models.productmanagement.Capability;
 import org.nasdanika.models.productmanagement.CapabilityReference;
+import org.nasdanika.models.productmanagement.ConcernReference;
 import org.nasdanika.models.productmanagement.Goal;
 import org.nasdanika.models.productmanagement.Lifecycle;
 import org.nasdanika.models.productmanagement.Need;
@@ -24,8 +27,6 @@ import org.nasdanika.models.productmanagement.Persona;
 import org.nasdanika.models.productmanagement.PersonaReference;
 import org.nasdanika.models.productmanagement.ProductModel;
 import org.nasdanika.models.productmanagement.ProductmanagementFactory;
-import org.nasdanika.models.productmanagement.SupportedGoals;
-import org.nasdanika.models.productmanagement.ViolatedNeeds;
 
 
 public class TestProductManagement {
@@ -82,9 +83,10 @@ public class TestProductManagement {
 		need.setId("automated-data-aggregation");
 		need.setName("Access to automated data aggregation tools");
 		need.setDocumentation("Explains the need in more detail");
-		SupportedGoals supportedGoals = factory.createSupportedGoals();
-		supportedGoals.getGoals().add(goal);
-		need.getSupports().add(supportedGoals);
+		ConcernReference supportedGoal = factory.createConcernReference();
+		supportedGoal.setTarget(goal);
+		supportedGoal.setDocumentation("Expolins how it supports the goal");
+		need.getSupports().add(supportedGoal);
 		externalPersona.getConcerns().add(need);
 
 		// Pain point: data is siloed across incompatible systems - violates the need and blocks the goal
@@ -92,12 +94,13 @@ public class TestProductManagement {
 		painPoint.setId("siloed-data-systems");
 		painPoint.setName("Data is siloed across incompatible systems");
 		painPoint.setDocumentation("Explains the pain point in more detail");
-		ViolatedNeeds violatedNeeds = factory.createViolatedNeeds();
-		violatedNeeds.getNeeds().add(need);
-		painPoint.getViolates().add(violatedNeeds);
-		BlockedGoals blockedGoals = factory.createBlockedGoals();
-		blockedGoals.getGoals().add(goal);
-		painPoint.getBlocks().add(blockedGoals);
+		ConcernReference violatedNeed = factory.createConcernReference();
+		violatedNeed.setTarget(need);
+		painPoint.getViolates().add(violatedNeed);
+		
+		ConcernReference blockedGoal = factory.createConcernReference();
+		blockedGoal.setTarget(goal);
+		painPoint.getBlocks().add(blockedGoal);
 		externalPersona.getConcerns().add(painPoint);
 
 		externalPersonaResource.save(null);
@@ -108,11 +111,14 @@ public class TestProductManagement {
 		capability.setName("Automated Data Aggregation");
 		capability.setDocumentation("Provides access to automated data aggregation tools");
 		capability.setLifecycle(Lifecycle.IN_PROGRESS);
-		AddressedConcerns addressedConcerns = factory.createAddressedConcerns();
-		addressedConcerns.getConcerns().add(need);
-		addressedConcerns.setDocumentation("Explains how it addresses the need");
-		capability.getAddresses().add(addressedConcerns);
+		ConcernReference addressedConcerns = factory.createConcernReference();
+		addressedConcerns.setTarget(need);
+		String capabilityDocRef = "automated-data-aggregation.md";
+		addressedConcerns.setDocRef(capabilityDocRef);		
+		capability.getAddressedConcerns().add(addressedConcerns);		
 		
+		assertEquals(1, capability.getAllAddressedConcerns().size());
+						
 		CapabilityReference capabilityReferenece = factory.createCapabilityReference();
 		capabilityReferenece.setTarget(capability);
 		capabilityReferenece.setId("automated-data-aggregation-ref");
@@ -122,6 +128,8 @@ public class TestProductManagement {
 		Resource capabilityResource = resourceSet.createResource(URI.createFileURI(capabilityFile.getAbsolutePath()));
 		capabilityResource.getContents().add(capability);
 		capabilityResource.save(null);
+		
+		Files.writeString(capabilityFile.getParentFile().toPath().resolve(Path.of(capabilityDocRef)), "Explains how it addresses the need");		
 		
 		productModelResource.save(null);		
 	}

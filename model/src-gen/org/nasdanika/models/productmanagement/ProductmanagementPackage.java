@@ -62,6 +62,52 @@ public interface ProductmanagementPackage extends EPackage {
 	ProductmanagementPackage eINSTANCE = org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl.init();
 
 	/**
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.Referrable <em>Referrable</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.Referrable
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getReferrable()
+	 * @generated
+	 */
+	int REFERRABLE = 0;
+
+	/**
+	 * The number of structural features of the '<em>Referrable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERRABLE_FEATURE_COUNT = 0;
+
+	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERRABLE___COLLECT__OBJECT_EREFERENCE_ELIST = 0;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERRABLE___GET_REFERRERS__EREFERENCE = 1;
+
+	/**
+	 * The number of operations of the '<em>Referrable</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REFERRABLE_OPERATION_COUNT = 2;
+
+	/**
 	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.TemporalImpl <em>Temporal</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -69,7 +115,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getTemporal()
 	 * @generated
 	 */
-	int TEMPORAL = 0;
+	int TEMPORAL = 1;
 
 	/**
 	 * The feature id for the '<em><b>Base</b></em>' reference.
@@ -142,7 +188,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getPeriod()
 	 * @generated
 	 */
-	int PERIOD = 1;
+	int PERIOD = 2;
 
 	/**
 	 * The feature id for the '<em><b>Duration</b></em>' attribute.
@@ -197,7 +243,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getStringIdentity()
 	 * @generated
 	 */
-	int STRING_IDENTITY = 2;
+	int STRING_IDENTITY = 3;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -206,7 +252,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRING_IDENTITY__ID = 0;
+	int STRING_IDENTITY__ID = REFERRABLE_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>String Identity</em>' class.
@@ -215,7 +261,25 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRING_IDENTITY_FEATURE_COUNT = 1;
+	int STRING_IDENTITY_FEATURE_COUNT = REFERRABLE_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_IDENTITY___COLLECT__OBJECT_EREFERENCE_ELIST = REFERRABLE___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int STRING_IDENTITY___GET_REFERRERS__EREFERENCE = REFERRABLE___GET_REFERRERS__EREFERENCE;
 
 	/**
 	 * The number of operations of the '<em>String Identity</em>' class.
@@ -224,7 +288,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int STRING_IDENTITY_OPERATION_COUNT = 0;
+	int STRING_IDENTITY_OPERATION_COUNT = REFERRABLE_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.ModelElementImpl <em>Model Element</em>}' class.
@@ -234,7 +298,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getModelElement()
 	 * @generated
 	 */
-	int MODEL_ELEMENT = 3;
+	int MODEL_ELEMENT = 4;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -255,13 +319,31 @@ public interface ProductmanagementPackage extends EPackage {
 	int MODEL_ELEMENT__DOCUMENTATION = STRING_IDENTITY_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_ELEMENT__DOC_REF = STRING_IDENTITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_ELEMENT__DOC_FORMAT = STRING_IDENTITY_FEATURE_COUNT + 2;
+
+	/**
 	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT__URIS = STRING_IDENTITY_FEATURE_COUNT + 1;
+	int MODEL_ELEMENT__URIS = STRING_IDENTITY_FEATURE_COUNT + 3;
 
 	/**
 	 * The number of structural features of the '<em>Model Element</em>' class.
@@ -270,7 +352,25 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT_FEATURE_COUNT = STRING_IDENTITY_FEATURE_COUNT + 2;
+	int MODEL_ELEMENT_FEATURE_COUNT = STRING_IDENTITY_FEATURE_COUNT + 4;
+
+	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_ELEMENT___COLLECT__OBJECT_EREFERENCE_ELIST = STRING_IDENTITY___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_ELEMENT___GET_REFERRERS__EREFERENCE = STRING_IDENTITY___GET_REFERRERS__EREFERENCE;
 
 	/**
 	 * The number of operations of the '<em>Model Element</em>' class.
@@ -289,7 +389,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getNamedElement()
 	 * @generated
 	 */
-	int NAMED_ELEMENT = 4;
+	int NAMED_ELEMENT = 5;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -308,6 +408,24 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int NAMED_ELEMENT__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT__DOC_REF = MODEL_ELEMENT__DOC_REF;
+
+	/**
+	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT__DOC_FORMAT = MODEL_ELEMENT__DOC_FORMAT;
 
 	/**
 	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
@@ -337,6 +455,24 @@ public interface ProductmanagementPackage extends EPackage {
 	int NAMED_ELEMENT_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT___COLLECT__OBJECT_EREFERENCE_ELIST = MODEL_ELEMENT___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT___GET_REFERRERS__EREFERENCE = MODEL_ELEMENT___GET_REFERRERS__EREFERENCE;
+
+	/**
 	 * The number of operations of the '<em>Named Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -353,7 +489,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getNamedPeriod()
 	 * @generated
 	 */
-	int NAMED_PERIOD = 5;
+	int NAMED_PERIOD = 6;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -372,6 +508,24 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int NAMED_PERIOD__DOCUMENTATION = NAMED_ELEMENT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_PERIOD__DOC_REF = NAMED_ELEMENT__DOC_REF;
+
+	/**
+	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_PERIOD__DOC_FORMAT = NAMED_ELEMENT__DOC_FORMAT;
 
 	/**
 	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
@@ -428,6 +582,24 @@ public interface ProductmanagementPackage extends EPackage {
 	int NAMED_PERIOD_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_PERIOD___COLLECT__OBJECT_EREFERENCE_ELIST = NAMED_ELEMENT___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_PERIOD___GET_REFERRERS__EREFERENCE = NAMED_ELEMENT___GET_REFERRERS__EREFERENCE;
+
+	/**
 	 * The number of operations of the '<em>Named Period</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -444,7 +616,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getProductModel()
 	 * @generated
 	 */
-	int PRODUCT_MODEL = 6;
+	int PRODUCT_MODEL = 7;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -463,6 +635,24 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int PRODUCT_MODEL__DOCUMENTATION = NAMED_PERIOD__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_MODEL__DOC_REF = NAMED_PERIOD__DOC_REF;
+
+	/**
+	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_MODEL__DOC_FORMAT = NAMED_PERIOD__DOC_FORMAT;
 
 	/**
 	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
@@ -573,6 +763,24 @@ public interface ProductmanagementPackage extends EPackage {
 	int PRODUCT_MODEL_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 6;
 
 	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_MODEL___COLLECT__OBJECT_EREFERENCE_ELIST = NAMED_PERIOD___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_MODEL___GET_REFERRERS__EREFERENCE = NAMED_PERIOD___GET_REFERRERS__EREFERENCE;
+
+	/**
 	 * The operation id for the '<em>Resolve Persona Reference</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -607,7 +815,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getAbstractPersona()
 	 * @generated
 	 */
-	int ABSTRACT_PERSONA = 7;
+	int ABSTRACT_PERSONA = 8;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -616,7 +824,43 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_PERSONA__ID = STRING_IDENTITY__ID;
+	int ABSTRACT_PERSONA__ID = MODEL_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_PERSONA__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_PERSONA__DOC_REF = MODEL_ELEMENT__DOC_REF;
+
+	/**
+	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_PERSONA__DOC_FORMAT = MODEL_ELEMENT__DOC_FORMAT;
+
+	/**
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_PERSONA__URIS = MODEL_ELEMENT__URIS;
 
 	/**
 	 * The number of structural features of the '<em>Abstract Persona</em>' class.
@@ -625,7 +869,25 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_PERSONA_FEATURE_COUNT = STRING_IDENTITY_FEATURE_COUNT + 0;
+	int ABSTRACT_PERSONA_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_PERSONA___COLLECT__OBJECT_EREFERENCE_ELIST = MODEL_ELEMENT___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_PERSONA___GET_REFERRERS__EREFERENCE = MODEL_ELEMENT___GET_REFERRERS__EREFERENCE;
 
 	/**
 	 * The number of operations of the '<em>Abstract Persona</em>' class.
@@ -634,7 +896,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_PERSONA_OPERATION_COUNT = STRING_IDENTITY_OPERATION_COUNT + 0;
+	int ABSTRACT_PERSONA_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.PersonaImpl <em>Persona</em>}' class.
@@ -644,7 +906,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getPersona()
 	 * @generated
 	 */
-	int PERSONA = 8;
+	int PERSONA = 9;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -663,6 +925,24 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int PERSONA__DOCUMENTATION = NAMED_PERIOD__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA__DOC_REF = NAMED_PERIOD__DOC_REF;
+
+	/**
+	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA__DOC_FORMAT = NAMED_PERIOD__DOC_FORMAT;
 
 	/**
 	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
@@ -737,6 +1017,24 @@ public interface ProductmanagementPackage extends EPackage {
 	int PERSONA_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA___COLLECT__OBJECT_EREFERENCE_ELIST = NAMED_PERIOD___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA___GET_REFERRERS__EREFERENCE = NAMED_PERIOD___GET_REFERRERS__EREFERENCE;
+
+	/**
 	 * The operation id for the '<em>Resolve Concern Reference</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -762,7 +1060,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getPersonaDomain()
 	 * @generated
 	 */
-	int PERSONA_DOMAIN = 9;
+	int PERSONA_DOMAIN = 10;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -781,6 +1079,24 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int PERSONA_DOMAIN__DOCUMENTATION = NAMED_ELEMENT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA_DOMAIN__DOC_REF = NAMED_ELEMENT__DOC_REF;
+
+	/**
+	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA_DOMAIN__DOC_FORMAT = NAMED_ELEMENT__DOC_FORMAT;
 
 	/**
 	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
@@ -828,6 +1144,24 @@ public interface ProductmanagementPackage extends EPackage {
 	int PERSONA_DOMAIN_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA_DOMAIN___COLLECT__OBJECT_EREFERENCE_ELIST = NAMED_ELEMENT___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA_DOMAIN___GET_REFERRERS__EREFERENCE = NAMED_ELEMENT___GET_REFERRERS__EREFERENCE;
+
+	/**
 	 * The operation id for the '<em>Resolve Persona Reference</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -853,7 +1187,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getPersonaReference()
 	 * @generated
 	 */
-	int PERSONA_REFERENCE = 10;
+	int PERSONA_REFERENCE = 11;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -863,6 +1197,42 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int PERSONA_REFERENCE__ID = ABSTRACT_PERSONA__ID;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA_REFERENCE__DOCUMENTATION = ABSTRACT_PERSONA__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA_REFERENCE__DOC_REF = ABSTRACT_PERSONA__DOC_REF;
+
+	/**
+	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA_REFERENCE__DOC_FORMAT = ABSTRACT_PERSONA__DOC_FORMAT;
+
+	/**
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA_REFERENCE__URIS = ABSTRACT_PERSONA__URIS;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -883,6 +1253,24 @@ public interface ProductmanagementPackage extends EPackage {
 	int PERSONA_REFERENCE_FEATURE_COUNT = ABSTRACT_PERSONA_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA_REFERENCE___COLLECT__OBJECT_EREFERENCE_ELIST = ABSTRACT_PERSONA___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA_REFERENCE___GET_REFERRERS__EREFERENCE = ABSTRACT_PERSONA___GET_REFERRERS__EREFERENCE;
+
+	/**
 	 * The number of operations of the '<em>Persona Reference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -899,7 +1287,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getAbstractConcern()
 	 * @generated
 	 */
-	int ABSTRACT_CONCERN = 11;
+	int ABSTRACT_CONCERN = 12;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -908,7 +1296,43 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_CONCERN__ID = STRING_IDENTITY__ID;
+	int ABSTRACT_CONCERN__ID = MODEL_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CONCERN__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CONCERN__DOC_REF = MODEL_ELEMENT__DOC_REF;
+
+	/**
+	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CONCERN__DOC_FORMAT = MODEL_ELEMENT__DOC_FORMAT;
+
+	/**
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CONCERN__URIS = MODEL_ELEMENT__URIS;
 
 	/**
 	 * The number of structural features of the '<em>Abstract Concern</em>' class.
@@ -917,7 +1341,25 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_CONCERN_FEATURE_COUNT = STRING_IDENTITY_FEATURE_COUNT + 0;
+	int ABSTRACT_CONCERN_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CONCERN___COLLECT__OBJECT_EREFERENCE_ELIST = MODEL_ELEMENT___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CONCERN___GET_REFERRERS__EREFERENCE = MODEL_ELEMENT___GET_REFERRERS__EREFERENCE;
 
 	/**
 	 * The number of operations of the '<em>Abstract Concern</em>' class.
@@ -926,7 +1368,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_CONCERN_OPERATION_COUNT = STRING_IDENTITY_OPERATION_COUNT + 0;
+	int ABSTRACT_CONCERN_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.ConcernImpl <em>Concern</em>}' class.
@@ -936,7 +1378,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getConcern()
 	 * @generated
 	 */
-	int CONCERN = 12;
+	int CONCERN = 13;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -955,6 +1397,24 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONCERN__DOCUMENTATION = NAMED_PERIOD__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN__DOC_REF = NAMED_PERIOD__DOC_REF;
+
+	/**
+	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN__DOC_FORMAT = NAMED_PERIOD__DOC_FORMAT;
 
 	/**
 	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
@@ -1011,13 +1471,40 @@ public interface ProductmanagementPackage extends EPackage {
 	int CONCERN__ADDRESSED_BY = NAMED_PERIOD_FEATURE_COUNT + 0;
 
 	/**
+	 * The feature id for the '<em><b>All Addressed By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN__ALL_ADDRESSED_BY = NAMED_PERIOD_FEATURE_COUNT + 1;
+
+	/**
 	 * The number of structural features of the '<em>Concern</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONCERN_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 1;
+	int CONCERN_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN___COLLECT__OBJECT_EREFERENCE_ELIST = NAMED_PERIOD___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN___GET_REFERRERS__EREFERENCE = NAMED_PERIOD___GET_REFERRERS__EREFERENCE;
 
 	/**
 	 * The number of operations of the '<em>Concern</em>' class.
@@ -1036,7 +1523,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getConcernReference()
 	 * @generated
 	 */
-	int CONCERN_REFERENCE = 13;
+	int CONCERN_REFERENCE = 14;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1046,6 +1533,42 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONCERN_REFERENCE__ID = ABSTRACT_CONCERN__ID;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN_REFERENCE__DOCUMENTATION = ABSTRACT_CONCERN__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN_REFERENCE__DOC_REF = ABSTRACT_CONCERN__DOC_REF;
+
+	/**
+	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN_REFERENCE__DOC_FORMAT = ABSTRACT_CONCERN__DOC_FORMAT;
+
+	/**
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN_REFERENCE__URIS = ABSTRACT_CONCERN__URIS;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -1066,6 +1589,24 @@ public interface ProductmanagementPackage extends EPackage {
 	int CONCERN_REFERENCE_FEATURE_COUNT = ABSTRACT_CONCERN_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN_REFERENCE___COLLECT__OBJECT_EREFERENCE_ELIST = ABSTRACT_CONCERN___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN_REFERENCE___GET_REFERRERS__EREFERENCE = ABSTRACT_CONCERN___GET_REFERRERS__EREFERENCE;
+
+	/**
 	 * The number of operations of the '<em>Concern Reference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1082,7 +1623,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getConcernDomain()
 	 * @generated
 	 */
-	int CONCERN_DOMAIN = 14;
+	int CONCERN_DOMAIN = 15;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1092,6 +1633,42 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONCERN_DOMAIN__ID = ABSTRACT_CONCERN__ID;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN_DOMAIN__DOCUMENTATION = ABSTRACT_CONCERN__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN_DOMAIN__DOC_REF = ABSTRACT_CONCERN__DOC_REF;
+
+	/**
+	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN_DOMAIN__DOC_FORMAT = ABSTRACT_CONCERN__DOC_FORMAT;
+
+	/**
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN_DOMAIN__URIS = ABSTRACT_CONCERN__URIS;
 
 	/**
 	 * The feature id for the '<em><b>Concerns</b></em>' containment reference list.
@@ -1121,6 +1698,24 @@ public interface ProductmanagementPackage extends EPackage {
 	int CONCERN_DOMAIN_FEATURE_COUNT = ABSTRACT_CONCERN_FEATURE_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN_DOMAIN___COLLECT__OBJECT_EREFERENCE_ELIST = ABSTRACT_CONCERN___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN_DOMAIN___GET_REFERRERS__EREFERENCE = ABSTRACT_CONCERN___GET_REFERRERS__EREFERENCE;
+
+	/**
 	 * The operation id for the '<em>Resolve Concern Reference</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1146,7 +1741,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getGoal()
 	 * @generated
 	 */
-	int GOAL = 15;
+	int GOAL = 16;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1165,6 +1760,24 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int GOAL__DOCUMENTATION = CONCERN__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL__DOC_REF = CONCERN__DOC_REF;
+
+	/**
+	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL__DOC_FORMAT = CONCERN__DOC_FORMAT;
 
 	/**
 	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
@@ -1221,6 +1834,15 @@ public interface ProductmanagementPackage extends EPackage {
 	int GOAL__ADDRESSED_BY = CONCERN__ADDRESSED_BY;
 
 	/**
+	 * The feature id for the '<em><b>All Addressed By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL__ALL_ADDRESSED_BY = CONCERN__ALL_ADDRESSED_BY;
+
+	/**
 	 * The feature id for the '<em><b>Supporting Needs</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1248,6 +1870,24 @@ public interface ProductmanagementPackage extends EPackage {
 	int GOAL_FEATURE_COUNT = CONCERN_FEATURE_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL___COLLECT__OBJECT_EREFERENCE_ELIST = CONCERN___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL___GET_REFERRERS__EREFERENCE = CONCERN___GET_REFERRERS__EREFERENCE;
+
+	/**
 	 * The number of operations of the '<em>Goal</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1264,7 +1904,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getNeed()
 	 * @generated
 	 */
-	int NEED = 16;
+	int NEED = 17;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1283,6 +1923,24 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int NEED__DOCUMENTATION = CONCERN__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NEED__DOC_REF = CONCERN__DOC_REF;
+
+	/**
+	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NEED__DOC_FORMAT = CONCERN__DOC_FORMAT;
 
 	/**
 	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
@@ -1339,6 +1997,15 @@ public interface ProductmanagementPackage extends EPackage {
 	int NEED__ADDRESSED_BY = CONCERN__ADDRESSED_BY;
 
 	/**
+	 * The feature id for the '<em><b>All Addressed By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NEED__ALL_ADDRESSED_BY = CONCERN__ALL_ADDRESSED_BY;
+
+	/**
 	 * The feature id for the '<em><b>Supports</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1348,13 +2015,13 @@ public interface ProductmanagementPackage extends EPackage {
 	int NEED__SUPPORTS = CONCERN_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Violators</b></em>' reference list.
+	 * The feature id for the '<em><b>Violated By</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int NEED__VIOLATORS = CONCERN_FEATURE_COUNT + 1;
+	int NEED__VIOLATED_BY = CONCERN_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Need</em>' class.
@@ -1366,6 +2033,24 @@ public interface ProductmanagementPackage extends EPackage {
 	int NEED_FEATURE_COUNT = CONCERN_FEATURE_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NEED___COLLECT__OBJECT_EREFERENCE_ELIST = CONCERN___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NEED___GET_REFERRERS__EREFERENCE = CONCERN___GET_REFERRERS__EREFERENCE;
+
+	/**
 	 * The number of operations of the '<em>Need</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1373,70 +2058,6 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int NEED_OPERATION_COUNT = CONCERN_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.SupportedGoalsImpl <em>Supported Goals</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.models.productmanagement.impl.SupportedGoalsImpl
-	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getSupportedGoals()
-	 * @generated
-	 */
-	int SUPPORTED_GOALS = 17;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUPPORTED_GOALS__ID = MODEL_ELEMENT__ID;
-
-	/**
-	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUPPORTED_GOALS__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUPPORTED_GOALS__URIS = MODEL_ELEMENT__URIS;
-
-	/**
-	 * The feature id for the '<em><b>Goals</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUPPORTED_GOALS__GOALS = MODEL_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Supported Goals</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUPPORTED_GOALS_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Supported Goals</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int SUPPORTED_GOALS_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.PainPointImpl <em>Pain Point</em>}' class.
@@ -1465,6 +2086,24 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int PAIN_POINT__DOCUMENTATION = CONCERN__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAIN_POINT__DOC_REF = CONCERN__DOC_REF;
+
+	/**
+	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAIN_POINT__DOC_FORMAT = CONCERN__DOC_FORMAT;
 
 	/**
 	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
@@ -1521,6 +2160,15 @@ public interface ProductmanagementPackage extends EPackage {
 	int PAIN_POINT__ADDRESSED_BY = CONCERN__ADDRESSED_BY;
 
 	/**
+	 * The feature id for the '<em><b>All Addressed By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAIN_POINT__ALL_ADDRESSED_BY = CONCERN__ALL_ADDRESSED_BY;
+
+	/**
 	 * The feature id for the '<em><b>Blocks</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1548,6 +2196,24 @@ public interface ProductmanagementPackage extends EPackage {
 	int PAIN_POINT_FEATURE_COUNT = CONCERN_FEATURE_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAIN_POINT___COLLECT__OBJECT_EREFERENCE_ELIST = CONCERN___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAIN_POINT___GET_REFERRERS__EREFERENCE = CONCERN___GET_REFERRERS__EREFERENCE;
+
+	/**
 	 * The number of operations of the '<em>Pain Point</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1557,134 +2223,6 @@ public interface ProductmanagementPackage extends EPackage {
 	int PAIN_POINT_OPERATION_COUNT = CONCERN_OPERATION_COUNT + 0;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.BlockedGoalsImpl <em>Blocked Goals</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.models.productmanagement.impl.BlockedGoalsImpl
-	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getBlockedGoals()
-	 * @generated
-	 */
-	int BLOCKED_GOALS = 19;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BLOCKED_GOALS__ID = MODEL_ELEMENT__ID;
-
-	/**
-	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BLOCKED_GOALS__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BLOCKED_GOALS__URIS = MODEL_ELEMENT__URIS;
-
-	/**
-	 * The feature id for the '<em><b>Goals</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BLOCKED_GOALS__GOALS = MODEL_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Blocked Goals</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BLOCKED_GOALS_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Blocked Goals</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int BLOCKED_GOALS_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
-	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.ViolatedNeedsImpl <em>Violated Needs</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.models.productmanagement.impl.ViolatedNeedsImpl
-	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getViolatedNeeds()
-	 * @generated
-	 */
-	int VIOLATED_NEEDS = 20;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VIOLATED_NEEDS__ID = MODEL_ELEMENT__ID;
-
-	/**
-	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VIOLATED_NEEDS__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VIOLATED_NEEDS__URIS = MODEL_ELEMENT__URIS;
-
-	/**
-	 * The feature id for the '<em><b>Needs</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VIOLATED_NEEDS__NEEDS = MODEL_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Violated Needs</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VIOLATED_NEEDS_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Violated Needs</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VIOLATED_NEEDS_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.AbstractCapability <em>Abstract Capability</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1692,7 +2230,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getAbstractCapability()
 	 * @generated
 	 */
-	int ABSTRACT_CAPABILITY = 21;
+	int ABSTRACT_CAPABILITY = 19;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1701,7 +2239,43 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_CAPABILITY__ID = STRING_IDENTITY__ID;
+	int ABSTRACT_CAPABILITY__ID = MODEL_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CAPABILITY__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CAPABILITY__DOC_REF = MODEL_ELEMENT__DOC_REF;
+
+	/**
+	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CAPABILITY__DOC_FORMAT = MODEL_ELEMENT__DOC_FORMAT;
+
+	/**
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CAPABILITY__URIS = MODEL_ELEMENT__URIS;
 
 	/**
 	 * The number of structural features of the '<em>Abstract Capability</em>' class.
@@ -1710,7 +2284,25 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_CAPABILITY_FEATURE_COUNT = STRING_IDENTITY_FEATURE_COUNT + 0;
+	int ABSTRACT_CAPABILITY_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 0;
+
+	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CAPABILITY___COLLECT__OBJECT_EREFERENCE_ELIST = MODEL_ELEMENT___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CAPABILITY___GET_REFERRERS__EREFERENCE = MODEL_ELEMENT___GET_REFERRERS__EREFERENCE;
 
 	/**
 	 * The number of operations of the '<em>Abstract Capability</em>' class.
@@ -1719,7 +2311,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int ABSTRACT_CAPABILITY_OPERATION_COUNT = STRING_IDENTITY_OPERATION_COUNT + 0;
+	int ABSTRACT_CAPABILITY_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl <em>Capability</em>}' class.
@@ -1729,7 +2321,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapability()
 	 * @generated
 	 */
-	int CAPABILITY = 22;
+	int CAPABILITY = 20;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1748,6 +2340,24 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAPABILITY__DOCUMENTATION = NAMED_PERIOD__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY__DOC_REF = NAMED_PERIOD__DOC_REF;
+
+	/**
+	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY__DOC_FORMAT = NAMED_PERIOD__DOC_FORMAT;
 
 	/**
 	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
@@ -1840,13 +2450,22 @@ public interface ProductmanagementPackage extends EPackage {
 	int CAPABILITY__RESOLVED_CONCERNS = NAMED_PERIOD_FEATURE_COUNT + 4;
 
 	/**
-	 * The feature id for the '<em><b>Addresses</b></em>' containment reference list.
+	 * The feature id for the '<em><b>Addressed Concerns</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY__ADDRESSES = NAMED_PERIOD_FEATURE_COUNT + 5;
+	int CAPABILITY__ADDRESSED_CONCERNS = NAMED_PERIOD_FEATURE_COUNT + 5;
+
+	/**
+	 * The feature id for the '<em><b>All Addressed Concerns</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY__ALL_ADDRESSED_CONCERNS = NAMED_PERIOD_FEATURE_COUNT + 6;
 
 	/**
 	 * The feature id for the '<em><b>Sub Capabilities</b></em>' containment reference list.
@@ -1855,7 +2474,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY__SUB_CAPABILITIES = NAMED_PERIOD_FEATURE_COUNT + 6;
+	int CAPABILITY__SUB_CAPABILITIES = NAMED_PERIOD_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Lifecycle</b></em>' attribute.
@@ -1864,7 +2483,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY__LIFECYCLE = NAMED_PERIOD_FEATURE_COUNT + 7;
+	int CAPABILITY__LIFECYCLE = NAMED_PERIOD_FEATURE_COUNT + 8;
 
 	/**
 	 * The number of structural features of the '<em>Capability</em>' class.
@@ -1873,7 +2492,25 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 8;
+	int CAPABILITY_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 9;
+
+	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY___COLLECT__OBJECT_EREFERENCE_ELIST = NAMED_PERIOD___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY___GET_REFERRERS__EREFERENCE = NAMED_PERIOD___GET_REFERRERS__EREFERENCE;
 
 	/**
 	 * The operation id for the '<em>Resolve Persona Reference</em>' operation.
@@ -1910,7 +2547,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityReference()
 	 * @generated
 	 */
-	int CAPABILITY_REFERENCE = 23;
+	int CAPABILITY_REFERENCE = 21;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1919,7 +2556,43 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_REFERENCE__ID = ABSTRACT_CAPABILITY__ID;
+	int CAPABILITY_REFERENCE__ID = MODEL_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_REFERENCE__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_REFERENCE__DOC_REF = MODEL_ELEMENT__DOC_REF;
+
+	/**
+	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_REFERENCE__DOC_FORMAT = MODEL_ELEMENT__DOC_FORMAT;
+
+	/**
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_REFERENCE__URIS = MODEL_ELEMENT__URIS;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -1928,7 +2601,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_REFERENCE__TARGET = ABSTRACT_CAPABILITY_FEATURE_COUNT + 0;
+	int CAPABILITY_REFERENCE__TARGET = MODEL_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The number of structural features of the '<em>Capability Reference</em>' class.
@@ -1937,7 +2610,25 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_REFERENCE_FEATURE_COUNT = ABSTRACT_CAPABILITY_FEATURE_COUNT + 1;
+	int CAPABILITY_REFERENCE_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 1;
+
+	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_REFERENCE___COLLECT__OBJECT_EREFERENCE_ELIST = MODEL_ELEMENT___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_REFERENCE___GET_REFERRERS__EREFERENCE = MODEL_ELEMENT___GET_REFERRERS__EREFERENCE;
 
 	/**
 	 * The number of operations of the '<em>Capability Reference</em>' class.
@@ -1946,7 +2637,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_REFERENCE_OPERATION_COUNT = ABSTRACT_CAPABILITY_OPERATION_COUNT + 0;
+	int CAPABILITY_REFERENCE_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.CapabilityDomain <em>Capability Domain</em>}' class.
@@ -1956,7 +2647,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityDomain()
 	 * @generated
 	 */
-	int CAPABILITY_DOMAIN = 24;
+	int CAPABILITY_DOMAIN = 22;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -1975,6 +2666,24 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAPABILITY_DOMAIN__DOCUMENTATION = NAMED_ELEMENT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_DOMAIN__DOC_REF = NAMED_ELEMENT__DOC_REF;
+
+	/**
+	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_DOMAIN__DOC_FORMAT = NAMED_ELEMENT__DOC_FORMAT;
 
 	/**
 	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
@@ -2022,6 +2731,24 @@ public interface ProductmanagementPackage extends EPackage {
 	int CAPABILITY_DOMAIN_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_DOMAIN___COLLECT__OBJECT_EREFERENCE_ELIST = NAMED_ELEMENT___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_DOMAIN___GET_REFERRERS__EREFERENCE = NAMED_ELEMENT___GET_REFERRERS__EREFERENCE;
+
+	/**
 	 * The operation id for the '<em>Resolve Capability Reference</em>' operation.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2040,70 +2767,6 @@ public interface ProductmanagementPackage extends EPackage {
 	int CAPABILITY_DOMAIN_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 1;
 
 	/**
-	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.AddressedConcernsImpl <em>Addressed Concerns</em>}' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see org.nasdanika.models.productmanagement.impl.AddressedConcernsImpl
-	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getAddressedConcerns()
-	 * @generated
-	 */
-	int ADDRESSED_CONCERNS = 25;
-
-	/**
-	 * The feature id for the '<em><b>Id</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ADDRESSED_CONCERNS__ID = MODEL_ELEMENT__ID;
-
-	/**
-	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ADDRESSED_CONCERNS__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
-
-	/**
-	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ADDRESSED_CONCERNS__URIS = MODEL_ELEMENT__URIS;
-
-	/**
-	 * The feature id for the '<em><b>Concerns</b></em>' reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ADDRESSED_CONCERNS__CONCERNS = MODEL_ELEMENT_FEATURE_COUNT + 0;
-
-	/**
-	 * The number of structural features of the '<em>Addressed Concerns</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ADDRESSED_CONCERNS_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 1;
-
-	/**
-	 * The number of operations of the '<em>Addressed Concerns</em>' class.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ADDRESSED_CONCERNS_OPERATION_COUNT = MODEL_ELEMENT_OPERATION_COUNT + 0;
-
-	/**
 	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.CapabilityDependencyImpl <em>Capability Dependency</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2111,7 +2774,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityDependency()
 	 * @generated
 	 */
-	int CAPABILITY_DEPENDENCY = 26;
+	int CAPABILITY_DEPENDENCY = 23;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2130,6 +2793,24 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAPABILITY_DEPENDENCY__DOCUMENTATION = MODEL_ELEMENT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_DEPENDENCY__DOC_REF = MODEL_ELEMENT__DOC_REF;
+
+	/**
+	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_DEPENDENCY__DOC_FORMAT = MODEL_ELEMENT__DOC_FORMAT;
 
 	/**
 	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
@@ -2177,6 +2858,24 @@ public interface ProductmanagementPackage extends EPackage {
 	int CAPABILITY_DEPENDENCY_FEATURE_COUNT = MODEL_ELEMENT_FEATURE_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_DEPENDENCY___COLLECT__OBJECT_EREFERENCE_ELIST = MODEL_ELEMENT___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_DEPENDENCY___GET_REFERRERS__EREFERENCE = MODEL_ELEMENT___GET_REFERRERS__EREFERENCE;
+
+	/**
 	 * The number of operations of the '<em>Capability Dependency</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2193,7 +2892,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getAbstractCapabilityProvider()
 	 * @generated
 	 */
-	int ABSTRACT_CAPABILITY_PROVIDER = 27;
+	int ABSTRACT_CAPABILITY_PROVIDER = 24;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2214,6 +2913,24 @@ public interface ProductmanagementPackage extends EPackage {
 	int ABSTRACT_CAPABILITY_PROVIDER_FEATURE_COUNT = STRING_IDENTITY_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CAPABILITY_PROVIDER___COLLECT__OBJECT_EREFERENCE_ELIST = STRING_IDENTITY___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CAPABILITY_PROVIDER___GET_REFERRERS__EREFERENCE = STRING_IDENTITY___GET_REFERRERS__EREFERENCE;
+
+	/**
 	 * The number of operations of the '<em>Abstract Capability Provider</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2230,7 +2947,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityProvider()
 	 * @generated
 	 */
-	int CAPABILITY_PROVIDER = 28;
+	int CAPABILITY_PROVIDER = 25;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2249,6 +2966,24 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAPABILITY_PROVIDER__DOCUMENTATION = NAMED_PERIOD__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_PROVIDER__DOC_REF = NAMED_PERIOD__DOC_REF;
+
+	/**
+	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_PROVIDER__DOC_FORMAT = NAMED_PERIOD__DOC_FORMAT;
 
 	/**
 	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
@@ -2332,6 +3067,24 @@ public interface ProductmanagementPackage extends EPackage {
 	int CAPABILITY_PROVIDER_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 3;
 
 	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_PROVIDER___COLLECT__OBJECT_EREFERENCE_ELIST = NAMED_PERIOD___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_PROVIDER___GET_REFERRERS__EREFERENCE = NAMED_PERIOD___GET_REFERRERS__EREFERENCE;
+
+	/**
 	 * The number of operations of the '<em>Capability Provider</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2348,7 +3101,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityProviderDomain()
 	 * @generated
 	 */
-	int CAPABILITY_PROVIDER_DOMAIN = 29;
+	int CAPABILITY_PROVIDER_DOMAIN = 26;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2367,6 +3120,24 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAPABILITY_PROVIDER_DOMAIN__DOCUMENTATION = NAMED_ELEMENT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_PROVIDER_DOMAIN__DOC_REF = NAMED_ELEMENT__DOC_REF;
+
+	/**
+	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_PROVIDER_DOMAIN__DOC_FORMAT = NAMED_ELEMENT__DOC_FORMAT;
 
 	/**
 	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
@@ -2405,6 +3176,24 @@ public interface ProductmanagementPackage extends EPackage {
 	int CAPABILITY_PROVIDER_DOMAIN_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_PROVIDER_DOMAIN___COLLECT__OBJECT_EREFERENCE_ELIST = NAMED_ELEMENT___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_PROVIDER_DOMAIN___GET_REFERRERS__EREFERENCE = NAMED_ELEMENT___GET_REFERRERS__EREFERENCE;
+
+	/**
 	 * The number of operations of the '<em>Capability Provider Domain</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2421,7 +3210,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityProviderReference()
 	 * @generated
 	 */
-	int CAPABILITY_PROVIDER_REFERENCE = 30;
+	int CAPABILITY_PROVIDER_REFERENCE = 27;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2451,6 +3240,24 @@ public interface ProductmanagementPackage extends EPackage {
 	int CAPABILITY_PROVIDER_REFERENCE_FEATURE_COUNT = ABSTRACT_CAPABILITY_PROVIDER_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_PROVIDER_REFERENCE___COLLECT__OBJECT_EREFERENCE_ELIST = ABSTRACT_CAPABILITY_PROVIDER___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_PROVIDER_REFERENCE___GET_REFERRERS__EREFERENCE = ABSTRACT_CAPABILITY_PROVIDER___GET_REFERRERS__EREFERENCE;
+
+	/**
 	 * The number of operations of the '<em>Capability Provider Reference</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2467,7 +3274,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getProvidedCapability()
 	 * @generated
 	 */
-	int PROVIDED_CAPABILITY = 31;
+	int PROVIDED_CAPABILITY = 28;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2486,6 +3293,24 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROVIDED_CAPABILITY__DOCUMENTATION = NAMED_PERIOD__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROVIDED_CAPABILITY__DOC_REF = NAMED_PERIOD__DOC_REF;
+
+	/**
+	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROVIDED_CAPABILITY__DOC_FORMAT = NAMED_PERIOD__DOC_FORMAT;
 
 	/**
 	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
@@ -2560,6 +3385,24 @@ public interface ProductmanagementPackage extends EPackage {
 	int PROVIDED_CAPABILITY_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 2;
 
 	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROVIDED_CAPABILITY___COLLECT__OBJECT_EREFERENCE_ELIST = NAMED_PERIOD___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROVIDED_CAPABILITY___GET_REFERRERS__EREFERENCE = NAMED_PERIOD___GET_REFERRERS__EREFERENCE;
+
+	/**
 	 * The number of operations of the '<em>Provided Capability</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2576,7 +3419,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getAbstractEvidence()
 	 * @generated
 	 */
-	int ABSTRACT_EVIDENCE = 32;
+	int ABSTRACT_EVIDENCE = 29;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2597,6 +3440,24 @@ public interface ProductmanagementPackage extends EPackage {
 	int ABSTRACT_EVIDENCE_FEATURE_COUNT = STRING_IDENTITY_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_EVIDENCE___COLLECT__OBJECT_EREFERENCE_ELIST = STRING_IDENTITY___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_EVIDENCE___GET_REFERRERS__EREFERENCE = STRING_IDENTITY___GET_REFERRERS__EREFERENCE;
+
+	/**
 	 * The number of operations of the '<em>Abstract Evidence</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2613,7 +3474,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getEvidence()
 	 * @generated
 	 */
-	int EVIDENCE = 33;
+	int EVIDENCE = 30;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2632,6 +3493,24 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int EVIDENCE__DOCUMENTATION = NAMED_PERIOD__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVIDENCE__DOC_REF = NAMED_PERIOD__DOC_REF;
+
+	/**
+	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVIDENCE__DOC_FORMAT = NAMED_PERIOD__DOC_FORMAT;
 
 	/**
 	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
@@ -2688,6 +3567,24 @@ public interface ProductmanagementPackage extends EPackage {
 	int EVIDENCE_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVIDENCE___COLLECT__OBJECT_EREFERENCE_ELIST = NAMED_PERIOD___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVIDENCE___GET_REFERRERS__EREFERENCE = NAMED_PERIOD___GET_REFERRERS__EREFERENCE;
+
+	/**
 	 * The number of operations of the '<em>Evidence</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2704,7 +3601,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getEvidenceDomain()
 	 * @generated
 	 */
-	int EVIDENCE_DOMAIN = 34;
+	int EVIDENCE_DOMAIN = 31;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2723,6 +3620,24 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int EVIDENCE_DOMAIN__DOCUMENTATION = NAMED_ELEMENT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVIDENCE_DOMAIN__DOC_REF = NAMED_ELEMENT__DOC_REF;
+
+	/**
+	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVIDENCE_DOMAIN__DOC_FORMAT = NAMED_ELEMENT__DOC_FORMAT;
 
 	/**
 	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
@@ -2761,6 +3676,24 @@ public interface ProductmanagementPackage extends EPackage {
 	int EVIDENCE_DOMAIN_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVIDENCE_DOMAIN___COLLECT__OBJECT_EREFERENCE_ELIST = NAMED_ELEMENT___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVIDENCE_DOMAIN___GET_REFERRERS__EREFERENCE = NAMED_ELEMENT___GET_REFERRERS__EREFERENCE;
+
+	/**
 	 * The number of operations of the '<em>Evidence Domain</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2777,7 +3710,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getRequiredCapability()
 	 * @generated
 	 */
-	int REQUIRED_CAPABILITY = 35;
+	int REQUIRED_CAPABILITY = 32;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2796,6 +3729,24 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int REQUIRED_CAPABILITY__DOCUMENTATION = NAMED_PERIOD__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIRED_CAPABILITY__DOC_REF = NAMED_PERIOD__DOC_REF;
+
+	/**
+	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIRED_CAPABILITY__DOC_FORMAT = NAMED_PERIOD__DOC_FORMAT;
 
 	/**
 	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
@@ -2861,6 +3812,24 @@ public interface ProductmanagementPackage extends EPackage {
 	int REQUIRED_CAPABILITY_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIRED_CAPABILITY___COLLECT__OBJECT_EREFERENCE_ELIST = NAMED_PERIOD___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIRED_CAPABILITY___GET_REFERRERS__EREFERENCE = NAMED_PERIOD___GET_REFERRERS__EREFERENCE;
+
+	/**
 	 * The number of operations of the '<em>Required Capability</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2877,7 +3846,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getVersion()
 	 * @generated
 	 */
-	int VERSION = 36;
+	int VERSION = 33;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2896,6 +3865,24 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int VERSION__DOCUMENTATION = NAMED_PERIOD__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERSION__DOC_REF = NAMED_PERIOD__DOC_REF;
+
+	/**
+	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERSION__DOC_FORMAT = NAMED_PERIOD__DOC_FORMAT;
 
 	/**
 	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
@@ -2952,6 +3939,24 @@ public interface ProductmanagementPackage extends EPackage {
 	int VERSION_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERSION___COLLECT__OBJECT_EREFERENCE_ELIST = NAMED_PERIOD___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERSION___GET_REFERRERS__EREFERENCE = NAMED_PERIOD___GET_REFERRERS__EREFERENCE;
+
+	/**
 	 * The number of operations of the '<em>Version</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2968,7 +3973,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getUndergoer()
 	 * @generated
 	 */
-	int UNDERGOER = 37;
+	int UNDERGOER = 34;
 
 	/**
 	 * The feature id for the '<em><b>Roles</b></em>' containment reference list.
@@ -3005,7 +4010,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getRole()
 	 * @generated
 	 */
-	int ROLE = 38;
+	int ROLE = 35;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3024,6 +4029,24 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int ROLE__DOCUMENTATION = NAMED_PERIOD__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE__DOC_REF = NAMED_PERIOD__DOC_REF;
+
+	/**
+	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE__DOC_FORMAT = NAMED_PERIOD__DOC_FORMAT;
 
 	/**
 	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
@@ -3089,6 +4112,24 @@ public interface ProductmanagementPackage extends EPackage {
 	int ROLE_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE___COLLECT__OBJECT_EREFERENCE_ELIST = NAMED_PERIOD___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE___GET_REFERRERS__EREFERENCE = NAMED_PERIOD___GET_REFERRERS__EREFERENCE;
+
+	/**
 	 * The number of operations of the '<em>Role</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3105,7 +4146,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getRoleAssignment()
 	 * @generated
 	 */
-	int ROLE_ASSIGNMENT = 39;
+	int ROLE_ASSIGNMENT = 36;
 
 	/**
 	 * The feature id for the '<em><b>Duration</b></em>' attribute.
@@ -3178,7 +4219,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getAbstractActor()
 	 * @generated
 	 */
-	int ABSTRACT_ACTOR = 40;
+	int ABSTRACT_ACTOR = 37;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3199,6 +4240,24 @@ public interface ProductmanagementPackage extends EPackage {
 	int ABSTRACT_ACTOR_FEATURE_COUNT = STRING_IDENTITY_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_ACTOR___COLLECT__OBJECT_EREFERENCE_ELIST = STRING_IDENTITY___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_ACTOR___GET_REFERRERS__EREFERENCE = STRING_IDENTITY___GET_REFERRERS__EREFERENCE;
+
+	/**
 	 * The number of operations of the '<em>Abstract Actor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3215,7 +4274,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getActor()
 	 * @generated
 	 */
-	int ACTOR = 41;
+	int ACTOR = 38;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3234,6 +4293,24 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACTOR__DOCUMENTATION = NAMED_PERIOD__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__DOC_REF = NAMED_PERIOD__DOC_REF;
+
+	/**
+	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__DOC_FORMAT = NAMED_PERIOD__DOC_FORMAT;
 
 	/**
 	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
@@ -3290,6 +4367,24 @@ public interface ProductmanagementPackage extends EPackage {
 	int ACTOR_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 0;
 
 	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR___COLLECT__OBJECT_EREFERENCE_ELIST = NAMED_PERIOD___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR___GET_REFERRERS__EREFERENCE = NAMED_PERIOD___GET_REFERRERS__EREFERENCE;
+
+	/**
 	 * The number of operations of the '<em>Actor</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3306,7 +4401,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getActorDomain()
 	 * @generated
 	 */
-	int ACTOR_DOMAIN = 42;
+	int ACTOR_DOMAIN = 39;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3325,6 +4420,24 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACTOR_DOMAIN__DOCUMENTATION = NAMED_ELEMENT__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR_DOMAIN__DOC_REF = NAMED_ELEMENT__DOC_REF;
+
+	/**
+	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR_DOMAIN__DOC_FORMAT = NAMED_ELEMENT__DOC_FORMAT;
 
 	/**
 	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
@@ -3363,6 +4476,24 @@ public interface ProductmanagementPackage extends EPackage {
 	int ACTOR_DOMAIN_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR_DOMAIN___COLLECT__OBJECT_EREFERENCE_ELIST = NAMED_ELEMENT___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR_DOMAIN___GET_REFERRERS__EREFERENCE = NAMED_ELEMENT___GET_REFERRERS__EREFERENCE;
+
+	/**
 	 * The number of operations of the '<em>Actor Domain</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3379,7 +4510,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getLifecycle()
 	 * @generated
 	 */
-	int LIFECYCLE = 43;
+	int LIFECYCLE = 40;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.DependencyKind <em>Dependency Kind</em>}' enum.
@@ -3389,7 +4520,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getDependencyKind()
 	 * @generated
 	 */
-	int DEPENDENCY_KIND = 44;
+	int DEPENDENCY_KIND = 41;
 
 	/**
 	 * The meta object id for the '<em>Instant</em>' data type.
@@ -3399,7 +4530,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getInstant()
 	 * @generated
 	 */
-	int INSTANT = 45;
+	int INSTANT = 42;
 
 	/**
 	 * The meta object id for the '<em>Duration</em>' data type.
@@ -3409,8 +4540,38 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getDuration()
 	 * @generated
 	 */
-	int DURATION = 46;
+	int DURATION = 43;
 
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.Referrable <em>Referrable</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Referrable</em>'.
+	 * @see org.nasdanika.models.productmanagement.Referrable
+	 * @generated
+	 */
+	EClass getReferrable();
+
+	/**
+	 * Returns the meta object for the '{@link org.nasdanika.models.productmanagement.Referrable#collect(java.lang.Object, org.eclipse.emf.ecore.EReference, org.eclipse.emf.common.util.EList) <em>Collect</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Collect</em>' operation.
+	 * @see org.nasdanika.models.productmanagement.Referrable#collect(java.lang.Object, org.eclipse.emf.ecore.EReference, org.eclipse.emf.common.util.EList)
+	 * @generated
+	 */
+	EOperation getReferrable__Collect__Object_EReference_EList();
+
+	/**
+	 * Returns the meta object for the '{@link org.nasdanika.models.productmanagement.Referrable#getReferrers(org.eclipse.emf.ecore.EReference) <em>Get Referrers</em>}' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the '<em>Get Referrers</em>' operation.
+	 * @see org.nasdanika.models.productmanagement.Referrable#getReferrers(org.eclipse.emf.ecore.EReference)
+	 * @generated
+	 */
+	EOperation getReferrable__GetReferrers__EReference();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.Temporal <em>Temporal</em>}'.
@@ -3561,6 +4722,28 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getModelElement_Documentation();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.ModelElement#getDocRef <em>Doc Ref</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Doc Ref</em>'.
+	 * @see org.nasdanika.models.productmanagement.ModelElement#getDocRef()
+	 * @see #getModelElement()
+	 * @generated
+	 */
+	EAttribute getModelElement_DocRef();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.ModelElement#getDocFormat <em>Doc Format</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Doc Format</em>'.
+	 * @see org.nasdanika.models.productmanagement.ModelElement#getDocFormat()
+	 * @see #getModelElement()
+	 * @generated
+	 */
+	EAttribute getModelElement_DocFormat();
 
 	/**
 	 * Returns the meta object for the attribute list '{@link org.nasdanika.models.productmanagement.ModelElement#getUris <em>Uris</em>}'.
@@ -3729,6 +4912,17 @@ public interface ProductmanagementPackage extends EPackage {
 	EReference getConcern_AddressedBy();
 
 	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Concern#getAllAddressedBy <em>All Addressed By</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>All Addressed By</em>'.
+	 * @see org.nasdanika.models.productmanagement.Concern#getAllAddressedBy()
+	 * @see #getConcern()
+	 * @generated
+	 */
+	EReference getConcern_AllAddressedBy();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.ConcernReference <em>Concern Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3845,36 +5039,15 @@ public interface ProductmanagementPackage extends EPackage {
 	EReference getNeed_Supports();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Need#getViolators <em>Violators</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.Need#getViolatedBy <em>Violated By</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Violators</em>'.
-	 * @see org.nasdanika.models.productmanagement.Need#getViolators()
+	 * @return the meta object for the containment reference list '<em>Violated By</em>'.
+	 * @see org.nasdanika.models.productmanagement.Need#getViolatedBy()
 	 * @see #getNeed()
 	 * @generated
 	 */
-	EReference getNeed_Violators();
-
-	/**
-	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.SupportedGoals <em>Supported Goals</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Supported Goals</em>'.
-	 * @see org.nasdanika.models.productmanagement.SupportedGoals
-	 * @generated
-	 */
-	EClass getSupportedGoals();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.SupportedGoals#getGoals <em>Goals</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Goals</em>'.
-	 * @see org.nasdanika.models.productmanagement.SupportedGoals#getGoals()
-	 * @see #getSupportedGoals()
-	 * @generated
-	 */
-	EReference getSupportedGoals_Goals();
+	EReference getNeed_ViolatedBy();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.PainPoint <em>Pain Point</em>}'.
@@ -3909,48 +5082,6 @@ public interface ProductmanagementPackage extends EPackage {
 	EReference getPainPoint_Violates();
 
 	/**
-	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.BlockedGoals <em>Blocked Goals</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Blocked Goals</em>'.
-	 * @see org.nasdanika.models.productmanagement.BlockedGoals
-	 * @generated
-	 */
-	EClass getBlockedGoals();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.BlockedGoals#getGoals <em>Goals</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Goals</em>'.
-	 * @see org.nasdanika.models.productmanagement.BlockedGoals#getGoals()
-	 * @see #getBlockedGoals()
-	 * @generated
-	 */
-	EReference getBlockedGoals_Goals();
-
-	/**
-	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.ViolatedNeeds <em>Violated Needs</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Violated Needs</em>'.
-	 * @see org.nasdanika.models.productmanagement.ViolatedNeeds
-	 * @generated
-	 */
-	EClass getViolatedNeeds();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.ViolatedNeeds#getNeeds <em>Needs</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Needs</em>'.
-	 * @see org.nasdanika.models.productmanagement.ViolatedNeeds#getNeeds()
-	 * @see #getViolatedNeeds()
-	 * @generated
-	 */
-	EReference getViolatedNeeds_Needs();
-
-	/**
 	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.AbstractCapability <em>Abstract Capability</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3971,15 +5102,26 @@ public interface ProductmanagementPackage extends EPackage {
 	EClass getCapability();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.Capability#getAddresses <em>Addresses</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.Capability#getAddressedConcerns <em>Addressed Concerns</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Addresses</em>'.
-	 * @see org.nasdanika.models.productmanagement.Capability#getAddresses()
+	 * @return the meta object for the containment reference list '<em>Addressed Concerns</em>'.
+	 * @see org.nasdanika.models.productmanagement.Capability#getAddressedConcerns()
 	 * @see #getCapability()
 	 * @generated
 	 */
-	EReference getCapability_Addresses();
+	EReference getCapability_AddressedConcerns();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Capability#getAllAddressedConcerns <em>All Addressed Concerns</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>All Addressed Concerns</em>'.
+	 * @see org.nasdanika.models.productmanagement.Capability#getAllAddressedConcerns()
+	 * @see #getCapability()
+	 * @generated
+	 */
+	EReference getCapability_AllAddressedConcerns();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.Capability#getSubCapabilities <em>Sub Capabilities</em>}'.
@@ -4065,27 +5207,6 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 */
 	EOperation getCapabilityDomain__ResolveCapabilityReference__AbstractCapability();
-
-	/**
-	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.AddressedConcerns <em>Addressed Concerns</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for class '<em>Addressed Concerns</em>'.
-	 * @see org.nasdanika.models.productmanagement.AddressedConcerns
-	 * @generated
-	 */
-	EClass getAddressedConcerns();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.AddressedConcerns#getConcerns <em>Concerns</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Concerns</em>'.
-	 * @see org.nasdanika.models.productmanagement.AddressedConcerns#getConcerns()
-	 * @see #getAddressedConcerns()
-	 * @generated
-	 */
-	EReference getAddressedConcerns_Concerns();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.CapabilityDependency <em>Capability Dependency</em>}'.
@@ -4499,6 +5620,32 @@ public interface ProductmanagementPackage extends EPackage {
 	 */
 	interface Literals {
 		/**
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.Referrable <em>Referrable</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.Referrable
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getReferrable()
+		 * @generated
+		 */
+		EClass REFERRABLE = eINSTANCE.getReferrable();
+
+		/**
+		 * The meta object literal for the '<em><b>Collect</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation REFERRABLE___COLLECT__OBJECT_EREFERENCE_ELIST = eINSTANCE.getReferrable__Collect__Object_EReference_EList();
+
+		/**
+		 * The meta object literal for the '<em><b>Get Referrers</b></em>' operation.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EOperation REFERRABLE___GET_REFERRERS__EREFERENCE = eINSTANCE.getReferrable__GetReferrers__EReference();
+
+		/**
 		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.TemporalImpl <em>Temporal</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4617,6 +5764,22 @@ public interface ProductmanagementPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MODEL_ELEMENT__DOCUMENTATION = eINSTANCE.getModelElement_Documentation();
+
+		/**
+		 * The meta object literal for the '<em><b>Doc Ref</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MODEL_ELEMENT__DOC_REF = eINSTANCE.getModelElement_DocRef();
+
+		/**
+		 * The meta object literal for the '<em><b>Doc Format</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MODEL_ELEMENT__DOC_FORMAT = eINSTANCE.getModelElement_DocFormat();
 
 		/**
 		 * The meta object literal for the '<em><b>Uris</b></em>' attribute list feature.
@@ -4765,6 +5928,14 @@ public interface ProductmanagementPackage extends EPackage {
 		EReference CONCERN__ADDRESSED_BY = eINSTANCE.getConcern_AddressedBy();
 
 		/**
+		 * The meta object literal for the '<em><b>All Addressed By</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONCERN__ALL_ADDRESSED_BY = eINSTANCE.getConcern_AllAddressedBy();
+
+		/**
 		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.ConcernReferenceImpl <em>Concern Reference</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4861,30 +6032,12 @@ public interface ProductmanagementPackage extends EPackage {
 		EReference NEED__SUPPORTS = eINSTANCE.getNeed_Supports();
 
 		/**
-		 * The meta object literal for the '<em><b>Violators</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Violated By</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference NEED__VIOLATORS = eINSTANCE.getNeed_Violators();
-
-		/**
-		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.SupportedGoalsImpl <em>Supported Goals</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.models.productmanagement.impl.SupportedGoalsImpl
-		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getSupportedGoals()
-		 * @generated
-		 */
-		EClass SUPPORTED_GOALS = eINSTANCE.getSupportedGoals();
-
-		/**
-		 * The meta object literal for the '<em><b>Goals</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference SUPPORTED_GOALS__GOALS = eINSTANCE.getSupportedGoals_Goals();
+		EReference NEED__VIOLATED_BY = eINSTANCE.getNeed_ViolatedBy();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.PainPointImpl <em>Pain Point</em>}' class.
@@ -4913,42 +6066,6 @@ public interface ProductmanagementPackage extends EPackage {
 		EReference PAIN_POINT__VIOLATES = eINSTANCE.getPainPoint_Violates();
 
 		/**
-		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.BlockedGoalsImpl <em>Blocked Goals</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.models.productmanagement.impl.BlockedGoalsImpl
-		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getBlockedGoals()
-		 * @generated
-		 */
-		EClass BLOCKED_GOALS = eINSTANCE.getBlockedGoals();
-
-		/**
-		 * The meta object literal for the '<em><b>Goals</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference BLOCKED_GOALS__GOALS = eINSTANCE.getBlockedGoals_Goals();
-
-		/**
-		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.ViolatedNeedsImpl <em>Violated Needs</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.models.productmanagement.impl.ViolatedNeedsImpl
-		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getViolatedNeeds()
-		 * @generated
-		 */
-		EClass VIOLATED_NEEDS = eINSTANCE.getViolatedNeeds();
-
-		/**
-		 * The meta object literal for the '<em><b>Needs</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference VIOLATED_NEEDS__NEEDS = eINSTANCE.getViolatedNeeds_Needs();
-
-		/**
 		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.AbstractCapability <em>Abstract Capability</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -4969,12 +6086,20 @@ public interface ProductmanagementPackage extends EPackage {
 		EClass CAPABILITY = eINSTANCE.getCapability();
 
 		/**
-		 * The meta object literal for the '<em><b>Addresses</b></em>' containment reference list feature.
+		 * The meta object literal for the '<em><b>Addressed Concerns</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EReference CAPABILITY__ADDRESSES = eINSTANCE.getCapability_Addresses();
+		EReference CAPABILITY__ADDRESSED_CONCERNS = eINSTANCE.getCapability_AddressedConcerns();
+
+		/**
+		 * The meta object literal for the '<em><b>All Addressed Concerns</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CAPABILITY__ALL_ADDRESSED_CONCERNS = eINSTANCE.getCapability_AllAddressedConcerns();
 
 		/**
 		 * The meta object literal for the '<em><b>Sub Capabilities</b></em>' containment reference list feature.
@@ -5043,24 +6168,6 @@ public interface ProductmanagementPackage extends EPackage {
 		 * @generated
 		 */
 		EOperation CAPABILITY_DOMAIN___RESOLVE_CAPABILITY_REFERENCE__ABSTRACTCAPABILITY = eINSTANCE.getCapabilityDomain__ResolveCapabilityReference__AbstractCapability();
-
-		/**
-		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.AddressedConcernsImpl <em>Addressed Concerns</em>}' class.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @see org.nasdanika.models.productmanagement.impl.AddressedConcernsImpl
-		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getAddressedConcerns()
-		 * @generated
-		 */
-		EClass ADDRESSED_CONCERNS = eINSTANCE.getAddressedConcerns();
-
-		/**
-		 * The meta object literal for the '<em><b>Concerns</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference ADDRESSED_CONCERNS__CONCERNS = eINSTANCE.getAddressedConcerns_Concerns();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.CapabilityDependencyImpl <em>Capability Dependency</em>}' class.

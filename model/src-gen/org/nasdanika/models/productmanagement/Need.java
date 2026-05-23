@@ -14,7 +14,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.nasdanika.models.productmanagement.Need#getSupports <em>Supports</em>}</li>
- *   <li>{@link org.nasdanika.models.productmanagement.Need#getViolators <em>Violators</em>}</li>
+ *   <li>{@link org.nasdanika.models.productmanagement.Need#getViolatedBy <em>Violated By</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getNeed()
@@ -24,28 +24,36 @@ import org.eclipse.emf.common.util.EList;
 public interface Need extends Concern {
 	/**
 	 * Returns the value of the '<em><b>Supports</b></em>' containment reference list.
-	 * The list contents are of type {@link org.nasdanika.models.productmanagement.SupportedGoals}.
+	 * The list contents are of type {@link org.nasdanika.models.productmanagement.ConcernReference}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * *
+	 * Goals supported by this need
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Supports</em>' containment reference list.
 	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getNeed_Supports()
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<SupportedGoals> getSupports();
+	EList<ConcernReference> getSupports();
 
 	/**
-	 * Returns the value of the '<em><b>Violators</b></em>' reference list.
-	 * The list contents are of type {@link org.nasdanika.models.productmanagement.ViolatedNeeds}.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.models.productmanagement.ViolatedNeeds#getNeeds <em>Needs</em>}'.
+	 * Returns the value of the '<em><b>Violated By</b></em>' containment reference list.
+	 * The list contents are of type {@link org.nasdanika.models.productmanagement.ConcernReference}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Violators</em>' reference list.
-	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getNeed_Violators()
-	 * @see org.nasdanika.models.productmanagement.ViolatedNeeds#getNeeds
-	 * @model opposite="needs"
+	 * <!-- begin-model-doc -->
+	 * *
+	 * References to pain points violating this need
+	 * with an optional documentation explaining
+	 * how the need is violated
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Violated By</em>' containment reference list.
+	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getNeed_ViolatedBy()
+	 * @model containment="true"
 	 * @generated
 	 */
-	EList<ViolatedNeeds> getViolators();
+	EList<ConcernReference> getViolatedBy();
 
 } // Need

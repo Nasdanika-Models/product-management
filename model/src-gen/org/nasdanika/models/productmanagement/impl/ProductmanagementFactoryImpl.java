@@ -69,13 +69,9 @@ public class ProductmanagementFactoryImpl extends EFactoryImpl implements Produc
 			case ProductmanagementPackage.CONCERN_REFERENCE: return createConcernReference();
 			case ProductmanagementPackage.GOAL: return createGoal();
 			case ProductmanagementPackage.NEED: return createNeed();
-			case ProductmanagementPackage.SUPPORTED_GOALS: return createSupportedGoals();
 			case ProductmanagementPackage.PAIN_POINT: return createPainPoint();
-			case ProductmanagementPackage.BLOCKED_GOALS: return createBlockedGoals();
-			case ProductmanagementPackage.VIOLATED_NEEDS: return createViolatedNeeds();
 			case ProductmanagementPackage.CAPABILITY: return createCapability();
 			case ProductmanagementPackage.CAPABILITY_REFERENCE: return createCapabilityReference();
-			case ProductmanagementPackage.ADDRESSED_CONCERNS: return createAddressedConcerns();
 			case ProductmanagementPackage.CAPABILITY_DEPENDENCY: return createCapabilityDependency();
 			case ProductmanagementPackage.CAPABILITY_PROVIDER: return createCapabilityProvider();
 			case ProductmanagementPackage.CAPABILITY_PROVIDER_REFERENCE: return createCapabilityProviderReference();
@@ -239,42 +235,9 @@ public class ProductmanagementFactoryImpl extends EFactoryImpl implements Produc
 	 * @generated
 	 */
 	@Override
-	public SupportedGoals createSupportedGoals() {
-		SupportedGoalsImpl supportedGoals = new SupportedGoalsImpl();
-		return supportedGoals;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public PainPoint createPainPoint() {
 		PainPointImpl painPoint = new PainPointImpl();
 		return painPoint;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public BlockedGoals createBlockedGoals() {
-		BlockedGoalsImpl blockedGoals = new BlockedGoalsImpl();
-		return blockedGoals;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ViolatedNeeds createViolatedNeeds() {
-		ViolatedNeedsImpl violatedNeeds = new ViolatedNeedsImpl();
-		return violatedNeeds;
 	}
 
 	/**
@@ -297,17 +260,6 @@ public class ProductmanagementFactoryImpl extends EFactoryImpl implements Produc
 	public CapabilityReference createCapabilityReference() {
 		CapabilityReferenceImpl capabilityReference = new CapabilityReferenceImpl();
 		return capabilityReference;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public AddressedConcerns createAddressedConcerns() {
-		AddressedConcernsImpl addressedConcerns = new AddressedConcernsImpl();
-		return addressedConcerns;
 	}
 
 	/**

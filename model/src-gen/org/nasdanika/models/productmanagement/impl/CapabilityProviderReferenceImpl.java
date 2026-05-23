@@ -2,9 +2,24 @@
  */
 package org.nasdanika.models.productmanagement.impl;
 
+import java.lang.reflect.InvocationTargetException;
+
+import java.util.Collection;
+
+import org.eclipse.emf.common.notify.Notifier;
+
+import org.eclipse.emf.common.util.BasicEList;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.common.util.TreeIterator;
+
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.EReference;
 
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
+
+import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.emf.ecore.resource.ResourceSet;
 
 import org.nasdanika.models.productmanagement.CapabilityProvider;
 import org.nasdanika.models.productmanagement.CapabilityProviderReference;
@@ -119,6 +134,71 @@ public class CapabilityProviderReferenceImpl extends MinimalEObjectImpl.Containe
 	 * @generated
 	 */
 	@Override
+	public void collect(final Object source, final EReference eReference, final EList<EObject> accumulator) {
+		boolean _isInstance = eReference.getEContainingClass().isInstance(source);
+		if (_isInstance) {
+			final Object value = ((EObject) source).eGet(eReference);
+			boolean _isMany = eReference.isMany();
+			if (_isMany) {
+				boolean _contains = ((Collection<?>) value).contains(this);
+				if (_contains) {
+					accumulator.add(((EObject) source));
+				}
+			}
+			else {
+				if ((value == this)) {
+					accumulator.add(((EObject) source));
+				}
+			}
+		}
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EList<EObject> getReferrers(final EReference eReference) {
+		final BasicEList<EObject> ret = new BasicEList<EObject>();
+		final Resource res = this.eResource();
+		TreeIterator<?> cit = null;
+		if ((res == null)) {
+			EObject root = this;
+			EObject rc = null;
+			while (((rc = root.eContainer()) != null)) {
+				root = rc;
+			}
+			if ((root != null)) {
+				this.collect(root, eReference, ret);
+				cit = root.eAllContents();
+			}
+		}
+		else {
+			final ResourceSet rSet = res.getResourceSet();
+			TreeIterator<? extends Notifier> _xifexpression = null;
+			if ((rSet == null)) {
+				_xifexpression = res.getAllContents();
+			}
+			else {
+				_xifexpression = rSet.getAllContents();
+			}
+			cit = _xifexpression;
+		}
+		if ((cit != null)) {
+			while (cit.hasNext()) {
+				this.collect(cit.next(), eReference, ret);
+			}
+		}
+		return ret;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ProductmanagementPackage.CAPABILITY_PROVIDER_REFERENCE__ID:
@@ -180,6 +260,24 @@ public class CapabilityProviderReferenceImpl extends MinimalEObjectImpl.Containe
 				return basicGetTarget() != null;
 		}
 		return super.eIsSet(featureID);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	@SuppressWarnings("unchecked")
+	public Object eInvoke(int operationID, EList<?> arguments) throws InvocationTargetException {
+		switch (operationID) {
+			case ProductmanagementPackage.CAPABILITY_PROVIDER_REFERENCE___COLLECT__OBJECT_EREFERENCE_ELIST:
+				collect(arguments.get(0), (EReference)arguments.get(1), (EList<EObject>)arguments.get(2));
+				return null;
+			case ProductmanagementPackage.CAPABILITY_PROVIDER_REFERENCE___GET_REFERRERS__EREFERENCE:
+				return getReferrers((EReference)arguments.get(0));
+		}
+		return super.eInvoke(operationID, arguments);
 	}
 
 } //CapabilityProviderReferenceImpl

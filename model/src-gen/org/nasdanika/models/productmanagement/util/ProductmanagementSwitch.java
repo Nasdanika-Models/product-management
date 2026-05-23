@@ -66,6 +66,12 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
+			case ProductmanagementPackage.REFERRABLE: {
+				Referrable referrable = (Referrable)theEObject;
+				T result = caseReferrable(referrable);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case ProductmanagementPackage.TEMPORAL: {
 				Temporal temporal = (Temporal)theEObject;
 				T result = caseTemporal(temporal);
@@ -81,6 +87,7 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 			case ProductmanagementPackage.STRING_IDENTITY: {
 				StringIdentity stringIdentity = (StringIdentity)theEObject;
 				T result = caseStringIdentity(stringIdentity);
+				if (result == null) result = caseReferrable(stringIdentity);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -88,6 +95,7 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				ModelElement modelElement = (ModelElement)theEObject;
 				T result = caseModelElement(modelElement);
 				if (result == null) result = caseStringIdentity(modelElement);
+				if (result == null) result = caseReferrable(modelElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -96,6 +104,7 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				T result = caseNamedElement(namedElement);
 				if (result == null) result = caseModelElement(namedElement);
 				if (result == null) result = caseStringIdentity(namedElement);
+				if (result == null) result = caseReferrable(namedElement);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -106,6 +115,7 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = casePeriod(namedPeriod);
 				if (result == null) result = caseModelElement(namedPeriod);
 				if (result == null) result = caseStringIdentity(namedPeriod);
+				if (result == null) result = caseReferrable(namedPeriod);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -125,13 +135,16 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = caseAbstractActor(productModel);
 				if (result == null) result = caseModelElement(productModel);
 				if (result == null) result = caseStringIdentity(productModel);
+				if (result == null) result = caseReferrable(productModel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ProductmanagementPackage.ABSTRACT_PERSONA: {
 				AbstractPersona abstractPersona = (AbstractPersona)theEObject;
 				T result = caseAbstractPersona(abstractPersona);
+				if (result == null) result = caseModelElement(abstractPersona);
 				if (result == null) result = caseStringIdentity(abstractPersona);
+				if (result == null) result = caseReferrable(abstractPersona);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -146,6 +159,7 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = caseAbstractConcern(persona);
 				if (result == null) result = caseModelElement(persona);
 				if (result == null) result = caseStringIdentity(persona);
+				if (result == null) result = caseReferrable(persona);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -156,6 +170,7 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = caseAbstractPersona(personaDomain);
 				if (result == null) result = caseModelElement(personaDomain);
 				if (result == null) result = caseStringIdentity(personaDomain);
+				if (result == null) result = caseReferrable(personaDomain);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -163,14 +178,18 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				PersonaReference personaReference = (PersonaReference)theEObject;
 				T result = casePersonaReference(personaReference);
 				if (result == null) result = caseAbstractPersona(personaReference);
+				if (result == null) result = caseModelElement(personaReference);
 				if (result == null) result = caseStringIdentity(personaReference);
+				if (result == null) result = caseReferrable(personaReference);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ProductmanagementPackage.ABSTRACT_CONCERN: {
 				AbstractConcern abstractConcern = (AbstractConcern)theEObject;
 				T result = caseAbstractConcern(abstractConcern);
+				if (result == null) result = caseModelElement(abstractConcern);
 				if (result == null) result = caseStringIdentity(abstractConcern);
+				if (result == null) result = caseReferrable(abstractConcern);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -183,6 +202,7 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = casePeriod(concern);
 				if (result == null) result = caseModelElement(concern);
 				if (result == null) result = caseStringIdentity(concern);
+				if (result == null) result = caseReferrable(concern);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -190,7 +210,9 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				ConcernReference concernReference = (ConcernReference)theEObject;
 				T result = caseConcernReference(concernReference);
 				if (result == null) result = caseAbstractConcern(concernReference);
+				if (result == null) result = caseModelElement(concernReference);
 				if (result == null) result = caseStringIdentity(concernReference);
+				if (result == null) result = caseReferrable(concernReference);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -198,7 +220,9 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				ConcernDomain concernDomain = (ConcernDomain)theEObject;
 				T result = caseConcernDomain(concernDomain);
 				if (result == null) result = caseAbstractConcern(concernDomain);
+				if (result == null) result = caseModelElement(concernDomain);
 				if (result == null) result = caseStringIdentity(concernDomain);
+				if (result == null) result = caseReferrable(concernDomain);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -212,6 +236,7 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = casePeriod(goal);
 				if (result == null) result = caseModelElement(goal);
 				if (result == null) result = caseStringIdentity(goal);
+				if (result == null) result = caseReferrable(goal);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -225,14 +250,7 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = casePeriod(need);
 				if (result == null) result = caseModelElement(need);
 				if (result == null) result = caseStringIdentity(need);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ProductmanagementPackage.SUPPORTED_GOALS: {
-				SupportedGoals supportedGoals = (SupportedGoals)theEObject;
-				T result = caseSupportedGoals(supportedGoals);
-				if (result == null) result = caseModelElement(supportedGoals);
-				if (result == null) result = caseStringIdentity(supportedGoals);
+				if (result == null) result = caseReferrable(need);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -246,29 +264,16 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = casePeriod(painPoint);
 				if (result == null) result = caseModelElement(painPoint);
 				if (result == null) result = caseStringIdentity(painPoint);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ProductmanagementPackage.BLOCKED_GOALS: {
-				BlockedGoals blockedGoals = (BlockedGoals)theEObject;
-				T result = caseBlockedGoals(blockedGoals);
-				if (result == null) result = caseModelElement(blockedGoals);
-				if (result == null) result = caseStringIdentity(blockedGoals);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ProductmanagementPackage.VIOLATED_NEEDS: {
-				ViolatedNeeds violatedNeeds = (ViolatedNeeds)theEObject;
-				T result = caseViolatedNeeds(violatedNeeds);
-				if (result == null) result = caseModelElement(violatedNeeds);
-				if (result == null) result = caseStringIdentity(violatedNeeds);
+				if (result == null) result = caseReferrable(painPoint);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ProductmanagementPackage.ABSTRACT_CAPABILITY: {
 				AbstractCapability abstractCapability = (AbstractCapability)theEObject;
 				T result = caseAbstractCapability(abstractCapability);
+				if (result == null) result = caseModelElement(abstractCapability);
 				if (result == null) result = caseStringIdentity(abstractCapability);
+				if (result == null) result = caseReferrable(abstractCapability);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -287,6 +292,7 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = caseAbstractConcern(capability);
 				if (result == null) result = caseModelElement(capability);
 				if (result == null) result = caseStringIdentity(capability);
+				if (result == null) result = caseReferrable(capability);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -294,7 +300,9 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				CapabilityReference capabilityReference = (CapabilityReference)theEObject;
 				T result = caseCapabilityReference(capabilityReference);
 				if (result == null) result = caseAbstractCapability(capabilityReference);
+				if (result == null) result = caseModelElement(capabilityReference);
 				if (result == null) result = caseStringIdentity(capabilityReference);
+				if (result == null) result = caseReferrable(capabilityReference);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -305,14 +313,7 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = caseAbstractCapability(capabilityDomain);
 				if (result == null) result = caseModelElement(capabilityDomain);
 				if (result == null) result = caseStringIdentity(capabilityDomain);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ProductmanagementPackage.ADDRESSED_CONCERNS: {
-				AddressedConcerns addressedConcerns = (AddressedConcerns)theEObject;
-				T result = caseAddressedConcerns(addressedConcerns);
-				if (result == null) result = caseModelElement(addressedConcerns);
-				if (result == null) result = caseStringIdentity(addressedConcerns);
+				if (result == null) result = caseReferrable(capabilityDomain);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -321,6 +322,7 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				T result = caseCapabilityDependency(capabilityDependency);
 				if (result == null) result = caseModelElement(capabilityDependency);
 				if (result == null) result = caseStringIdentity(capabilityDependency);
+				if (result == null) result = caseReferrable(capabilityDependency);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -328,6 +330,7 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				AbstractCapabilityProvider abstractCapabilityProvider = (AbstractCapabilityProvider)theEObject;
 				T result = caseAbstractCapabilityProvider(abstractCapabilityProvider);
 				if (result == null) result = caseStringIdentity(abstractCapabilityProvider);
+				if (result == null) result = caseReferrable(abstractCapabilityProvider);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -340,6 +343,7 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = casePeriod(capabilityProvider);
 				if (result == null) result = caseModelElement(capabilityProvider);
 				if (result == null) result = caseStringIdentity(capabilityProvider);
+				if (result == null) result = caseReferrable(capabilityProvider);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -350,6 +354,7 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = caseAbstractCapabilityProvider(capabilityProviderDomain);
 				if (result == null) result = caseModelElement(capabilityProviderDomain);
 				if (result == null) result = caseStringIdentity(capabilityProviderDomain);
+				if (result == null) result = caseReferrable(capabilityProviderDomain);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -358,6 +363,7 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				T result = caseCapabilityProviderReference(capabilityProviderReference);
 				if (result == null) result = caseAbstractCapabilityProvider(capabilityProviderReference);
 				if (result == null) result = caseStringIdentity(capabilityProviderReference);
+				if (result == null) result = caseReferrable(capabilityProviderReference);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -371,6 +377,7 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = caseAbstractEvidence(providedCapability);
 				if (result == null) result = caseModelElement(providedCapability);
 				if (result == null) result = caseStringIdentity(providedCapability);
+				if (result == null) result = caseReferrable(providedCapability);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -378,6 +385,7 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				AbstractEvidence abstractEvidence = (AbstractEvidence)theEObject;
 				T result = caseAbstractEvidence(abstractEvidence);
 				if (result == null) result = caseStringIdentity(abstractEvidence);
+				if (result == null) result = caseReferrable(abstractEvidence);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -390,6 +398,7 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = casePeriod(evidence);
 				if (result == null) result = caseModelElement(evidence);
 				if (result == null) result = caseStringIdentity(evidence);
+				if (result == null) result = caseReferrable(evidence);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -400,6 +409,7 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = caseAbstractEvidence(evidenceDomain);
 				if (result == null) result = caseModelElement(evidenceDomain);
 				if (result == null) result = caseStringIdentity(evidenceDomain);
+				if (result == null) result = caseReferrable(evidenceDomain);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -411,6 +421,7 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = casePeriod(requiredCapability);
 				if (result == null) result = caseModelElement(requiredCapability);
 				if (result == null) result = caseStringIdentity(requiredCapability);
+				if (result == null) result = caseReferrable(requiredCapability);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -422,6 +433,7 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = casePeriod(version);
 				if (result == null) result = caseModelElement(version);
 				if (result == null) result = caseStringIdentity(version);
+				if (result == null) result = caseReferrable(version);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -439,6 +451,7 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = casePeriod(role);
 				if (result == null) result = caseModelElement(role);
 				if (result == null) result = caseStringIdentity(role);
+				if (result == null) result = caseReferrable(role);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -453,6 +466,7 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				AbstractActor abstractActor = (AbstractActor)theEObject;
 				T result = caseAbstractActor(abstractActor);
 				if (result == null) result = caseStringIdentity(abstractActor);
+				if (result == null) result = caseReferrable(abstractActor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -465,6 +479,7 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = casePeriod(actor);
 				if (result == null) result = caseModelElement(actor);
 				if (result == null) result = caseStringIdentity(actor);
+				if (result == null) result = caseReferrable(actor);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
@@ -475,11 +490,27 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = caseAbstractActor(actorDomain);
 				if (result == null) result = caseModelElement(actorDomain);
 				if (result == null) result = caseStringIdentity(actorDomain);
+				if (result == null) result = caseReferrable(actorDomain);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			default: return defaultCase(theEObject);
 		}
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Referrable</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Referrable</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseReferrable(Referrable object) {
+		return null;
 	}
 
 	/**
@@ -738,21 +769,6 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Supported Goals</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Supported Goals</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseSupportedGoals(SupportedGoals object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Pain Point</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -764,36 +780,6 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T casePainPoint(PainPoint object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Blocked Goals</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Blocked Goals</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseBlockedGoals(BlockedGoals object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Violated Needs</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Violated Needs</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseViolatedNeeds(ViolatedNeeds object) {
 		return null;
 	}
 
@@ -854,21 +840,6 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseCapabilityDomain(CapabilityDomain object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Addressed Concerns</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Addressed Concerns</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAddressedConcerns(AddressedConcerns object) {
 		return null;
 	}
 

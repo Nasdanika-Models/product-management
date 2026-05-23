@@ -14,6 +14,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.nasdanika.models.productmanagement.Concern#getAddressedBy <em>Addressed By</em>}</li>
+ *   <li>{@link org.nasdanika.models.productmanagement.Concern#getAllAddressedBy <em>All Addressed By</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getConcern()
@@ -42,5 +43,21 @@ public interface Concern extends NamedPeriod, AbstractConcern {
 	 * @generated
 	 */
 	EList<AbstractCapability> getAddressedBy();
+
+	/**
+	 * Returns the value of the '<em><b>All Addressed By</b></em>' reference list.
+	 * The list contents are of type {@link org.nasdanika.models.productmanagement.AbstractCapability}.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * *
+	 * Addressed concerns from this capability plus addressedBy from concerns
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>All Addressed By</em>' reference list.
+	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getConcern_AllAddressedBy()
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
+	 * @generated
+	 */
+	EList<AbstractCapability> getAllAddressedBy();
 
 } // Concern

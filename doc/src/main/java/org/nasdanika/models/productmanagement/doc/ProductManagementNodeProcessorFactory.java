@@ -167,44 +167,44 @@ public class ProductManagementNodeProcessorFactory {
 			documentationFactories);
 	}
 			
-//	@EObjectNodeProcessor(type = PersonaReference.class)
-//	public Object createPersonaReferenceNodeProcessor(
-//		NodeProcessorConfig<WidgetFactory, WidgetFactory, Object> config, 
-//		boolean parallel, 
-//		BiConsumer<Element,BiConsumer<ProcessorInfo<WidgetFactory, WidgetFactory, Object, Object>,ProgressMonitor>> infoProvider,
-//		ProgressMonitor progressMonitor) {
-//	
-//	return new PersonaReferenceNodeProcessor(
-//			config, 
-//			context, 
-//			getPrototypeProvider(config));
-//	}
-//		
-//	@EObjectNodeProcessor(type = ConcernReference.class)
-//	public Object createConcernReferenceNodeProcessor(
-//		NodeProcessorConfig<WidgetFactory, WidgetFactory, Object> config, 
-//		boolean parallel, 
-//		BiConsumer<Element,BiConsumer<ProcessorInfo<WidgetFactory, WidgetFactory, Object, Object>,ProgressMonitor>> infoProvider,
-//		ProgressMonitor progressMonitor) {
-//	
-//	return new ConcernReferenceNodeProcessor(
-//			config, 
-//			context, 
-//			getPrototypeProvider(config));
-//	}
-//		
-//	@EObjectNodeProcessor(type = CapabilityReference.class)
-//	public Object createCapabilityReferemceNodeProcessor(
-//		NodeProcessorConfig<WidgetFactory, WidgetFactory, Object> config, 
-//		boolean parallel, 
-//		BiConsumer<Element,BiConsumer<ProcessorInfo<WidgetFactory, WidgetFactory, Object, Object>,ProgressMonitor>> infoProvider,
-//		ProgressMonitor progressMonitor) {
-//	
-//	return new CapabilityReferenceNodeProcessor(
-//			config, 
-//			context, 
-//			getPrototypeProvider(config));
-//	}
+	@EObjectNodeProcessor(type = PersonaReference.class)
+	public Object createPersonaReferenceNodeProcessor(
+		NodeProcessorConfig<WidgetFactory, WidgetFactory, Object> config, 
+		boolean parallel, 
+		BiConsumer<Element,BiConsumer<ProcessorInfo<WidgetFactory, WidgetFactory, Object, Object>,ProgressMonitor>> infoProvider,
+		ProgressMonitor progressMonitor) {
+	
+	return new PersonaReferenceNodeProcessor(
+			config, 
+			context, 
+			getPrototypeProvider(config));
+	}
+		
+	@EObjectNodeProcessor(type = ConcernReference.class)
+	public Object createConcernReferenceNodeProcessor(
+		NodeProcessorConfig<WidgetFactory, WidgetFactory, Object> config, 
+		boolean parallel, 
+		BiConsumer<Element,BiConsumer<ProcessorInfo<WidgetFactory, WidgetFactory, Object, Object>,ProgressMonitor>> infoProvider,
+		ProgressMonitor progressMonitor) {
+	
+	return new ConcernReferenceNodeProcessor(
+			config, 
+			context, 
+			getPrototypeProvider(config));
+	}
+		
+	@EObjectNodeProcessor(type = CapabilityReference.class)
+	public Object createCapabilityReferemceNodeProcessor(
+		NodeProcessorConfig<WidgetFactory, WidgetFactory, Object> config, 
+		boolean parallel, 
+		BiConsumer<Element,BiConsumer<ProcessorInfo<WidgetFactory, WidgetFactory, Object, Object>,ProgressMonitor>> infoProvider,
+		ProgressMonitor progressMonitor) {
+	
+	return new CapabilityReferenceNodeProcessor(
+			config, 
+			context, 
+			getPrototypeProvider(config));
+	}
 	
 	
 //	AbstractActor.java

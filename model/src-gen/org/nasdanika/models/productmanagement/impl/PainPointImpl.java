@@ -13,10 +13,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.nasdanika.models.productmanagement.BlockedGoals;
+import org.nasdanika.models.productmanagement.ConcernReference;
 import org.nasdanika.models.productmanagement.PainPoint;
 import org.nasdanika.models.productmanagement.ProductmanagementPackage;
-import org.nasdanika.models.productmanagement.ViolatedNeeds;
 
 /**
  * <!-- begin-user-doc -->
@@ -59,8 +58,8 @@ public class PainPointImpl extends ConcernImpl implements PainPoint {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public EList<BlockedGoals> getBlocks() {
-		return (EList<BlockedGoals>)eDynamicGet(ProductmanagementPackage.PAIN_POINT__BLOCKS, ProductmanagementPackage.Literals.PAIN_POINT__BLOCKS, true, true);
+	public EList<ConcernReference> getBlocks() {
+		return (EList<ConcernReference>)eDynamicGet(ProductmanagementPackage.PAIN_POINT__BLOCKS, ProductmanagementPackage.Literals.PAIN_POINT__BLOCKS, true, true);
 	}
 
 	/**
@@ -70,8 +69,8 @@ public class PainPointImpl extends ConcernImpl implements PainPoint {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public EList<ViolatedNeeds> getViolates() {
-		return (EList<ViolatedNeeds>)eDynamicGet(ProductmanagementPackage.PAIN_POINT__VIOLATES, ProductmanagementPackage.Literals.PAIN_POINT__VIOLATES, true, true);
+	public EList<ConcernReference> getViolates() {
+		return (EList<ConcernReference>)eDynamicGet(ProductmanagementPackage.PAIN_POINT__VIOLATES, ProductmanagementPackage.Literals.PAIN_POINT__VIOLATES, true, true);
 	}
 
 	/**
@@ -117,11 +116,11 @@ public class PainPointImpl extends ConcernImpl implements PainPoint {
 		switch (featureID) {
 			case ProductmanagementPackage.PAIN_POINT__BLOCKS:
 				getBlocks().clear();
-				getBlocks().addAll((Collection<? extends BlockedGoals>)newValue);
+				getBlocks().addAll((Collection<? extends ConcernReference>)newValue);
 				return;
 			case ProductmanagementPackage.PAIN_POINT__VIOLATES:
 				getViolates().clear();
-				getViolates().addAll((Collection<? extends ViolatedNeeds>)newValue);
+				getViolates().addAll((Collection<? extends ConcernReference>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);

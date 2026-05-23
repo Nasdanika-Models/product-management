@@ -4,8 +4,6 @@ package org.nasdanika.models.productmanagement.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 import org.nasdanika.models.productmanagement.Capability;
 import org.nasdanika.models.productmanagement.CapabilityReference;
 import org.nasdanika.models.productmanagement.ProductmanagementPackage;
@@ -18,23 +16,12 @@ import org.nasdanika.models.productmanagement.ProductmanagementPackage;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityReferenceImpl#getId <em>Id</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityReferenceImpl#getTarget <em>Target</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class CapabilityReferenceImpl extends MinimalEObjectImpl.Container implements CapabilityReference {
-	/**
-	 * The default value of the '{@link #getId() <em>Id</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getId()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final String ID_EDEFAULT = null;
-
+public class CapabilityReferenceImpl extends ModelElementImpl implements CapabilityReference {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -52,36 +39,6 @@ public class CapabilityReferenceImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	protected EClass eStaticClass() {
 		return ProductmanagementPackage.Literals.CAPABILITY_REFERENCE;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	protected int eStaticFeatureCount() {
-		return 0;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public String getId() {
-		return (String)eDynamicGet(ProductmanagementPackage.CAPABILITY_REFERENCE__ID, ProductmanagementPackage.Literals.STRING_IDENTITY__ID, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setId(String newId) {
-		eDynamicSet(ProductmanagementPackage.CAPABILITY_REFERENCE__ID, ProductmanagementPackage.Literals.STRING_IDENTITY__ID, newId);
 	}
 
 	/**
@@ -121,8 +78,6 @@ public class CapabilityReferenceImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ProductmanagementPackage.CAPABILITY_REFERENCE__ID:
-				return getId();
 			case ProductmanagementPackage.CAPABILITY_REFERENCE__TARGET:
 				if (resolve) return getTarget();
 				return basicGetTarget();
@@ -138,9 +93,6 @@ public class CapabilityReferenceImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ProductmanagementPackage.CAPABILITY_REFERENCE__ID:
-				setId((String)newValue);
-				return;
 			case ProductmanagementPackage.CAPABILITY_REFERENCE__TARGET:
 				setTarget((Capability)newValue);
 				return;
@@ -156,9 +108,6 @@ public class CapabilityReferenceImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ProductmanagementPackage.CAPABILITY_REFERENCE__ID:
-				setId(ID_EDEFAULT);
-				return;
 			case ProductmanagementPackage.CAPABILITY_REFERENCE__TARGET:
 				setTarget((Capability)null);
 				return;
@@ -174,8 +123,6 @@ public class CapabilityReferenceImpl extends MinimalEObjectImpl.Container implem
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ProductmanagementPackage.CAPABILITY_REFERENCE__ID:
-				return ID_EDEFAULT == null ? getId() != null : !ID_EDEFAULT.equals(getId());
 			case ProductmanagementPackage.CAPABILITY_REFERENCE__TARGET:
 				return basicGetTarget() != null;
 		}

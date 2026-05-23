@@ -103,15 +103,6 @@ public interface ProductmanagementFactory extends EFactory {
 	Need createNeed();
 
 	/**
-	 * Returns a new object of class '<em>Supported Goals</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Supported Goals</em>'.
-	 * @generated
-	 */
-	SupportedGoals createSupportedGoals();
-
-	/**
 	 * Returns a new object of class '<em>Pain Point</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -119,24 +110,6 @@ public interface ProductmanagementFactory extends EFactory {
 	 * @generated
 	 */
 	PainPoint createPainPoint();
-
-	/**
-	 * Returns a new object of class '<em>Blocked Goals</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Blocked Goals</em>'.
-	 * @generated
-	 */
-	BlockedGoals createBlockedGoals();
-
-	/**
-	 * Returns a new object of class '<em>Violated Needs</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Violated Needs</em>'.
-	 * @generated
-	 */
-	ViolatedNeeds createViolatedNeeds();
 
 	/**
 	 * Returns a new object of class '<em>Capability</em>'.
@@ -155,15 +128,6 @@ public interface ProductmanagementFactory extends EFactory {
 	 * @generated
 	 */
 	CapabilityReference createCapabilityReference();
-
-	/**
-	 * Returns a new object of class '<em>Addressed Concerns</em>'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return a new object of class '<em>Addressed Concerns</em>'.
-	 * @generated
-	 */
-	AddressedConcerns createAddressedConcerns();
 
 	/**
 	 * Returns a new object of class '<em>Capability Dependency</em>'.

@@ -13,5 +13,5 @@ package org.nasdanika.models.productmanagement;
  * @model interface="true" abstract="true"
  * @generated
  */
-public interface AbstractCapability extends StringIdentity {
+public interface AbstractCapability extends ModelElement {
 } // AbstractCapability

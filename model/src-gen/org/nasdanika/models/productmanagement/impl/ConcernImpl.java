@@ -6,9 +6,11 @@ import java.util.Collection;
 
 import org.eclipse.emf.common.notify.NotificationChain;
 
+import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.InternalEList;
@@ -16,6 +18,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
 import org.nasdanika.models.productmanagement.AbstractCapability;
 import org.nasdanika.models.productmanagement.Concern;
 import org.nasdanika.models.productmanagement.ProductmanagementPackage;
+
+import org.nasdanika.models.productmanagement.ProductmanagementPackage.Literals;
 
 /**
  * <!-- begin-user-doc -->
@@ -26,6 +30,7 @@ import org.nasdanika.models.productmanagement.ProductmanagementPackage;
  * </p>
  * <ul>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.ConcernImpl#getAddressedBy <em>Addressed By</em>}</li>
+ *   <li>{@link org.nasdanika.models.productmanagement.impl.ConcernImpl#getAllAddressedBy <em>All Addressed By</em>}</li>
  * </ul>
  *
  * @generated
@@ -67,6 +72,28 @@ public class ConcernImpl extends NamedPeriodImpl implements Concern {
 	 * @generated
 	 */
 	@Override
+	public EList<AbstractCapability> getAllAddressedBy() {
+		BasicEList<AbstractCapability> _xblockexpression = null;
+		{
+			final BasicEList<AbstractCapability> result = new BasicEList<AbstractCapability>();
+			result.addAll(this.getAddressedBy());
+			EList<EObject> _referrers = this.getReferrers(Literals.CAPABILITY__ADDRESSED_CONCERNS);
+			for (final EObject referrer : _referrers) {
+				if ((referrer instanceof AbstractCapability)) {
+					result.add(((AbstractCapability)referrer));
+				}
+			}
+			_xblockexpression = result;
+		}
+		return _xblockexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
 			case ProductmanagementPackage.CONCERN__ADDRESSED_BY:
@@ -85,6 +112,8 @@ public class ConcernImpl extends NamedPeriodImpl implements Concern {
 		switch (featureID) {
 			case ProductmanagementPackage.CONCERN__ADDRESSED_BY:
 				return getAddressedBy();
+			case ProductmanagementPackage.CONCERN__ALL_ADDRESSED_BY:
+				return getAllAddressedBy();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -131,6 +160,8 @@ public class ConcernImpl extends NamedPeriodImpl implements Concern {
 		switch (featureID) {
 			case ProductmanagementPackage.CONCERN__ADDRESSED_BY:
 				return !getAddressedBy().isEmpty();
+			case ProductmanagementPackage.CONCERN__ALL_ADDRESSED_BY:
+				return !getAllAddressedBy().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

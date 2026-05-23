@@ -24,7 +24,7 @@ import org.eclipse.emf.common.util.EList;
 public interface PainPoint extends Concern {
 	/**
 	 * Returns the value of the '<em><b>Blocks</b></em>' containment reference list.
-	 * The list contents are of type {@link org.nasdanika.models.productmanagement.BlockedGoals}.
+	 * The list contents are of type {@link org.nasdanika.models.productmanagement.ConcernReference}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Blocks</em>' containment reference list.
@@ -32,11 +32,11 @@ public interface PainPoint extends Concern {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<BlockedGoals> getBlocks();
+	EList<ConcernReference> getBlocks();
 
 	/**
 	 * Returns the value of the '<em><b>Violates</b></em>' containment reference list.
-	 * The list contents are of type {@link org.nasdanika.models.productmanagement.ViolatedNeeds}.
+	 * The list contents are of type {@link org.nasdanika.models.productmanagement.ConcernReference}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Violates</em>' containment reference list.
@@ -44,6 +44,6 @@ public interface PainPoint extends Concern {
 	 * @model containment="true"
 	 * @generated
 	 */
-	EList<ViolatedNeeds> getViolates();
+	EList<ConcernReference> getViolates();
 
 } // PainPoint

@@ -1,16 +1,19 @@
 package org.nasdanika.models.productmanagement.doc;
 
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Optional;
+import java.util.function.Function;
 import java.util.function.Predicate;
 
 import org.apache.commons.text.StringEscapeUtils;
+import org.eclipse.emf.common.util.URI;
 import org.eclipse.emf.ecore.ENamedElement;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
+import org.eclipse.emf.ecore.EStructuralFeature;
+import org.eclipse.emf.ecore.resource.Resource;
 import org.nasdanika.common.Content;
 import org.nasdanika.common.Context;
 import org.nasdanika.common.DocumentationFactory;
@@ -68,11 +71,22 @@ public abstract class ModelElementNodeProcessor<T extends EObject> extends EObje
 		if (propertiesTable != null) {
 			action.getContent().add(0, propertiesTable);
 		}
-		
+					
 		if (documentationFactories != null && !documentationFactories.isEmpty()) {
 			T target = getTarget();
 			if (target instanceof ModelElement modelElement) {
+				Function<String, String> tokenSource = key -> {
+					EStructuralFeature feature = modelElement.eClass().getEStructuralFeature(key);
+					if (feature == null) {
+						return "Feature '" + key + "' not found in " + modelElement.eClass().getName();
+					}
+					Object fValue = modelElement.eGet(feature);
+					String value = fValue == null ? "" : String.valueOf(fValue);
+					return Util.isBlank(value) ? null : value;
+				};				
+				
 				String doc = modelElement.getDocumentation();
+				String docFormat = modelElement.getDocFormat();
 				if (!Util.isBlank(doc)) {
 					Optional<DocumentationFactory> dfo = documentationFactories
 							.stream()
@@ -83,19 +97,66 @@ public abstract class ModelElementNodeProcessor<T extends EObject> extends EObje
 						Collection<EObject> documentation = dfo.get().createDocumentation(
 								target, 
 								doc, 
-								Content.MARKDOWN, 
+								Util.isBlank(docFormat) ? Content.MARKDOWN : docFormat, 
 								target.eResource() == null ? null : target.eResource().getURI(),
-								Collections.<String,String>emptyMap()::get,
+								tokenSource,
 								progressMonitor);
 	
 						action.getContent().addAll(documentation);
+					} else {
+						action.getContent().add(createText("<div class=\"nsd-error\">Unsupported documentation format: '" + docFormat + "'</div>"));
 					}
 				}
+				
+				String docRefStr = modelElement.getDocRef();
+				if (!Util.isBlank(docRefStr)) {
+					DocumentationFactory docFactory = null;
+					if (!Util.isBlank(docFormat)) {
+						Optional<DocumentationFactory> dfo = documentationFactories
+								.stream()
+								.filter(df -> df.canHandle(docFormat))
+								.findAny();
+						if (dfo.isPresent()) {
+							docFactory = dfo.get();
+						} else {
+							action.getContent().add(createText("<div class=\"nsd-error\">Unsupported documentation format: '" + docFormat + "'</div>"));
+						}
+					} else {
+						URI[] docRefURI = { URI.createURI(docRefStr) };
+						Resource tRes = target.eResource();
+						URI refBaseUri = tRes == null ? null : tRes.getURI();
+						if (refBaseUri != null && !refBaseUri.isRelative()) {
+							docRefURI[0] = docRefURI[0].resolve(refBaseUri);
+						}
+						if (docFactory == null) {
+							Optional<DocumentationFactory> dfo = documentationFactories
+									.stream()
+									.filter(df -> df.canHandle(docRefURI[0]))
+									.findAny();		
+							
+							if (dfo.isPresent()) {
+								docFactory = dfo.get();
+								Collection<EObject> documentation = docFactory.createDocumentation(
+										modelElement, 
+										docRefURI[0],
+										tokenSource,
+										progressMonitor);
+								
+								action.getContent().addAll(documentation);
+							} else {
+								action.getContent().add(createText("<div class=\"nsd-error\">Unsupported documentation URI: '" + docRefURI[0] + "'</div>"));
+							}
+						}						
+					}
+				}
+				
 			}
 		}		
 						
 		return action;
 	}
+		
+	
 	
 	/**
 	 * Override to customize name, e.g. replace blank name with some generated name

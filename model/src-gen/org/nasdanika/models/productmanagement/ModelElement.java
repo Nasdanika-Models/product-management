@@ -14,6 +14,8 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link org.nasdanika.models.productmanagement.ModelElement#getDocumentation <em>Documentation</em>}</li>
+ *   <li>{@link org.nasdanika.models.productmanagement.ModelElement#getDocRef <em>Doc Ref</em>}</li>
+ *   <li>{@link org.nasdanika.models.productmanagement.ModelElement#getDocFormat <em>Doc Format</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.ModelElement#getUris <em>Uris</em>}</li>
  * </ul>
  *
@@ -43,6 +45,60 @@ public interface ModelElement extends StringIdentity {
 	 * @generated
 	 */
 	void setDocumentation(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Doc Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * *
+	 * Documentation resource URI resolved relative to this model element resource URI.
+	 * Documentation format is derived from extension if not set.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Doc Ref</em>' attribute.
+	 * @see #setDocRef(String)
+	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getModelElement_DocRef()
+	 * @model unique="false"
+	 * @generated
+	 */
+	String getDocRef();
+
+	/**
+	 * Sets the value of the '{@link org.nasdanika.models.productmanagement.ModelElement#getDocRef <em>Doc Ref</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Doc Ref</em>' attribute.
+	 * @see #getDocRef()
+	 * @generated
+	 */
+	void setDocRef(String value);
+
+	/**
+	 * Returns the value of the '<em><b>Doc Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * *
+	 * Documentation format. If not set, defaults to markdown for inline documentation and is
+	 * derived from the documentation resource extension for docRef
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Doc Format</em>' attribute.
+	 * @see #setDocFormat(String)
+	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getModelElement_DocFormat()
+	 * @model unique="false"
+	 * @generated
+	 */
+	String getDocFormat();
+
+	/**
+	 * Sets the value of the '{@link org.nasdanika.models.productmanagement.ModelElement#getDocFormat <em>Doc Format</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Doc Format</em>' attribute.
+	 * @see #getDocFormat()
+	 * @generated
+	 */
+	void setDocFormat(String value);
 
 	/**
 	 * Returns the value of the '<em><b>Uris</b></em>' attribute list.

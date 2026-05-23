@@ -8,6 +8,12 @@ package org.nasdanika.models.productmanagement;
  * A representation of the model object '<em><b>Capability Reference</b></em>'.
  * <!-- end-user-doc -->
  *
+ * <!-- begin-model-doc -->
+ * *
+ * Capability reference extends ModelEment to allow adding documentation
+ * to addressedBy
+ * <!-- end-model-doc -->
+ *
  * <p>
  * The following features are supported:
  * </p>
@@ -19,7 +25,7 @@ package org.nasdanika.models.productmanagement;
  * @model
  * @generated
  */
-public interface CapabilityReference extends AbstractCapability {
+public interface CapabilityReference extends ModelElement, AbstractCapability {
 	/**
 	 * Returns the value of the '<em><b>Target</b></em>' reference.
 	 * <!-- begin-user-doc -->

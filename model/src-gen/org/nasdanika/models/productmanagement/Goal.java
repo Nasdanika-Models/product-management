@@ -24,30 +24,34 @@ import org.eclipse.emf.common.util.EList;
 public interface Goal extends Concern {
 	/**
 	 * Returns the value of the '<em><b>Supporting Needs</b></em>' reference list.
-	 * The list contents are of type {@link org.nasdanika.models.productmanagement.SupportedGoals}.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.models.productmanagement.SupportedGoals#getGoals <em>Goals</em>}'.
+	 * The list contents are of type {@link org.nasdanika.models.productmanagement.ConcernReference}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * *
+	 * References to needs supporting this goal
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Supporting Needs</em>' reference list.
 	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getGoal_SupportingNeeds()
-	 * @see org.nasdanika.models.productmanagement.SupportedGoals#getGoals
-	 * @model opposite="goals"
+	 * @model
 	 * @generated
 	 */
-	EList<SupportedGoals> getSupportingNeeds();
+	EList<ConcernReference> getSupportingNeeds();
 
 	/**
 	 * Returns the value of the '<em><b>Blockers</b></em>' reference list.
-	 * The list contents are of type {@link org.nasdanika.models.productmanagement.BlockedGoals}.
-	 * It is bidirectional and its opposite is '{@link org.nasdanika.models.productmanagement.BlockedGoals#getGoals <em>Goals</em>}'.
+	 * The list contents are of type {@link org.nasdanika.models.productmanagement.ConcernReference}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * *
+	 * References to pain points blocking this goal
+	 * <!-- end-model-doc -->
 	 * @return the value of the '<em>Blockers</em>' reference list.
 	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getGoal_Blockers()
-	 * @see org.nasdanika.models.productmanagement.BlockedGoals#getGoals
-	 * @model opposite="goals"
+	 * @model
 	 * @generated
 	 */
-	EList<BlockedGoals> getBlockers();
+	EList<ConcernReference> getBlockers();
 
 } // Goal

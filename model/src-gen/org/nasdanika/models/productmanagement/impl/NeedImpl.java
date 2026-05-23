@@ -13,10 +13,9 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.nasdanika.models.productmanagement.ConcernReference;
 import org.nasdanika.models.productmanagement.Need;
 import org.nasdanika.models.productmanagement.ProductmanagementPackage;
-import org.nasdanika.models.productmanagement.SupportedGoals;
-import org.nasdanika.models.productmanagement.ViolatedNeeds;
 
 /**
  * <!-- begin-user-doc -->
@@ -27,7 +26,7 @@ import org.nasdanika.models.productmanagement.ViolatedNeeds;
  * </p>
  * <ul>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.NeedImpl#getSupports <em>Supports</em>}</li>
- *   <li>{@link org.nasdanika.models.productmanagement.impl.NeedImpl#getViolators <em>Violators</em>}</li>
+ *   <li>{@link org.nasdanika.models.productmanagement.impl.NeedImpl#getViolatedBy <em>Violated By</em>}</li>
  * </ul>
  *
  * @generated
@@ -59,8 +58,8 @@ public class NeedImpl extends ConcernImpl implements Need {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public EList<SupportedGoals> getSupports() {
-		return (EList<SupportedGoals>)eDynamicGet(ProductmanagementPackage.NEED__SUPPORTS, ProductmanagementPackage.Literals.NEED__SUPPORTS, true, true);
+	public EList<ConcernReference> getSupports() {
+		return (EList<ConcernReference>)eDynamicGet(ProductmanagementPackage.NEED__SUPPORTS, ProductmanagementPackage.Literals.NEED__SUPPORTS, true, true);
 	}
 
 	/**
@@ -70,23 +69,8 @@ public class NeedImpl extends ConcernImpl implements Need {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public EList<ViolatedNeeds> getViolators() {
-		return (EList<ViolatedNeeds>)eDynamicGet(ProductmanagementPackage.NEED__VIOLATORS, ProductmanagementPackage.Literals.NEED__VIOLATORS, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public NotificationChain eInverseAdd(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ProductmanagementPackage.NEED__VIOLATORS:
-				return ((InternalEList<InternalEObject>)(InternalEList<?>)getViolators()).basicAdd(otherEnd, msgs);
-		}
-		return super.eInverseAdd(otherEnd, featureID, msgs);
+	public EList<ConcernReference> getViolatedBy() {
+		return (EList<ConcernReference>)eDynamicGet(ProductmanagementPackage.NEED__VIOLATED_BY, ProductmanagementPackage.Literals.NEED__VIOLATED_BY, true, true);
 	}
 
 	/**
@@ -99,8 +83,8 @@ public class NeedImpl extends ConcernImpl implements Need {
 		switch (featureID) {
 			case ProductmanagementPackage.NEED__SUPPORTS:
 				return ((InternalEList<?>)getSupports()).basicRemove(otherEnd, msgs);
-			case ProductmanagementPackage.NEED__VIOLATORS:
-				return ((InternalEList<?>)getViolators()).basicRemove(otherEnd, msgs);
+			case ProductmanagementPackage.NEED__VIOLATED_BY:
+				return ((InternalEList<?>)getViolatedBy()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -115,8 +99,8 @@ public class NeedImpl extends ConcernImpl implements Need {
 		switch (featureID) {
 			case ProductmanagementPackage.NEED__SUPPORTS:
 				return getSupports();
-			case ProductmanagementPackage.NEED__VIOLATORS:
-				return getViolators();
+			case ProductmanagementPackage.NEED__VIOLATED_BY:
+				return getViolatedBy();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -132,11 +116,11 @@ public class NeedImpl extends ConcernImpl implements Need {
 		switch (featureID) {
 			case ProductmanagementPackage.NEED__SUPPORTS:
 				getSupports().clear();
-				getSupports().addAll((Collection<? extends SupportedGoals>)newValue);
+				getSupports().addAll((Collection<? extends ConcernReference>)newValue);
 				return;
-			case ProductmanagementPackage.NEED__VIOLATORS:
-				getViolators().clear();
-				getViolators().addAll((Collection<? extends ViolatedNeeds>)newValue);
+			case ProductmanagementPackage.NEED__VIOLATED_BY:
+				getViolatedBy().clear();
+				getViolatedBy().addAll((Collection<? extends ConcernReference>)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -153,8 +137,8 @@ public class NeedImpl extends ConcernImpl implements Need {
 			case ProductmanagementPackage.NEED__SUPPORTS:
 				getSupports().clear();
 				return;
-			case ProductmanagementPackage.NEED__VIOLATORS:
-				getViolators().clear();
+			case ProductmanagementPackage.NEED__VIOLATED_BY:
+				getViolatedBy().clear();
 				return;
 		}
 		super.eUnset(featureID);
@@ -170,8 +154,8 @@ public class NeedImpl extends ConcernImpl implements Need {
 		switch (featureID) {
 			case ProductmanagementPackage.NEED__SUPPORTS:
 				return !getSupports().isEmpty();
-			case ProductmanagementPackage.NEED__VIOLATORS:
-				return !getViolators().isEmpty();
+			case ProductmanagementPackage.NEED__VIOLATED_BY:
+				return !getViolatedBy().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}
