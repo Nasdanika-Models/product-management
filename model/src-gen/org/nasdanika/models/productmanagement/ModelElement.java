@@ -13,6 +13,7 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
+ *   <li>{@link org.nasdanika.models.productmanagement.ModelElement#getIcon <em>Icon</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.ModelElement#getDocumentation <em>Documentation</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.ModelElement#getDocRef <em>Doc Ref</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.ModelElement#getDocFormat <em>Doc Format</em>}</li>
@@ -24,6 +25,34 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface ModelElement extends StringIdentity {
+	/**
+	 * Returns the value of the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * *
+	 * Custom icon - treated as URL if contains / or as a CSS class otherwise.
+	 * E.g. fas fa-wrench would be treated as a CSS class.
+	 * For URLs the recommended icon size is 20x20 pixels and the recommended format is SVG.
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Icon</em>' attribute.
+	 * @see #setIcon(String)
+	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getModelElement_Icon()
+	 * @model unique="false"
+	 * @generated
+	 */
+	String getIcon();
+
+	/**
+	 * Sets the value of the '{@link org.nasdanika.models.productmanagement.ModelElement#getIcon <em>Icon</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @param value the new value of the '<em>Icon</em>' attribute.
+	 * @see #getIcon()
+	 * @generated
+	 */
+	void setIcon(String value);
+
 	/**
 	 * Returns the value of the '<em><b>Documentation</b></em>' attribute.
 	 * <!-- begin-user-doc -->

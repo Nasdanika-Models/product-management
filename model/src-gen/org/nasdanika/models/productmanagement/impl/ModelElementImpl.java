@@ -33,6 +33,7 @@ import org.nasdanika.models.productmanagement.ProductmanagementPackage;
  * </p>
  * <ul>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.ModelElementImpl#getId <em>Id</em>}</li>
+ *   <li>{@link org.nasdanika.models.productmanagement.impl.ModelElementImpl#getIcon <em>Icon</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.ModelElementImpl#getDocumentation <em>Documentation</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.ModelElementImpl#getDocRef <em>Doc Ref</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.ModelElementImpl#getDocFormat <em>Doc Format</em>}</li>
@@ -51,6 +52,16 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 	 * @ordered
 	 */
 	protected static final String ID_EDEFAULT = null;
+
+	/**
+	 * The default value of the '{@link #getIcon() <em>Icon</em>}' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see #getIcon()
+	 * @generated
+	 * @ordered
+	 */
+	protected static final String ICON_EDEFAULT = null;
 
 	/**
 	 * The default value of the '{@link #getDocumentation() <em>Documentation</em>}' attribute.
@@ -129,6 +140,26 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 	@Override
 	public void setId(String newId) {
 		eDynamicSet(ProductmanagementPackage.MODEL_ELEMENT__ID, ProductmanagementPackage.Literals.STRING_IDENTITY__ID, newId);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public String getIcon() {
+		return (String)eDynamicGet(ProductmanagementPackage.MODEL_ELEMENT__ICON, ProductmanagementPackage.Literals.MODEL_ELEMENT__ICON, true, true);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public void setIcon(String newIcon) {
+		eDynamicSet(ProductmanagementPackage.MODEL_ELEMENT__ICON, ProductmanagementPackage.Literals.MODEL_ELEMENT__ICON, newIcon);
 	}
 
 	/**
@@ -277,6 +308,8 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 		switch (featureID) {
 			case ProductmanagementPackage.MODEL_ELEMENT__ID:
 				return getId();
+			case ProductmanagementPackage.MODEL_ELEMENT__ICON:
+				return getIcon();
 			case ProductmanagementPackage.MODEL_ELEMENT__DOCUMENTATION:
 				return getDocumentation();
 			case ProductmanagementPackage.MODEL_ELEMENT__DOC_REF:
@@ -300,6 +333,9 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 		switch (featureID) {
 			case ProductmanagementPackage.MODEL_ELEMENT__ID:
 				setId((String)newValue);
+				return;
+			case ProductmanagementPackage.MODEL_ELEMENT__ICON:
+				setIcon((String)newValue);
 				return;
 			case ProductmanagementPackage.MODEL_ELEMENT__DOCUMENTATION:
 				setDocumentation((String)newValue);
@@ -329,6 +365,9 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 			case ProductmanagementPackage.MODEL_ELEMENT__ID:
 				setId(ID_EDEFAULT);
 				return;
+			case ProductmanagementPackage.MODEL_ELEMENT__ICON:
+				setIcon(ICON_EDEFAULT);
+				return;
 			case ProductmanagementPackage.MODEL_ELEMENT__DOCUMENTATION:
 				setDocumentation(DOCUMENTATION_EDEFAULT);
 				return;
@@ -355,6 +394,8 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 		switch (featureID) {
 			case ProductmanagementPackage.MODEL_ELEMENT__ID:
 				return ID_EDEFAULT == null ? getId() != null : !ID_EDEFAULT.equals(getId());
+			case ProductmanagementPackage.MODEL_ELEMENT__ICON:
+				return ICON_EDEFAULT == null ? getIcon() != null : !ICON_EDEFAULT.equals(getIcon());
 			case ProductmanagementPackage.MODEL_ELEMENT__DOCUMENTATION:
 				return DOCUMENTATION_EDEFAULT == null ? getDocumentation() != null : !DOCUMENTATION_EDEFAULT.equals(getDocumentation());
 			case ProductmanagementPackage.MODEL_ELEMENT__DOC_REF:

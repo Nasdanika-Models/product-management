@@ -605,7 +605,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	 * @generated
 	 */
 	@Override
-	public EAttribute getModelElement_Documentation() {
+	public EAttribute getModelElement_Icon() {
 		return (EAttribute)modelElementEClass.getEStructuralFeatures().get(0);
 	}
 
@@ -615,7 +615,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	 * @generated
 	 */
 	@Override
-	public EAttribute getModelElement_DocRef() {
+	public EAttribute getModelElement_Documentation() {
 		return (EAttribute)modelElementEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -625,7 +625,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	 * @generated
 	 */
 	@Override
-	public EAttribute getModelElement_DocFormat() {
+	public EAttribute getModelElement_DocRef() {
 		return (EAttribute)modelElementEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -635,8 +635,18 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	 * @generated
 	 */
 	@Override
-	public EAttribute getModelElement_Uris() {
+	public EAttribute getModelElement_DocFormat() {
 		return (EAttribute)modelElementEClass.getEStructuralFeatures().get(3);
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public EAttribute getModelElement_Uris() {
+		return (EAttribute)modelElementEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -1558,6 +1568,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		createEAttribute(stringIdentityEClass, STRING_IDENTITY__ID);
 
 		modelElementEClass = createEClass(MODEL_ELEMENT);
+		createEAttribute(modelElementEClass, MODEL_ELEMENT__ICON);
 		createEAttribute(modelElementEClass, MODEL_ELEMENT__DOCUMENTATION);
 		createEAttribute(modelElementEClass, MODEL_ELEMENT__DOC_REF);
 		createEAttribute(modelElementEClass, MODEL_ELEMENT__DOC_FORMAT);
@@ -1808,6 +1819,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		initEAttribute(getStringIdentity_Id(), theEcorePackage.getEString(), "id", null, 0, 1, StringIdentity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(modelElementEClass, ModelElement.class, "ModelElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+		initEAttribute(getModelElement_Icon(), theEcorePackage.getEString(), "icon", null, 0, 1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getModelElement_Documentation(), theEcorePackage.getEString(), "documentation", null, 0, 1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getModelElement_DocRef(), theEcorePackage.getEString(), "docRef", null, 0, 1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getModelElement_DocFormat(), theEcorePackage.getEString(), "docFormat", null, 0, 1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2008,6 +2020,12 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		   source,
 		   new String[] {
 			   "body", "final <%org.eclipse.emf.common.util.BasicEList%><<%org.eclipse.emf.ecore.EObject%>> ret = new <%org.eclipse.emf.common.util.BasicEList%><<%org.eclipse.emf.ecore.EObject%>>();\nfinal <%org.eclipse.emf.ecore.resource.Resource%> res = this.eResource();\n<%org.eclipse.emf.common.util.TreeIterator%><?> cit = null;\nif ((res == null))\n{\n\t<%org.eclipse.emf.ecore.EObject%> root = this;\n\t<%org.eclipse.emf.ecore.EObject%> rc = null;\n\twhile (((rc = root.eContainer()) != null))\n\t{\n\t\troot = rc;\n\t}\n\tif ((root != null))\n\t{\n\t\tthis.collect(root, eReference, ret);\n\t\tcit = root.eAllContents();\n\t}\n}\nelse\n{\n\tfinal <%org.eclipse.emf.ecore.resource.ResourceSet%> rSet = res.getResourceSet();\n\t<%org.eclipse.emf.common.util.TreeIterator%><? extends <%org.eclipse.emf.common.notify.Notifier%>> _xifexpression = null;\n\tif ((rSet == null))\n\t{\n\t\t_xifexpression = res.getAllContents();\n\t}\n\telse\n\t{\n\t\t_xifexpression = rSet.getAllContents();\n\t}\n\tcit = _xifexpression;\n}\nif ((cit != null))\n{\n\twhile (cit.hasNext())\n\t{\n\t\tthis.collect(cit.next(), eReference, ret);\n\t}\n}\nreturn ret;"
+		   });
+		addAnnotation
+		  (getModelElement_Icon(),
+		   source,
+		   new String[] {
+			   "documentation", "*\nCustom icon - treated as URL if contains / or as a CSS class otherwise.\nE.g. fas fa-wrench would be treated as a CSS class.\nFor URLs the recommended icon size is 20x20 pixels and the recommended format is SVG."
 		   });
 		addAnnotation
 		  (getModelElement_DocRef(),

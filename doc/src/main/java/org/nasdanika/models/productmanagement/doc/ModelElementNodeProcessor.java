@@ -187,7 +187,15 @@ public abstract class ModelElementNodeProcessor<T extends EObject> extends EObje
 		}		
 	}
 
-	public String getIcon() {		
+	public String getIcon() {
+		T target = getTarget();
+		if (target instanceof ModelElement modelElement) {
+			String icon = modelElement.getIcon();
+			if (!Util.isBlank(icon)) {
+				return icon;
+			}
+		}
+		
 		for (Map.Entry<String, String> representation: getRepresentations().entrySet()) {
 			if (AbstractDrawioFactory.IMAGE_REPRESENTATION.equals(representation.getKey())) {
 				String imageRepr = representation.getValue();

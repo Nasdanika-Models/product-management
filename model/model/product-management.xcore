@@ -105,6 +105,13 @@ abstract class ModelElement extends StringIdentity {
 
 // id, documentation, uris - aliases
 
+    /**
+     * Custom icon - treated as URL if contains / or as a CSS class otherwise.
+     * E.g. fas fa-wrench would be treated as a CSS class.
+     * For URLs the recommended icon size is 20x20 pixels and the recommended format is SVG. 
+     */
+    String icon
+
     String documentation
     
     /**
@@ -132,7 +139,8 @@ abstract class ModelElement extends StringIdentity {
     /**
      * Extension-specific configuration associated with a model element.
      * For example, geometry and color for a diagram facet,
-     * Weight for a prioritization facet.
+     * Weight for a prioritization facet,
+     * Embedding vectors for similarity search.
      */
     // contains EObject[] facets
 

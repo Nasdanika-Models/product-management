@@ -310,13 +310,22 @@ public interface ProductmanagementPackage extends EPackage {
 	int MODEL_ELEMENT__ID = STRING_IDENTITY__ID;
 
 	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int MODEL_ELEMENT__ICON = STRING_IDENTITY_FEATURE_COUNT + 0;
+
+	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT__DOCUMENTATION = STRING_IDENTITY_FEATURE_COUNT + 0;
+	int MODEL_ELEMENT__DOCUMENTATION = STRING_IDENTITY_FEATURE_COUNT + 1;
 
 	/**
 	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
@@ -325,7 +334,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT__DOC_REF = STRING_IDENTITY_FEATURE_COUNT + 1;
+	int MODEL_ELEMENT__DOC_REF = STRING_IDENTITY_FEATURE_COUNT + 2;
 
 	/**
 	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
@@ -334,7 +343,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT__DOC_FORMAT = STRING_IDENTITY_FEATURE_COUNT + 2;
+	int MODEL_ELEMENT__DOC_FORMAT = STRING_IDENTITY_FEATURE_COUNT + 3;
 
 	/**
 	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
@@ -343,7 +352,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT__URIS = STRING_IDENTITY_FEATURE_COUNT + 3;
+	int MODEL_ELEMENT__URIS = STRING_IDENTITY_FEATURE_COUNT + 4;
 
 	/**
 	 * The number of structural features of the '<em>Model Element</em>' class.
@@ -352,7 +361,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT_FEATURE_COUNT = STRING_IDENTITY_FEATURE_COUNT + 4;
+	int MODEL_ELEMENT_FEATURE_COUNT = STRING_IDENTITY_FEATURE_COUNT + 5;
 
 	/**
 	 * The operation id for the '<em>Collect</em>' operation.
@@ -399,6 +408,15 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int NAMED_ELEMENT__ID = MODEL_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_ELEMENT__ICON = MODEL_ELEMENT__ICON;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -499,6 +517,15 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int NAMED_PERIOD__ID = NAMED_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NAMED_PERIOD__ICON = NAMED_ELEMENT__ICON;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -626,6 +653,15 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int PRODUCT_MODEL__ID = NAMED_PERIOD__ID;
+
+	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PRODUCT_MODEL__ICON = NAMED_PERIOD__ICON;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -827,6 +863,15 @@ public interface ProductmanagementPackage extends EPackage {
 	int ABSTRACT_PERSONA__ID = MODEL_ELEMENT__ID;
 
 	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_PERSONA__ICON = MODEL_ELEMENT__ICON;
+
+	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -916,6 +961,15 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int PERSONA__ID = NAMED_PERIOD__ID;
+
+	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA__ICON = NAMED_PERIOD__ICON;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -1072,6 +1126,15 @@ public interface ProductmanagementPackage extends EPackage {
 	int PERSONA_DOMAIN__ID = NAMED_ELEMENT__ID;
 
 	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA_DOMAIN__ICON = NAMED_ELEMENT__ICON;
+
+	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1199,6 +1262,15 @@ public interface ProductmanagementPackage extends EPackage {
 	int PERSONA_REFERENCE__ID = ABSTRACT_PERSONA__ID;
 
 	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PERSONA_REFERENCE__ICON = ABSTRACT_PERSONA__ICON;
+
+	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1299,6 +1371,15 @@ public interface ProductmanagementPackage extends EPackage {
 	int ABSTRACT_CONCERN__ID = MODEL_ELEMENT__ID;
 
 	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CONCERN__ICON = MODEL_ELEMENT__ICON;
+
+	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1388,6 +1469,15 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONCERN__ID = NAMED_PERIOD__ID;
+
+	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN__ICON = NAMED_PERIOD__ICON;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -1535,6 +1625,15 @@ public interface ProductmanagementPackage extends EPackage {
 	int CONCERN_REFERENCE__ID = ABSTRACT_CONCERN__ID;
 
 	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN_REFERENCE__ICON = ABSTRACT_CONCERN__ICON;
+
+	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1633,6 +1732,15 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONCERN_DOMAIN__ID = NAMED_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN_DOMAIN__ICON = NAMED_ELEMENT__ICON;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -1760,6 +1868,15 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int GOAL__ID = CONCERN__ID;
+
+	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL__ICON = CONCERN__ICON;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -1943,6 +2060,15 @@ public interface ProductmanagementPackage extends EPackage {
 	int NEED__ID = CONCERN__ID;
 
 	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NEED__ICON = CONCERN__ICON;
+
+	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2122,6 +2248,15 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int PAIN_POINT__ID = CONCERN__ID;
+
+	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAIN_POINT__ICON = CONCERN__ICON;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -2305,6 +2440,15 @@ public interface ProductmanagementPackage extends EPackage {
 	int ABSTRACT_CAPABILITY__ID = MODEL_ELEMENT__ID;
 
 	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ABSTRACT_CAPABILITY__ICON = MODEL_ELEMENT__ICON;
+
+	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2394,6 +2538,15 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAPABILITY__ID = NAMED_PERIOD__ID;
+
+	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY__ICON = NAMED_PERIOD__ICON;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -2640,6 +2793,15 @@ public interface ProductmanagementPackage extends EPackage {
 	int CAPABILITY_REFERENCE__ID = MODEL_ELEMENT__ID;
 
 	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_REFERENCE__ICON = MODEL_ELEMENT__ICON;
+
+	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2738,6 +2900,15 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAPABILITY_DOMAIN__ID = NAMED_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_DOMAIN__ICON = NAMED_ELEMENT__ICON;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -2865,6 +3036,15 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAPABILITY_DEPENDENCY__ID = CAPABILITY_REFERENCE__ID;
+
+	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_DEPENDENCY__ICON = CAPABILITY_REFERENCE__ICON;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -3040,6 +3220,15 @@ public interface ProductmanagementPackage extends EPackage {
 	int CAPABILITY_PROVIDER__ID = NAMED_PERIOD__ID;
 
 	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_PROVIDER__ICON = NAMED_PERIOD__ICON;
+
+	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3192,6 +3381,15 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAPABILITY_PROVIDER_DOMAIN__ID = NAMED_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CAPABILITY_PROVIDER_DOMAIN__ICON = NAMED_ELEMENT__ICON;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -3365,6 +3563,15 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROVIDED_CAPABILITY__ID = NAMED_PERIOD__ID;
+
+	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PROVIDED_CAPABILITY__ICON = NAMED_PERIOD__ICON;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -3567,6 +3774,15 @@ public interface ProductmanagementPackage extends EPackage {
 	int EVIDENCE__ID = NAMED_PERIOD__ID;
 
 	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVIDENCE__ICON = NAMED_PERIOD__ICON;
+
+	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3694,6 +3910,15 @@ public interface ProductmanagementPackage extends EPackage {
 	int EVIDENCE_DOMAIN__ID = NAMED_ELEMENT__ID;
 
 	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int EVIDENCE_DOMAIN__ICON = NAMED_ELEMENT__ICON;
+
+	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3801,6 +4026,15 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int REQUIRED_CAPABILITY__ID = NAMED_PERIOD__ID;
+
+	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int REQUIRED_CAPABILITY__ICON = NAMED_PERIOD__ICON;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -3937,6 +4171,15 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int VERSION__ID = NAMED_PERIOD__ID;
+
+	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int VERSION__ICON = NAMED_PERIOD__ICON;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -4101,6 +4344,15 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int ROLE__ID = NAMED_PERIOD__ID;
+
+	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ROLE__ICON = NAMED_PERIOD__ICON;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -4367,6 +4619,15 @@ public interface ProductmanagementPackage extends EPackage {
 	int ACTOR__ID = NAMED_PERIOD__ID;
 
 	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR__ICON = NAMED_PERIOD__ICON;
+
+	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4492,6 +4753,15 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACTOR_DOMAIN__ID = NAMED_ELEMENT__ID;
+
+	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int ACTOR_DOMAIN__ICON = NAMED_ELEMENT__ICON;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -4792,6 +5062,17 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getModelElement();
+
+	/**
+	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.ModelElement#getIcon <em>Icon</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the attribute '<em>Icon</em>'.
+	 * @see org.nasdanika.models.productmanagement.ModelElement#getIcon()
+	 * @see #getModelElement()
+	 * @generated
+	 */
+	EAttribute getModelElement_Icon();
 
 	/**
 	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.ModelElement#getDocumentation <em>Documentation</em>}'.
@@ -5914,6 +6195,14 @@ public interface ProductmanagementPackage extends EPackage {
 		 * @generated
 		 */
 		EClass MODEL_ELEMENT = eINSTANCE.getModelElement();
+
+		/**
+		 * The meta object literal for the '<em><b>Icon</b></em>' attribute feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EAttribute MODEL_ELEMENT__ICON = eINSTANCE.getModelElement_Icon();
 
 		/**
 		 * The meta object literal for the '<em><b>Documentation</b></em>' attribute feature.

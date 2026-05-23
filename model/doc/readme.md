@@ -149,6 +149,29 @@ The payoff is that no central tool, no central admin, and no central database is
 The federation is in the artifacts themselves. 
 A consumer's view is whichever set of models they choose to import.
 
+### Persons and teams as capability providers
+
+A resume is, structurally, a list of capabilities with evidence: claims about what the person can do, grounded in projects, certifications, prior employment, and references.
+The format has converged on prose because resumes are read by humans who tolerate informality, but the underlying information has the same shape as a product management capability set.
+The same is true of team-level skill inventories, consulting practice descriptions, and contractor offerings - each is a "we can do X, here is the evidence" claim asserted with authority and validity.
+
+The model represents that information natively.
+A person or team is a capability provider; the capabilities they provide are their skills, technologies, methodologies, and prior outcomes; each carries evidence (projects, certifications, references) with its own provenance.
+The result is a resume a machine can reason over the same way it reasons over any other capability provider - and that can be referenced from the rest of the federation through the same mechanics any other citation uses.
+
+Two consequences follow that the prose-resume format cannot deliver. The first is that *implementation requirements travel with the capability*.
+A capability to author Xcore models requires the Eclipse IDE; a capability to operate a specific legacy system requires access to that system; a consulting practice's capability to deliver a particular methodology may require an on-site engagement model.
+The model carries these prerequisites as first-class structure, so a staffing decision is not made on the assumption that "knowing X" is sufficient when "knowing X with the tooling X requires" is what the work actually needs.
+Traditional resumes silently lose the tooling and context dependencies; the capability model surfaces them.
+
+The second is *federated discovery of niche expertise*. In any sufficiently large organization, the people who know the legacy systems, the unusual programming languages, the deprecated tools that still run production workloads are tribal knowledge - findable only by asking around.
+If their capabilities are published in the same federation that describes the organization's products, the niche expertise is discoverable by query rather than by social network.
+A team about to retire or modernize a system nobody has touched in a decade can ask the model for capability providers who have touched it or know the technologies it was built on; the answer is structural rather than political.
+
+The payoff is that the resume-and-staffing world and the product-management world stop being separate domains the organization maintains in incompatible formats.
+The same vocabulary that describes a software product describes the people who can build, operate, and replace it.
+Capability providers - organizations, teams, individuals - are uniform on the graph; matching needs to capabilities works the same way whether the capability comes from a vendor product or from a person.
+
 ### Accountability for promises and dependencies
 
 A platform team commits to providing a capability by a target time. 
@@ -274,6 +297,34 @@ In organizations where shared structural representation is absent, information a
 The model replaces opinion flow with structural reasoning. A candidate solution - whether surfaced through informal channels or proposed internally - is evaluated against the persona concerns it would address, the evidence supporting those concerns, the dependencies and prerequisites it carries, and the authority making each claim about it. "We should adopt X" becomes a query with an auditable answer rather than a social statement.
 
 The payoff is not that informal channels disappear - they will not, and should not - but that proposals reaching the decision point arrive there with their evidentiary basis attached. The trail from "we chose X" back to "because persona Y's concern Z is supported by capability X's claim W, asserted by authority V" is queryable. Choices made on weaker grounds remain visible as such, and the unspoken weight previously carried by who-said-it is rebalanced against what-can-be-shown.
+
+### Standardized proposal format across organizational boundaries
+
+A familiar pattern in enterprise procurement and partner onboarding: a proposer produces a deck or document, the receiving organization reads it, the receiver's team translates the document into their own internal evaluation format,
+and the translation step is where most of the work - and most of the information loss - happens.
+The document is shaped to the proposer's narrative; the receiver's framework is shaped to the receiver's concerns; the staff who do the translation absorb the impedance mismatch.
+Comparable proposals from different proposers arrive in incomparable shapes, and the comparison work begins with reshaping rather than with comparing.
+
+The model supports an alternative: the receiver stipulates that proposals be submitted as a product management model - personas, concerns, capabilities, evidence, dependencies, lifecycle state.
+The analogy is the resume-format requirement that some employers post: arriving in the requested format is what gets the proposal considered sooner, or considered at all.
+A receiver who has already articulated their own personas and concerns has, by virtue of that work, a graph to match incoming proposals against.
+The match is computable - which of the receiver's concerns the proposer's capabilities address, which are unaddressed, which of the proposer's capabilities address concerns the proposer did not realize the receiver had - AI-assisted in the first pass, validated by humans in the second.
+The last of these is often the most interesting case and the one a prose comparison is least likely to surface: a capability whose stated purpose differs from the use the receiver would actually put it to.
+
+The pattern works in both directions. A receiver may stipulate the format; alternatively, a proposer may publish its product management model at known Maven coordinates and let receivers pull it.
+Either side can flip the asymmetry - whoever moves first reduces the translation cost for everyone downstream.
+Partner relationships work the same way: large enterprises with many integration partners (a bank whose internal capabilities are tribal knowledge and whose partners spend months learning what is available is the canonical example)
+can publish a partner-facing model and let partners discover capabilities by querying it rather than by negotiating access through human gatekeepers.
+The model becomes the contract surface for the relationship - durable, citable, and amenable to AI-assisted navigation that human onboarding cannot match in throughput.
+
+The internal variant is even cleaner. An innovation program that accepts ideas as free-form documents pays the conversion cost on every submission.
+If the program stipulates capability format up front - "submit your proposal as a capability declaration referencing the persona and concern domains we already publish" - the submission federates directly into the portfolio model.
+A reference added to a domain YAML file is the entire intake step.
+Ideas reach the evaluation stage in the same shape as the capabilities they would join, removing the lossy translation that otherwise drops the most precise framing on the floor.
+
+The payoff is that organizational boundaries stop being shape-changing operations on the information that crosses them.
+A vendor proposal, a partner-onboarding submission, and an internal innovation idea all arrive on the same graph the rest of the model lives on.
+Comparison, matching, and federation are operations over a single structure rather than a sequence of human translations between incompatible formats.
 
 ### Symmetric evaluation of vendor and internal offerings
 
@@ -619,6 +670,7 @@ When you are ready to make the result durable - version-controlled, federated, c
 ### When you are ready to commit
 
 The path from sketch to durable model:
+
 
 1. **Capture the sketch in version control.** A Markdown file is enough to start. Identify which elements would become personas, concerns, capabilities, and providers if the sketch were expressed in the metamodel.
 2. **Author the elements as a small consuming model.** The metamodel is published to Maven; the consuming model declares it as a dependency. Sources can be YAML or JSON. In the future - Xtext-based DSL and Draw.io diagrams [mapped](https://docs.nasdanika.org/core/mapping/index.html) to the product management model.

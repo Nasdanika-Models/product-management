@@ -107,6 +107,7 @@ public class TestProductManagement {
 
 		// Capability: automated data aggregation - addresses the need
 		Capability capability = factory.createCapability();
+		capability.setIcon("fas fa-wrench");
 		capability.setId("automated-data-aggregation");
 		capability.setName("Automated Data Aggregation");
 		capability.setDocumentation("Provides access to automated data aggregation tools");
