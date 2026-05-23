@@ -4,8 +4,6 @@ package org.nasdanika.models.productmanagement;
 
 import org.eclipse.emf.common.util.EList;
 
-import org.eclipse.emf.ecore.EObject;
-
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Model Element</b></em>'.
@@ -19,7 +17,6 @@ import org.eclipse.emf.ecore.EObject;
  *   <li>{@link org.nasdanika.models.productmanagement.ModelElement#getDocRef <em>Doc Ref</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.ModelElement#getDocFormat <em>Doc Format</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.ModelElement#getUris <em>Uris</em>}</li>
- *   <li>{@link org.nasdanika.models.productmanagement.ModelElement#getFasets <em>Fasets</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getModelElement()
@@ -123,23 +120,5 @@ public interface ModelElement extends StringIdentity {
 	 * @generated
 	 */
 	EList<String> getUris();
-
-	/**
-	 * Returns the value of the '<em><b>Fasets</b></em>' containment reference list.
-	 * The list contents are of type {@link org.eclipse.emf.ecore.EObject}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * *
-	 * Extension-specific configuration associated with a model element.
-	 * For example, geometry and color for a diagram facet,
-	 * Weight for a prioritization facet.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Fasets</em>' containment reference list.
-	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getModelElement_Fasets()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<EObject> getFasets();
 
 } // ModelElement

@@ -645,16 +645,6 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	 * @generated
 	 */
 	@Override
-	public EReference getModelElement_Fasets() {
-		return (EReference)modelElementEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getNamedElement() {
 		return namedElementEClass;
 	}
@@ -1572,7 +1562,6 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		createEAttribute(modelElementEClass, MODEL_ELEMENT__DOC_REF);
 		createEAttribute(modelElementEClass, MODEL_ELEMENT__DOC_FORMAT);
 		createEAttribute(modelElementEClass, MODEL_ELEMENT__URIS);
-		createEReference(modelElementEClass, MODEL_ELEMENT__FASETS);
 
 		namedElementEClass = createEClass(NAMED_ELEMENT);
 		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
@@ -1822,7 +1811,6 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		initEAttribute(getModelElement_DocRef(), theEcorePackage.getEString(), "docRef", null, 0, 1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getModelElement_DocFormat(), theEcorePackage.getEString(), "docFormat", null, 0, 1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEAttribute(getModelElement_Uris(), theEcorePackage.getEString(), "uris", null, 0, -1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getModelElement_Fasets(), theEcorePackage.getEObject(), null, "fasets", null, 0, -1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getNamedElement_Name(), theEcorePackage.getEString(), "name", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -2037,12 +2025,6 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		   source,
 		   new String[] {
 			   "documentation", "*\nAlias URIs resolved relative to the parent URIs - can be absolute or opaque - global references.\nFor example: actors://john-smith.\nFor domains URIs can be used as anchors to merge domains from different sources.\nFor example, several teams may maintain capability domains with URI myorg://capabilities/developer-productivity\nWhen these definitions are assembled into the organization\'s product management model to generate documentation\nall of these domains are merged into a single logical domain."
-		   });
-		addAnnotation
-		  (getModelElement_Fasets(),
-		   source,
-		   new String[] {
-			   "documentation", "*\nExtension-specific configuration associated with a model element.\nFor example, geometry and color for a diagram facet,\nWeight for a prioritization facet."
 		   });
 		addAnnotation
 		  (getPersonaDomain__ResolvePersonaReference__AbstractPersona(),

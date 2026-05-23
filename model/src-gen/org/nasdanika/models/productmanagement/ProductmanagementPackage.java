@@ -346,22 +346,13 @@ public interface ProductmanagementPackage extends EPackage {
 	int MODEL_ELEMENT__URIS = STRING_IDENTITY_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int MODEL_ELEMENT__FASETS = STRING_IDENTITY_FEATURE_COUNT + 4;
-
-	/**
 	 * The number of structural features of the '<em>Model Element</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int MODEL_ELEMENT_FEATURE_COUNT = STRING_IDENTITY_FEATURE_COUNT + 5;
+	int MODEL_ELEMENT_FEATURE_COUNT = STRING_IDENTITY_FEATURE_COUNT + 4;
 
 	/**
 	 * The operation id for the '<em>Collect</em>' operation.
@@ -444,15 +435,6 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int NAMED_ELEMENT__URIS = MODEL_ELEMENT__URIS;
-
-	/**
-	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NAMED_ELEMENT__FASETS = MODEL_ELEMENT__FASETS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -553,15 +535,6 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int NAMED_PERIOD__URIS = NAMED_ELEMENT__URIS;
-
-	/**
-	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NAMED_PERIOD__FASETS = NAMED_ELEMENT__FASETS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -689,15 +662,6 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int PRODUCT_MODEL__URIS = NAMED_PERIOD__URIS;
-
-	/**
-	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PRODUCT_MODEL__FASETS = NAMED_PERIOD__FASETS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -899,15 +863,6 @@ public interface ProductmanagementPackage extends EPackage {
 	int ABSTRACT_PERSONA__URIS = MODEL_ELEMENT__URIS;
 
 	/**
-	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_PERSONA__FASETS = MODEL_ELEMENT__FASETS;
-
-	/**
 	 * The number of structural features of the '<em>Abstract Persona</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -997,15 +952,6 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int PERSONA__URIS = NAMED_PERIOD__URIS;
-
-	/**
-	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PERSONA__FASETS = NAMED_PERIOD__FASETS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1162,15 +1108,6 @@ public interface ProductmanagementPackage extends EPackage {
 	int PERSONA_DOMAIN__URIS = NAMED_ELEMENT__URIS;
 
 	/**
-	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PERSONA_DOMAIN__FASETS = NAMED_ELEMENT__FASETS;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1298,15 +1235,6 @@ public interface ProductmanagementPackage extends EPackage {
 	int PERSONA_REFERENCE__URIS = ABSTRACT_PERSONA__URIS;
 
 	/**
-	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PERSONA_REFERENCE__FASETS = ABSTRACT_PERSONA__FASETS;
-
-	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1407,15 +1335,6 @@ public interface ProductmanagementPackage extends EPackage {
 	int ABSTRACT_CONCERN__URIS = MODEL_ELEMENT__URIS;
 
 	/**
-	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_CONCERN__FASETS = MODEL_ELEMENT__FASETS;
-
-	/**
 	 * The number of structural features of the '<em>Abstract Concern</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1505,15 +1424,6 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONCERN__URIS = NAMED_PERIOD__URIS;
-
-	/**
-	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONCERN__FASETS = NAMED_PERIOD__FASETS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1661,15 +1571,6 @@ public interface ProductmanagementPackage extends EPackage {
 	int CONCERN_REFERENCE__URIS = ABSTRACT_CONCERN__URIS;
 
 	/**
-	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONCERN_REFERENCE__FASETS = ABSTRACT_CONCERN__FASETS;
-
-	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -1768,15 +1669,6 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int CONCERN_DOMAIN__URIS = ABSTRACT_CONCERN__URIS;
-
-	/**
-	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CONCERN_DOMAIN__FASETS = ABSTRACT_CONCERN__FASETS;
 
 	/**
 	 * The feature id for the '<em><b>Concerns</b></em>' containment reference list.
@@ -1895,15 +1787,6 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int GOAL__URIS = CONCERN__URIS;
-
-	/**
-	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int GOAL__FASETS = CONCERN__FASETS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2087,15 +1970,6 @@ public interface ProductmanagementPackage extends EPackage {
 	int NEED__URIS = CONCERN__URIS;
 
 	/**
-	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int NEED__FASETS = CONCERN__FASETS;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2275,15 +2149,6 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int PAIN_POINT__URIS = CONCERN__URIS;
-
-	/**
-	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PAIN_POINT__FASETS = CONCERN__FASETS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2467,15 +2332,6 @@ public interface ProductmanagementPackage extends EPackage {
 	int ABSTRACT_CAPABILITY__URIS = MODEL_ELEMENT__URIS;
 
 	/**
-	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ABSTRACT_CAPABILITY__FASETS = MODEL_ELEMENT__FASETS;
-
-	/**
 	 * The number of structural features of the '<em>Abstract Capability</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2565,15 +2421,6 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAPABILITY__URIS = NAMED_PERIOD__URIS;
-
-	/**
-	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CAPABILITY__FASETS = NAMED_PERIOD__FASETS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -2820,15 +2667,6 @@ public interface ProductmanagementPackage extends EPackage {
 	int CAPABILITY_REFERENCE__URIS = MODEL_ELEMENT__URIS;
 
 	/**
-	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CAPABILITY_REFERENCE__FASETS = MODEL_ELEMENT__FASETS;
-
-	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2927,15 +2765,6 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAPABILITY_DOMAIN__URIS = NAMED_ELEMENT__URIS;
-
-	/**
-	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CAPABILITY_DOMAIN__FASETS = NAMED_ELEMENT__FASETS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3063,15 +2892,6 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAPABILITY_DEPENDENCY__URIS = CAPABILITY_REFERENCE__URIS;
-
-	/**
-	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CAPABILITY_DEPENDENCY__FASETS = CAPABILITY_REFERENCE__FASETS;
 
 	/**
 	 * The feature id for the '<em><b>Target</b></em>' reference.
@@ -3247,15 +3067,6 @@ public interface ProductmanagementPackage extends EPackage {
 	int CAPABILITY_PROVIDER__URIS = NAMED_PERIOD__URIS;
 
 	/**
-	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CAPABILITY_PROVIDER__FASETS = NAMED_PERIOD__FASETS;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3408,15 +3219,6 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int CAPABILITY_PROVIDER_DOMAIN__URIS = NAMED_ELEMENT__URIS;
-
-	/**
-	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CAPABILITY_PROVIDER_DOMAIN__FASETS = NAMED_ELEMENT__FASETS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3590,15 +3392,6 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int PROVIDED_CAPABILITY__URIS = NAMED_PERIOD__URIS;
-
-	/**
-	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int PROVIDED_CAPABILITY__FASETS = NAMED_PERIOD__FASETS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -3801,15 +3594,6 @@ public interface ProductmanagementPackage extends EPackage {
 	int EVIDENCE__URIS = NAMED_PERIOD__URIS;
 
 	/**
-	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVIDENCE__FASETS = NAMED_PERIOD__FASETS;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -3937,15 +3721,6 @@ public interface ProductmanagementPackage extends EPackage {
 	int EVIDENCE_DOMAIN__URIS = NAMED_ELEMENT__URIS;
 
 	/**
-	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int EVIDENCE_DOMAIN__FASETS = NAMED_ELEMENT__FASETS;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4053,15 +3828,6 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int REQUIRED_CAPABILITY__URIS = NAMED_PERIOD__URIS;
-
-	/**
-	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int REQUIRED_CAPABILITY__FASETS = NAMED_PERIOD__FASETS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4198,15 +3964,6 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int VERSION__URIS = NAMED_PERIOD__URIS;
-
-	/**
-	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int VERSION__FASETS = NAMED_PERIOD__FASETS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4371,15 +4128,6 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int ROLE__URIS = NAMED_PERIOD__URIS;
-
-	/**
-	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ROLE__FASETS = NAMED_PERIOD__FASETS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -4646,15 +4394,6 @@ public interface ProductmanagementPackage extends EPackage {
 	int ACTOR__URIS = NAMED_PERIOD__URIS;
 
 	/**
-	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR__FASETS = NAMED_PERIOD__FASETS;
-
-	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -4780,15 +4519,6 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int ACTOR_DOMAIN__URIS = NAMED_ELEMENT__URIS;
-
-	/**
-	 * The feature id for the '<em><b>Fasets</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int ACTOR_DOMAIN__FASETS = NAMED_ELEMENT__FASETS;
 
 	/**
 	 * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -5097,17 +4827,6 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getModelElement_Uris();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.ModelElement#getFasets <em>Fasets</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Fasets</em>'.
-	 * @see org.nasdanika.models.productmanagement.ModelElement#getFasets()
-	 * @see #getModelElement()
-	 * @generated
-	 */
-	EReference getModelElement_Fasets();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.NamedElement <em>Named Element</em>}'.
@@ -6218,14 +5937,6 @@ public interface ProductmanagementPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute MODEL_ELEMENT__URIS = eINSTANCE.getModelElement_Uris();
-
-		/**
-		 * The meta object literal for the '<em><b>Fasets</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference MODEL_ELEMENT__FASETS = eINSTANCE.getModelElement_Fasets();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.NamedElementImpl <em>Named Element</em>}' class.

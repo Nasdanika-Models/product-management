@@ -6,7 +6,6 @@ import java.lang.reflect.InvocationTargetException;
 
 import java.util.Collection;
 
-import org.eclipse.emf.common.notify.NotificationChain;
 import org.eclipse.emf.common.notify.Notifier;
 
 import org.eclipse.emf.common.util.BasicEList;
@@ -16,14 +15,11 @@ import org.eclipse.emf.common.util.TreeIterator;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.EReference;
-import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
 
 import org.eclipse.emf.ecore.resource.Resource;
 import org.eclipse.emf.ecore.resource.ResourceSet;
-
-import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.nasdanika.models.productmanagement.ModelElement;
 import org.nasdanika.models.productmanagement.ProductmanagementPackage;
@@ -41,7 +37,6 @@ import org.nasdanika.models.productmanagement.ProductmanagementPackage;
  *   <li>{@link org.nasdanika.models.productmanagement.impl.ModelElementImpl#getDocRef <em>Doc Ref</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.ModelElementImpl#getDocFormat <em>Doc Format</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.ModelElementImpl#getUris <em>Uris</em>}</li>
- *   <li>{@link org.nasdanika.models.productmanagement.impl.ModelElementImpl#getFasets <em>Fasets</em>}</li>
  * </ul>
  *
  * @generated
@@ -212,17 +207,6 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public EList<EObject> getFasets() {
-		return (EList<EObject>)eDynamicGet(ProductmanagementPackage.MODEL_ELEMENT__FASETS, ProductmanagementPackage.Literals.MODEL_ELEMENT__FASETS, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public void collect(final Object source, final EReference eReference, final EList<EObject> accumulator) {
 		boolean _isInstance = eReference.getEContainingClass().isInstance(source);
@@ -289,20 +273,6 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 	 * @generated
 	 */
 	@Override
-	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
-		switch (featureID) {
-			case ProductmanagementPackage.MODEL_ELEMENT__FASETS:
-				return ((InternalEList<?>)getFasets()).basicRemove(otherEnd, msgs);
-		}
-		return super.eInverseRemove(otherEnd, featureID, msgs);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
 			case ProductmanagementPackage.MODEL_ELEMENT__ID:
@@ -315,8 +285,6 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 				return getDocFormat();
 			case ProductmanagementPackage.MODEL_ELEMENT__URIS:
 				return getUris();
-			case ProductmanagementPackage.MODEL_ELEMENT__FASETS:
-				return getFasets();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -346,10 +314,6 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 				getUris().clear();
 				getUris().addAll((Collection<? extends String>)newValue);
 				return;
-			case ProductmanagementPackage.MODEL_ELEMENT__FASETS:
-				getFasets().clear();
-				getFasets().addAll((Collection<? extends EObject>)newValue);
-				return;
 		}
 		super.eSet(featureID, newValue);
 	}
@@ -377,9 +341,6 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 			case ProductmanagementPackage.MODEL_ELEMENT__URIS:
 				getUris().clear();
 				return;
-			case ProductmanagementPackage.MODEL_ELEMENT__FASETS:
-				getFasets().clear();
-				return;
 		}
 		super.eUnset(featureID);
 	}
@@ -402,8 +363,6 @@ public abstract class ModelElementImpl extends MinimalEObjectImpl.Container impl
 				return DOC_FORMAT_EDEFAULT == null ? getDocFormat() != null : !DOC_FORMAT_EDEFAULT.equals(getDocFormat());
 			case ProductmanagementPackage.MODEL_ELEMENT__URIS:
 				return !getUris().isEmpty();
-			case ProductmanagementPackage.MODEL_ELEMENT__FASETS:
-				return !getFasets().isEmpty();
 		}
 		return super.eIsSet(featureID);
 	}

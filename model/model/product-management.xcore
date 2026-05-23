@@ -134,7 +134,7 @@ abstract class ModelElement extends StringIdentity {
      * For example, geometry and color for a diagram facet,
      * Weight for a prioritization facet.
      */
-    contains EObject[] fasets
+    // contains EObject[] facets
 
 }
 
