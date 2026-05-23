@@ -1632,7 +1632,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCERN_DOMAIN__ID = ABSTRACT_CONCERN__ID;
+	int CONCERN_DOMAIN__ID = NAMED_ELEMENT__ID;
 
 	/**
 	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
@@ -1641,7 +1641,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCERN_DOMAIN__DOCUMENTATION = ABSTRACT_CONCERN__DOCUMENTATION;
+	int CONCERN_DOMAIN__DOCUMENTATION = NAMED_ELEMENT__DOCUMENTATION;
 
 	/**
 	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
@@ -1650,7 +1650,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCERN_DOMAIN__DOC_REF = ABSTRACT_CONCERN__DOC_REF;
+	int CONCERN_DOMAIN__DOC_REF = NAMED_ELEMENT__DOC_REF;
 
 	/**
 	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
@@ -1659,7 +1659,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCERN_DOMAIN__DOC_FORMAT = ABSTRACT_CONCERN__DOC_FORMAT;
+	int CONCERN_DOMAIN__DOC_FORMAT = NAMED_ELEMENT__DOC_FORMAT;
 
 	/**
 	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
@@ -1668,7 +1668,16 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCERN_DOMAIN__URIS = ABSTRACT_CONCERN__URIS;
+	int CONCERN_DOMAIN__URIS = NAMED_ELEMENT__URIS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN_DOMAIN__NAME = NAMED_ELEMENT__NAME;
 
 	/**
 	 * The feature id for the '<em><b>Concerns</b></em>' containment reference list.
@@ -1677,7 +1686,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCERN_DOMAIN__CONCERNS = ABSTRACT_CONCERN_FEATURE_COUNT + 0;
+	int CONCERN_DOMAIN__CONCERNS = NAMED_ELEMENT_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>Resolved Concerns</b></em>' reference list.
@@ -1686,7 +1695,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCERN_DOMAIN__RESOLVED_CONCERNS = ABSTRACT_CONCERN_FEATURE_COUNT + 1;
+	int CONCERN_DOMAIN__RESOLVED_CONCERNS = NAMED_ELEMENT_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Concern Domain</em>' class.
@@ -1695,7 +1704,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCERN_DOMAIN_FEATURE_COUNT = ABSTRACT_CONCERN_FEATURE_COUNT + 2;
+	int CONCERN_DOMAIN_FEATURE_COUNT = NAMED_ELEMENT_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Collect</em>' operation.
@@ -1704,7 +1713,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCERN_DOMAIN___COLLECT__OBJECT_EREFERENCE_ELIST = ABSTRACT_CONCERN___COLLECT__OBJECT_EREFERENCE_ELIST;
+	int CONCERN_DOMAIN___COLLECT__OBJECT_EREFERENCE_ELIST = NAMED_ELEMENT___COLLECT__OBJECT_EREFERENCE_ELIST;
 
 	/**
 	 * The operation id for the '<em>Get Referrers</em>' operation.
@@ -1713,7 +1722,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCERN_DOMAIN___GET_REFERRERS__EREFERENCE = ABSTRACT_CONCERN___GET_REFERRERS__EREFERENCE;
+	int CONCERN_DOMAIN___GET_REFERRERS__EREFERENCE = NAMED_ELEMENT___GET_REFERRERS__EREFERENCE;
 
 	/**
 	 * The operation id for the '<em>Resolve Concern Reference</em>' operation.
@@ -1722,7 +1731,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCERN_DOMAIN___RESOLVE_CONCERN_REFERENCE__ABSTRACTCONCERN = ABSTRACT_CONCERN_OPERATION_COUNT + 0;
+	int CONCERN_DOMAIN___RESOLVE_CONCERN_REFERENCE__ABSTRACTCONCERN = NAMED_ELEMENT_OPERATION_COUNT + 0;
 
 	/**
 	 * The number of operations of the '<em>Concern Domain</em>' class.
@@ -1731,7 +1740,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CONCERN_DOMAIN_OPERATION_COUNT = ABSTRACT_CONCERN_OPERATION_COUNT + 1;
+	int CONCERN_DOMAIN_OPERATION_COUNT = NAMED_ELEMENT_OPERATION_COUNT + 1;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.GoalImpl <em>Goal</em>}' class.

@@ -18,13 +18,16 @@ import org.nasdanika.models.app.AppFactory;
 import org.nasdanika.models.app.Label;
 import org.nasdanika.models.app.graph.WidgetFactory;
 import org.nasdanika.models.productmanagement.Capability;
+import org.nasdanika.models.productmanagement.CapabilityDomain;
 import org.nasdanika.models.productmanagement.CapabilityReference;
 import org.nasdanika.models.productmanagement.Concern;
+import org.nasdanika.models.productmanagement.ConcernDomain;
 import org.nasdanika.models.productmanagement.ConcernReference;
 import org.nasdanika.models.productmanagement.Goal;
 import org.nasdanika.models.productmanagement.Need;
 import org.nasdanika.models.productmanagement.PainPoint;
 import org.nasdanika.models.productmanagement.Persona;
+import org.nasdanika.models.productmanagement.PersonaDomain;
 import org.nasdanika.models.productmanagement.PersonaReference;
 import org.nasdanika.models.productmanagement.ProductModel;
 import org.nasdanika.ncore.util.NcoreUtil;
@@ -177,7 +180,8 @@ public class ProductManagementNodeProcessorFactory {
 	return new PersonaReferenceNodeProcessor(
 			config, 
 			context, 
-			getPrototypeProvider(config));
+			getPrototypeProvider(config), 
+			documentationFactories);
 	}
 		
 	@EObjectNodeProcessor(type = ConcernReference.class)
@@ -190,7 +194,8 @@ public class ProductManagementNodeProcessorFactory {
 	return new ConcernReferenceNodeProcessor(
 			config, 
 			context, 
-			getPrototypeProvider(config));
+			getPrototypeProvider(config), 
+			documentationFactories);
 	}
 		
 	@EObjectNodeProcessor(type = CapabilityReference.class)
@@ -203,44 +208,50 @@ public class ProductManagementNodeProcessorFactory {
 	return new CapabilityReferenceNodeProcessor(
 			config, 
 			context, 
-			getPrototypeProvider(config));
+			getPrototypeProvider(config), 
+			documentationFactories);
 	}
 	
+	@EObjectNodeProcessor(type = CapabilityDomain.class)
+	public Object createCapabilityDomainNodeProcessor(
+		NodeProcessorConfig<WidgetFactory, WidgetFactory, Object> config, 
+		boolean parallel, 
+		BiConsumer<Element,BiConsumer<ProcessorInfo<WidgetFactory, WidgetFactory, Object, Object>,ProgressMonitor>> infoProvider,
+		ProgressMonitor progressMonitor) {
 	
-//	AbstractActor.java
-//	AbstractCapability.java
-//	AbstractCapabilityProvider.java
-//	AbstractConcern.java
-//	AbstractEvidence.java
-//	AbstractPersona.java
-//	Actor.java
-//	ActorDomain.java
-//	AddressedConcerns.java
-//	BlockedGoals.java
-//	Capability.java
-//	CapabilityDependency.java
-//	CapabilityProvider.java
-//	CapabilityProviderDomain.java
-//	CapabilityProviderReference.java
-//	DependencyKind.java
-//	Evidence.java
-//	EvidenceDomain.java
-//	Lifecycle.java
-//	ModelElement.java
-//	NamedElement.java
-//	NamedPeriod.java
-//	Need.java
-//	PainPoint.java
-//	Period.java
-//	ProvidedCapability.java
-//	RequiredCapability.java
-//	Role.java
-//	RoleAssignment.java
-//	StringIdentity.java
-//	SupportedGoals.java
-//	Temporal.java
-//	Undergoer.java
-//	Version.java
-//	ViolatedNeeds.java	
+		return new CapabilityDomainNodeProcessor(
+				config, 
+				context, 
+				getPrototypeProvider(config), 
+				documentationFactories);
+	}
+		
+	@EObjectNodeProcessor(type = ConcernDomain.class)
+	public Object createConcernDomainNodeProcessor(
+		NodeProcessorConfig<WidgetFactory, WidgetFactory, Object> config, 
+		boolean parallel, 
+		BiConsumer<Element,BiConsumer<ProcessorInfo<WidgetFactory, WidgetFactory, Object, Object>,ProgressMonitor>> infoProvider,
+		ProgressMonitor progressMonitor) {
+	
+		return new ConcernDomainNodeProcessor(
+				config, 
+				context, 
+				getPrototypeProvider(config), 
+				documentationFactories);
+	}
+	
+	@EObjectNodeProcessor(type = PersonaDomain.class)
+	public Object createPersonaDomainNodeProcessor(
+		NodeProcessorConfig<WidgetFactory, WidgetFactory, Object> config, 
+		boolean parallel, 
+		BiConsumer<Element,BiConsumer<ProcessorInfo<WidgetFactory, WidgetFactory, Object, Object>,ProgressMonitor>> infoProvider,
+		ProgressMonitor progressMonitor) {
+	
+		return new PersonaDomainNodeProcessor(
+			config, 
+			context, 
+			getPrototypeProvider(config), 
+			documentationFactories);
+	}		
 	
 }

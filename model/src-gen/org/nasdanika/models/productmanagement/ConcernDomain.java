@@ -21,7 +21,7 @@ import org.eclipse.emf.common.util.EList;
  * @model
  * @generated
  */
-public interface ConcernDomain extends AbstractConcern {
+public interface ConcernDomain extends NamedElement, AbstractConcern {
 	/**
 	 * Returns the value of the '<em><b>Concerns</b></em>' containment reference list.
 	 * The list contents are of type {@link org.nasdanika.models.productmanagement.AbstractConcern}.

@@ -1742,6 +1742,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		concernEClass.getESuperTypes().add(this.getNamedPeriod());
 		concernEClass.getESuperTypes().add(this.getAbstractConcern());
 		concernReferenceEClass.getESuperTypes().add(this.getAbstractConcern());
+		concernDomainEClass.getESuperTypes().add(this.getNamedElement());
 		concernDomainEClass.getESuperTypes().add(this.getAbstractConcern());
 		goalEClass.getESuperTypes().add(this.getConcern());
 		needEClass.getESuperTypes().add(this.getConcern());

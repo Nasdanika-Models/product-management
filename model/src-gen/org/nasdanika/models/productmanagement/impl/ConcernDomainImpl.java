@@ -36,7 +36,7 @@ import org.nasdanika.models.productmanagement.ProductmanagementPackage;
  *
  * @generated
  */
-public class ConcernDomainImpl extends ModelElementImpl implements ConcernDomain {
+public class ConcernDomainImpl extends NamedElementImpl implements ConcernDomain {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

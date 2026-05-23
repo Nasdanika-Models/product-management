@@ -219,6 +219,7 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 			case ProductmanagementPackage.CONCERN_DOMAIN: {
 				ConcernDomain concernDomain = (ConcernDomain)theEObject;
 				T result = caseConcernDomain(concernDomain);
+				if (result == null) result = caseNamedElement(concernDomain);
 				if (result == null) result = caseAbstractConcern(concernDomain);
 				if (result == null) result = caseModelElement(concernDomain);
 				if (result == null) result = caseStringIdentity(concernDomain);

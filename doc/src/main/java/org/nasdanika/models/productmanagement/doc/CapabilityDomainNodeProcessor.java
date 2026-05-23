@@ -9,11 +9,11 @@ import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.graph.processor.NodeProcessorConfig;
 import org.nasdanika.models.app.Action;
 import org.nasdanika.models.app.graph.WidgetFactory;
-import org.nasdanika.models.productmanagement.PersonaReference;
+import org.nasdanika.models.productmanagement.CapabilityDomain;
 
-public class PersonaReferenceNodeProcessor extends ModelElementNodeProcessor<PersonaReference> { 
+public class CapabilityDomainNodeProcessor extends NamedElementNodeProcessor<CapabilityDomain> implements CapabilityDomainMixIn<CapabilityDomain> { 
 
-	public PersonaReferenceNodeProcessor(
+	public CapabilityDomainNodeProcessor(
 		NodeProcessorConfig<WidgetFactory, WidgetFactory, Object> config, 
 		Context context,
 		java.util.function.BiFunction<EObject, ProgressMonitor, Action> prototypeProvider,
