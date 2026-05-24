@@ -1185,7 +1185,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	 * @generated
 	 */
 	@Override
-	public EAttribute getCapabilityDependency_Optional() {
+	public EAttribute getCapabilityDependency_Qualifier() {
 		return (EAttribute)capabilityDependencyEClass.getEStructuralFeatures().get(1);
 	}
 
@@ -1645,7 +1645,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 
 		capabilityDependencyEClass = createEClass(CAPABILITY_DEPENDENCY);
 		createEAttribute(capabilityDependencyEClass, CAPABILITY_DEPENDENCY__KIND);
-		createEAttribute(capabilityDependencyEClass, CAPABILITY_DEPENDENCY__OPTIONAL);
+		createEAttribute(capabilityDependencyEClass, CAPABILITY_DEPENDENCY__QUALIFIER);
 
 		abstractCapabilityProviderEClass = createEClass(ABSTRACT_CAPABILITY_PROVIDER);
 
@@ -1909,7 +1909,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 
 		initEClass(capabilityDependencyEClass, CapabilityDependency.class, "CapabilityDependency", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEAttribute(getCapabilityDependency_Kind(), this.getDependencyKind(), "kind", null, 0, 1, CapabilityDependency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCapabilityDependency_Optional(), theEcorePackage.getEBoolean(), "optional", null, 0, 1, CapabilityDependency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEAttribute(getCapabilityDependency_Qualifier(), theEcorePackage.getEString(), "qualifier", null, 0, 1, CapabilityDependency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(abstractCapabilityProviderEClass, AbstractCapabilityProvider.class, "AbstractCapabilityProvider", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -1969,9 +1969,10 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		addEEnumLiteral(lifecycleEEnum, Lifecycle.RETIRED);
 
 		initEEnum(dependencyKindEEnum, DependencyKind.class, "DependencyKind");
-		addEEnumLiteral(dependencyKindEEnum, DependencyKind.PREREQUISITE);
+		addEEnumLiteral(dependencyKindEEnum, DependencyKind.REQUIRES);
 		addEEnumLiteral(dependencyKindEEnum, DependencyKind.ENHANCES);
 		addEEnumLiteral(dependencyKindEEnum, DependencyKind.CONFLICTS);
+		addEEnumLiteral(dependencyKindEEnum, DependencyKind.CUSTOM);
 
 		// Initialize data types
 		initEDataType(instantEDataType, Instant.class, "Instant", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
@@ -2191,6 +2192,42 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		   source,
 		   new String[] {
 			   "get", "<%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractCapability%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractCapability%>> result = new <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractCapability%>>();\n\t<%org.eclipse.emf.common.util.EList%><<%org.nasdanika.models.productmanagement.AbstractCapability%>> _capabilities = this.getCapabilities();\n\tfor (final <%org.nasdanika.models.productmanagement.AbstractCapability%> capability : _capabilities)\n\t{\n\t\t{\n\t\t\tfinal <%org.nasdanika.models.productmanagement.AbstractCapability%> resolved = this.resolveCapabilityReference(capability);\n\t\t\tif ((resolved != null))\n\t\t\t{\n\t\t\t\tresult.add(resolved);\n\t\t\t}\n\t\t}\n\t}\n\t_xblockexpression = result;\n}\nreturn _xblockexpression;"
+		   });
+		addAnnotation
+		  (getCapabilityDependency_Qualifier(),
+		   source,
+		   new String[] {
+			   "documentation", "*\nQualifier for the dependency kind, e.g. CUSTOM kind"
+		   });
+		addAnnotation
+		  (dependencyKindEEnum,
+		   source,
+		   new String[] {
+			   "documentation", "*\nBuilt-in dependency types"
+		   });
+		addAnnotation
+		  (dependencyKindEEnum.getELiterals().get(0),
+		   source,
+		   new String[] {
+			   "documentation", "*\nI cannot function without this"
+		   });
+		addAnnotation
+		  (dependencyKindEEnum.getELiterals().get(1),
+		   source,
+		   new String[] {
+			   "documentation", "*\nI work better when this is also present"
+		   });
+		addAnnotation
+		  (dependencyKindEEnum.getELiterals().get(2),
+		   source,
+		   new String[] {
+			   "documentation", "*\nI cannot coexist with this"
+		   });
+		addAnnotation
+		  (dependencyKindEEnum.getELiterals().get(3),
+		   source,
+		   new String[] {
+			   "documentation", "*\nCustom dependency type"
 		   });
 		addAnnotation
 		  (evidenceEClass,

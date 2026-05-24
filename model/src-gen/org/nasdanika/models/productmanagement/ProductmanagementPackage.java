@@ -3101,13 +3101,13 @@ public interface ProductmanagementPackage extends EPackage {
 	int CAPABILITY_DEPENDENCY__KIND = CAPABILITY_REFERENCE_FEATURE_COUNT + 0;
 
 	/**
-	 * The feature id for the '<em><b>Optional</b></em>' attribute.
+	 * The feature id for the '<em><b>Qualifier</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_DEPENDENCY__OPTIONAL = CAPABILITY_REFERENCE_FEATURE_COUNT + 1;
+	int CAPABILITY_DEPENDENCY__QUALIFIER = CAPABILITY_REFERENCE_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Capability Dependency</em>' class.
@@ -5680,15 +5680,15 @@ public interface ProductmanagementPackage extends EPackage {
 	EAttribute getCapabilityDependency_Kind();
 
 	/**
-	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.CapabilityDependency#isOptional <em>Optional</em>}'.
+	 * Returns the meta object for the attribute '{@link org.nasdanika.models.productmanagement.CapabilityDependency#getQualifier <em>Qualifier</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the attribute '<em>Optional</em>'.
-	 * @see org.nasdanika.models.productmanagement.CapabilityDependency#isOptional()
+	 * @return the meta object for the attribute '<em>Qualifier</em>'.
+	 * @see org.nasdanika.models.productmanagement.CapabilityDependency#getQualifier()
 	 * @see #getCapabilityDependency()
 	 * @generated
 	 */
-	EAttribute getCapabilityDependency_Optional();
+	EAttribute getCapabilityDependency_Qualifier();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.AbstractCapabilityProvider <em>Abstract Capability Provider</em>}'.
@@ -6699,12 +6699,12 @@ public interface ProductmanagementPackage extends EPackage {
 		EAttribute CAPABILITY_DEPENDENCY__KIND = eINSTANCE.getCapabilityDependency_Kind();
 
 		/**
-		 * The meta object literal for the '<em><b>Optional</b></em>' attribute feature.
+		 * The meta object literal for the '<em><b>Qualifier</b></em>' attribute feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
 		 */
-		EAttribute CAPABILITY_DEPENDENCY__OPTIONAL = eINSTANCE.getCapabilityDependency_Optional();
+		EAttribute CAPABILITY_DEPENDENCY__QUALIFIER = eINSTANCE.getCapabilityDependency_Qualifier();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.AbstractCapabilityProvider <em>Abstract Capability Provider</em>}' class.

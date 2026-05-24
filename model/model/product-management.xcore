@@ -564,15 +564,40 @@ class CapabilityDomain extends NamedElement, AbstractCapability {
 
 class CapabilityDependency extends CapabilityReference {
     
-    DependencyKind kind  // PREREQUISITE, ENHANCES, CONFLICTS_WITH
-    boolean optional
+    DependencyKind kind  // REQUIRES, ENHANCES, CONFLICTS, CUSTOM
+    
+    /**
+     * Qualifier for the dependency kind, e.g. CUSTOM kind
+     */
+    String qualifier
     
 }
 
+/**
+ * Built-in dependency types
+ */
 enum DependencyKind {
-    PREREQUISITE  // I cannot function without this
-    ENHANCES      // I work better when this is also present
-    CONFLICTS     // I cannot coexist with this
+    
+    /**
+     * I cannot function without this
+     */
+    REQUIRES  
+    
+    /**
+     * I work better when this is also present
+     */
+    ENHANCES      
+    
+    /**
+     * I cannot coexist with this
+     */
+    CONFLICTS
+    
+    /**
+     * Custom dependency type
+     */
+    CUSTOM       
+      
 }
 
 // --- Capability Providers ---

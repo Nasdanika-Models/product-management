@@ -17,7 +17,7 @@ import org.nasdanika.models.productmanagement.ProductmanagementPackage;
  * </p>
  * <ul>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityDependencyImpl#getKind <em>Kind</em>}</li>
- *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityDependencyImpl#isOptional <em>Optional</em>}</li>
+ *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityDependencyImpl#getQualifier <em>Qualifier</em>}</li>
  * </ul>
  *
  * @generated
@@ -31,17 +31,17 @@ public class CapabilityDependencyImpl extends CapabilityReferenceImpl implements
 	 * @generated
 	 * @ordered
 	 */
-	protected static final DependencyKind KIND_EDEFAULT = DependencyKind.PREREQUISITE;
+	protected static final DependencyKind KIND_EDEFAULT = DependencyKind.REQUIRES;
 
 	/**
-	 * The default value of the '{@link #isOptional() <em>Optional</em>}' attribute.
+	 * The default value of the '{@link #getQualifier() <em>Qualifier</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #isOptional()
+	 * @see #getQualifier()
 	 * @generated
 	 * @ordered
 	 */
-	protected static final boolean OPTIONAL_EDEFAULT = false;
+	protected static final String QUALIFIER_EDEFAULT = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -88,8 +88,8 @@ public class CapabilityDependencyImpl extends CapabilityReferenceImpl implements
 	 * @generated
 	 */
 	@Override
-	public boolean isOptional() {
-		return (Boolean)eDynamicGet(ProductmanagementPackage.CAPABILITY_DEPENDENCY__OPTIONAL, ProductmanagementPackage.Literals.CAPABILITY_DEPENDENCY__OPTIONAL, true, true);
+	public String getQualifier() {
+		return (String)eDynamicGet(ProductmanagementPackage.CAPABILITY_DEPENDENCY__QUALIFIER, ProductmanagementPackage.Literals.CAPABILITY_DEPENDENCY__QUALIFIER, true, true);
 	}
 
 	/**
@@ -98,8 +98,8 @@ public class CapabilityDependencyImpl extends CapabilityReferenceImpl implements
 	 * @generated
 	 */
 	@Override
-	public void setOptional(boolean newOptional) {
-		eDynamicSet(ProductmanagementPackage.CAPABILITY_DEPENDENCY__OPTIONAL, ProductmanagementPackage.Literals.CAPABILITY_DEPENDENCY__OPTIONAL, newOptional);
+	public void setQualifier(String newQualifier) {
+		eDynamicSet(ProductmanagementPackage.CAPABILITY_DEPENDENCY__QUALIFIER, ProductmanagementPackage.Literals.CAPABILITY_DEPENDENCY__QUALIFIER, newQualifier);
 	}
 
 	/**
@@ -112,8 +112,8 @@ public class CapabilityDependencyImpl extends CapabilityReferenceImpl implements
 		switch (featureID) {
 			case ProductmanagementPackage.CAPABILITY_DEPENDENCY__KIND:
 				return getKind();
-			case ProductmanagementPackage.CAPABILITY_DEPENDENCY__OPTIONAL:
-				return isOptional();
+			case ProductmanagementPackage.CAPABILITY_DEPENDENCY__QUALIFIER:
+				return getQualifier();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -129,8 +129,8 @@ public class CapabilityDependencyImpl extends CapabilityReferenceImpl implements
 			case ProductmanagementPackage.CAPABILITY_DEPENDENCY__KIND:
 				setKind((DependencyKind)newValue);
 				return;
-			case ProductmanagementPackage.CAPABILITY_DEPENDENCY__OPTIONAL:
-				setOptional((Boolean)newValue);
+			case ProductmanagementPackage.CAPABILITY_DEPENDENCY__QUALIFIER:
+				setQualifier((String)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -147,8 +147,8 @@ public class CapabilityDependencyImpl extends CapabilityReferenceImpl implements
 			case ProductmanagementPackage.CAPABILITY_DEPENDENCY__KIND:
 				setKind(KIND_EDEFAULT);
 				return;
-			case ProductmanagementPackage.CAPABILITY_DEPENDENCY__OPTIONAL:
-				setOptional(OPTIONAL_EDEFAULT);
+			case ProductmanagementPackage.CAPABILITY_DEPENDENCY__QUALIFIER:
+				setQualifier(QUALIFIER_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -164,8 +164,8 @@ public class CapabilityDependencyImpl extends CapabilityReferenceImpl implements
 		switch (featureID) {
 			case ProductmanagementPackage.CAPABILITY_DEPENDENCY__KIND:
 				return getKind() != KIND_EDEFAULT;
-			case ProductmanagementPackage.CAPABILITY_DEPENDENCY__OPTIONAL:
-				return isOptional() != OPTIONAL_EDEFAULT;
+			case ProductmanagementPackage.CAPABILITY_DEPENDENCY__QUALIFIER:
+				return QUALIFIER_EDEFAULT == null ? getQualifier() != null : !QUALIFIER_EDEFAULT.equals(getQualifier());
 		}
 		return super.eIsSet(featureID);
 	}

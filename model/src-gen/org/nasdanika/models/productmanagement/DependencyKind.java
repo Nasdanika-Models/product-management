@@ -13,25 +13,37 @@ import org.eclipse.emf.common.util.Enumerator;
  * A representation of the literals of the enumeration '<em><b>Dependency Kind</b></em>',
  * and utility methods for working with them.
  * <!-- end-user-doc -->
+ * <!-- begin-model-doc -->
+ * *
+ * Built-in dependency types
+ * <!-- end-model-doc -->
  * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getDependencyKind()
  * @model
  * @generated
  */
 public enum DependencyKind implements Enumerator {
 	/**
-	 * The '<em><b>PREREQUISITE</b></em>' literal object.
+	 * The '<em><b>REQUIRES</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #PREREQUISITE_VALUE
+	 * <!-- begin-model-doc -->
+	 * *
+	 * I cannot function without this
+	 * <!-- end-model-doc -->
+	 * @see #REQUIRES_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	PREREQUISITE(0, "PREREQUISITE", "PREREQUISITE"),
+	REQUIRES(0, "REQUIRES", "REQUIRES"),
 
 	/**
 	 * The '<em><b>ENHANCES</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * *
+	 * I work better when this is also present
+	 * <!-- end-model-doc -->
 	 * @see #ENHANCES_VALUE
 	 * @generated
 	 * @ordered
@@ -42,27 +54,53 @@ public enum DependencyKind implements Enumerator {
 	 * The '<em><b>CONFLICTS</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * *
+	 * I cannot coexist with this
+	 * <!-- end-model-doc -->
 	 * @see #CONFLICTS_VALUE
 	 * @generated
 	 * @ordered
 	 */
-	CONFLICTS(0, "CONFLICTS", "CONFLICTS");
+	CONFLICTS(0, "CONFLICTS", "CONFLICTS"),
 
 	/**
-	 * The '<em><b>PREREQUISITE</b></em>' literal value.
+	 * The '<em><b>CUSTOM</b></em>' literal object.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @see #PREREQUISITE
+	 * <!-- begin-model-doc -->
+	 * *
+	 * Custom dependency type
+	 * <!-- end-model-doc -->
+	 * @see #CUSTOM_VALUE
+	 * @generated
+	 * @ordered
+	 */
+	CUSTOM(0, "CUSTOM", "CUSTOM");
+
+	/**
+	 * The '<em><b>REQUIRES</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * *
+	 * I cannot function without this
+	 * <!-- end-model-doc -->
+	 * @see #REQUIRES
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
-	public static final int PREREQUISITE_VALUE = 0;
+	public static final int REQUIRES_VALUE = 0;
 
 	/**
 	 * The '<em><b>ENHANCES</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * *
+	 * I work better when this is also present
+	 * <!-- end-model-doc -->
 	 * @see #ENHANCES
 	 * @model
 	 * @generated
@@ -74,12 +112,31 @@ public enum DependencyKind implements Enumerator {
 	 * The '<em><b>CONFLICTS</b></em>' literal value.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * *
+	 * I cannot coexist with this
+	 * <!-- end-model-doc -->
 	 * @see #CONFLICTS
 	 * @model
 	 * @generated
 	 * @ordered
 	 */
 	public static final int CONFLICTS_VALUE = 0;
+
+	/**
+	 * The '<em><b>CUSTOM</b></em>' literal value.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * <!-- begin-model-doc -->
+	 * *
+	 * Custom dependency type
+	 * <!-- end-model-doc -->
+	 * @see #CUSTOM
+	 * @model
+	 * @generated
+	 * @ordered
+	 */
+	public static final int CUSTOM_VALUE = 0;
 
 	/**
 	 * An array of all the '<em><b>Dependency Kind</b></em>' enumerators.
@@ -89,9 +146,10 @@ public enum DependencyKind implements Enumerator {
 	 */
 	private static final DependencyKind[] VALUES_ARRAY =
 		new DependencyKind[] {
-			PREREQUISITE,
+			REQUIRES,
 			ENHANCES,
 			CONFLICTS,
+			CUSTOM,
 		};
 
 	/**
@@ -148,7 +206,7 @@ public enum DependencyKind implements Enumerator {
 	 */
 	public static DependencyKind get(int value) {
 		switch (value) {
-			case PREREQUISITE_VALUE: return PREREQUISITE;
+			case REQUIRES_VALUE: return REQUIRES;
 		}
 		return null;
 	}

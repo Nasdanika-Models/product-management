@@ -54,8 +54,6 @@ public class TestProductManagement {
 		persona.setDocumentation("Sample persona documentation");
 		productModel.getPersonas().add(persona);
 		
-		
-		
 		// Persona reference
 		Persona externalPersona = factory.createPersona();
 		externalPersona.setName("External persona");

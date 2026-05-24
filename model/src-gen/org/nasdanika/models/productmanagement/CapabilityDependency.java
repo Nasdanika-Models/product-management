@@ -13,7 +13,7 @@ package org.nasdanika.models.productmanagement;
  * </p>
  * <ul>
  *   <li>{@link org.nasdanika.models.productmanagement.CapabilityDependency#getKind <em>Kind</em>}</li>
- *   <li>{@link org.nasdanika.models.productmanagement.CapabilityDependency#isOptional <em>Optional</em>}</li>
+ *   <li>{@link org.nasdanika.models.productmanagement.CapabilityDependency#getQualifier <em>Qualifier</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getCapabilityDependency()
@@ -47,25 +47,29 @@ public interface CapabilityDependency extends CapabilityReference {
 	void setKind(DependencyKind value);
 
 	/**
-	 * Returns the value of the '<em><b>Optional</b></em>' attribute.
+	 * Returns the value of the '<em><b>Qualifier</b></em>' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Optional</em>' attribute.
-	 * @see #setOptional(boolean)
-	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getCapabilityDependency_Optional()
+	 * <!-- begin-model-doc -->
+	 * *
+	 * Qualifier for the dependency kind, e.g. CUSTOM kind
+	 * <!-- end-model-doc -->
+	 * @return the value of the '<em>Qualifier</em>' attribute.
+	 * @see #setQualifier(String)
+	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getCapabilityDependency_Qualifier()
 	 * @model unique="false"
 	 * @generated
 	 */
-	boolean isOptional();
+	String getQualifier();
 
 	/**
-	 * Sets the value of the '{@link org.nasdanika.models.productmanagement.CapabilityDependency#isOptional <em>Optional</em>}' attribute.
+	 * Sets the value of the '{@link org.nasdanika.models.productmanagement.CapabilityDependency#getQualifier <em>Qualifier</em>}' attribute.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Optional</em>' attribute.
-	 * @see #isOptional()
+	 * @param value the new value of the '<em>Qualifier</em>' attribute.
+	 * @see #getQualifier()
 	 * @generated
 	 */
-	void setOptional(boolean value);
+	void setQualifier(String value);
 
 } // CapabilityDependency

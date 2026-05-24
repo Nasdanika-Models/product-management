@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EReference;
 import org.nasdanika.common.ProgressMonitor;
@@ -64,7 +65,6 @@ public interface ConcernDomainMixIn<T extends ConcernDomain> extends NodeProcess
 		}		
 	}	
 	
-	@SuppressWarnings("unchecked")
 	private void buildConcernsSection(
 			EReference eReference,
 			List<Entry<EReferenceConnection, WidgetFactory>> referenceOutgoingEndpoints, 
@@ -78,21 +78,27 @@ public interface ConcernDomainMixIn<T extends ConcernDomain> extends NodeProcess
 
 		// A page with a dynamic agents table and links to agent pages.
 		for (Label label: labels) {
-			Action concernsAction = self().getRoleActionByName(
-					((Action) label).getSections(), 
-					"concerns", 
-					"Concerns", 
-					Icon.CONCERN_DOMAIN.getUrl());
-						
-			for (Entry<EReferenceConnection, Collection<Label>> re: sorted) {
-				((Action) label).getAnonymous().addAll((Collection<? extends Action>) re.getValue());
+			if (label instanceof Action action) {
+				Action concernsAction = self().getRoleActionByName(
+						action.getSections(), 
+						"concerns", 
+						"Concerns", 
+						Icon.CONCERN_DOMAIN.getUrl());
+					
+				EList<Action> anonymous = action.getAnonymous();
+				for (Entry<EReferenceConnection, Collection<Label>> re: sorted) {
+					for (Label rev: re.getValue()) {
+						if (rev instanceof Action revAction) {
+							anonymous.add(revAction);
+						}
+					}
+				}
+				
+				buildConcernsTable(referenceOutgoingEndpoints, progressMonitor, concernsAction, "concerns", "concerns-table");
 			}
-			
-			buildConcernsTable(referenceOutgoingEndpoints, progressMonitor, concernsAction, "concerns", "concerns-table");
 		}		
 	}
 		
-	@SuppressWarnings("unchecked")
 	private void buildConcernTypeSections(
 			EReference eReference,
 			List<Entry<EReferenceConnection, WidgetFactory>> referenceOutgoingEndpoints, 
@@ -112,23 +118,30 @@ public interface ConcernDomainMixIn<T extends ConcernDomain> extends NodeProcess
 					.toList();		
 
 			for (Label label: labels) {
-				EClass type = typeEntry.getKey();
-				Action concernsAction = self().getRoleActionByName(
-						((Action) label).getSections(), 
-						"concerns." + type.getName(), 
-						Util.nameToLabel(type.getName() + "s"),
-						Icon.getTypeIcon(type));
-							
-				for (Entry<EReferenceConnection, Collection<Label>> re: sorted) {
-					((Action) label).getAnonymous().addAll((Collection<? extends Action>) re.getValue());
+				if (label instanceof Action action) {
+					EClass type = typeEntry.getKey();
+					Action concernsAction = self().getRoleActionByName(
+							action.getSections(), 
+							"concerns." + type.getName(), 
+							Util.nameToLabel(type.getName() + "s"),
+							Icon.getTypeIcon(type));
+								
+					EList<Action> anonymous = action.getAnonymous();
+					for (Entry<EReferenceConnection, Collection<Label>> re: sorted) {
+						for (Label rev: re.getValue()) {
+							if (rev instanceof Action revAction) {
+								anonymous.add(revAction);
+							}
+						}
+					}
+					
+					buildConcernsTable(
+							referenceOutgoingEndpoints.stream().filter(e -> e.getKey().getTarget().get().eClass() == type).toList(), 
+							progressMonitor, 
+							concernsAction, 
+							type.getName() + ".concerns", 
+							type.getName() + "-concerns-table");
 				}
-				
-				buildConcernsTable(
-						referenceOutgoingEndpoints.stream().filter(e -> e.getKey().getTarget().get().eClass() == type).toList(), 
-						progressMonitor, 
-						concernsAction, 
-						type.getName() + ".concerns", 
-						type.getName() + "-concerns-table");
 			}			
 		}
 		
