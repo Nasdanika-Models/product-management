@@ -24,6 +24,50 @@ Four consequences follow that are hard to obtain in the push mode:
 
 The remainder of this page describes the metamodel, the use cases that motivated its design, and the execution layer that will carry persona-pull queries from articulation to assembled response.
 
+## Get started
+
+Four ways in, from least to most committed.
+
+### Watch the brief — 1.5 minutes
+
+<div style="max-width: 720px" class="embed-responsive embed-responsive-16by9">
+    <iframe src="https://www.youtube.com/embed/h8vgsqn2qHI?si=n2RR5kyA1pT-2voj" title="Product Management As Code" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+A brief overview of what the model addresses and what it gives you. 
+
+### Try the model on your own problem — about 10–15 minutes
+
+The model is useful as a reasoning substrate even before you author your own consuming model. Copy the prompt below into your preferred GenAI assistant (Claude, ChatGPT, Gemini), replace the placeholders with your context, and use the response to organize your thinking. The structured response — phrased in personas, concerns, capabilities, evidence — is itself the first deliverable; you can take it to your team as a starting point for a conversation.
+
+> I work in a development organization with **\<size\>** people. We are adopting GenAI for developer productivity and other use cases. We use multiple technologies — Java on the backend, JavaScript / React on the frontend, Python for AI workloads. Our knowledge artifacts live in Excel, PowerPoint, Confluence, and SharePoint.
+>
+> We are facing the following problems:
+>
+> 1. Many tools, agent skills, and other productivity solutions, with developers having trouble discovering them.
+> 2. Duplication of effort and overlap between solutions, surfaced politically rather than analytically.
+>
+> I ran across the Nasdanika Product Management Model (https://product-management.models.nasdanika.org/) and I am wondering how it might help our organization address these concerns. I am also wondering what alternative solutions exist (internal developer platforms, enterprise architecture tools, idea-management systems) and how the Nasdanika model compares on functionality, adoption cost, and ROI. The model is free and open source, but adoption itself is an investment.
+>
+> Please structure your response in the model's vocabulary — personas, concerns, capabilities, evidence — and surface the gaps in my framing as questions the model would ask. Compare with the alternatives on the dimensions I named. Be honest about where the model is a fit and where it is not.
+
+### Watch the explainer — 8 minutes
+
+<div style="max-width: 720px" class="embed-responsive embed-responsive-16by9">
+    <iframe src="https://www.youtube.com/embed/FaWhirsxFmU?si=RNOUzbvSB9_vJ68Z" title="Nasdanika Product Management" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+</div>
+
+A longer audio explainer walking through the model's design, the use cases it addresses, and the agentic execution roadmap.
+Watch this when you want depth before committing to the template repository.
+
+### Use the template repository — about 30 minutes to first published page
+
+The [template repository](https://github.com/Nasdanika-Templates/product-management) is a starter you can fork and run.
+Click *"Use this template"* on GitHub, enable Pages, edit YAML, push - a GitHub Action publishes your rendered site.
+The [example output](https://nasdanika-templates.github.io/product-management/) is what you should expect to see, generated from the template's own sources.
+
+The template is the path from reading about the model to authoring your own consuming model. 
+
 ## What this is, in its own terms
 
 This metamodel is itself a product. The page you are reading is the first slice of its own product management model - applied recursively.
@@ -151,26 +195,15 @@ A consumer's view is whichever set of models they choose to import.
 
 ### Persons and teams as capability providers
 
-A resume is, structurally, a list of capabilities with evidence: claims about what the person can do, grounded in projects, certifications, prior employment, and references.
-The format has converged on prose because resumes are read by humans who tolerate informality, but the underlying information has the same shape as a product management capability set.
-The same is true of team-level skill inventories, consulting practice descriptions, and contractor offerings - each is a "we can do X, here is the evidence" claim asserted with authority and validity.
+A resume is, structurally, a list of capabilities with evidence: claims about what the person can do, grounded in projects, certifications, prior employment, and references. The format has converged on prose because resumes are read by humans who tolerate informality, but the underlying information has the same shape as a product management capability set. The same is true of team-level skill inventories, consulting practice descriptions, and contractor offerings - each is a "we can do X, here is the evidence" claim asserted with authority and validity.
 
-The model represents that information natively.
-A person or team is a capability provider; the capabilities they provide are their skills, technologies, methodologies, and prior outcomes; each carries evidence (projects, certifications, references) with its own provenance.
-The result is a resume a machine can reason over the same way it reasons over any other capability provider - and that can be referenced from the rest of the federation through the same mechanics any other citation uses.
+The model represents that information natively. A person or team is a capability provider; the capabilities they provide are their skills, technologies, methodologies, and prior outcomes; each carries evidence (projects, certifications, references) with its own provenance. The result is a resume a machine can reason over the same way it reasons over any other capability provider - and that can be referenced from the rest of the federation through the same mechanics any other citation uses.
 
-Two consequences follow that the prose-resume format cannot deliver. The first is that *implementation requirements travel with the capability*.
-A capability to author Xcore models requires the Eclipse IDE; a capability to operate a specific legacy system requires access to that system; a consulting practice's capability to deliver a particular methodology may require an on-site engagement model.
-The model carries these prerequisites as first-class structure, so a staffing decision is not made on the assumption that "knowing X" is sufficient when "knowing X with the tooling X requires" is what the work actually needs.
-Traditional resumes silently lose the tooling and context dependencies; the capability model surfaces them.
+Two consequences follow that the prose-resume format cannot deliver. The first is that *implementation requirements travel with the capability*. A capability to author Xcore models requires the Eclipse IDE; a capability to operate a specific legacy system requires access to that system; a consulting practice's capability to deliver a particular methodology may require an on-site engagement model. The model carries these prerequisites as first-class structure, so a staffing decision is not made on the assumption that "knowing X" is sufficient when "knowing X with the tooling X requires" is what the work actually needs. Traditional resumes silently lose the tooling and context dependencies; the capability model surfaces them.
 
-The second is *federated discovery of niche expertise*. In any sufficiently large organization, the people who know the legacy systems, the unusual programming languages, the deprecated tools that still run production workloads are tribal knowledge - findable only by asking around.
-If their capabilities are published in the same federation that describes the organization's products, the niche expertise is discoverable by query rather than by social network.
-A team about to retire or modernize a system nobody has touched in a decade can ask the model for capability providers who have touched it or know the technologies it was built on; the answer is structural rather than political.
+The second is *federated discovery of niche expertise*. In any sufficiently large organization, the people who know the legacy systems, the unusual programming languages, the deprecated tools that still run production workloads are tribal knowledge - findable only by asking around. If their capabilities are published in the same federation that describes the organization's products, the niche expertise is discoverable by query rather than by social network. A team about to retire a system nobody has touched in a decade can ask the model for capability providers who have touched it; the answer is structural rather than political.
 
-The payoff is that the resume-and-staffing world and the product-management world stop being separate domains the organization maintains in incompatible formats.
-The same vocabulary that describes a software product describes the people who can build, operate, and replace it.
-Capability providers - organizations, teams, individuals - are uniform on the graph; matching needs to capabilities works the same way whether the capability comes from a vendor product or from a person.
+The payoff is that the resume-and-staffing world and the product-management world stop being separate domains the organization maintains in incompatible formats. The same vocabulary that describes a software product describes the people who can build, operate, and replace it. Capability providers - organizations, teams, individuals - are uniform on the graph; matching needs to capabilities works the same way whether the capability comes from a vendor product or from a person.
 
 ### Accountability for promises and dependencies
 
@@ -196,14 +229,9 @@ A portfolio of any size accumulates more candidate capabilities than any reviewe
 
 The federated model carries those relationships explicitly. A graph view materializes them as a navigable picture rather than a flattened table. In a typical encoding, personas are assigned colors; capabilities take their color from the personas whose concerns they address - blended where they address several - with saturation proportional to the value the capability delivers to those concerns. Node size encodes the effort to build the capability; border thickness encodes the cost of unbuilt dependencies that would need to come first. The view can be filtered to capabilities that are not yet available, surfacing the *frontier* of the portfolio: the terminal nodes where building unlocks the most value for the least cost. The same picture answers questions a spreadsheet cannot, because frontier-of-a-table is not a thing - which unbuilt capability sits closest to delivering the most value to the personas that matter most, and which build sequence reaches it most cheaply.
 
-The graph is generated from the model rather than authored alongside it. Multiple rendering targets - interactive 2D & 3D graphs, Draw.io, PlantUML - fall out of a generic diagram intermediate so the visualization is a function of the model rather than of any single tool.
-A capability page is reachable by drilling into its node; on that page, the value-by-persona breakdown, the dependency tree, the evidence, and the lifecycle history are derived from the same source the graph was.
-An accompanying table view sits next to the graph for readers who want sortable columns; the two views are reflections of one model, not two artifacts to maintain.
+The graph is generated from the model rather than authored alongside it. Multiple rendering targets - interactive 2D, 3D, draw.io, PlantUML - fall out of a generic diagram intermediate so the visualization is a function of the model rather than of any single tool. A capability page is reachable by drilling into its node; on that page, the value-by-persona breakdown, the dependency tree, the evidence, and the lifecycle history are derived from the same source the graph was. An accompanying table view sits next to the graph for readers who want sortable columns; the two views are reflections of one model, not two artifacts to maintain.
 
-The payoff is that portfolio decisions stop being negotiations over which row to look at first.
-Structural fit, build cost, and the dependency order that unlocks compound value are visible at once, in the same picture.
-A reviewer who reads graphs better than tables can read the graph; a senior leader who skims sees the headline at a glance; an engineer who wants the detail follows the link from a node into the underlying capability page.
-The investment in the visualization pays back across every audience that consumes the model, because the model itself does not have to be re-shaped for any of them.
+The payoff is that portfolio decisions stop being negotiations over which row to look at first. Structural fit, build cost, and the dependency order that unlocks compound value are visible at once, in the same picture. A reviewer who reads graphs better than tables can read the graph; a senior leader who skims sees the headline at a glance; an engineer who wants the detail follows the link from a node into the underlying capability page. The investment in the visualization pays back across every audience that consumes the model, because the model itself does not have to be re-shaped for any of them.
 
 ### Formalized innovation
 
@@ -300,31 +328,15 @@ The payoff is not that informal channels disappear - they will not, and should n
 
 ### Standardized proposal format across organizational boundaries
 
-A familiar pattern in enterprise procurement and partner onboarding: a proposer produces a deck or document, the receiving organization reads it, the receiver's team translates the document into their own internal evaluation format,
-and the translation step is where most of the work - and most of the information loss - happens.
-The document is shaped to the proposer's narrative; the receiver's framework is shaped to the receiver's concerns; the staff who do the translation absorb the impedance mismatch.
-Comparable proposals from different proposers arrive in incomparable shapes, and the comparison work begins with reshaping rather than with comparing.
+A familiar pattern in enterprise procurement and partner onboarding: a proposer produces a deck or document, the receiving organization reads it, the receiver's team translates the document into their own internal evaluation format, and the translation step is where most of the work - and most of the information loss - happens. The document is shaped to the proposer's narrative; the receiver's framework is shaped to the receiver's concerns; the staff who do the translation absorb the impedance mismatch. Comparable proposals from different proposers arrive in incomparable shapes, and the comparison work begins with reshaping rather than with comparing.
 
-The model supports an alternative: the receiver stipulates that proposals be submitted as a product management model - personas, concerns, capabilities, evidence, dependencies, lifecycle state.
-The analogy is the resume-format requirement that some employers post: arriving in the requested format is what gets the proposal considered sooner, or considered at all.
-A receiver who has already articulated their own personas and concerns has, by virtue of that work, a graph to match incoming proposals against.
-The match is computable - which of the receiver's concerns the proposer's capabilities address, which are unaddressed, which of the proposer's capabilities address concerns the proposer did not realize the receiver had - AI-assisted in the first pass, validated by humans in the second.
-The last of these is often the most interesting case and the one a prose comparison is least likely to surface: a capability whose stated purpose differs from the use the receiver would actually put it to.
+The model supports an alternative: the receiver stipulates that proposals be submitted as a product management model - personas, concerns, capabilities, evidence, dependencies, lifecycle state. The analogy is the resume-format requirement that some employers post: arriving in the requested format is what gets the proposal considered sooner, or considered at all. A receiver who has already articulated their own personas and concerns has, by virtue of that work, a graph to match incoming proposals against. The match is computable - which of the receiver's concerns the proposer's capabilities address, which are unaddressed, which of the proposer's capabilities address concerns the proposer did not realize the receiver had - AI-assisted in the first pass, validated by humans in the second. The last of these is often the most interesting case and the one a prose comparison is least likely to surface: a capability whose stated purpose differs from the use the receiver would actually put it to.
 
-The pattern works in both directions. A receiver may stipulate the format; alternatively, a proposer may publish its product management model at known Maven coordinates and let receivers pull it.
-Either side can flip the asymmetry - whoever moves first reduces the translation cost for everyone downstream.
-Partner relationships work the same way: large enterprises with many integration partners (a bank whose internal capabilities are tribal knowledge and whose partners spend months learning what is available is the canonical example)
-can publish a partner-facing model and let partners discover capabilities by querying it rather than by negotiating access through human gatekeepers.
-The model becomes the contract surface for the relationship - durable, citable, and amenable to AI-assisted navigation that human onboarding cannot match in throughput.
+The pattern works in both directions. A receiver may stipulate the format; alternatively, a proposer may publish its product management model at known Maven coordinates and let receivers pull it. Either side can flip the asymmetry - whoever moves first reduces the translation cost for everyone downstream. Partner relationships work the same way: large enterprises with many integration partners (a bank whose internal capabilities are tribal knowledge and whose partners spend months learning what is available is the canonical example) can publish a partner-facing model and let partners discover capabilities by querying it rather than by negotiating access through human gatekeepers. The model becomes the contract surface for the relationship - durable, citable, and amenable to AI-assisted navigation that human onboarding cannot match in throughput.
 
-The internal variant is even cleaner. An innovation program that accepts ideas as free-form documents pays the conversion cost on every submission.
-If the program stipulates capability format up front - "submit your proposal as a capability declaration referencing the persona and concern domains we already publish" - the submission federates directly into the portfolio model.
-A reference added to a domain YAML file is the entire intake step.
-Ideas reach the evaluation stage in the same shape as the capabilities they would join, removing the lossy translation that otherwise drops the most precise framing on the floor.
+The internal variant is even cleaner. An innovation program that accepts ideas as free-form documents pays the conversion cost on every submission. If the program stipulates capability format up front - "submit your proposal as a capability declaration referencing the persona and concern domains we already publish" - the submission federates directly into the portfolio model. A reference added to a domain YAML file is the entire intake step. Ideas reach the evaluation stage in the same shape as the capabilities they would join, removing the lossy translation that otherwise drops the most precise framing on the floor.
 
-The payoff is that organizational boundaries stop being shape-changing operations on the information that crosses them.
-A vendor proposal, a partner-onboarding submission, and an internal innovation idea all arrive on the same graph the rest of the model lives on.
-Comparison, matching, and federation are operations over a single structure rather than a sequence of human translations between incompatible formats.
+The payoff is that organizational boundaries stop being shape-changing operations on the information that crosses them. A vendor proposal, a partner-onboarding submission, and an internal innovation idea all arrive on the same graph the rest of the model lives on. Comparison, matching, and federation are operations over a single structure rather than a sequence of human translations between incompatible formats.
 
 ### Symmetric evaluation of vendor and internal offerings
 
@@ -390,36 +402,17 @@ The payoff is that interactive consultation is grounded in the same structural m
 
 ### Crowdfunded prioritization of shared capabilities
 
-In organizations with shared services, capabilities that benefit many teams but belong to none face a familiar funding problem.
-No business line wants to budget for a capability whose consumers sit largely elsewhere; the beneficiaries each rationally prefer that someone else funds it.
-The pathology - tragedy of the commons, infrastructure under-investment, "shared services means shared underfunding" - persists because the usual remediation requires central authority and visibility the federated model does not assume.
+In organizations with shared services, capabilities that benefit many teams but belong to none face a familiar funding problem. No business line wants to budget for a capability whose consumers sit largely elsewhere; the beneficiaries each rationally prefer that someone else funds it. The pathology - tragedy of the commons, infrastructure under-investment, "shared services means shared underfunding" - persists because the usual remediation requires central authority and visibility the federated model does not assume.
 
-The model supports an alternative: a credit-based marketplace layered on the capability graph.
-Consumers acquire credits - by purchase, by contribution of work, or by other organizational mechanisms - and allocate them to capabilities they want built.
-When the credit balance committed to a capability reaches the threshold its owner has posted, construction begins.
-Allocations are *binding* once made; the commitment of real resources is what distinguishes a market from a poll.
+The model supports an alternative: a credit-based marketplace layered on the capability graph. Consumers acquire credits - by purchase, by contribution of work, or by other organizational mechanisms - and allocate them to capabilities they want built. When the credit balance committed to a capability reaches the threshold its owner has posted, construction begins. Allocations are *binding* once made; the commitment of real resources is what distinguishes a market from a poll.
 
-The non-obvious mechanism is in the dependency graph.
-A capability that depends on an unbuilt foundation propagates a fraction of its committed credits upstream to the foundation, weighted by the strength of the dependency.
-A consumer funding the feature they actually need contributes, by construction, to the infrastructure that feature requires - *without anyone advocating for the infrastructure separately*.
-Shared services accumulate credits as a side effect of demand for the capabilities built on top of them.
-The pathology where no one wants to fund the foundation directly is structurally circumvented: the foundation is funded by everyone whose feature depends on it, in proportion to how much they depend on it.
-The graph context is what enables this.
-General-purpose crowdfunding platforms cannot do it because they have no model of how the funded objects relate to each other; the capability marketplace can because the relations are first-class on the model the marketplace runs over.
+The non-obvious mechanism is in the dependency graph. A capability that depends on an unbuilt foundation propagates a fraction of its committed credits upstream to the foundation, weighted by the strength of the dependency. A consumer funding the feature they actually need contributes, by construction, to the infrastructure that feature requires - *without anyone advocating for the infrastructure separately*. Shared services accumulate credits as a side effect of demand for the capabilities built on top of them. The pathology where no one wants to fund the foundation directly is structurally circumvented: the foundation is funded by everyone whose feature depends on it, in proportion to how much they depend on it. The graph context is what enables this. General-purpose crowdfunding platforms cannot do it because they have no model of how the funded objects relate to each other; the capability marketplace can because the relations are first-class on the model the marketplace runs over.
 
-Contributors who deliver capabilities can be paid in credits redeemable for premium features.
-The flow closes: consumers with concerns acquire credits and direct them at capabilities; builders earn credits by delivering capabilities; credits buy access to premium features whose value anchors the system.
-Non-fungible attribution - founding-funder recognition, per-capability contributor credit - is a separate object from the fungible voting currency and is best modeled separately.
+Contributors who deliver capabilities can be paid in credits redeemable for premium features. The flow closes: consumers with concerns acquire credits and direct them at capabilities; builders earn credits by delivering capabilities; credits buy access to premium features whose value anchors the system. Non-fungible attribution - founding-funder recognition, per-capability contributor credit - is a separate object from the fungible voting currency and is best modeled separately.
 
-Several design questions are open and resolved per deployment rather than baked into the metamodel.
-Sizing capabilities in credits is left to the capability owner; market discipline emerges as consumers decide whether to fund at the posted price.
-Conversion between credits and money is local: in a corporate context credits may attach to internal budgets, while in an open community they may be sold for cash.
-All-or-nothing funding with explicit refund or expiry rules is cleaner than partial funding.
-Sybil resistance, conflict-of-interest disclosure, and the cascade weight on each dependency edge are policy choices the deployment makes, not mechanisms the model imposes.
-The marketplace requires liquidity to function and is therefore a *late* feature of the platform - useful once a meaningful population of users and capabilities exists to give votes weight, not before.
+Several design questions are open and resolved per deployment rather than baked into the metamodel. Sizing capabilities in credits is left to the capability owner; market discipline emerges as consumers decide whether to fund at the posted price. Conversion between credits and money is local: in a corporate context credits may attach to internal budgets, while in an open community they may be sold for cash. All-or-nothing funding with explicit refund or expiry rules is cleaner than partial funding. Sybil resistance, conflict-of-interest disclosure, and the cascade weight on each dependency edge are policy choices the deployment makes, not mechanisms the model imposes. The marketplace requires liquidity to function and is therefore a *late* feature of the platform - useful once a meaningful population of users and capabilities exists to give votes weight, not before.
 
-The payoff is that prioritization stops being a top-down allocation question and becomes a market over the capability graph - with the graph's structure (dependencies, beneficiaries, lifecycle states) doing work that pure crowdfunding cannot do, because pure crowdfunding has no model of how the funded objects relate.
-Demand and supply meet on the same artifact that describes both.
+The payoff is that prioritization stops being a top-down allocation question and becomes a market over the capability graph - with the graph's structure (dependencies, beneficiaries, lifecycle states) doing work that pure crowdfunding cannot do, because pure crowdfunding has no model of how the funded objects relate. Demand and supply meet on the same artifact that describes both.
 
 ## Synergy versus competition
 
@@ -670,7 +663,6 @@ When you are ready to make the result durable - version-controlled, federated, c
 ### When you are ready to commit
 
 The path from sketch to durable model:
-
 
 1. **Capture the sketch in version control.** A Markdown file is enough to start. Identify which elements would become personas, concerns, capabilities, and providers if the sketch were expressed in the metamodel.
 2. **Author the elements as a small consuming model.** The metamodel is published to Maven; the consuming model declares it as a dependency. Sources can be YAML or JSON. In the future - Xtext-based DSL and Draw.io diagrams [mapped](https://docs.nasdanika.org/core/mapping/index.html) to the product management model.
