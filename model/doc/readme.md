@@ -28,7 +28,7 @@ The remainder of this page describes the metamodel, the use cases that motivated
 
 Four ways in, from least to most committed.
 
-### Watch the brief — 1.5 minutes
+### Watch the brief - 1.5 minutes
 
 <div style="max-width: 720px" class="embed-responsive embed-responsive-16by9">
     <iframe src="https://www.youtube.com/embed/h8vgsqn2qHI?si=n2RR5kyA1pT-2voj" title="Product Management As Code" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -36,11 +36,11 @@ Four ways in, from least to most committed.
 
 A brief overview of what the model addresses and what it gives you. 
 
-### Try the model on your own problem — about 10–15 minutes
+### Try the model on your own problem - about 10–15 minutes
 
-The model is useful as a reasoning substrate even before you author your own consuming model. Copy the prompt below into your preferred GenAI assistant (Claude, ChatGPT, Gemini), replace the placeholders with your context, and use the response to organize your thinking. The structured response — phrased in personas, concerns, capabilities, evidence — is itself the first deliverable; you can take it to your team as a starting point for a conversation.
+The model is useful as a reasoning substrate even before you author your own consuming model. Copy the prompt below into your preferred GenAI assistant (Claude, ChatGPT, Gemini), replace the placeholders with your context, and use the response to organize your thinking. The structured response - phrased in personas, concerns, capabilities, evidence - is itself the first deliverable; you can take it to your team as a starting point for a conversation.
 
-> I work in a development organization with **\<size\>** people. We are adopting GenAI for developer productivity and other use cases. We use multiple technologies — Java on the backend, JavaScript / React on the frontend, Python for AI workloads. Our knowledge artifacts live in Excel, PowerPoint, Confluence, and SharePoint.
+> I work in a development organization with **\<size\>** people. We are adopting GenAI for developer productivity and other use cases. We use multiple technologies - Java on the backend, JavaScript / React on the frontend, Python for AI workloads. Our knowledge artifacts live in Excel, PowerPoint, Confluence, and SharePoint.
 >
 > We are facing the following problems:
 >
@@ -49,9 +49,9 @@ The model is useful as a reasoning substrate even before you author your own con
 >
 > I ran across the Nasdanika Product Management Model (https://product-management.models.nasdanika.org/) and I am wondering how it might help our organization address these concerns. I am also wondering what alternative solutions exist (internal developer platforms, enterprise architecture tools, idea-management systems) and how the Nasdanika model compares on functionality, adoption cost, and ROI. The model is free and open source, but adoption itself is an investment.
 >
-> Please structure your response in the model's vocabulary — personas, concerns, capabilities, evidence — and surface the gaps in my framing as questions the model would ask. Compare with the alternatives on the dimensions I named. Be honest about where the model is a fit and where it is not.
+> Please structure your response in the model's vocabulary - personas, concerns, capabilities, evidence - and surface the gaps in my framing as questions the model would ask. Compare with the alternatives on the dimensions I named. Be honest about where the model is a fit and where it is not.
 
-### Watch the explainer — 8 minutes
+### Watch the explainer - 8 minutes
 
 <div style="max-width: 720px" class="embed-responsive embed-responsive-16by9">
     <iframe src="https://www.youtube.com/embed/FaWhirsxFmU?si=RNOUzbvSB9_vJ68Z" title="Nasdanika Product Management" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
@@ -60,7 +60,7 @@ The model is useful as a reasoning substrate even before you author your own con
 A longer audio explainer walking through the model's design, the use cases it addresses, and the agentic execution roadmap.
 Watch this when you want depth before committing to the template repository.
 
-### Use the template repository — about 30 minutes to first published page
+### Use the template repository - about 30 minutes to first published page
 
 The [template repository](https://github.com/Nasdanika-Templates/product-management) is a starter you can fork and run.
 Click *"Use this template"* on GitHub, enable Pages, edit YAML, push - a GitHub Action publishes your rendered site.
@@ -637,12 +637,12 @@ The prompt below asks an AI assistant to apply the metamodel to a legacy-moderni
 > I am working on a legacy modernization effort. I want you to help me reason about it using the Nasdanika product management metamodel (https://product-management.models.nasdanika.org/).
 >
 > The metamodel treats product strategy as a graph of:
-> - **Personas** with **concerns** — goals, needs, and pain points
+> - **Personas** with **concerns** - goals, needs, and pain points
 > - **Capabilities** that address concerns, with prerequisites and dependencies
 > - **Capability providers** that supply capabilities, with stated periods of validity
 > - **Evidence** grounding each concern, with source and confidence
-> - **Lifecycle states** for capabilities — Proposed, Elaborated, Approved, In Development, Available, Deprecated, Retired, Withdrawn, Superseded
-> - **Authority** on every assertion — who said this, when, for what period
+> - **Lifecycle states** for capabilities - Proposed, Elaborated, Approved, In Development, Available, Deprecated, Retired, Withdrawn, Superseded
+> - **Authority** on every assertion - who said this, when, for what period
 >
 > Here is my situation: *[describe your legacy system, the personas it serves and the personas the modernization affects, what the system currently does, what is deprecated or retiring, what the target architecture looks like, system size in some units like deployable units, source files, lines of code, bytes, modernization timelines and resources - skillsets, familiarity with the system, ... and any specific concerns that are surfacing]*.
 >
@@ -671,4 +671,4 @@ The path from sketch to durable model:
 
 Each step is small enough to complete in a sitting. The investment compounds because every artifact is reusable by every consumer who imports it.
 
-If you try this with a real situation, I'd be interested to see the sketch — anonymized is fine. It helps shape the next iteration of the metamodel.
+If you try this with a real situation, I'd be interested to see the sketch - anonymized is fine. It helps shape the next iteration of the metamodel.
