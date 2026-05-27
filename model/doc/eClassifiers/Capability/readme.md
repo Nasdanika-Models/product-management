@@ -1,4 +1,11 @@
+A capability extends PersonaDomain, ConcernDomain, and EvidenceDomain to support self-contained capability definitions.
+A capability may:
 
+- Address concerns owned by external personas or other capabilities (via AddressedConcerns)
+- Introduce capability-specific personas (via PersonaDomain)
+- Introduce concerns that exist by virtue of the capability itself, not owned by any persona (via ConcernDomain)
+- Carry the evidence supporting all of the above (via EvidenceDomain)
+- Decompose into sub-capabilities (via subCapabilities)
 
 ## Capability language
 
@@ -23,3 +30,4 @@ Elicitation by an AI agent becomes structured for the same reason - the agent as
 
 Whorf's observation - that language shapes the way we think, and determines what we can think about - applies to capability vocabularies as much as to natural languages.
 The grammar is what makes the federated model useful as a thinking surface, not just as a catalog.
+

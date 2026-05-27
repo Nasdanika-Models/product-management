@@ -2150,12 +2150,6 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 			   "get", "<%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.Need%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.Need%>> result = new <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.Need%>>();\n\t<%org.eclipse.emf.common.util.EList%><<%org.nasdanika.models.productmanagement.ConcernReference%>> _violates = this.getViolates();\n\tfor (final <%org.nasdanika.models.productmanagement.ConcernReference%> ref : _violates)\n\t{\n\t\t{\n\t\t\t<%org.nasdanika.models.productmanagement.Concern%> target = ref.getTarget();\n\t\t\tif ((target instanceof <%org.nasdanika.models.productmanagement.Need%>))\n\t\t\t{\n\t\t\t\tresult.add(((<%org.nasdanika.models.productmanagement.Need%>)target));\n\t\t\t}\n\t\t}\n\t}\n\t<%org.eclipse.emf.common.util.EList%><<%org.eclipse.emf.ecore.EObject%>> _referrers = this.getReferrers(<%org.nasdanika.models.productmanagement.ProductmanagementPackage.Literals%>.NEED__VIOLATED_BY);\n\tfor (final <%org.eclipse.emf.ecore.EObject%> referrer : _referrers)\n\t{\n\t\tif ((referrer instanceof <%org.nasdanika.models.productmanagement.Need%>))\n\t\t{\n\t\t\tresult.add(((<%org.nasdanika.models.productmanagement.Need%>)referrer));\n\t\t}\n\t}\n\t_xblockexpression = result;\n}\nreturn _xblockexpression;"
 		   });
 		addAnnotation
-		  (capabilityEClass,
-		   source,
-		   new String[] {
-			   "documentation", "*\nA capability extends PersonaDomain, ConcernDomain, and EvidenceDomain\nto support self-contained capability definitions. A capability may:\n - address concerns owned by external personas or other capabilities\n   (via AddressedConcerns)\n - introduce capability-specific personas (via PersonaDomain)\n - introduce concerns that exist by virtue of the capability itself,\n   not owned by any persona (via ConcernDomain)\n - carry the evidence supporting all of the above (via EvidenceDomain)\n - decompose into sub-capabilities (via subCapabilities)"
-		   });
-		addAnnotation
 		  (getCapability_AllAddresses(),
 		   source,
 		   new String[] {

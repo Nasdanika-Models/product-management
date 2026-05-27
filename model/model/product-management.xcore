@@ -453,17 +453,6 @@ interface AbstractCapability extends ModelElement {
     
 }
 
-/**
- * A capability extends PersonaDomain, ConcernDomain, and EvidenceDomain
- * to support self-contained capability definitions. A capability may:
- *  - address concerns owned by external personas or other capabilities
- *    (via AddressedConcerns)
- *  - introduce capability-specific personas (via PersonaDomain)
- *  - introduce concerns that exist by virtue of the capability itself,
- *    not owned by any persona (via ConcernDomain)
- *  - carry the evidence supporting all of the above (via EvidenceDomain)
- *  - decompose into sub-capabilities (via subCapabilities)
- */
 class Capability extends 
     NamedPeriod, 
     AbstractCapability, 
