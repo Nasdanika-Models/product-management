@@ -7,7 +7,7 @@
 	<packaging>pom</packaging>
 	<name>Nasdanika Product Management</name>
 	<description>Product Management model and documentation generator</description>
-	<url>https://op-graph.models.nasdanika.org/</url>
+	<url>https://product-management.models.nasdanika.org/</url>
 
 	<licenses>
 		<license>
@@ -18,7 +18,7 @@
 	</licenses>
 
 	<scm>
-		<url>https://github.com/Nasdanika-Models/op-gaph</url>
+		<url>https://github.com/Nasdanika-Models/product-management</url>
 	</scm>
 
 	<properties>

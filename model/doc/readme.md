@@ -338,6 +338,57 @@ The internal variant is even cleaner. An innovation program that accepts ideas a
 
 The payoff is that organizational boundaries stop being shape-changing operations on the information that crosses them. A vendor proposal, a partner-onboarding submission, and an internal innovation idea all arrive on the same graph the rest of the model lives on. Comparison, matching, and federation are operations over a single structure rather than a sequence of human translations between incompatible formats.
 
+### Federated goal alignment across teams and virtual organizations
+
+Strategic alignment - the property that every individual's work traces back to a customer concern - is what every organization claims to want and few achieve.
+The usual failure mode is that goals are set in tools that do not compose: a team's OKRs live in one quarterly document, the department's strategy lives in a slide deck, the company's mission lives on a poster,
+and the actual customer concerns that motivate everything live nowhere structured at all.
+Tracing the line from *"I am working on this today"* back to *"because this customer has this concern"* requires reconstruction from heterogeneous sources, and the reconstruction is rarely done.
+
+The model supports alignment as first-class structure. The same Concern type that captures customer-persona goals captures organizational goals, team goals, and individual goals - the persona is just whoever holds the concern.
+A *supports* relationship at the Concern level lets a goal support another goal (a team goal supports a department goal) or any other concern type (a team goal addresses a customer need or pain point).
+The alignment is a directed graph over concerns, queryable from any node: *"what supports this goal?"* and *"what does this goal ultimately serve?"* become single queries rather than multi-tool reconstructions.
+
+Hierarchical organizations whose alignment is partially fictional benefit from keeping alignment narrative-shaped rather than queryable; making it queryable exposes the fiction.
+That is not a flaw of the model; it is the property the model provides.
+Organizations that already align well lose nothing; organizations that do not lose narrative cover.
+
+For virtual organizations - open source communities, federated partnerships, multi-org research consortia, distributed engineering teams that span employers - it works precisely because no central HR tool serves the population.
+Each contributor publishes their own goals in their own repository under their own authority; the supports relationships make the alignment visible without anyone administering it;
+agents reasoning over the federated graph can answer alignment queries the same way they answer capability queries.
+
+The Nasdanika ecosystem itself is the worked example. The umbrella publishes a goal - *agents that operate on federated models with audit and access control* - and the semantic mapping language, the capability framework, the product management model,
+and the execution components each publish their own goals that reference and support the umbrella goal through their own concern declarations.
+The alignment is visible to anyone who loads the federation; no central project manager curates it; it stays accurate as the repositories evolve because each repository owns its own goals.
+The umbrella goal can itself reference a customer concern - *developers and architects need their AI assistance to be grounded, verifiable, and bounded by their access policies* - and the chain from any individual
+contribution back to the customer concern becomes a query rather than a reconstruction.
+
+The pattern transfers wherever virtual organization exists. Cross-employer open source projects align contributor work to project goals to user concerns.
+Multi-vendor partnerships align partner roadmaps to joint customer accounts. Internal innovation programs that span business units align proposal goals to portfolio-level concerns.
+In each case the property that makes the alignment possible is the same one that makes the capability federation possible: artifacts that compose by reference rather than by central administration.
+
+### Methodology-neutral goals — OKRs, V2MOM, and other frameworks as extensions
+
+Several goal-setting methodologies compete for primacy in industry practice - OKRs, V2MOM, North Star, Hoshin Kanri, MBO, and many local variants.
+Each has advocates; each is contested by adherents of the others; organizations that adopt one frequently abandon it for another after a few years.
+The methodology choice is real and consequential, but it is also tactical - the structural primitives the methodologies rest on (goals, supporting goals, measurable outcomes, owners, time bounds) are common across all of them.
+
+The core model is methodology-neutral. The Goal concern type, the *supports* relationship, temporal validity, and authority on every assertion together provide the structural primitives every named methodology needs.
+A specific methodology is a sub-model that extends the core. An OKR extension introduces Objective as a specialization of Goal - with the additional constraint that it has measurable Key Results attached as Evidence and a defined period of validity.
+A V2MOM extension introduces Vision, Values, Methods, Obstacles, and Measures as specializations of the same primitives.
+An MBO extension introduces what its practitioners would expect.
+Each methodology becomes a Maven artifact organizations choose to adopt without forcing every adjacent organization onto the same one.
+
+The payoff is twofold. The first is that organizations can pick a methodology that fits without losing the ability to federate with others who picked differently.
+An OKR-adopting team and a V2MOM-adopting team that need to align across organizational boundary can do so at the core-Goal level, where both methodologies meet, without either team having to migrate.
+The supports relationship works across methodology boundaries because both methodologies' specializations inherit from the same root concept.
+The second is that methodology choice stops being a strategic commitment that requires re-platforming - switching from OKRs to V2MOM is a matter of loading a different extension model, not of rebuilding the goals infrastructure.
+The substrate persists; the methodology is a thin layer above it.
+
+The pattern is the same one the model uses for prioritization frameworks. RICE, WSJF, AHP, and other prioritization methods extend the core capability model the way OKRs and V2MOM extend the core concern model.
+The framework's value is in being a substrate other people's structured thinking can attach to, not in committing to any one school of structured thinking itself.
+Organizations bring their methodology; the substrate carries their methodology's structure as one extension among several rather than as the only legible shape.
+
 ### Symmetric evaluation of vendor and internal offerings
 
 A pattern recognizable in any organization with hierarchical accountability: in a meeting attended by peers and a manager, it is politically safer to propose a solution from a large external vendor than a comparable proposal from one's own team. The vendor proposal carries the implicit endorsement of the vendor's market position; the internal proposal carries the explicit endorsement of the proposer, with the associated career risk if the proposal does not work out. The asymmetry biases selection toward external offerings independent of fit. A solution that is a poor match for the concerns at hand can still be the preferred recommendation, simply because recommending it costs the recommender less.

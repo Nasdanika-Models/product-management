@@ -10,7 +10,6 @@ module org.nasdanika.models.productmanagement {
 	requires transitive org.eclipse.emf.ecore;
 	requires transitive org.eclipse.emf.common;
 	requires transitive org.nasdanika.capability;
-	requires transitive org.nasdanika.ncore;
 	
 	provides CapabilityFactory with 
 		ProductManagementEPackageResourceSetCapabilityFactory;

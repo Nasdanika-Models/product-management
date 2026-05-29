@@ -1570,13 +1570,49 @@ public interface ProductmanagementPackage extends EPackage {
 	int CONCERN__ALL_ADDRESSED_BY = NAMED_PERIOD_FEATURE_COUNT + 1;
 
 	/**
+	 * The feature id for the '<em><b>Supports</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN__SUPPORTS = NAMED_PERIOD_FEATURE_COUNT + 2;
+
+	/**
+	 * The feature id for the '<em><b>All Supports</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN__ALL_SUPPORTS = NAMED_PERIOD_FEATURE_COUNT + 3;
+
+	/**
+	 * The feature id for the '<em><b>Supported By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN__SUPPORTED_BY = NAMED_PERIOD_FEATURE_COUNT + 4;
+
+	/**
+	 * The feature id for the '<em><b>All Supported By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int CONCERN__ALL_SUPPORTED_BY = NAMED_PERIOD_FEATURE_COUNT + 5;
+
+	/**
 	 * The number of structural features of the '<em>Concern</em>' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CONCERN_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 2;
+	int CONCERN_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 6;
 
 	/**
 	 * The operation id for the '<em>Collect</em>' operation.
@@ -1969,13 +2005,31 @@ public interface ProductmanagementPackage extends EPackage {
 	int GOAL__ALL_ADDRESSED_BY = CONCERN__ALL_ADDRESSED_BY;
 
 	/**
+	 * The feature id for the '<em><b>Supports</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL__SUPPORTS = CONCERN__SUPPORTS;
+
+	/**
+	 * The feature id for the '<em><b>All Supports</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int GOAL__ALL_SUPPORTS = CONCERN__ALL_SUPPORTS;
+
+	/**
 	 * The feature id for the '<em><b>Supported By</b></em>' reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int GOAL__SUPPORTED_BY = CONCERN_FEATURE_COUNT + 0;
+	int GOAL__SUPPORTED_BY = CONCERN__SUPPORTED_BY;
 
 	/**
 	 * The feature id for the '<em><b>All Supported By</b></em>' reference list.
@@ -1984,7 +2038,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GOAL__ALL_SUPPORTED_BY = CONCERN_FEATURE_COUNT + 1;
+	int GOAL__ALL_SUPPORTED_BY = CONCERN__ALL_SUPPORTED_BY;
 
 	/**
 	 * The feature id for the '<em><b>Blocked By</b></em>' reference list.
@@ -1993,7 +2047,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GOAL__BLOCKED_BY = CONCERN_FEATURE_COUNT + 2;
+	int GOAL__BLOCKED_BY = CONCERN_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>All Blocked By</b></em>' reference list.
@@ -2002,7 +2056,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GOAL__ALL_BLOCKED_BY = CONCERN_FEATURE_COUNT + 3;
+	int GOAL__ALL_BLOCKED_BY = CONCERN_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Goal</em>' class.
@@ -2011,7 +2065,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int GOAL_FEATURE_COUNT = CONCERN_FEATURE_COUNT + 4;
+	int GOAL_FEATURE_COUNT = CONCERN_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Collect</em>' operation.
@@ -2165,7 +2219,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NEED__SUPPORTS = CONCERN_FEATURE_COUNT + 0;
+	int NEED__SUPPORTS = CONCERN__SUPPORTS;
 
 	/**
 	 * The feature id for the '<em><b>All Supports</b></em>' reference list.
@@ -2174,7 +2228,25 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NEED__ALL_SUPPORTS = CONCERN_FEATURE_COUNT + 1;
+	int NEED__ALL_SUPPORTS = CONCERN__ALL_SUPPORTS;
+
+	/**
+	 * The feature id for the '<em><b>Supported By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NEED__SUPPORTED_BY = CONCERN__SUPPORTED_BY;
+
+	/**
+	 * The feature id for the '<em><b>All Supported By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int NEED__ALL_SUPPORTED_BY = CONCERN__ALL_SUPPORTED_BY;
 
 	/**
 	 * The feature id for the '<em><b>Violated By</b></em>' containment reference list.
@@ -2183,7 +2255,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NEED__VIOLATED_BY = CONCERN_FEATURE_COUNT + 2;
+	int NEED__VIOLATED_BY = CONCERN_FEATURE_COUNT + 0;
 
 	/**
 	 * The feature id for the '<em><b>All Violated By</b></em>' reference list.
@@ -2192,7 +2264,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NEED__ALL_VIOLATED_BY = CONCERN_FEATURE_COUNT + 3;
+	int NEED__ALL_VIOLATED_BY = CONCERN_FEATURE_COUNT + 1;
 
 	/**
 	 * The number of structural features of the '<em>Need</em>' class.
@@ -2201,7 +2273,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int NEED_FEATURE_COUNT = CONCERN_FEATURE_COUNT + 4;
+	int NEED_FEATURE_COUNT = CONCERN_FEATURE_COUNT + 2;
 
 	/**
 	 * The operation id for the '<em>Collect</em>' operation.
@@ -2347,6 +2419,42 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @ordered
 	 */
 	int PAIN_POINT__ALL_ADDRESSED_BY = CONCERN__ALL_ADDRESSED_BY;
+
+	/**
+	 * The feature id for the '<em><b>Supports</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAIN_POINT__SUPPORTS = CONCERN__SUPPORTS;
+
+	/**
+	 * The feature id for the '<em><b>All Supports</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAIN_POINT__ALL_SUPPORTS = CONCERN__ALL_SUPPORTS;
+
+	/**
+	 * The feature id for the '<em><b>Supported By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAIN_POINT__SUPPORTED_BY = CONCERN__SUPPORTED_BY;
+
+	/**
+	 * The feature id for the '<em><b>All Supported By</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int PAIN_POINT__ALL_SUPPORTED_BY = CONCERN__ALL_SUPPORTED_BY;
 
 	/**
 	 * The feature id for the '<em><b>Blocks</b></em>' containment reference list.
@@ -5285,6 +5393,50 @@ public interface ProductmanagementPackage extends EPackage {
 	EReference getConcern_AllAddressedBy();
 
 	/**
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.Concern#getSupports <em>Supports</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the containment reference list '<em>Supports</em>'.
+	 * @see org.nasdanika.models.productmanagement.Concern#getSupports()
+	 * @see #getConcern()
+	 * @generated
+	 */
+	EReference getConcern_Supports();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Concern#getAllSupports <em>All Supports</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>All Supports</em>'.
+	 * @see org.nasdanika.models.productmanagement.Concern#getAllSupports()
+	 * @see #getConcern()
+	 * @generated
+	 */
+	EReference getConcern_AllSupports();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Concern#getSupportedBy <em>Supported By</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>Supported By</em>'.
+	 * @see org.nasdanika.models.productmanagement.Concern#getSupportedBy()
+	 * @see #getConcern()
+	 * @generated
+	 */
+	EReference getConcern_SupportedBy();
+
+	/**
+	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Concern#getAllSupportedBy <em>All Supported By</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for the reference list '<em>All Supported By</em>'.
+	 * @see org.nasdanika.models.productmanagement.Concern#getAllSupportedBy()
+	 * @see #getConcern()
+	 * @generated
+	 */
+	EReference getConcern_AllSupportedBy();
+
+	/**
 	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.ConcernReference <em>Concern Reference</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5358,28 +5510,6 @@ public interface ProductmanagementPackage extends EPackage {
 	EClass getGoal();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Goal#getSupportedBy <em>Supported By</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Supported By</em>'.
-	 * @see org.nasdanika.models.productmanagement.Goal#getSupportedBy()
-	 * @see #getGoal()
-	 * @generated
-	 */
-	EReference getGoal_SupportedBy();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Goal#getAllSupportedBy <em>All Supported By</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>All Supported By</em>'.
-	 * @see org.nasdanika.models.productmanagement.Goal#getAllSupportedBy()
-	 * @see #getGoal()
-	 * @generated
-	 */
-	EReference getGoal_AllSupportedBy();
-
-	/**
 	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Goal#getBlockedBy <em>Blocked By</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5410,28 +5540,6 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 */
 	EClass getNeed();
-
-	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.Need#getSupports <em>Supports</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Supports</em>'.
-	 * @see org.nasdanika.models.productmanagement.Need#getSupports()
-	 * @see #getNeed()
-	 * @generated
-	 */
-	EReference getNeed_Supports();
-
-	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Need#getAllSupports <em>All Supports</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>All Supports</em>'.
-	 * @see org.nasdanika.models.productmanagement.Need#getAllSupports()
-	 * @see #getNeed()
-	 * @generated
-	 */
-	EReference getNeed_AllSupports();
 
 	/**
 	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.Need#getViolatedBy <em>Violated By</em>}'.
@@ -6383,6 +6491,38 @@ public interface ProductmanagementPackage extends EPackage {
 		EReference CONCERN__ALL_ADDRESSED_BY = eINSTANCE.getConcern_AllAddressedBy();
 
 		/**
+		 * The meta object literal for the '<em><b>Supports</b></em>' containment reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONCERN__SUPPORTS = eINSTANCE.getConcern_Supports();
+
+		/**
+		 * The meta object literal for the '<em><b>All Supports</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONCERN__ALL_SUPPORTS = eINSTANCE.getConcern_AllSupports();
+
+		/**
+		 * The meta object literal for the '<em><b>Supported By</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONCERN__SUPPORTED_BY = eINSTANCE.getConcern_SupportedBy();
+
+		/**
+		 * The meta object literal for the '<em><b>All Supported By</b></em>' reference list feature.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @generated
+		 */
+		EReference CONCERN__ALL_SUPPORTED_BY = eINSTANCE.getConcern_AllSupportedBy();
+
+		/**
 		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.ConcernReferenceImpl <em>Concern Reference</em>}' class.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6445,22 +6585,6 @@ public interface ProductmanagementPackage extends EPackage {
 		EClass GOAL = eINSTANCE.getGoal();
 
 		/**
-		 * The meta object literal for the '<em><b>Supported By</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference GOAL__SUPPORTED_BY = eINSTANCE.getGoal_SupportedBy();
-
-		/**
-		 * The meta object literal for the '<em><b>All Supported By</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference GOAL__ALL_SUPPORTED_BY = eINSTANCE.getGoal_AllSupportedBy();
-
-		/**
 		 * The meta object literal for the '<em><b>Blocked By</b></em>' reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6485,22 +6609,6 @@ public interface ProductmanagementPackage extends EPackage {
 		 * @generated
 		 */
 		EClass NEED = eINSTANCE.getNeed();
-
-		/**
-		 * The meta object literal for the '<em><b>Supports</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference NEED__SUPPORTS = eINSTANCE.getNeed_Supports();
-
-		/**
-		 * The meta object literal for the '<em><b>All Supports</b></em>' reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference NEED__ALL_SUPPORTS = eINSTANCE.getNeed_AllSupports();
 
 		/**
 		 * The meta object literal for the '<em><b>Violated By</b></em>' containment reference list feature.

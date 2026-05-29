@@ -239,6 +239,53 @@ class Concern extends NamedPeriod, AbstractConcern {
         }
         result
     }    
+    
+    
+    /**
+     * Goals supported by this need
+     */
+    contains ConcernReference[] supports
+    
+    /**
+     * Supports from this need plus supportingNeeds from goals
+     */
+    refers derived transient volatile readonly Concern[] allSupports get {
+        val result = new org.eclipse.emf.common.util.BasicEList<Concern>()
+        for (ref : supports) {
+            var target = ref.target
+            result.add(target)
+        }
+        
+        for (referrer : getReferrers(ProductmanagementPackage.Literals.CONCERN__SUPPORTED_BY)) {
+            if (referrer instanceof Concern) {
+                result.add(referrer)
+            }
+        }
+        result
+    }    
+        
+    /**
+     * References to needs supporting this goal
+     */
+    refers ConcernReference[] supportedBy
+    
+    /**
+     * Supporting needs from this goal plus supports from needs
+     */
+    refers derived transient volatile readonly Concern[] allSupportedBy get {
+        val result = new org.eclipse.emf.common.util.BasicEList<Concern>()
+        for (ref : supportedBy) {
+            var target = ref.target
+            result.add(target)
+        }
+        
+        for (referrer : getReferrers(ProductmanagementPackage.Literals.CONCERN__SUPPORTS)) {
+            if (referrer instanceof Concern) {
+                result.add(referrer)
+            }
+        }
+        result
+    }    
             
 }
 
@@ -280,31 +327,6 @@ class ConcernDomain extends NamedElement, AbstractConcern {
 }
 
 class Goal extends Concern {
-    
-    /**
-     * References to needs supporting this goal
-     */
-    refers ConcernReference[] supportedBy
-    
-    /**
-     * Supporting needs from this goal plus supports from needs
-     */
-    refers derived transient volatile readonly Need[] allSupportedBy get {
-        val result = new org.eclipse.emf.common.util.BasicEList<Need>()
-        for (ref : supportedBy) {
-            var target = ref.target
-            if (target instanceof Need) {
-                result.add(target)
-            }
-        }
-        
-        for (referrer : getReferrers(ProductmanagementPackage.Literals.NEED__SUPPORTS)) {
-            if (referrer instanceof Need) {
-                result.add(referrer)
-            }
-        }
-        result
-    }    
         
     /**
      * References to pain points blocking this goal
@@ -334,31 +356,6 @@ class Goal extends Concern {
 }
 
 class Need extends Concern {
-    
-    /**
-     * Goals supported by this need
-     */
-    contains ConcernReference[] supports
-    
-    /**
-     * Supports from this need plus supportingNeeds from goals
-     */
-    refers derived transient volatile readonly Goal[] allSupports get {
-        val result = new org.eclipse.emf.common.util.BasicEList<Goal>()
-        for (ref : supports) {
-            var target = ref.target
-            if (target instanceof Goal) {
-                result.add(target)
-            }
-        }
-        
-        for (referrer : getReferrers(ProductmanagementPackage.Literals.GOAL__SUPPORTED_BY)) {
-            if (referrer instanceof Goal) {
-                result.add(referrer)
-            }
-        }
-        result
-    }    
     
     /**
      * References to pain points violating this need
@@ -692,4 +689,4 @@ class ActorDomain extends NamedElement, AbstractActor {
 
 // Product
 
-// Marked segment
+// Market segment

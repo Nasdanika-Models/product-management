@@ -13,8 +13,6 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.models.productmanagement.Need#getSupports <em>Supports</em>}</li>
- *   <li>{@link org.nasdanika.models.productmanagement.Need#getAllSupports <em>All Supports</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.Need#getViolatedBy <em>Violated By</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.Need#getAllViolatedBy <em>All Violated By</em>}</li>
  * </ul>
@@ -24,38 +22,6 @@ import org.eclipse.emf.common.util.EList;
  * @generated
  */
 public interface Need extends Concern {
-	/**
-	 * Returns the value of the '<em><b>Supports</b></em>' containment reference list.
-	 * The list contents are of type {@link org.nasdanika.models.productmanagement.ConcernReference}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * *
-	 * Goals supported by this need
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Supports</em>' containment reference list.
-	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getNeed_Supports()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<ConcernReference> getSupports();
-
-	/**
-	 * Returns the value of the '<em><b>All Supports</b></em>' reference list.
-	 * The list contents are of type {@link org.nasdanika.models.productmanagement.Goal}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * *
-	 * Supports from this need plus supportingNeeds from goals
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>All Supports</em>' reference list.
-	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getNeed_AllSupports()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 * @generated
-	 */
-	EList<Goal> getAllSupports();
-
 	/**
 	 * Returns the value of the '<em><b>Violated By</b></em>' containment reference list.
 	 * The list contents are of type {@link org.nasdanika.models.productmanagement.ConcernReference}.

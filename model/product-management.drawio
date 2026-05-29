@@ -1,6 +1,6 @@
 <mxfile compressed="false" host="Electron">
   <diagram id="47ec121a-5e39-4c75-8b70-7f35494b31c4" name="management">
-    <mxGraphModel dx="30" dy="2380" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+    <mxGraphModel dx="-747" dy="1279" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -28,8 +28,14 @@
         <mxCell id="7MJqjTzi0a_tAxkLkpbH-10" edge="1" parent="1" source="7MJqjTzi0a_tAxkLkpbH-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=0;" target="f3a4c45a-cd65-4d10-88bf-2df6aedc992b">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="7MJqjTzi0a_tAxkLkpbH-14" edge="1" parent="1" source="7MJqjTzi0a_tAxkLkpbH-4" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" target="7MJqjTzi0a_tAxkLkpbH-6" value="Supports">
-          <mxGeometry relative="1" as="geometry" />
+        <mxCell id="7MJqjTzi0a_tAxkLkpbH-14" edge="1" parent="1" source="f3a4c45a-cd65-4d10-88bf-2df6aedc992b" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.25;exitDx=0;exitDy=0;entryX=0;entryY=0.75;entryDx=0;entryDy=0;" target="f3a4c45a-cd65-4d10-88bf-2df6aedc992b" value="Supports">
+          <mxGeometry relative="1" y="-30" as="geometry">
+            <mxPoint as="offset" />
+            <Array as="points">
+              <mxPoint x="1390" y="-42" />
+              <mxPoint x="1390" y="-27" />
+            </Array>
+          </mxGeometry>
         </mxCell>
         <object label="Need" link="references/eClassifiers/Need/index.html" id="7MJqjTzi0a_tAxkLkpbH-4">
           <mxCell parent="1" vertex="1">
