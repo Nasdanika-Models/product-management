@@ -467,25 +467,51 @@ The payoff is that prioritization stops being a top-down allocation question and
 
 ## Synergy versus competition
 
-A recognizable scenario in any sufficiently large engineering organization: two individuals or two teams independently arrive at similar product ideas, or propose capabilities that overlap in scope.
-The current default outcome is competitive - each side defends its proposal by surfacing weaknesses in the other, and resources, attention, and political capital flow to whichever proposal survives the comparison.
-One "wins"; the other is shelved, often with the loser's underlying insight lost to the organization.
+A recognizable industry-scale pattern: a problem domain develops, multiple vendors or open-source projects produce solutions, each with its own API and conceptual model. Consumers face vendor lock-in; vendors compete on incompatible terms; the comparison happens in marketing material rather than against any shared representation.
+JDBC versus proprietary database APIs in the late 1990s, JMS versus native broker APIs in the 2000s, GraphQL versus REST conventions in the 2010s, OpenAI versus Anthropic versus Google response formats today - the same shape recurs across decades, with the same costs.
+When a standard finally emerges, vendors initially resist it because of the inevitable impedance mismatch - IBM MQ is not very JMSy, and many of its useful idiosyncrasies have to be smuggled across the standard's surface as out-of-band properties.
+The standard wins partial adoption; vendor-specific extensions remain for the cases the standard does not cover well.
+And by the time one standard achieves traction, several others have appeared in adjacent domains - the joke Andrew Tanenbaum is credited with, *"the good thing about standards is that there are so many to choose from,"* captures the failure mode precisely.
 
-This pattern is well-understood as a failure mode, and yet it persists because the alternative - structured comparison and reconciliation - is expensive in the absence of a shared representation.
-Without a common artifact, two proposals are two narratives; the comparison is rhetorical, and rhetorical comparisons reward defensive posture over informational completeness.
+The same dynamic shows up at smaller scales inside organizations.
+Two individuals or two teams independently arrive at similar product ideas, or propose capabilities that overlap in scope.
+The default outcome is competitive: each side defends its proposal by surfacing weaknesses in the other, resources and attention flow to whichever proposal survives the comparison, one "wins"; the other is shelved, often with the loser's underlying insight lost to the organization.
 
-The product management model changes the medium in which proposals exist.
-Both proposals enter the model as candidate capabilities with explicit scope, outcomes, dependencies, target beneficiaries, and assumed market or operational context. Overlap and divergence are no longer assertions to be argued; they are properties of the model that can be computed and displayed.
+In both shapes - cross-vendor at industry scale, cross-team at organizational scale - the pattern persists because the alternative is expensive.
+Structured comparison and reconciliation require a shared representation.
+Without one, two proposals are two narratives, the comparison is rhetorical, and rhetorical comparisons reward defensive posture over informational completeness.
+
+The product management model changes the medium.
+Both proposals - whether they are two competing vendor offerings or two competing internal capabilities - enter the model as candidates with explicit scope, outcomes, dependencies, target beneficiaries, and assumed operational context.
+Overlap and divergence are no longer assertions to be argued; they are properties of the model that can be computed and displayed.
+The model does not try to *be* the One True Standard.
+It is a way of producing *many cheap standards* - formal authoritative definitions of personas, concerns, capabilities, and providers, versioned and federated in a graph of relationships, attributable to their authors, citable across boundaries.
+Consumers reason about which to follow based on fit: JMS or AMQP for simple messaging where the standard's coverage suffices, vendor-specific APIs for deep integration the standard does not express well, and a structured graph showing where each strikes the trade-off rather than which one is "best."
 
 Three consequences follow:
 
-* First, leadership sees the comparison in the same form they see the rest of the portfolio. The decision input is structural, not rhetorical: where the proposals overlap, where they diverge, which dependencies they share, what outcomes each uniquely contributes. AI assistance over the model can synthesize this view on demand and answer follow-up questions ("which of these proposals' dependencies are satisfied by existing capabilities?") without re-litigation.
-* Second, the disagreement itself is preserved as documented context. A decision to advance one proposal and pause the other is reversible in a meaningful way, because the rejected proposal is not lost - it remains in the model with its scope and rationale intact, available when context changes.
-* Third - and this is the outcome that is hardest to achieve in the rhetorical mode - the proposals' authors often discover that their ideas are *complementary* rather than competing. Two capabilities that looked like duplicates in a slide deck frequently reveal, once decomposed into outcomes and dependencies, that they address different beneficiaries or different stages of the same user journey. The model surfaces this. The collaboration that becomes possible at that point - defining the two capabilities as a coordinated pair, with explicit interfaces - is a structurally better outcome than either proposal alone.
+* First, leadership and consumers see the comparison in the same form they see the rest of the portfolio. The decision input is structural, not rhetorical: where the proposals overlap, where they diverge, which dependencies they share, what outcomes each uniquely contributes. AI assistance over the model can synthesize this view on demand and answer follow-up questions ("which of these proposals' dependencies are satisfied by existing capabilities?") without re-litigation.
+* Second, the disagreement itself is preserved as documented context. A decision to advance one proposal and pause the other is reversible in a meaningful way, because the rejected proposal is not lost - it remains in the model with its scope and rationale intact, available when context changes. Yesterday's "losing" vendor API may be tomorrow's best fit for a workload the original comparison did not anticipate.
+* Third - and this is the outcome that is hardest to achieve in the rhetorical mode - the proposals' authors often discover that their offerings are *complementary* rather than competing. Two capabilities that looked like duplicates in a slide deck frequently reveal, once decomposed into outcomes and dependencies, that they address different beneficiaries or different stages of the same user journey. The model surfaces this. The collaboration that becomes possible at that point - defining the two capabilities as a coordinated pair, with explicit interfaces - is a structurally better outcome than either proposal alone. JMS and AMQP are not really substitutes for each other once their actual scopes are made structural; the same is true of most "competing" internal capabilities once the model exposes their actual scopes.
 
-The use case does not claim to remove all competition for resources, nor should it.
-Some proposals genuinely conflict, and the organization must choose.
-The claim is narrower: that the structured-model representation moves the conflict to terrain where the decision can be made on documented analysis, and where collaboration is at least *available* as an outcome - which, in the rhetorical mode, it typically is not.
+The use case does not claim to remove all competition - between vendors, between teams, between offerings.
+Some proposals genuinely conflict, and the choosing party must choose.
+The claim is narrower: that the structured-model representation moves the conflict to terrain where the decision can be made on documented analysis, and where collaboration - or the lighter-weight outcome of clearly bounded coexistence - is at least *available* as an alternative to the winner-takes-all rhetorical mode.
+
+The federation property is what makes this affordable at scale.
+Traditional standards bodies are expensive - committees, RFCs, vendor wrangling, years to adoption.
+The product management model lets any author publish a formal authoritative definition cheaply, lets others reference or compete with it on equal structural terms, and lets consumers reason about the resulting graph without committing to any one definition being canonical.
+*While the grass grows, the horse starves*: a cheap standard that addresses a real need within a defined scope is more useful than an expensive standard that arrives years late and still does not fit.
+Many cheap standards in a federated graph, each clearly bounded, are more useful still.
+
+The pattern is not new at the code level. Maven Central, npm, PyPI, and the GitHub ecosystem are exactly this: federated graphs of cheap, competing, individually-authoritative libraries that each address some problem in some way, with consumers picking what fits. The registries themselves are fungible - Maven Central is one public hub, but corporations proxy it through Artifactory or Nexus, and any author can publish their own snapshot repository as a static web site reachable by ordinary Maven coordinates; the registry layer is itself a non-differentiating capability with many providers.
+
+Want to parse HTML in Java? You have a dozen options - Jsoup, TagSoup, HtmlCleaner, NekoHTML, JTidy, parser combinators, and more - each with different trade-offs around performance, conformance, malformed-input tolerance, and license; no committee chose; the ecosystem sorts itself by use. The same shape governs JSON parsing: Jackson, Gson, JSON-B, Moshi, and the deliberately-minimal json.org reference implementation for the developer who chooses fewer dependencies over more features. The choice between them is often about *breakage surface* as much as about features. The heavier the framework, the larger the area in which something can break - frequently in a sub-system the consumer never touched - when a transitive dependency conflicts. A cheap minimal library that does one thing carries a smaller breakage surface than a comprehensive framework that does many things; sometimes the small option is the correct one for that reason alone, even when the larger option's feature set looks superior on paper. The same shape governs date formatting, HTTP clients, image manipulation, logging, and most other commodity capabilities at the library level.
+
+The product management model shifts the same pattern *left* - from code dependencies to strategic ones.
+Personas, concerns, capabilities, and the relationships among them become first-class artifacts on the same kind of federated graph, published the same way, federated the same way, citable the same way, with the same affordability property that made the code-level ecosystem work in the first place.
+The strategic-layer artifacts inherit the same registry fungibility: a product management model can be published to Maven Central, to a corporate Artifactory, to a private GitHub repository, or to a static web site, and consumers reach it through ordinary Maven coordinates regardless of where it lives. The hosting decision is independent of the artifact's structure.
+Shift-left is the engineering vocabulary for moving concerns earlier in the lifecycle; the product management model is what it looks like when that movement reaches the strategy layer.
 
 ## Design
 
