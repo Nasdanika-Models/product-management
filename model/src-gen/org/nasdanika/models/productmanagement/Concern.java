@@ -97,7 +97,7 @@ public interface Concern extends NamedPeriod, AbstractConcern {
 	EList<Concern> getAllSupports();
 
 	/**
-	 * Returns the value of the '<em><b>Supported By</b></em>' reference list.
+	 * Returns the value of the '<em><b>Supported By</b></em>' containment reference list.
 	 * The list contents are of type {@link org.nasdanika.models.productmanagement.ConcernReference}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -105,9 +105,9 @@ public interface Concern extends NamedPeriod, AbstractConcern {
 	 * *
 	 * References to needs supporting this goal
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Supported By</em>' reference list.
+	 * @return the value of the '<em>Supported By</em>' containment reference list.
 	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getConcern_SupportedBy()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<ConcernReference> getSupportedBy();

@@ -267,7 +267,7 @@ class Concern extends NamedPeriod, AbstractConcern {
     /**
      * References to needs supporting this goal
      */
-    refers ConcernReference[] supportedBy
+    contains ConcernReference[] supportedBy
     
     /**
      * Supporting needs from this goal plus supports from needs
@@ -331,7 +331,7 @@ class Goal extends Concern {
     /**
      * References to pain points blocking this goal
      */
-    refers ConcernReference[] blockedBy
+    contains ConcernReference[] blockedBy
     
     /**
      * BlockedBy from this goal plus blocks from pain points

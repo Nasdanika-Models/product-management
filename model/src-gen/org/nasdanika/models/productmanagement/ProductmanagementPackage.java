@@ -1588,7 +1588,7 @@ public interface ProductmanagementPackage extends EPackage {
 	int CONCERN__ALL_SUPPORTS = NAMED_PERIOD_FEATURE_COUNT + 3;
 
 	/**
-	 * The feature id for the '<em><b>Supported By</b></em>' reference list.
+	 * The feature id for the '<em><b>Supported By</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2023,7 +2023,7 @@ public interface ProductmanagementPackage extends EPackage {
 	int GOAL__ALL_SUPPORTS = CONCERN__ALL_SUPPORTS;
 
 	/**
-	 * The feature id for the '<em><b>Supported By</b></em>' reference list.
+	 * The feature id for the '<em><b>Supported By</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2041,7 +2041,7 @@ public interface ProductmanagementPackage extends EPackage {
 	int GOAL__ALL_SUPPORTED_BY = CONCERN__ALL_SUPPORTED_BY;
 
 	/**
-	 * The feature id for the '<em><b>Blocked By</b></em>' reference list.
+	 * The feature id for the '<em><b>Blocked By</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2231,7 +2231,7 @@ public interface ProductmanagementPackage extends EPackage {
 	int NEED__ALL_SUPPORTS = CONCERN__ALL_SUPPORTS;
 
 	/**
-	 * The feature id for the '<em><b>Supported By</b></em>' reference list.
+	 * The feature id for the '<em><b>Supported By</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -2439,7 +2439,7 @@ public interface ProductmanagementPackage extends EPackage {
 	int PAIN_POINT__ALL_SUPPORTS = CONCERN__ALL_SUPPORTS;
 
 	/**
-	 * The feature id for the '<em><b>Supported By</b></em>' reference list.
+	 * The feature id for the '<em><b>Supported By</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
@@ -5415,10 +5415,10 @@ public interface ProductmanagementPackage extends EPackage {
 	EReference getConcern_AllSupports();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Concern#getSupportedBy <em>Supported By</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.Concern#getSupportedBy <em>Supported By</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Supported By</em>'.
+	 * @return the meta object for the containment reference list '<em>Supported By</em>'.
 	 * @see org.nasdanika.models.productmanagement.Concern#getSupportedBy()
 	 * @see #getConcern()
 	 * @generated
@@ -5510,10 +5510,10 @@ public interface ProductmanagementPackage extends EPackage {
 	EClass getGoal();
 
 	/**
-	 * Returns the meta object for the reference list '{@link org.nasdanika.models.productmanagement.Goal#getBlockedBy <em>Blocked By</em>}'.
+	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.Goal#getBlockedBy <em>Blocked By</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
-	 * @return the meta object for the reference list '<em>Blocked By</em>'.
+	 * @return the meta object for the containment reference list '<em>Blocked By</em>'.
 	 * @see org.nasdanika.models.productmanagement.Goal#getBlockedBy()
 	 * @see #getGoal()
 	 * @generated
@@ -6507,7 +6507,7 @@ public interface ProductmanagementPackage extends EPackage {
 		EReference CONCERN__ALL_SUPPORTS = eINSTANCE.getConcern_AllSupports();
 
 		/**
-		 * The meta object literal for the '<em><b>Supported By</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Supported By</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated
@@ -6585,7 +6585,7 @@ public interface ProductmanagementPackage extends EPackage {
 		EClass GOAL = eINSTANCE.getGoal();
 
 		/**
-		 * The meta object literal for the '<em><b>Blocked By</b></em>' reference list feature.
+		 * The meta object literal for the '<em><b>Blocked By</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
 		 * @generated

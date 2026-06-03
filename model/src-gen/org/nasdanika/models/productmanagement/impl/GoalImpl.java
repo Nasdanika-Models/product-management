@@ -4,11 +4,16 @@ package org.nasdanika.models.productmanagement.impl;
 
 import java.util.Collection;
 
+import org.eclipse.emf.common.notify.NotificationChain;
+
 import org.eclipse.emf.common.util.BasicEList;
 import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
+import org.eclipse.emf.ecore.InternalEObject;
+
+import org.eclipse.emf.ecore.util.InternalEList;
 
 import org.nasdanika.models.productmanagement.Concern;
 import org.nasdanika.models.productmanagement.ConcernReference;
@@ -91,6 +96,20 @@ public class GoalImpl extends ConcernImpl implements Goal {
 			_xblockexpression = result;
 		}
 		return _xblockexpression;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
+		switch (featureID) {
+			case ProductmanagementPackage.GOAL__BLOCKED_BY:
+				return ((InternalEList<?>)getBlockedBy()).basicRemove(otherEnd, msgs);
+		}
+		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
 
 	/**

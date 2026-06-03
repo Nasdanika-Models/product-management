@@ -183,6 +183,8 @@ public class ConcernImpl extends NamedPeriodImpl implements Concern {
 				return ((InternalEList<?>)getAddressedBy()).basicRemove(otherEnd, msgs);
 			case ProductmanagementPackage.CONCERN__SUPPORTS:
 				return ((InternalEList<?>)getSupports()).basicRemove(otherEnd, msgs);
+			case ProductmanagementPackage.CONCERN__SUPPORTED_BY:
+				return ((InternalEList<?>)getSupportedBy()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}

@@ -23,7 +23,7 @@ import org.eclipse.emf.common.util.EList;
  */
 public interface Goal extends Concern {
 	/**
-	 * Returns the value of the '<em><b>Blocked By</b></em>' reference list.
+	 * Returns the value of the '<em><b>Blocked By</b></em>' containment reference list.
 	 * The list contents are of type {@link org.nasdanika.models.productmanagement.ConcernReference}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -31,9 +31,9 @@ public interface Goal extends Concern {
 	 * *
 	 * References to pain points blocking this goal
 	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Blocked By</em>' reference list.
+	 * @return the value of the '<em>Blocked By</em>' containment reference list.
 	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getGoal_BlockedBy()
-	 * @model
+	 * @model containment="true"
 	 * @generated
 	 */
 	EList<ConcernReference> getBlockedBy();
