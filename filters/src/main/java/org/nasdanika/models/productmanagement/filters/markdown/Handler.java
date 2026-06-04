@@ -21,6 +21,20 @@ import java.lang.annotation.Target;
 public @interface Handler {
 	
 	/**
+	 * Allows to narrow down the applicability of the method to specific source.
+	 * If not specified, the method is applicable to all types compatible with the source parameter.
+	 * @return
+	 */
+	Class<?>[] sourceTypes() default {};
+	
+	/**
+	 * Allows to narrow down the applicability of the method to specific target types.
+	 * If not specified, the method is applicable to all types compatible with the source parameter.
+	 * @return
+	 */
+	Class<?>[] targetTypes() default {};
+	
+	/**
 	 * If not blank, the value shall be a <a href="https://docs.spring.io/spring-framework/reference/core/expressions.html">Spring boolean expression</a>
 	 * which is evaluated in the context of the source with target variable. 
 	 * Methods with longer conditions are matched before methods with shorter (including empty) conditions.

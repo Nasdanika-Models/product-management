@@ -2792,22 +2792,13 @@ public interface ProductmanagementPackage extends EPackage {
 	int CAPABILITY__ALL_ADDRESSES = NAMED_PERIOD_FEATURE_COUNT + 6;
 
 	/**
-	 * The feature id for the '<em><b>Sub Capabilities</b></em>' containment reference list.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 * @ordered
-	 */
-	int CAPABILITY__SUB_CAPABILITIES = NAMED_PERIOD_FEATURE_COUNT + 7;
-
-	/**
 	 * The feature id for the '<em><b>Dependencies</b></em>' containment reference list.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY__DEPENDENCIES = NAMED_PERIOD_FEATURE_COUNT + 8;
+	int CAPABILITY__DEPENDENCIES = NAMED_PERIOD_FEATURE_COUNT + 7;
 
 	/**
 	 * The feature id for the '<em><b>Dependents</b></em>' reference list.
@@ -2816,7 +2807,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY__DEPENDENTS = NAMED_PERIOD_FEATURE_COUNT + 9;
+	int CAPABILITY__DEPENDENTS = NAMED_PERIOD_FEATURE_COUNT + 8;
 
 	/**
 	 * The feature id for the '<em><b>Lifecycle</b></em>' attribute.
@@ -2825,7 +2816,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY__LIFECYCLE = NAMED_PERIOD_FEATURE_COUNT + 10;
+	int CAPABILITY__LIFECYCLE = NAMED_PERIOD_FEATURE_COUNT + 9;
 
 	/**
 	 * The number of structural features of the '<em>Capability</em>' class.
@@ -2834,7 +2825,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 * @ordered
 	 */
-	int CAPABILITY_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 11;
+	int CAPABILITY_FEATURE_COUNT = NAMED_PERIOD_FEATURE_COUNT + 10;
 
 	/**
 	 * The operation id for the '<em>Collect</em>' operation.
@@ -2882,6 +2873,277 @@ public interface ProductmanagementPackage extends EPackage {
 	int CAPABILITY_OPERATION_COUNT = NAMED_PERIOD_OPERATION_COUNT + 2;
 
 	/**
+	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.CompositeCapabilityImpl <em>Composite Capability</em>}' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @see org.nasdanika.models.productmanagement.impl.CompositeCapabilityImpl
+	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCompositeCapability()
+	 * @generated
+	 */
+	int COMPOSITE_CAPABILITY = 21;
+
+	/**
+	 * The feature id for the '<em><b>Id</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CAPABILITY__ID = CAPABILITY__ID;
+
+	/**
+	 * The feature id for the '<em><b>Icon</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CAPABILITY__ICON = CAPABILITY__ICON;
+
+	/**
+	 * The feature id for the '<em><b>Documentation</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CAPABILITY__DOCUMENTATION = CAPABILITY__DOCUMENTATION;
+
+	/**
+	 * The feature id for the '<em><b>Doc Ref</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CAPABILITY__DOC_REF = CAPABILITY__DOC_REF;
+
+	/**
+	 * The feature id for the '<em><b>Doc Format</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CAPABILITY__DOC_FORMAT = CAPABILITY__DOC_FORMAT;
+
+	/**
+	 * The feature id for the '<em><b>Uris</b></em>' attribute list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CAPABILITY__URIS = CAPABILITY__URIS;
+
+	/**
+	 * The feature id for the '<em><b>Name</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CAPABILITY__NAME = CAPABILITY__NAME;
+
+	/**
+	 * The feature id for the '<em><b>Duration</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CAPABILITY__DURATION = CAPABILITY__DURATION;
+
+	/**
+	 * The feature id for the '<em><b>Start</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CAPABILITY__START = CAPABILITY__START;
+
+	/**
+	 * The feature id for the '<em><b>End</b></em>' containment reference.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CAPABILITY__END = CAPABILITY__END;
+
+	/**
+	 * The feature id for the '<em><b>Evidence</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CAPABILITY__EVIDENCE = CAPABILITY__EVIDENCE;
+
+	/**
+	 * The feature id for the '<em><b>Personas</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CAPABILITY__PERSONAS = CAPABILITY__PERSONAS;
+
+	/**
+	 * The feature id for the '<em><b>Resolved Personas</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CAPABILITY__RESOLVED_PERSONAS = CAPABILITY__RESOLVED_PERSONAS;
+
+	/**
+	 * The feature id for the '<em><b>Concerns</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CAPABILITY__CONCERNS = CAPABILITY__CONCERNS;
+
+	/**
+	 * The feature id for the '<em><b>Resolved Concerns</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CAPABILITY__RESOLVED_CONCERNS = CAPABILITY__RESOLVED_CONCERNS;
+
+	/**
+	 * The feature id for the '<em><b>Addresses</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CAPABILITY__ADDRESSES = CAPABILITY__ADDRESSES;
+
+	/**
+	 * The feature id for the '<em><b>All Addresses</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CAPABILITY__ALL_ADDRESSES = CAPABILITY__ALL_ADDRESSES;
+
+	/**
+	 * The feature id for the '<em><b>Dependencies</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CAPABILITY__DEPENDENCIES = CAPABILITY__DEPENDENCIES;
+
+	/**
+	 * The feature id for the '<em><b>Dependents</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CAPABILITY__DEPENDENTS = CAPABILITY__DEPENDENTS;
+
+	/**
+	 * The feature id for the '<em><b>Lifecycle</b></em>' attribute.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CAPABILITY__LIFECYCLE = CAPABILITY__LIFECYCLE;
+
+	/**
+	 * The feature id for the '<em><b>Capabilities</b></em>' containment reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CAPABILITY__CAPABILITIES = CAPABILITY_FEATURE_COUNT + 0;
+
+	/**
+	 * The feature id for the '<em><b>Resolved Capabilities</b></em>' reference list.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CAPABILITY__RESOLVED_CAPABILITIES = CAPABILITY_FEATURE_COUNT + 1;
+
+	/**
+	 * The number of structural features of the '<em>Composite Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CAPABILITY_FEATURE_COUNT = CAPABILITY_FEATURE_COUNT + 2;
+
+	/**
+	 * The operation id for the '<em>Collect</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CAPABILITY___COLLECT__OBJECT_EREFERENCE_ELIST = CAPABILITY___COLLECT__OBJECT_EREFERENCE_ELIST;
+
+	/**
+	 * The operation id for the '<em>Get Referrers</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CAPABILITY___GET_REFERRERS__EREFERENCE = CAPABILITY___GET_REFERRERS__EREFERENCE;
+
+	/**
+	 * The operation id for the '<em>Resolve Persona Reference</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CAPABILITY___RESOLVE_PERSONA_REFERENCE__ABSTRACTPERSONA = CAPABILITY___RESOLVE_PERSONA_REFERENCE__ABSTRACTPERSONA;
+
+	/**
+	 * The operation id for the '<em>Resolve Concern Reference</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CAPABILITY___RESOLVE_CONCERN_REFERENCE__ABSTRACTCONCERN = CAPABILITY___RESOLVE_CONCERN_REFERENCE__ABSTRACTCONCERN;
+
+	/**
+	 * The operation id for the '<em>Resolve Capability Reference</em>' operation.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CAPABILITY___RESOLVE_CAPABILITY_REFERENCE__ABSTRACTCAPABILITY = CAPABILITY_OPERATION_COUNT + 0;
+
+	/**
+	 * The number of operations of the '<em>Composite Capability</em>' class.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 * @ordered
+	 */
+	int COMPOSITE_CAPABILITY_OPERATION_COUNT = CAPABILITY_OPERATION_COUNT + 1;
+
+	/**
 	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.impl.CapabilityReferenceImpl <em>Capability Reference</em>}' class.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -2889,7 +3151,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityReference()
 	 * @generated
 	 */
-	int CAPABILITY_REFERENCE = 21;
+	int CAPABILITY_REFERENCE = 22;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -2998,7 +3260,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityDomain()
 	 * @generated
 	 */
-	int CAPABILITY_DOMAIN = 22;
+	int CAPABILITY_DOMAIN = 23;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3134,7 +3396,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityDependency()
 	 * @generated
 	 */
-	int CAPABILITY_DEPENDENCY = 23;
+	int CAPABILITY_DEPENDENCY = 24;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3261,7 +3523,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getAbstractCapabilityProvider()
 	 * @generated
 	 */
-	int ABSTRACT_CAPABILITY_PROVIDER = 24;
+	int ABSTRACT_CAPABILITY_PROVIDER = 25;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3316,7 +3578,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityProvider()
 	 * @generated
 	 */
-	int CAPABILITY_PROVIDER = 25;
+	int CAPABILITY_PROVIDER = 26;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3479,7 +3741,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityProviderDomain()
 	 * @generated
 	 */
-	int CAPABILITY_PROVIDER_DOMAIN = 26;
+	int CAPABILITY_PROVIDER_DOMAIN = 27;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3597,7 +3859,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCapabilityProviderReference()
 	 * @generated
 	 */
-	int CAPABILITY_PROVIDER_REFERENCE = 27;
+	int CAPABILITY_PROVIDER_REFERENCE = 28;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3661,7 +3923,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getProvidedCapability()
 	 * @generated
 	 */
-	int PROVIDED_CAPABILITY = 28;
+	int PROVIDED_CAPABILITY = 29;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3815,7 +4077,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getAbstractEvidence()
 	 * @generated
 	 */
-	int ABSTRACT_EVIDENCE = 29;
+	int ABSTRACT_EVIDENCE = 30;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -3870,7 +4132,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getEvidence()
 	 * @generated
 	 */
-	int EVIDENCE = 30;
+	int EVIDENCE = 31;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -4006,7 +4268,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getEvidenceDomain()
 	 * @generated
 	 */
-	int EVIDENCE_DOMAIN = 31;
+	int EVIDENCE_DOMAIN = 32;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -4124,7 +4386,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getRequiredCapability()
 	 * @generated
 	 */
-	int REQUIRED_CAPABILITY = 32;
+	int REQUIRED_CAPABILITY = 33;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -4269,7 +4531,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getVersion()
 	 * @generated
 	 */
-	int VERSION = 33;
+	int VERSION = 34;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -4405,7 +4667,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getUndergoer()
 	 * @generated
 	 */
-	int UNDERGOER = 34;
+	int UNDERGOER = 35;
 
 	/**
 	 * The feature id for the '<em><b>Roles</b></em>' containment reference list.
@@ -4442,7 +4704,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getRole()
 	 * @generated
 	 */
-	int ROLE = 35;
+	int ROLE = 36;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -4587,7 +4849,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getRoleAssignment()
 	 * @generated
 	 */
-	int ROLE_ASSIGNMENT = 36;
+	int ROLE_ASSIGNMENT = 37;
 
 	/**
 	 * The feature id for the '<em><b>Duration</b></em>' attribute.
@@ -4660,7 +4922,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getAbstractActor()
 	 * @generated
 	 */
-	int ABSTRACT_ACTOR = 37;
+	int ABSTRACT_ACTOR = 38;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -4715,7 +4977,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getActor()
 	 * @generated
 	 */
-	int ACTOR = 38;
+	int ACTOR = 39;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -4851,7 +5113,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getActorDomain()
 	 * @generated
 	 */
-	int ACTOR_DOMAIN = 39;
+	int ACTOR_DOMAIN = 40;
 
 	/**
 	 * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -4969,7 +5231,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getLifecycle()
 	 * @generated
 	 */
-	int LIFECYCLE = 40;
+	int LIFECYCLE = 41;
 
 	/**
 	 * The meta object id for the '{@link org.nasdanika.models.productmanagement.DependencyKind <em>Dependency Kind</em>}' enum.
@@ -4979,7 +5241,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getDependencyKind()
 	 * @generated
 	 */
-	int DEPENDENCY_KIND = 41;
+	int DEPENDENCY_KIND = 42;
 
 	/**
 	 * The meta object id for the '<em>Instant</em>' data type.
@@ -4989,7 +5251,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getInstant()
 	 * @generated
 	 */
-	int INSTANT = 42;
+	int INSTANT = 43;
 
 	/**
 	 * The meta object id for the '<em>Duration</em>' data type.
@@ -4999,7 +5261,7 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getDuration()
 	 * @generated
 	 */
-	int DURATION = 43;
+	int DURATION = 44;
 
 
 	/**
@@ -5660,17 +5922,6 @@ public interface ProductmanagementPackage extends EPackage {
 	EReference getCapability_AllAddresses();
 
 	/**
-	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.Capability#getSubCapabilities <em>Sub Capabilities</em>}'.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the meta object for the containment reference list '<em>Sub Capabilities</em>'.
-	 * @see org.nasdanika.models.productmanagement.Capability#getSubCapabilities()
-	 * @see #getCapability()
-	 * @generated
-	 */
-	EReference getCapability_SubCapabilities();
-
-	/**
 	 * Returns the meta object for the containment reference list '{@link org.nasdanika.models.productmanagement.Capability#getDependencies <em>Dependencies</em>}'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -5702,6 +5953,16 @@ public interface ProductmanagementPackage extends EPackage {
 	 * @generated
 	 */
 	EAttribute getCapability_Lifecycle();
+
+	/**
+	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.CompositeCapability <em>Composite Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return the meta object for class '<em>Composite Capability</em>'.
+	 * @see org.nasdanika.models.productmanagement.CompositeCapability
+	 * @generated
+	 */
+	EClass getCompositeCapability();
 
 	/**
 	 * Returns the meta object for class '{@link org.nasdanika.models.productmanagement.CapabilityReference <em>Capability Reference</em>}'.
@@ -6705,14 +6966,6 @@ public interface ProductmanagementPackage extends EPackage {
 		EReference CAPABILITY__ALL_ADDRESSES = eINSTANCE.getCapability_AllAddresses();
 
 		/**
-		 * The meta object literal for the '<em><b>Sub Capabilities</b></em>' containment reference list feature.
-		 * <!-- begin-user-doc -->
-		 * <!-- end-user-doc -->
-		 * @generated
-		 */
-		EReference CAPABILITY__SUB_CAPABILITIES = eINSTANCE.getCapability_SubCapabilities();
-
-		/**
 		 * The meta object literal for the '<em><b>Dependencies</b></em>' containment reference list feature.
 		 * <!-- begin-user-doc -->
 		 * <!-- end-user-doc -->
@@ -6735,6 +6988,16 @@ public interface ProductmanagementPackage extends EPackage {
 		 * @generated
 		 */
 		EAttribute CAPABILITY__LIFECYCLE = eINSTANCE.getCapability_Lifecycle();
+
+		/**
+		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.CompositeCapabilityImpl <em>Composite Capability</em>}' class.
+		 * <!-- begin-user-doc -->
+		 * <!-- end-user-doc -->
+		 * @see org.nasdanika.models.productmanagement.impl.CompositeCapabilityImpl
+		 * @see org.nasdanika.models.productmanagement.impl.ProductmanagementPackageImpl#getCompositeCapability()
+		 * @generated
+		 */
+		EClass COMPOSITE_CAPABILITY = eINSTANCE.getCompositeCapability();
 
 		/**
 		 * The meta object literal for the '{@link org.nasdanika.models.productmanagement.impl.CapabilityReferenceImpl <em>Capability Reference</em>}' class.

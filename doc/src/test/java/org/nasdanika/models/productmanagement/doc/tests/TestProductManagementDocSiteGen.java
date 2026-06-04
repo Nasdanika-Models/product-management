@@ -27,15 +27,14 @@ import org.nasdanika.models.productmanagement.ProductModel;
 public class TestProductManagementDocSiteGen {
 			
 	@Test
-	public void testGenerateProductManagementDocSite() throws Exception {
-		new TestProductManagement().testCreateProductManagementModel();		
+	public void testGenerateLegacyModernizationDocSite() throws Exception {
 		
 		CapabilityLoader capabilityLoader = new CapabilityLoader();
 		ProgressMonitor progressMonitor = new PrintStreamProgressMonitor();
 		Requirement<ResourceSetRequirement, ResourceSet> requirement = ServiceCapabilityFactory.createRequirement(ResourceSet.class);		
 		ResourceSet resourceSet = capabilityLoader.loadOne(requirement, progressMonitor);
 		
-		File productModelFile = new File("target/sample-product-model/product-model.yaml").getCanonicalFile();
+		File productModelFile = new File("src/test/resources/legacy-modernization.xml").getCanonicalFile();
 		Resource productModelResource = resourceSet.getResource(URI.createFileURI(productModelFile.getAbsolutePath()), true);		
 		
 		ProductModel productModel = (ProductModel) productModelResource.getContents().get(0);
@@ -80,8 +79,8 @@ public class TestProductManagementDocSiteGen {
 				rootActionURI, 
 				pageTeplateURI, 
 				siteMapDomain, 
-				new File("target/sample-project-docs"),  
-				new File("target/sample-project-doc-site-work-dir"), 
+				new File("target/legacy-modernization-docs"),  
+				new File("target/legacy-modernization-doc-site-work-dir"), 
 				true);
 				
 		int errorCount = 0;

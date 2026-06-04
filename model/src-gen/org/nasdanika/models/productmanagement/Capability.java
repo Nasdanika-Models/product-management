@@ -15,7 +15,6 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.nasdanika.models.productmanagement.Capability#getAddresses <em>Addresses</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.Capability#getAllAddresses <em>All Addresses</em>}</li>
- *   <li>{@link org.nasdanika.models.productmanagement.Capability#getSubCapabilities <em>Sub Capabilities</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.Capability#getDependencies <em>Dependencies</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.Capability#getDependents <em>Dependents</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.Capability#getLifecycle <em>Lifecycle</em>}</li>
@@ -53,18 +52,6 @@ public interface Capability extends NamedPeriod, AbstractCapability, EvidenceDom
 	 * @generated
 	 */
 	EList<AbstractConcern> getAllAddresses();
-
-	/**
-	 * Returns the value of the '<em><b>Sub Capabilities</b></em>' containment reference list.
-	 * The list contents are of type {@link org.nasdanika.models.productmanagement.AbstractCapability}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Sub Capabilities</em>' containment reference list.
-	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getCapability_SubCapabilities()
-	 * @model containment="true" keys="id"
-	 * @generated
-	 */
-	EList<AbstractCapability> getSubCapabilities();
 
 	/**
 	 * Returns the value of the '<em><b>Dependencies</b></em>' containment reference list.

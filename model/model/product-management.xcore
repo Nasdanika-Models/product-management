@@ -473,8 +473,6 @@ class Capability extends
         result
     }
     
-    contains AbstractCapability[] subCapabilities keys ^id  // composition
-    
     /**
      * Dependencies as an abstract capability allows to 
      * model self-contained capabilities with inline dependencies
@@ -504,6 +502,10 @@ class Capability extends
     
     Lifecycle lifecycle
         
+}
+
+class CompositeCapability extends Capability, CapabilityDomain {
+    
 }
 
 /**

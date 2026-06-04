@@ -152,6 +152,10 @@ public class ProductmanagementAdapterFactory extends AdapterFactoryImpl {
 				return createCapabilityAdapter();
 			}
 			@Override
+			public Adapter caseCompositeCapability(CompositeCapability object) {
+				return createCompositeCapabilityAdapter();
+			}
+			@Override
 			public Adapter caseCapabilityReference(CapabilityReference object) {
 				return createCapabilityReferenceAdapter();
 			}
@@ -538,6 +542,20 @@ public class ProductmanagementAdapterFactory extends AdapterFactoryImpl {
 	 * @generated
 	 */
 	public Adapter createCapabilityAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.productmanagement.CompositeCapability <em>Composite Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.models.productmanagement.CompositeCapability
+	 * @generated
+	 */
+	public Adapter createCompositeCapabilityAdapter() {
 		return null;
 	}
 

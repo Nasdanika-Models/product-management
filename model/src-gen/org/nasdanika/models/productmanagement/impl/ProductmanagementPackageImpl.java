@@ -31,6 +31,7 @@ import org.nasdanika.models.productmanagement.CapabilityProvider;
 import org.nasdanika.models.productmanagement.CapabilityProviderDomain;
 import org.nasdanika.models.productmanagement.CapabilityProviderReference;
 import org.nasdanika.models.productmanagement.CapabilityReference;
+import org.nasdanika.models.productmanagement.CompositeCapability;
 import org.nasdanika.models.productmanagement.Concern;
 import org.nasdanika.models.productmanagement.ConcernDomain;
 import org.nasdanika.models.productmanagement.ConcernReference;
@@ -214,6 +215,13 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	 * @generated
 	 */
 	private EClass capabilityEClass = null;
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	private EClass compositeCapabilityEClass = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -1065,7 +1073,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	 * @generated
 	 */
 	@Override
-	public EReference getCapability_SubCapabilities() {
+	public EReference getCapability_Dependencies() {
 		return (EReference)capabilityEClass.getEStructuralFeatures().get(2);
 	}
 
@@ -1075,7 +1083,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	 * @generated
 	 */
 	@Override
-	public EReference getCapability_Dependencies() {
+	public EReference getCapability_Dependents() {
 		return (EReference)capabilityEClass.getEStructuralFeatures().get(3);
 	}
 
@@ -1085,8 +1093,8 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	 * @generated
 	 */
 	@Override
-	public EReference getCapability_Dependents() {
-		return (EReference)capabilityEClass.getEStructuralFeatures().get(4);
+	public EAttribute getCapability_Lifecycle() {
+		return (EAttribute)capabilityEClass.getEStructuralFeatures().get(4);
 	}
 
 	/**
@@ -1095,8 +1103,8 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	 * @generated
 	 */
 	@Override
-	public EAttribute getCapability_Lifecycle() {
-		return (EAttribute)capabilityEClass.getEStructuralFeatures().get(5);
+	public EClass getCompositeCapability() {
+		return compositeCapabilityEClass;
 	}
 
 	/**
@@ -1630,10 +1638,11 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		capabilityEClass = createEClass(CAPABILITY);
 		createEReference(capabilityEClass, CAPABILITY__ADDRESSES);
 		createEReference(capabilityEClass, CAPABILITY__ALL_ADDRESSES);
-		createEReference(capabilityEClass, CAPABILITY__SUB_CAPABILITIES);
 		createEReference(capabilityEClass, CAPABILITY__DEPENDENCIES);
 		createEReference(capabilityEClass, CAPABILITY__DEPENDENTS);
 		createEAttribute(capabilityEClass, CAPABILITY__LIFECYCLE);
+
+		compositeCapabilityEClass = createEClass(COMPOSITE_CAPABILITY);
 
 		capabilityReferenceEClass = createEClass(CAPABILITY_REFERENCE);
 		createEReference(capabilityReferenceEClass, CAPABILITY_REFERENCE__TARGET);
@@ -1764,6 +1773,8 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		capabilityEClass.getESuperTypes().add(this.getEvidenceDomain());
 		capabilityEClass.getESuperTypes().add(this.getPersonaDomain());
 		capabilityEClass.getESuperTypes().add(this.getConcernDomain());
+		compositeCapabilityEClass.getESuperTypes().add(this.getCapability());
+		compositeCapabilityEClass.getESuperTypes().add(this.getCapabilityDomain());
 		capabilityReferenceEClass.getESuperTypes().add(this.getModelElement());
 		capabilityReferenceEClass.getESuperTypes().add(this.getAbstractCapability());
 		capabilityDomainEClass.getESuperTypes().add(this.getNamedElement());
@@ -1889,11 +1900,11 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		initEClass(capabilityEClass, Capability.class, "Capability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCapability_Addresses(), this.getAbstractConcern(), null, "addresses", null, 0, -1, Capability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCapability_AllAddresses(), this.getAbstractConcern(), null, "allAddresses", null, 0, -1, Capability.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getCapability_SubCapabilities(), this.getAbstractCapability(), null, "subCapabilities", null, 0, -1, Capability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		getCapability_SubCapabilities().getEKeys().add(this.getStringIdentity_Id());
 		initEReference(getCapability_Dependencies(), this.getAbstractCapability(), null, "dependencies", null, 0, -1, Capability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCapability_Dependents(), this.getCapabilityReference(), null, "dependents", null, 0, -1, Capability.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEAttribute(getCapability_Lifecycle(), this.getLifecycle(), "lifecycle", null, 0, 1, Capability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+		initEClass(compositeCapabilityEClass, CompositeCapability.class, "CompositeCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(capabilityReferenceEClass, CapabilityReference.class, "CapabilityReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCapabilityReference_Target(), this.getCapability(), null, "target", null, 0, 1, CapabilityReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);

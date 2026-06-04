@@ -51,7 +51,6 @@ import org.nasdanika.models.productmanagement.ProductmanagementPackage.Literals;
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getResolvedConcerns <em>Resolved Concerns</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getAddresses <em>Addresses</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getAllAddresses <em>All Addresses</em>}</li>
- *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getSubCapabilities <em>Sub Capabilities</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getDependencies <em>Dependencies</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getDependents <em>Dependents</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getLifecycle <em>Lifecycle</em>}</li>
@@ -210,17 +209,6 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 	 */
 	@SuppressWarnings("unchecked")
 	@Override
-	public EList<AbstractCapability> getSubCapabilities() {
-		return (EList<AbstractCapability>)eDynamicGet(ProductmanagementPackage.CAPABILITY__SUB_CAPABILITIES, ProductmanagementPackage.Literals.CAPABILITY__SUB_CAPABILITIES, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
 	public EList<AbstractCapability> getDependencies() {
 		return (EList<AbstractCapability>)eDynamicGet(ProductmanagementPackage.CAPABILITY__DEPENDENCIES, ProductmanagementPackage.Literals.CAPABILITY__DEPENDENCIES, true, true);
 	}
@@ -336,8 +324,6 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 				return ((InternalEList<?>)getConcerns()).basicRemove(otherEnd, msgs);
 			case ProductmanagementPackage.CAPABILITY__ADDRESSES:
 				return ((InternalEList<?>)getAddresses()).basicRemove(otherEnd, msgs);
-			case ProductmanagementPackage.CAPABILITY__SUB_CAPABILITIES:
-				return ((InternalEList<?>)getSubCapabilities()).basicRemove(otherEnd, msgs);
 			case ProductmanagementPackage.CAPABILITY__DEPENDENCIES:
 				return ((InternalEList<?>)getDependencies()).basicRemove(otherEnd, msgs);
 		}
@@ -366,8 +352,6 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 				return getAddresses();
 			case ProductmanagementPackage.CAPABILITY__ALL_ADDRESSES:
 				return getAllAddresses();
-			case ProductmanagementPackage.CAPABILITY__SUB_CAPABILITIES:
-				return getSubCapabilities();
 			case ProductmanagementPackage.CAPABILITY__DEPENDENCIES:
 				return getDependencies();
 			case ProductmanagementPackage.CAPABILITY__DEPENDENTS:
@@ -403,10 +387,6 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 				getAddresses().clear();
 				getAddresses().addAll((Collection<? extends AbstractConcern>)newValue);
 				return;
-			case ProductmanagementPackage.CAPABILITY__SUB_CAPABILITIES:
-				getSubCapabilities().clear();
-				getSubCapabilities().addAll((Collection<? extends AbstractCapability>)newValue);
-				return;
 			case ProductmanagementPackage.CAPABILITY__DEPENDENCIES:
 				getDependencies().clear();
 				getDependencies().addAll((Collection<? extends AbstractCapability>)newValue);
@@ -437,9 +417,6 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 				return;
 			case ProductmanagementPackage.CAPABILITY__ADDRESSES:
 				getAddresses().clear();
-				return;
-			case ProductmanagementPackage.CAPABILITY__SUB_CAPABILITIES:
-				getSubCapabilities().clear();
 				return;
 			case ProductmanagementPackage.CAPABILITY__DEPENDENCIES:
 				getDependencies().clear();
@@ -473,8 +450,6 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 				return !getAddresses().isEmpty();
 			case ProductmanagementPackage.CAPABILITY__ALL_ADDRESSES:
 				return !getAllAddresses().isEmpty();
-			case ProductmanagementPackage.CAPABILITY__SUB_CAPABILITIES:
-				return !getSubCapabilities().isEmpty();
 			case ProductmanagementPackage.CAPABILITY__DEPENDENCIES:
 				return !getDependencies().isEmpty();
 			case ProductmanagementPackage.CAPABILITY__DEPENDENTS:

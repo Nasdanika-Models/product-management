@@ -297,6 +297,27 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
+			case ProductmanagementPackage.COMPOSITE_CAPABILITY: {
+				CompositeCapability compositeCapability = (CompositeCapability)theEObject;
+				T result = caseCompositeCapability(compositeCapability);
+				if (result == null) result = caseCapability(compositeCapability);
+				if (result == null) result = caseCapabilityDomain(compositeCapability);
+				if (result == null) result = caseNamedPeriod(compositeCapability);
+				if (result == null) result = caseAbstractCapability(compositeCapability);
+				if (result == null) result = caseEvidenceDomain(compositeCapability);
+				if (result == null) result = casePersonaDomain(compositeCapability);
+				if (result == null) result = caseConcernDomain(compositeCapability);
+				if (result == null) result = caseNamedElement(compositeCapability);
+				if (result == null) result = casePeriod(compositeCapability);
+				if (result == null) result = caseAbstractEvidence(compositeCapability);
+				if (result == null) result = caseAbstractPersona(compositeCapability);
+				if (result == null) result = caseAbstractConcern(compositeCapability);
+				if (result == null) result = caseModelElement(compositeCapability);
+				if (result == null) result = caseStringIdentity(compositeCapability);
+				if (result == null) result = caseReferrable(compositeCapability);
+				if (result == null) result = defaultCase(theEObject);
+				return result;
+			}
 			case ProductmanagementPackage.CAPABILITY_REFERENCE: {
 				CapabilityReference capabilityReference = (CapabilityReference)theEObject;
 				T result = caseCapabilityReference(capabilityReference);
@@ -813,6 +834,21 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseCapability(Capability object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Composite Capability</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Composite Capability</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCompositeCapability(CompositeCapability object) {
 		return null;
 	}
 

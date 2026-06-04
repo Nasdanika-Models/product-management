@@ -90,11 +90,12 @@ public class Builder {
 		}
 	}
 	
+	
 	public void build(Object source, Object target, ProgressMonitor progressMonitor) {
 		for (Object builderTarget: builderTargets) {
 			List<Method> handlers = Arrays.stream(builderTarget.getClass().getMethods())
 				.filter(m -> !Modifier.isAbstract(m.getModifiers()))	
-				.filter(m -> m.getAnnotation(Handler.class) != null)
+				.filter(m -> matchHandlerAnnotation(m.getAnnotation(Handler.class), source, target))
 				.filter(m -> m.getParameterCount() == 5)
 				.filter(m -> m.getParameters()[0].getType().isInstance(source))
 				.filter(m -> m.getParameters()[1].getType().isInstance(target))
@@ -119,6 +120,40 @@ public class Builder {
 				}
 			}
 		}
+	}
+
+	protected boolean matchHandlerAnnotation(Handler handlerAnnotation, Object source, Object target) {
+		if (handlerAnnotation == null) {
+			return false;
+		}
+		Class<?>[] sTypes = handlerAnnotation.sourceTypes();
+		if (sTypes.length > 0) {
+			boolean sMatch = false;
+			for (Class<?> sType: sTypes) {
+				if (sType.isInstance(source)) {
+					sMatch = true;
+					break;
+				}
+			}
+			if (!sMatch) {
+				return false;
+			}
+		}
+		
+		Class<?>[] tTypes = handlerAnnotation.targetTypes();
+		if (tTypes.length > 0) {
+			boolean tMatch = false;
+			for (Class<?> tType: tTypes) {
+				if (tType.isInstance(target)) {
+					tMatch = true;
+					break;
+				}
+			}
+			if (!tMatch) {
+				return false;
+			}
+		}
+		return true;
 	}
 	
 

@@ -17,7 +17,7 @@ import org.nasdanika.models.productmanagement.ProductmanagementPackage;
 
 public class MarkdownToProductManagementFactory {
 	
-	private static final String TYPE_ATTR = "type";
+	public static final String TYPE_ATTR = "type";
 	
 	private Resource resource;
 	private String markdown;

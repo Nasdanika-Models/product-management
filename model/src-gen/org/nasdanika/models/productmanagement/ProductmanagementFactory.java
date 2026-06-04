@@ -139,6 +139,15 @@ public interface ProductmanagementFactory extends EFactory {
 	Capability createCapability();
 
 	/**
+	 * Returns a new object of class '<em>Composite Capability</em>'.
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @return a new object of class '<em>Composite Capability</em>'.
+	 * @generated
+	 */
+	CompositeCapability createCompositeCapability();
+
+	/**
 	 * Returns a new object of class '<em>Capability Reference</em>'.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->

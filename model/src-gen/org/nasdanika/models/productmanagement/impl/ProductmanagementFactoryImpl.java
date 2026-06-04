@@ -73,6 +73,7 @@ public class ProductmanagementFactoryImpl extends EFactoryImpl implements Produc
 			case ProductmanagementPackage.NEED: return createNeed();
 			case ProductmanagementPackage.PAIN_POINT: return createPainPoint();
 			case ProductmanagementPackage.CAPABILITY: return createCapability();
+			case ProductmanagementPackage.COMPOSITE_CAPABILITY: return createCompositeCapability();
 			case ProductmanagementPackage.CAPABILITY_REFERENCE: return createCapabilityReference();
 			case ProductmanagementPackage.CAPABILITY_DOMAIN: return createCapabilityDomain();
 			case ProductmanagementPackage.CAPABILITY_DEPENDENCY: return createCapabilityDependency();
@@ -276,6 +277,17 @@ public class ProductmanagementFactoryImpl extends EFactoryImpl implements Produc
 	public Capability createCapability() {
 		CapabilityImpl capability = new CapabilityImpl();
 		return capability;
+	}
+
+	/**
+	 * <!-- begin-user-doc -->
+	 * <!-- end-user-doc -->
+	 * @generated
+	 */
+	@Override
+	public CompositeCapability createCompositeCapability() {
+		CompositeCapabilityImpl compositeCapability = new CompositeCapabilityImpl();
+		return compositeCapability;
 	}
 
 	/**
