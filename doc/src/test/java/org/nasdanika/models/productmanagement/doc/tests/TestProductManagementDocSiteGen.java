@@ -34,7 +34,7 @@ public class TestProductManagementDocSiteGen {
 		Requirement<ResourceSetRequirement, ResourceSet> requirement = ServiceCapabilityFactory.createRequirement(ResourceSet.class);		
 		ResourceSet resourceSet = capabilityLoader.loadOne(requirement, progressMonitor);
 		
-		File productModelFile = new File("src/test/resources/legacy-modernization.xml").getCanonicalFile();
+		File productModelFile = new File("src/test/resources/legacy-modernization-product-model.xml").getCanonicalFile();
 		Resource productModelResource = resourceSet.getResource(URI.createFileURI(productModelFile.getAbsolutePath()), true);		
 		
 		ProductModel productModel = (ProductModel) productModelResource.getContents().get(0);
@@ -60,7 +60,7 @@ public class TestProductManagementDocSiteGen {
 				progressMonitor);
 				
 		// Generating a web site
-		String rootActionResource = "actions.yml";
+		String rootActionResource = "root-action.yml";
 		URI rootActionURI = URI.createFileURI(new File(rootActionResource).getAbsolutePath());//.appendFragment("/");
 		
 		AppSiteGenerator actionSiteGenerator = new AppSiteGenerator() {

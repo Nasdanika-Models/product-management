@@ -1,5 +1,7 @@
 package org.nasdanika.models.productmanagement.filters.markdown;
 
+import java.net.URLEncoder;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.function.BiConsumer;
 import java.util.function.Consumer;
@@ -12,7 +14,6 @@ import org.nasdanika.common.ProgressMonitor;
 import org.nasdanika.common.Util;
 import org.nasdanika.models.markdown.Attribute;
 import org.nasdanika.models.markdown.Container;
-import org.nasdanika.models.markdown.FencedDiv;
 import org.nasdanika.models.markdown.Node;
 import org.nasdanika.models.productmanagement.AbstractCapability;
 import org.nasdanika.models.productmanagement.AbstractConcern;
@@ -90,6 +91,28 @@ public class BuilderTarget {
 				stringIdentity.setId(attr.getValue());
 				break;
 			}
+		}
+		if (Util.isBlank(stringIdentity.getId())) {
+			String name = getName(container);			
+			if (Util.isBlank(name)) {
+				name = String.valueOf(container.eClass().getName() + "-" + container.getAttributesStartOffset());
+			} else {
+				name = name
+					.toLowerCase()
+					.chars()
+					.map(c -> Character.isAlphabetic(c) || Character.isDigit(c) ? c : '-')
+					.collect(
+							StringBuilder::new, 
+							(sb, c) -> {
+					            if (c != '-' || (sb.length() > 0 && sb.charAt(sb.length() - 1) != '-')) {
+					                sb.appendCodePoint(c);
+					            }
+					        }, 
+							StringBuilder::append)
+					.toString()
+					.replaceAll("-$", "");
+			}
+			stringIdentity.setId(URLEncoder.encode(name, StandardCharsets.UTF_8) + "-" + container.getStartLineNumber());
 		}
 		return buildState;
 	}

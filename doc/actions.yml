@@ -1,7 +1,7 @@
 Action:
     icon: https://docs.nasdanika.org/images/nasdanika-logo.png
     text: Nasdanika Product Management Model
-    location: https://bw5.models.nasdanika.org/
+    location: https://product-management.models.nasdanika.org/
     children:
      - ActionReference: "target/action-models/actions.xmi#/"
     navigation:
