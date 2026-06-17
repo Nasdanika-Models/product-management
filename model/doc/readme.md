@@ -312,6 +312,17 @@ The artifact is *evidence for a human decision*, not an autonomous portfolio cha
 
 The value is asymmetric: discovery scales beyond human attention, while the decisions remain with humans informed by candidate proposals they would not have generated on their own.
 
+The economics underneath this are worth making explicit, because they have changed.
+The agent is only as useful as the field of candidates it has to traverse, and that field is a function of how much of the portfolio has been captured in legible form.
+Capturing a capability - modeling its outcomes, dependencies, and beneficiaries - was historically expensive enough that it was done only for things with a clear present need; speculative capture could not be justified.
+Generative authoring collapses that cost. When turning something one already understands into a legible model costs an afternoon, the threshold to capture falls below the threshold to *decide whether capture is worth it*, and authors begin to record capabilities they have no immediate use for.
+
+This matters because the highest-value combinations are, by definition, the ones nobody planned.
+One reason the web became generative was *unexpected reuse* - a resource published for one purpose recombined for purposes its author never imagined - and unexpected reuse is possible only when the thing is addressable and legible before anyone knows what it is for.
+The same holds here: a capability captured speculatively, with no synergy in mind, is precisely the kind of element the agent can later find a synergy *for*.
+Cheap, speculative, legible capture is what populates the graph densely enough for discovery to pay off; composability is what converts that density into found value rather than accumulated clutter.
+The benefit does not require generated code or even a design document - legibility alone is enough for both the author who no longer has to re-derive the thing and the agent that can now reason over it.
+
 ### Pull-driven inquiry and discovery
 
 Most product communication is push: vendors and internal teams describe their offerings on their own terms, in their own sequence, at the level of detail they choose. Consumers receive whichever narrative reached them first or was packaged most attractively, and triangulate among them on their own time.
