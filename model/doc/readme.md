@@ -163,6 +163,16 @@ A team owning a product or internal platform models its consumers as personas, a
 
 The payoff is not the site. It is that every claim the product makes about its consumers is attributable, every capability is traceable to the concerns it addresses, and adoption decisions by other teams can be made against a model rather than against a sales pitch.
 
+### A home for fine-grained capability documentation
+
+Documentation has a placement problem that grows with the system it describes. A new fine-grained capability - say, a Groovy fenced block for configuring models loaded from Markdown - has to be given a *home*: a subsection on the Markdown model's page, a standalone wiki article, a heading in a reference manual. The choice is made once, under time pressure, by whoever wrote the feature, and it is rarely revisited. The capability is real and the documentation exists, but the binding between them is a location someone picked rather than a relationship the system records. Months later the page has drifted, the capability has grown sub-features that found homes of their own, and no query answers "what documents this?"
+
+At enterprise scale this is its own category of problem. Thousands of knowledge-base articles and Confluence pages describe capabilities that are never named as such. The article describes a thing; the thing has no identity the article can point at; the article is reachable only by search and by whoever remembers it exists. The knowledge base is a flat sea of pages whose relationship to what the organization actually does - and to each other - lives in nobody's model.
+
+The product management model gives every capability, however fine-grained, a first-class element with a stable URI identity. Documentation attaches to that element: inline through `documentation`, or by reference through `docRef` pointing at the Markdown file, wiki page, or knowledge-base article that already exists. The Groovy-fenced-block capability becomes a sub-capability of the Markdown-model capability - composition the model records, not a heading someone chose - and its documentation hangs off it natively. The page no longer has to *be* the home; it is *referenced by* the home. Because identity is by URI and rendering is by path, the same capability can be cited from many places and rendered wherever a consumer's view places it, without the documentation moving or the link breaking.
+
+The payoff is that documentation stops being orphaned from what it describes. "What documents this capability?" and "what capability does this article describe?" become queries over the model rather than acts of recall. A holistic knowledge base emerges as a property of the capability graph - every page anchored to a capability, every capability anchored to the concerns and personas it serves - rather than as a navigation hierarchy someone curates and everyone eventually distrusts. Existing articles are absorbed by reference rather than rewritten: the model supplies the missing layer of identity and relationship that turns a pile of pages into a structured, navigable, queryable knowledge base.
+
 ### Capability prioritization driven by evidence rather than volume
 
 A product manager prioritizing capabilities for the next period reasons over the model directly: which concerns of which personas are unaddressed; which concerns are supported by evidence and which are not; which proposed capabilities have prerequisites that are already available and which do not.
@@ -497,6 +507,31 @@ Three consequences follow:
 The use case does not claim to remove all competition - between vendors, between teams, between offerings.
 Some proposals genuinely conflict, and the choosing party must choose.
 The claim is narrower: that the structured-model representation moves the conflict to terrain where the decision can be made on documented analysis, and where collaboration - or the lighter-weight outcome of clearly bounded coexistence - is at least *available* as an alternative to the winner-takes-all rhetorical mode.
+
+
+The section so far assumes the proposals already exist and asks how to compare them. Generative AI changes the prior step.
+When producing a working artifact - a metamodel, a loader, a running prototype - costs hours rather than quarters, the economics that justified deliberation invert.
+Deliberation was the cheap part when building was expensive; you argued about which thing to build because building was the irreversible cost.
+Now it is frequently cheaper to build both candidates and compare the artifacts than to litigate them in the abstract. Humphrey's principle -
+that people do not know what they want until they see what they don't - stops being a reason to tolerate slow discovery and becomes an
+instruction: do not argue value, produce the thing and let recognition happen.
+
+Organizations keep gating as though building were still expensive.
+The approval gate, not the build, becomes the bottleneck - and a gate measured in weeks on an artifact measured in hours is a legible signal in
+its own right that the gate is protecting sunk reputation rather than managing risk.
+
+The deeper failure is that a cheap artifact is *illegible* without a coordinate system.
+With nowhere to land, a newly created capability reads as a threat to whoever has invested in the incumbent and as noise to the leadership that cannot place it.
+This is the same rhetorical-versus-structural divide as before, but it now binds at the moment of creation rather than the moment of comparison.
+The model is what converts a cheap artifact from threat-or-noise into a locatable bid: declared scope, beneficiaries, dependencies, and provenance, positioned against what
+already exists.
+
+The model does not make the threat disappear; an undeniably better candidate threatens the incumbent whether or not it is in a graph.
+Because creation is cheap and recognition is hard to deny, the incumbent's optimal defense shifts from winning the comparison to preventing the
+comparison from ever becoming structural - keeping the artifact from being built, or from being seen.
+The model is therefore necessary but not sufficient.
+It makes structural comparison possible; only a polity that requires allocation decisions to be made against the model makes it happen.
+Where no such requirement exists, a single authority can keep a two-hour analysis illegible indefinitely simply by declining to look.
 
 The federation property is what makes this affordable at scale.
 Traditional standards bodies are expensive - committees, RFCs, vendor wrangling, years to adoption.
