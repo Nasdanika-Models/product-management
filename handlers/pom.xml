@@ -24,6 +24,11 @@
             <version>${project.version}</version>
         </dependency>
         <dependency>
+            <groupId>org.nasdanika.core</groupId>
+            <artifactId>groovy</artifactId>
+            <version>${core.version}</version>
+        </dependency>
+        <dependency>
             <groupId>org.nasdanika.models.markdown</groupId>
             <artifactId>model</artifactId>
             <version>2026.6.0</version>

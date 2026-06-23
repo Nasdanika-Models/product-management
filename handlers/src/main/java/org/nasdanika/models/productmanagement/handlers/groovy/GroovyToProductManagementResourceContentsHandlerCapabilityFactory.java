@@ -3,13 +3,14 @@ package org.nasdanika.models.productmanagement.handlers.groovy;
 import java.util.concurrent.CompletionStage;
 import java.util.function.Function;
 
+import javax.script.CompiledScript;
+
 import org.apache.commons.lang3.stream.Streams;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.nasdanika.capability.CapabilityProvider;
 import org.nasdanika.capability.ServiceCapabilityFactory;
 import org.nasdanika.capability.emf.ResourceContentsHandler;
-import org.nasdanika.capability.scripting.CompiledSource;
 import org.nasdanika.common.ProgressMonitor;
 
 /**
@@ -38,27 +39,27 @@ public class GroovyToProductManagementResourceContentsHandlerCapabilityFactory e
 
 		ResourceContentsHandler.Requirement handlerRequirement = ResourceContentsHandler.createRequirement(
 				serviceRequirement.getResource(),
-				CompiledSource.class,
+				CompiledScript.class,
 				serviceRequirement.getQualifiers(),
 				serviceRequirement.getQualifierIndex() - 1);
 
 		@SuppressWarnings("rawtypes")
 		ServiceCapabilityFactory.Requirement<org.nasdanika.capability.emf.ResourceContentsHandler.Requirement, ResourceContentsHandler> sourceServiceRequirement = ServiceCapabilityFactory.createRequirement(ResourceContentsHandler.class, null, handlerRequirement);
-		CompletionStage<Iterable<CapabilityProvider<ResourceContentsHandler<CompiledSource>>>> sourceHandlerCS = loader.load(sourceServiceRequirement, progressMonitor);
+		CompletionStage<Iterable<CapabilityProvider<ResourceContentsHandler<CompiledScript>>>> sourceHandlerCS = loader.load(sourceServiceRequirement, progressMonitor);
 
 		return sourceHandlerCS.thenApply(providers -> createHandler(providers, serviceRequirement.getResource()));
 	}
 
 	private Iterable<CapabilityProvider<ResourceContentsHandler<EObject[]>>> createHandler(
-			Iterable<CapabilityProvider<ResourceContentsHandler<CompiledSource>>> providers,
+			Iterable<CapabilityProvider<ResourceContentsHandler<CompiledScript>>> providers,
 			Resource resource) {
 
-		Function<CapabilityProvider<ResourceContentsHandler<CompiledSource>>, CapabilityProvider<ResourceContentsHandler<EObject[]>>> mapper = provider -> provider.map(sourceHandler -> createHandler(resource, sourceHandler));
+		Function<CapabilityProvider<ResourceContentsHandler<CompiledScript>>, CapabilityProvider<ResourceContentsHandler<EObject[]>>> mapper = provider -> provider.map(sourceHandler -> createHandler(resource, sourceHandler));
 		return Streams.of(providers).map(mapper).toList();
 	}
 
 
-	protected GroovyToProductManagementResourceContentsHandler createHandler(Resource resource, ResourceContentsHandler<CompiledSource> sh) {
+	protected GroovyToProductManagementResourceContentsHandler createHandler(Resource resource, ResourceContentsHandler<CompiledScript> sh) {
 		return new GroovyToProductManagementResourceContentsHandler(resource, sh);
 	}
 

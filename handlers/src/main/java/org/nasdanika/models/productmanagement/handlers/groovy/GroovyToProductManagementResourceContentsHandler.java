@@ -3,14 +3,16 @@ package org.nasdanika.models.productmanagement.handlers.groovy;
 import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
+import javax.script.Bindings;
+import javax.script.CompiledScript;
+import javax.script.ScriptException;
 
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.nasdanika.capability.emf.ResourceContentsHandler;
-import org.nasdanika.capability.scripting.CompiledSource;
 import org.nasdanika.models.productmanagement.ProductmanagementFactory;
 import org.nasdanika.models.productmanagement.dsl.groovy.ProductManagementGroovyDsl;
 
@@ -23,27 +25,31 @@ import org.nasdanika.models.productmanagement.dsl.groovy.ProductManagementGroovy
  */
 public class GroovyToProductManagementResourceContentsHandler implements ResourceContentsHandler<EObject[]> {
 
-	private ResourceContentsHandler<CompiledSource> sourceHandler;
+	private ResourceContentsHandler<CompiledScript> sourceHandler;
 
 	private Resource resource;
 
-	public GroovyToProductManagementResourceContentsHandler(Resource resource, ResourceContentsHandler<CompiledSource> sourceHandler) {
+	public GroovyToProductManagementResourceContentsHandler(Resource resource, ResourceContentsHandler<CompiledScript> sourceHandler) {
 		this.resource = resource;
 		this.sourceHandler = sourceHandler;
 	}
 
 	@Override
 	public EObject[] load(InputStream inputStream, Map<?, ?> options) throws IOException {
-		CompiledSource compiledSource = sourceHandler.load(inputStream, options);
-
-		ProductManagementGroovyDsl dsl = new ProductManagementGroovyDsl(ProductmanagementFactory.eINSTANCE, resource);
-		Map<String, Object> bindings = new HashMap<>();
-		dsl.installInto(bindings);
-
-		Object result = compiledSource.eval(bindings);
-		dsl.resolveDeferred();
-
-		return normalize(result, dsl);
+		try {
+			CompiledScript compiledScript = sourceHandler.load(inputStream, options);
+	
+			ProductManagementGroovyDsl dsl = new ProductManagementGroovyDsl(ProductmanagementFactory.eINSTANCE, resource);
+			Bindings bindings = compiledScript.getEngine().createBindings();
+			dsl.installInto(bindings);
+	
+			Object result = compiledScript.eval(bindings);
+			dsl.resolveDeferred();
+	
+			return normalize(result, dsl);
+		} catch (ScriptException e) {
+			throw new IOException(e);
+		}
 	}
 
 	/**

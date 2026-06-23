@@ -12,6 +12,7 @@ module org.nasdanika.models.productmanagement.handlers {
 	requires transitive org.nasdanika.models.markdown;
 	requires org.nasdanika.models.productmanagement.dsl.groovy;
 	requires org.apache.commons.lang3;
+	requires java.scripting;
 
 	provides CapabilityFactory with
 		MarkdownToProductManagementResourceContentsHandlerCapabilityFactory,
