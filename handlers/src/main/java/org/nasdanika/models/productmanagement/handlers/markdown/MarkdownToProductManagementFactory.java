@@ -1,4 +1,4 @@
-package org.nasdanika.models.productmanagement.filters.markdown;
+package org.nasdanika.models.productmanagement.handlers.markdown;
 
 import java.util.Map;
 import java.util.function.BiConsumer;

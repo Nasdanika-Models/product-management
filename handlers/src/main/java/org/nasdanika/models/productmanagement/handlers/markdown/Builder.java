@@ -1,4 +1,4 @@
-package org.nasdanika.models.productmanagement.filters.markdown;
+package org.nasdanika.models.productmanagement.handlers.markdown;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

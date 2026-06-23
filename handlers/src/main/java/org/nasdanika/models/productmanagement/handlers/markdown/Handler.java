@@ -1,4 +1,4 @@
-package org.nasdanika.models.productmanagement.filters.markdown;
+package org.nasdanika.models.productmanagement.handlers.markdown;
 
 import static java.lang.annotation.ElementType.METHOD;
 import static java.lang.annotation.RetentionPolicy.RUNTIME;

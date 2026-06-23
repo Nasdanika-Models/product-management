@@ -1,4 +1,4 @@
-package org.nasdanika.models.productmanagement.filters.tests;
+package org.nasdanika.models.productmanagement.handlers.tests;
 
 import java.io.File;
 
@@ -14,7 +14,7 @@ import org.nasdanika.capability.emf.ResourceSetRequirement;
 import org.nasdanika.common.PrintStreamProgressMonitor;
 import org.nasdanika.common.ProgressMonitor;
 
-public class MarkdownContentsFilteringTests {
+public class MarkdownContentsHandlerTests {
 		
 	@Test
 	public void testNasdanikaProductManagementMarkdownResource() throws Exception {

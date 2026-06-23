@@ -1,4 +1,4 @@
-package org.nasdanika.models.productmanagement.filters.markdown;
+package org.nasdanika.models.productmanagement.handlers.markdown;
 
 import java.net.URLEncoder;
 import java.nio.charset.StandardCharsets;

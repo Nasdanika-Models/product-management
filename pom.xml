@@ -187,7 +187,7 @@
 	<modules>
 		<module>model</module>
 		<module>doc</module>
-		<module>filters</module>
+		<module>handlers</module>
 	</modules>
 
 	 <profiles>
