@@ -1,0 +1,22 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(find ~/.m2/repository -iname '*CompiledSource*' 2>/dev/null | head; echo \"---ResourceContentsHandler jars---\"; find ~/.m2/repository -path '*capability*' -name '*.jar' 2>/dev/null | grep -v sources | grep -v javadoc | head; echo \"---scripting---\"; find ~/.m2/repository -ipath '*scripting*' -name '*.jar' 2>/dev/null | grep -v sources | grep -v javadoc | head)",
+      "Read(//c/Users/pavel/.m2/repository/**)",
+      "Bash(mkdir -p /tmp/rch)",
+      "Bash(unzip -o -q capability-2026.6.0-sources.jar org/nasdanika/capability/emf/ResourceContentsHandler.java -d /tmp/rch)",
+      "Read(//tmp/rch/org/nasdanika/capability/emf/**)",
+      "Bash(ls /c/Users/pavel/.m2/repository/org/codehaus/gmavenplus/gmavenplus-plugin)",
+      "Bash(ls /c/Users/pavel/.m2/repository/org/codehaus/groovy/groovy-eclipse-compiler)",
+      "Bash(ls /c/Users/pavel/.m2/repository/org/codehaus/groovy/groovy-eclipse-batch)",
+      "Bash(mvn -q -pl groovy-dsl install -DskipTests -Dmaven.javadoc.skip=true -Dgpg.skip=true)",
+      "Bash(mvn -q -pl handlers install -DskipTests -Dmaven.javadoc.skip=true -Dgpg.skip=true)",
+      "Bash(unzip -p groovy-dsl/target/groovy-dsl-2026.6.0.jar META-INF/MANIFEST.MF)",
+      "Bash(unzip -l groovy-dsl/target/groovy-dsl-2026.6.0.jar)",
+      "Bash(grep -vE '\\\\$')",
+      "Bash(unzip -l handlers/target/handlers-2026.6.0.jar)",
+      "Bash(mvn -q -pl handlers test -Dtest=GroovyContentsHandlerTests -Dmaven.javadoc.skip=true -Dgpg.skip=true)",
+      "Bash(mvn -q -pl groovy-dsl test -Dmaven.javadoc.skip=true -Dgpg.skip=true)"
+    ]
+  }
+}
