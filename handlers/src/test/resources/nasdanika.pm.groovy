@@ -8,11 +8,11 @@ productModel {
     name 'Business Banking Platform'
     documentation 'Sample product model authored in Groovy'
 
-//    capability {
-//        id 'automated-kyc'
-//        name 'Automated KYC'
-//        lifecycle 'AVAILABLE'
-//
+    capabilities('Capability') {
+        id 'automated-kyc'
+        name 'Automated KYC'
+        lifecycle 'AVAILABLE'
+
 //        // Tier 1 cross-reference: capture the concern in a variable and pass it directly.
 //        def latency = concern {
 //            id 'kyc-latency'
@@ -27,8 +27,10 @@ productModel {
 //        }
 //		
 //        addresses latency
-//		
-//    }
+		
+    }
+	
+	
 //
 //    capability {
 //        id 'fraud-detection'

@@ -53,7 +53,7 @@ class DslContext {
     // --- factory / registry ---------------------------------------------------------------------
 
     EObject create(EClass type) {
-        (EObject) ePackage.EFactoryInstance.create(type)
+        (EObject) type.EPackage.EFactoryInstance.create(type)
     }
 
     /** Concrete EClass registered under a decapitalised name, or {@code null}. */

@@ -188,6 +188,7 @@ class ReflectiveBuilder {
 
     /** Type-dispatch: route a {@code goal { }}-style call to the unique containment feature accepting it. */
     private EObject createChildAutoRouted(EClass type, Object[] a) {
+		println("createChildAutoRouted: type=${type.name}, eClass=${eClass.name}, args")
         List<EReference> candidates = eClass.EAllContainments.findAll { EReference r ->
             r.changeable && !r.derived && ((EClass) r.EType).isSuperTypeOf(type)
         }
