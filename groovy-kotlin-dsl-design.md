@@ -583,6 +583,44 @@ Net: a dedicated Groovy-only module compiled by GMavenPlus is the path of least 
 
 ---
 
+### 5.6 A fully reflective builder (eliminating per-class drift)
+
+The §5.4 builders are hand-written: one class per `EClass`, one method per feature. That works and gives the best IDE story, but it only ever covers the part of the metamodel someone has gotten around to writing, and every model change invites drift between the Ecore and the DSL. An alternative — or a complement — is to drive the entire authoring surface off the metamodel at runtime, so a single builder covers the whole `EPackage` and tracks any future xcore change for free.
+
+This is viable here precisely because of the genmodel settings: `featureDelegation="Dynamic"` and `operationReflection="true"` mean `eGet`/`eSet` and operations work uniformly through reflection, and `ProductmanagementPackage.eINSTANCE` exposes every `EClass`, `EStructuralFeature`, and `EEnum`. The reference implementation is dropped into the module as `ReflectiveBuilder.groovy` + `DslContext.groovy`, living alongside the hand-written builders rather than replacing them.
+
+#### The win: multiple inheritance for free
+
+`element.eClass().getEAllStructuralFeatures()` flattens the whole inheritance closure. `ProductModel extends NamedPeriod, PersonaDomain, CapabilityDomain, CapabilityProviderDomain, ActorDomain` therefore exposes `capabilities`, `personas`, `capabilityProviders`, and `actors` with zero per-feature code; `Capability` mixing in `EvidenceDomain`, `PersonaDomain`, `ConcernDomain` likewise. The hand-written builders would need a method per mixed-in feature on each combining class.
+
+#### Two-level dispatch
+
+A single `ReflectiveBuilder` wraps an `EObject` and resolves every in-closure name through `methodMissing`:
+
+1. **Feature dispatch** — the name is a structural feature of the current `EClass`. `EAttribute` → coerce + `eSet`/add; containment `EReference` with a closure → build inline; any other reference → the cross-reference resolver below. Derived/read-only features (`resolvedPersonas`, `allAddresses`, `dependents`, `allBlockedBy`, …) are rejected via `f.changeable && !f.derived`.
+2. **Type dispatch** — the name is a concrete `EClass` (`goal { }`); a child is created and auto-routed to the *unique* containment feature that accepts it. Where more than one fits — inside `Capability`, both `concerns` (from `ConcernDomain`) and `addresses` are `AbstractConcern` containments — it refuses and asks for the feature form, `concerns('Concern') { }` vs `addresses('Goal') { }`. Abstract-typed containments require a concrete-type token for the same reason.
+
+Enums coerce through `EEnum` (`lifecycle 'Available'` or `'AVAILABLE'`, `DependencyKind` likewise) with no per-enum code; simple datatypes go through `EcoreUtil.createFromString`; `wraps` types (`Instant`, `Duration`) pass through when already the right Java type.
+
+#### The centralised cross-reference resolver (the real payoff)
+
+This is the part most prone to drift in the hand-written approach, where each reference feature needs its own `(String)` overload (`addresses`, `addressedBy`, and eventually `target`, `supports`, `blockedBy`, `dependencies`, `violates`…). The reflective builder funnels **all** of them through one `resolveReference` / `attachReference` pair keyed on the `EReference`, so there is nothing to keep in sync:
+
+- **Lookup is unified.** Tier 2 (local `id`) and tier 3 (cross-file URI) collapse into one `DslContext.resolve(String)` — local index first, then `resourceSet.getEObject(uri)`. A bare `'kyc-latency'` and a `'concerns.pm.groovy#kyc-latency'` take the same path. Resolution defers until after evaluation, exactly as today, so order is irrelevant and the existing `resolveDeferred()` two-phase flow is unchanged. Type validity is checked with the metamodel's own constraint, `r.EType.isInstance(target)`, giving one consistent error everywhere.
+- **Wrapper-vs-direct is the one rule that must be centralised.** This metamodel models "reference" two ways: as a direct `refers` feature (`ConcernReference.target`, `CapabilityReference.target`, …), and as *containment of a `*Reference` wrapper*. Because EMF containment is exclusive, adding a resolved element straight into a containment feature (`Concern.addressedBy`, `Capability.addresses`, `Goal.blockedBy`) would **relocate** it out of its real container. The resolver instead detects the wrapper from Ecore — a concrete subtype of the feature's type carrying a single-valued, non-containment `target` whose type accepts the resolved element — creates it, and sets its target. The model's consistent `*Reference` + `target` convention makes this fully discoverable (`AbstractConcern→ConcernReference`, `AbstractCapability→CapabilityReference`, preferring the most general where `CapabilityDependency` also qualifies). Where no wrapper exists and the target is already contained, the resolver refuses rather than silently steal it.
+
+One consequence worth flagging during migration: the current hand-written `addressedBy(String)` / `addresses(String)` add the resolved element directly to a containment feature, which *would* relocate an element defined elsewhere. The reflective resolver's wrapper policy is the corrected behaviour; confirm against existing `.pm.groovy` data whether by-id `addressedBy`/`addresses` was ever meant to inline-contain rather than reference.
+
+#### Runtime-reflective vs. codegen, and IDE support
+
+Pure runtime reflection costs the static `@DelegatesTo` checking and IDE completion the §5.4 builders enjoy (§5.3). Two non-exclusive recoveries: generate typed builder stubs at build time by walking `ProductmanagementPackage.eINSTANCE` (Xtend fits the existing xcore/EMF toolchain; the stubs can subclass the reflective core and add only typed signatures), or generate an IntelliJ GDSL / Eclipse DSLD descriptor from the `EPackage` so editors complete while the runtime stays reflective. A clean hybrid keeps the reflective engine as the default and a `Map<EClass, Class<? extends ReflectiveBuilder>>` registry of hand-written specialisations only where coercion is non-trivial.
+
+#### Migration
+
+`DslContext` is `ProductManagementGroovyDsl` generalised: it keeps `factory`/`resource`/`resourceSet`/`baseURI`, the `byId` index, `defer`/`resolveDeferred`, `ref`, and `run`, and adds a name→`EClass` registry and the wrapper detector, all built from the `EPackage` in the constructor. `installInto` exposes every concrete class as a root entry point (`product { }`, `persona { }`, …) generically. The `.pm` handler's job is unchanged in shape: build a `DslContext`, `installInto` the bindings, `eval`, then `resolveDeferred()` in the terminal normalise stage.
+
+---
+
 ## 6. Kotlin as a scripting engine
 
 **Short answer: yes, it works via JSR-223, and yes, it comes with a lot of dependencies.**
@@ -709,71 +747,4 @@ One `Script` abstraction serves **four** consumers — model/schema DSL, workflo
 
 ### Refinements to bake in
 
-1. **Per-eval bindings, not shared mutable state.** A `setVariable` that mutates a shared `Script` is a race the moment activity logic runs concurrently. Prefer `eval(bindings)` with a fresh `ScriptContext` / `EvaluationContext` per call. If a `setVariable` convenience is kept, scope it to single-threaded author-time DSL use and document that boundary.
-2. **Cache the compiled script, not the bindings.** The immutable compiled form (`CompiledScript`, GraalJS `Source`, SpEL `Expression`) is transient state on the `EObject`; bindings stay per-call. This gives compile-once / eval-many for hot activity logic.
-3. **Trust/sandbox matters more now.** Scripts execute at *runtime*, possibly server-side (HTTP / gRPC / MCP), not only at trusted author-time load. Carry §2's sandbox concern into the runtime path: Groovy `SecureASTCustomizer`, GraalVM polyglot sandboxing for JS, an allowlist/feature-restricted `EvaluationContext` for SpEL.
-4. **`eval` returns `EJavaObject`; consumers interpret.** Model objects for the DSL surface, a value for activity logic, a boolean for constraints, a mapping decision for NSML. Offer an optional typed overload for callers that want a checked result rather than an `Object` cast.
-
----
-
-## 12. Active resources, anti-corruption layers, and snapshotting
-
-The `Script`-as-`EObject` model (§11) makes behavior that is *authored as source* serializable. The more powerful — and more dangerous — capability is behavior bound at the **instance** level: an `EObject` whose operation (or derived feature) is backed by a live host-language closure that overrides or extends the default defined on its `EClass` (AOP-/override-like). This is what lets an active resource carry not just data but per-element behavior, and it is the heart of the "unify data and behavior under the resource abstraction" claim.
-
-**State the serialization boundary explicitly.** Instance-bound closures do **not** survive serialization to XML/XMI, JSON, YAML, or binary. Those formats persist *data* — current feature values and references — plus any behavior that was modeled as `Script` *source* (§11). A live closure has no declarative representation; saving an active model to a declarative format and reloading it yields inert data objects running only their class-level (default) behavior. This is not a defect — it is the line between two deliberately different artifacts:
-
-| | Active resource (`.groovy`, `.kts`, `.js`) | Snapshot (`.xmi` / `.json` / `.yaml` / binary) |
-|---|---|---|
-| Carries | data **+** instance behavior (live closures) | data **+** modeled `Script` source; **no** live closures |
-| Determinism | may compute on access, may hit live systems | frozen, reproducible |
-| Use | authoring surface; anti-corruption layer; live facade | persistence, diffing, transport, agent reasoning |
-| Round-trip | load-only (save goes to a snapshot, §10) | full load/save |
-
-The two are not competitors; they are the **active source → declarative snapshot** pipeline (§2, §11) made concrete. Same model, two serializations, two use cases.
-
-**Active resources as anti-corruption layers.** An active resource is the natural home for a Domain-Driven-Design *anti-corruption layer*: it encapsulates a foreign system's API and semantics behind a clean `EObject` model, so foreign concepts never leak into yours. These are a different family from the `.pm.groovy` authoring surfaces above — not a DSL for building a model by hand, but a live, behavior-carrying facade over an external system. `nasdanika.jira.groovy` holds the configuration and behavior to retrieve Jira issues (and, where wanted, to write updates back), presenting them as elements of *your* model rather than as Jira's. `nasdanika.confluence.kts` does the same for Confluence. The foreign system stays on the far side of the layer; your model sees only translated, typed elements — and the messy translation logic lives in exactly one place.
-
-```groovy
-// nasdanika.jira.groovy — an anti-corruption layer as an active resource
-jira {
-    baseUrl 'https://jira.example.com'
-    auth    token(env('JIRA_TOKEN'))
-
-    project('BB') {
-        query 'project = BB AND updated >= -7d'
-        // behavior at the element level: how an issue refreshes / writes back.
-        // absent onUpdate => a read-only ACL.
-        onUpdate { issue -> rest.put("/issue/${issue.key}", issue.toJiraFields()) }
-    }
-}
-```
-
-**Snapshotting is a first-class operation, not an afterthought.** Because the active resource and the snapshot are both EMF resources in the same `ResourceSet`, "freeze a live view" is just *retrieve through the active resource, copy into another resource, save*:
-
-```groovy
-def live = resourceSet.getResource(uri('nasdanika.jira.groovy'), true)
-def snap = resourceSet.createResource(uri('issues.snapshot.xmi'))
-snap.contents.addAll(EcoreUtil.copyAll(live.contents))  // copy = data only; closures drop here, by design
-snap.save(null)
-```
-
-The copy crosses the serialization boundary on purpose: the snapshot is the deterministic, diffable, agent-facing artifact; the active resource remains the live, behavior-carrying source. This is the same move the legacy-modernization loaders already make — read the foreign source, hold a clean model, snapshot it — now expressed as ordinary resource operations rather than bespoke loader code.
-
-**Consequence for the agentic story.** Agents should reason over **snapshots**, not active resources: reproducibility and sandboxing both demand it. The active resource's job is to *produce* the snapshot, on a controlled refresh, through the anti-corruption layer; the agent's job is to reason over the frozen result with provenance back to the source. Live-ness becomes a refresh policy, not an uncontrolled side effect on read.
-
----
-
-## Sources
-
-- Jörn Dinkla, *Using EMF with Groovy* — https://jdinkla.github.io/software-development/2007/10/22/using-emf-with-groovy.html
-- Kotlin, *Type-safe builders* — https://kotlinlang.org/docs/type-safe-builders.html
-- Kotlin, *JSR-223 scripting example* — https://github.com/Kotlin/kotlin-script-examples/blob/master/jvm/jsr223/jsr223.md
-- Kotlin discussions, *JSR223 usage/dependencies* — https://discuss.kotlinlang.org/t/jsr223-usage-dependencies/3948
-- JetBrains YouTrack, *KT-30986 missing dependencies for JSR-223* — https://youtrack.jetbrains.com/issue/KT-30986/
-- Groovy, *`DelegatesTo` API* — https://docs.groovy-lang.org/latest/html/api/groovy/lang/DelegatesTo.html
-- mrhaki, *`@DelegatesTo` for type-checking DSLs* — https://blog.mrhaki.com/2013/05/groovy-goodness-delegatesto-for-type.html
-- Eclipse Emfatic — https://github.com/eclipse-emfatic/emfatic
-- Eclipse Xcore wiki — https://wiki.eclipse.org/Xcore
-- itemis, *Using Xtext with Xcore and Gradle* — https://blogs.itemis.com/en/using-xtext-with-xcore-and-gradle
-- Gradle Kotlin DSL Primer — https://docs.gradle.org/current/userguide/kotlin_dsl.html
-- polyglot-emf proposal — https://github.com/dslmeinte/polyglot-emf
+1. **Per-eval bindings, not shared mutable state.** A `setVariable` that mutates a shared `Script` is a race the moment activity logic runs concurrently. Prefer `eval(bindings)` with a fresh `ScriptContext` / `EvaluationContext` per call. If a `setVariable` convenience is kept, scope it to single-threaded author-time DSL use and document that bound

@@ -229,6 +229,24 @@ The second is *federated discovery of niche expertise*. In any sufficiently larg
 
 The payoff is that the resume-and-staffing world and the product-management world stop being separate domains the organization maintains in incompatible formats. The same vocabulary that describes a software product describes the people who can build, operate, and replace it. Capability providers - organizations, teams, individuals - are uniform on the graph; matching needs to capabilities works the same way whether the capability comes from a vendor product or from a person.
 
+### Onboarding contributors: concepts first, details on demand
+
+A contributor joins a team that owns a complex capability - a platform with thousands of classes and hundreds of annotations, its own deployment and operational stack, its own accumulated conventions.
+The traditional onboarding path asks them to memorize that surface: the framework's idioms, the command incantations, the catalog of options. 
+Most of that surface is now reproducible on demand by an AI assistant. What an assistant cannot supply is why the capability exists, whose concerns it addresses, what it requires and what depends on it.
+The model carries exactly that. A contributor reads the capability, follows it to the concerns it addresses, to the personas that raise those concerns, to the providers it depends on and the evidence behind its claims, and reconstructs intent from the graph rather than from whoever happens to be free to explain it.
+
+This inverts the order in which a contributor learns. The prose-and-tribal-knowledge path teaches form first - syntax, annotations, commands - and intent last, if ever.
+The model lets a contributor learn intent first - the concerns, the dependencies, the authorities, the lifecycle state - and pick up form on demand, because form is the part an assistant supplies well and the model is the part that tells the assistant which form is wanted.
+A contributor who grasps a capability at the level of its concerns can ask precise questions of an assistant and, more to the point, judge whether the answers are right.
+A contributor who has only memorized details can do neither. Detail without the surrounding concepts is pedantry rather than mastery, and it is precisely the layer a machine now reproduces for free;
+the durable skill is the conceptual grasp that lets a person direct the machine and verify what it returns. Knowing a capability well enough to navigate it and ask the right question is worth more than memorizing the API it is built on,
+because the model and the assistant together regenerate the API on demand while neither regenerates understanding of intent.
+
+The payoff is that the model doubles as an onboarding substrate. The same artifact a team maintains for delivery and audit is the one a new contributor reads to become productive, so there is no separate onboarding document to write and let rot,
+and no dependency on a senior's availability to transfer the "why" by conversation. A contributor embeds into a capability provider and learns its vocabulary and its surroundings from the same graph everyone else works against.
+Mastery becomes learnable from the structure; pedantry stands exposed as the shallow thing it is; and the scarce skill the team actually needs - someone who understands a capability well enough to direct a machine and check its output against the concerns it is supposed to serve - is the skill the model is shaped to teach.
+
 ### Accountability for promises and dependencies
 
 A platform team commits to providing a capability by a target time. 

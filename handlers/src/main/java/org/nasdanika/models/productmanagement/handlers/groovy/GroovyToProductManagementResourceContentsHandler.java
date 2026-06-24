@@ -13,8 +13,8 @@ import javax.script.ScriptException;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.nasdanika.capability.emf.ResourceContentsHandler;
-import org.nasdanika.models.productmanagement.ProductmanagementFactory;
-import org.nasdanika.models.productmanagement.dsl.groovy.ProductManagementGroovyDsl;
+import org.nasdanika.models.productmanagement.ProductmanagementPackage;
+import org.nasdanika.models.productmanagement.dsl.groovy.DslContext;
 
 /**
  * Transform handler for the {@code .pm} qualifier over a {@code .groovy} source. It resolves the
@@ -39,7 +39,7 @@ public class GroovyToProductManagementResourceContentsHandler implements Resourc
 		try {
 			CompiledScript compiledScript = sourceHandler.load(inputStream, options);
 	
-			ProductManagementGroovyDsl dsl = new ProductManagementGroovyDsl(ProductmanagementFactory.eINSTANCE, resource);
+			DslContext dsl = new DslContext(ProductmanagementPackage.eINSTANCE, resource);
 			Bindings bindings = compiledScript.getEngine().createBindings();
 			dsl.installInto(bindings);
 	
@@ -57,7 +57,7 @@ public class GroovyToProductManagementResourceContentsHandler implements Resourc
 	 * iterable of {@code EObject}s is flattened; if the script returned nothing usable, the elements
 	 * built through the DSL entry points (e.g. {@code product { }}) are used instead.
 	 */
-	private EObject[] normalize(Object result, ProductManagementGroovyDsl dsl) {
+	private EObject[] normalize(Object result, DslContext dsl) {
 		List<EObject> contents = new ArrayList<>();
 		collect(result, contents);
 		if (contents.isEmpty()) {
