@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(cd \"c:/Users/pavel/git-models/product-management/groovy-dsl\" && find src -type f | head -50 && echo \"---PARENT---\" && ls ..)",
+      "Read(//c/Users/pavel/git-models/product-management/**)",
+      "PowerShell(cd \"c:\\\\Users\\\\pavel\\\\git-models\\\\product-management\"; mvn -q -pl groovy-dsl,handlers install -DskipTests 2>&1 | Select-String -Pattern \"ERROR|BUILD|module-info|error:\" | Select-Object -First 30; echo \"=== exit $LASTEXITCODE ===\")",
+      "Read(//c/Users/pavel/**)",
+      "Bash(xargs -I{} unzip -p {} META-INF/MANIFEST.MF)"
+    ]
+  }
+}
