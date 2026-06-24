@@ -16,7 +16,8 @@
       "Bash(grep -vE '\\\\$')",
       "Bash(unzip -l handlers/target/handlers-2026.6.0.jar)",
       "Bash(mvn -q -pl handlers test -Dtest=GroovyContentsHandlerTests -Dmaven.javadoc.skip=true -Dgpg.skip=true)",
-      "Bash(mvn -q -pl groovy-dsl test -Dmaven.javadoc.skip=true -Dgpg.skip=true)"
+      "Bash(mvn -q -pl groovy-dsl test -Dmaven.javadoc.skip=true -Dgpg.skip=true)",
+      "WebFetch(domain:raw.githubusercontent.com)"
     ]
   }
 }
