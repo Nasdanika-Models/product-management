@@ -186,7 +186,6 @@
 
 	<modules>
 		<module>model</module>
-		<module>groovy-dsl</module>
 		<module>doc</module>
 		<module>handlers</module>
 	</modules>
