@@ -13,35 +13,36 @@ productModel {
         name 'Automated KYC'
         lifecycle 'AVAILABLE'
 
-//        // Tier 1 cross-reference: capture the concern in a variable and pass it directly.
-//        def latency = concern {
-//            id 'kyc-latency'
-//            name 'KYC onboarding latency'
-//            documentation 'Time from application to first usable account'
-//        }
-//		
-//		addresses concern {
-//            id 'kyc-accuracy'
-//            name 'KYC accuracy'
-//            documentation 'False positive and false negative rates'
-//        }
-//		
-//        addresses latency
+        // Tier 1 cross-reference: capture the concern in a variable and pass it directly.
+        def latency = concerns('Concern') {
+            id 'kyc-latency'
+            name 'KYC onboarding latency'
+            documentation 'Time from application to first usable account'
+        }
+		
+		addresses latency
+		
+		addresses('Concern') {
+            id 'kyc-accuracy'
+            name 'KYC accuracy'
+            documentation 'False positive and false negative rates'
+        }
 		
     }
+
+    capabilities('Capability') {
+        id 'fraud-detection'
+        name 'Fraud Detection'
+        lifecycle 'IN_PROGRESS'
+
+        concerns('Concern') {
+            id 'fraud-risk'
+            name 'Fraud risk'
+        }
+        // Tier 2 cross-reference: by id, resolved after the whole script has been evaluated.
+        addresses('Concern') {
+			proxy 'https://mysite.com/fraud-risk#purum'
+        }
+    }
 	
-	
-//
-//    capability {
-//        id 'fraud-detection'
-//        name 'Fraud Detection'
-//        lifecycle 'IN_PROGRESS'
-//
-//        concern {
-//            id 'fraud-risk'
-//            name 'Fraud risk'
-//        }
-//        // Tier 2 cross-reference: by id, resolved after the whole script has been evaluated.
-//        addresses 'fraud-risk#purum'
-//    }
 }

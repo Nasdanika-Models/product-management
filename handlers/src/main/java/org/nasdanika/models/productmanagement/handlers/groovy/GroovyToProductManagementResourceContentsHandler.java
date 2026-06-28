@@ -5,6 +5,7 @@ import javax.script.CompiledScript;
 import org.eclipse.emf.ecore.resource.Resource;
 import org.nasdanika.capability.emf.ResourceContentsHandler;
 import org.nasdanika.groovy.DslResourceContentsHandler;
+import org.nasdanika.models.productmanagement.ProductmanagementPackage;
 
 /**
  * Transform handler for the {@code .pm} qualifier over a {@code .groovy} source. It resolves the
@@ -16,8 +17,7 @@ import org.nasdanika.groovy.DslResourceContentsHandler;
 public class GroovyToProductManagementResourceContentsHandler extends DslResourceContentsHandler {
 
 	public GroovyToProductManagementResourceContentsHandler(Resource resource, ResourceContentsHandler<CompiledScript> sourceHandler) {
-		super(resource, sourceHandler);
-		// TODO EPackages
+		super(resource, sourceHandler, ProductmanagementPackage.eINSTANCE);
 	}
 
 }
