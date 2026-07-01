@@ -10,7 +10,7 @@ module org.nasdanika.models.productmanagement.handlers {
 
 	requires transitive org.nasdanika.models.productmanagement;
 	requires transitive org.nasdanika.models.markdown;
-	requires org.nasdanika.models.productmanagement.dsl.groovy;
+	requires org.nasdanika.groovy;
 	requires org.apache.commons.lang3;
 	requires java.scripting;
 
