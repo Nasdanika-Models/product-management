@@ -50,7 +50,7 @@ Four ways in, from least to most committed.
 
 A brief overview of what the model addresses and what it gives you. 
 
-### Try the model on your own problem - about 10–15 minutes
+### Try the model on your own problem - about 10 to 15 minutes
 
 The model is useful as a reasoning substrate even before you author your own consuming model. Copy the prompt below into your preferred GenAI assistant (Claude, ChatGPT, Gemini), replace the placeholders with your context, and use the response to organize your thinking. The structured response - phrased in personas, concerns, capabilities, evidence - is itself the first deliverable; you can take it to your team as a starting point for a conversation.
 
@@ -91,7 +91,7 @@ This metamodel is itself a product. The page you are reading is the first slice 
 - **Senior leader driving innovation and AI adoption.** Accountable for portfolio-level outcomes: reducing duplication, increasing adoption of shared platforms, and turning AI investment into measurable productivity. Sees the developer-productivity space where hundreds of developers have built thousands of overlapping tools and is trying to distinguish genuine coverage from noise.
 - **Internal innovator.** An individual contributor or small team driving a new idea inside a larger organization. Has no formal mandate to define personas or concerns, and no authority to bind anyone else's roadmap. Authors bespoke persona and concern definitions to frame the problem they're working on - definitions that others may not have seen, may not agree with, and may actively dispute.
 - **Enterprise architect.** Maintains capability maps and motivation models, and is asked to defend them against organizational drift, vendor slippage, and political revision. Owns alignment between strategy and delivery.
-- **Technical product manager.** Owns a product or platform whose consumers are themselves engineering teams. Needs to express persona–concern–capability traceability with the same rigor used for code.
+- **Technical product manager.** Owns a product or platform whose consumers are themselves engineering teams. Needs to express persona-concern-capability traceability with the same rigor used for code.
 - **Platform engineering lead.** Operates an internal platform whose roadmap depends on, and is depended upon by, many other teams. Needs durable evidence of who promised what to whom and when.
 - **AI agent.** A first-class consumer. Reads the model to answer coverage, gap, impact, and counterfactual questions over a formal graph rather than over unstructured prose.
 
@@ -171,7 +171,7 @@ Sources live on [GitHub](https://github.com/Nasdanika-Models/product-management)
 
 The metamodel is general; the situations where it pays off are specific. The scenarios below are the ones that motivated its design.
 
-### Documenting a product or platform with persona–concern–capability traceability
+### Documenting a product or platform with persona-concern-capability traceability
 
 A team owning a product or internal platform models its consumers as personas, articulates the goals, needs, and pain points of those personas as concerns, and declares the capabilities it provides as addressing specific concerns. The model lives in version control, is published to Maven, and is rendered as a generated documentation site.
 
@@ -319,6 +319,21 @@ The observation worth keeping is that a tool is a capability, and the agent call
 
 The metamodel adds three things the runtime-retrieval approaches that dominate this space do not. First, the catalog is a durable, version-controlled, attributable artifact rather than an ephemeral vector index rebuilt per query, so a tool's provenance, authority, and lifecycle travel with it and a consolidation decision can cite the model. Second, tools cluster into *neighborhoods* of related capabilities that are authored and governed rather than merely inferred from embedding proximity, which gives the boundaries names, owners, and rules. Third, the neighborhood an agent sees can be scoped to the agent: an NSML transformation materializes the slice of the catalog relevant to one agent's task as a [semantic context model](https://medium.com/nasdanika/why-we-need-a-semantic-context-model-ae231d8004e3), so the agent reasons over a small, coherent, unambiguous neighborhood instead of the whole flat list. This is the same scoping mechanism described in [AI as a first-class consumer](#ai-as-a-first-class-consumer), applied to tools rather than to capabilities, and it complements rather than replaces gateway-level curation and runtime retrieval: the gateway decides what an agent is *allowed* to call, retrieval decides what is *surfaced* for a query, and the model decides what is *coherent* to expose in the first place.
 
+### Modeling agent personas: the agent as a first-class persona
+
+Agentic systems are conventionally configured in prose. Each agent receives a system prompt describing who it is, what it pursues, and which tools it may call; the prompt lives in source code or configuration, is maintained by developers, and is invisible to the subject-matter experts whose domain the agent operates in. Vendor guidance and certification curricula now speak of *agent personas* as a design construct - an agent has a role, goals, and a bounded set of tools. The construct is exactly what this metamodel already provides: a persona is whoever holds intent, and nothing in that definition requires the holder to be human. The [personas of this metamodel itself](#personas) list an AI agent among them; this use case turns that observation into a design discipline for agentic systems.
+
+An agent persona is a Persona whose concerns are the goals the agent is built to pursue. The tools it calls are capabilities pulled by those concerns - the same mapping [Governing a catalog of tools an agent can call](#governing-a-catalog-of-tools-an-agent-can-call) establishes: a tool's description is its claim to address a concern, its parameters are its contract, its server or module is its provider. Tool capabilities carry dependencies as first-class structure - a *categorize spending* capability declares its prerequisite on *retrieve transactions* - so the build order and the failure surface of an agent's toolkit are properties of the model rather than tribal knowledge in the orchestration code.
+
+Four consequences follow:
+
+- **The agent's design is published and inspectable.** An agent persona defined on the model can be reviewed, disputed, and maintained by SMEs in the same authoring surfaces as any other persona - not reverse-read out of a system prompt buried in a repository. What the agent is *for* becomes an attributable, versioned assertion with authority and validity, like every other assertion on the graph.
+- **Agent personas align to the human personas they serve.** An agent acting on behalf of a customer or an internal role is not a free-floating actor; its goals exist to serve that human persona's concerns. The *supports* relationship from [Federated goal alignment](#federated-goal-alignment-across-teams-and-virtual-organizations) carries this: each agent goal supports one or more concerns of the persona the agent serves, so "why does this agent exist?" is a query, and an agent goal supporting no human concern is a detectable gap - the same class of check as a capability addressing no concern.
+- **Tool selection becomes governed rather than accumulated.** Because the agent's toolkit is the capability neighborhood its concerns pull, scoping an agent to a coherent, unambiguous tool set is a transformation over the model rather than a hand-curated list - the mechanism the tool-catalog use case above describes, now anchored to a modeled persona rather than to an ad-hoc task description.
+- **System prompts become derived views.** The structural core of a system prompt - who the agent serves, what it pursues, which capabilities it may use and under which dependencies and constraints - is generated from the persona's slice of the model, the same way [persona-anchored positioning](#persona-anchored-positioning) and [persona-tailored executive summaries](#persona-tailored-executive-summaries) are derived rather than authored. The prompt stops drifting from the design because it is a projection of the design. What the model does not carry - tone, style, guardrail prose - attaches to the persona as documentation rather than pretending to be structure.
+
+The payoff is that the gap between an agentic system's *design* and its *configuration* closes. Today the design lives in a deck, the configuration lives in prompts, and the two drift; here they are one artifact and its derived views. An agent is specified, reviewed, aligned, and audited with the same vocabulary, the same federation mechanics, and the same authority model as every human persona and every capability in the portfolio - which also means humans and agents serving the same concerns are directly comparable on the graph, because they are the same kind of element.
+
 ### Auditable enterprise architecture
 
 An architecture board needs to demonstrate that strategic capabilities have been allocated to providers, that commitments have authorities and dates, that dependencies are documented, and that retirements have rationales. 
@@ -450,7 +465,7 @@ The pattern transfers wherever virtual organization exists. Cross-employer open 
 Multi-vendor partnerships align partner roadmaps to joint customer accounts. Internal innovation programs that span business units align proposal goals to portfolio-level concerns.
 In each case the property that makes the alignment possible is the same one that makes the capability federation possible: artifacts that compose by reference rather than by central administration.
 
-### Methodology-neutral goals — OKRs, V2MOM, and other frameworks as extensions
+### Methodology-neutral goals: OKRs, V2MOM, and other frameworks as extensions
 
 Several goal-setting methodologies compete for primacy in industry practice - OKRs, V2MOM, North Star, Hoshin Kanri, MBO, and many local variants.
 Each has advocates; each is contested by adherents of the others; organizations that adopt one frequently abandon it for another after a few years.
@@ -706,6 +721,14 @@ The asymmetric-blame pattern - where a high-status promise slips and downstream 
 Authority over a persona, concern, or capability is itself modeled.
 Roles are not fixed to a predefined set such as Responsible, Accountable, Consulted, Informed; a model defines whatever roles its domain needs - Owner, Reviewer, Approver, Sponsor, Steward, Auditor, Dissenter - and assigns actors to them for stated intervals.
 RACI and its variants are expressible as conventions within this mechanism rather than baked into it.
+
+### Participants: personas that provide capabilities (designed refinement)
+
+The pipeline reads left to right - persona → concern → capability → capability provider - but many of the interesting elements sit on both ends at once. A tax preparer or a mortgage agent provides capabilities to other personas and simultaneously holds concerns of their own that other capabilities address. An AI agent is the same shape: it provides a service to the persona it acts for, and it consumes tool capabilities to do so. The [persons and teams as capability providers](#persons-and-teams-as-capability-providers) use case already treats people as providers; what it does not yet state is that those same people are personas, and that the two facets belong to one element.
+
+Making Persona extend CapabilityProvider (or the reverse) would force the union onto every persona and every provider, which is wrong in both directions: a customer persona provides nothing, and a software product holds no concerns. The designed refinement is instead a **Participant**: a class that extends both Persona and CapabilityProvider, for the elements that genuinely are both. The name comes from the model's own [exchange view](#three-views-of-the-same-elements) - concerns are asks, capabilities are bids, and an element that both asks and bids is a participant in the exchange. A Participant's provided capabilities are pulled by other personas' concerns; its own concerns pull capabilities from elsewhere on the graph; and the chain *customer concern → mortgage agent's provided capability → mortgage agent's own concerns → tools and capabilities the agent consumes* becomes a traversal rather than two disconnected models of the same person.
+
+This is a designed refinement rather than a shipped class: like the execution-layer components, it is stated here so it can be cited, disputed, and pulled into the metamodel when a consuming model needs it.
 
 ### Relative and absolute temporals
 
