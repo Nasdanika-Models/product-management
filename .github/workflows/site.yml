@@ -41,7 +41,7 @@ jobs:
           chmod u+x nsd          
           pwd
           ls ..
-          ./nsd xcore ../model/model/product-management.xcore doc --diagram=product-management.drawio --doc-stubs --doc-dir=../model/doc save ../model/product-management.xmi
+          ./nsd xcore ../model/src/main/resources/org/nasdanika/models/productmanagement/product-management.xcore doc --diagram=product-management.drawio --doc-stubs --doc-dir=../model/doc save ../model/product-management.xmi
       - name: Generate Ecore site
         working-directory: nsd-cli
         run: |
