@@ -17,6 +17,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.nasdanika.models.nxcore.impl.NamedElementImpl;
+
 import org.nasdanika.models.productmanagement.AbstractPersona;
 import org.nasdanika.models.productmanagement.PersonaDomain;
 import org.nasdanika.models.productmanagement.PersonaReference;

@@ -15,16 +15,13 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link org.nasdanika.models.productmanagement.Capability#getAddresses <em>Addresses</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.Capability#getAllAddresses <em>All Addresses</em>}</li>
- *   <li>{@link org.nasdanika.models.productmanagement.Capability#getDependencies <em>Dependencies</em>}</li>
- *   <li>{@link org.nasdanika.models.productmanagement.Capability#getDependents <em>Dependents</em>}</li>
- *   <li>{@link org.nasdanika.models.productmanagement.Capability#getLifecycle <em>Lifecycle</em>}</li>
  * </ul>
  *
  * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getCapability()
  * @model
  * @generated
  */
-public interface Capability extends NamedPeriod, AbstractCapability, EvidenceDomain, PersonaDomain, ConcernDomain {
+public interface Capability extends org.nasdanika.models.capability.Capability, PersonaDomain, ConcernDomain {
 	/**
 	 * Returns the value of the '<em><b>Addresses</b></em>' containment reference list.
 	 * The list contents are of type {@link org.nasdanika.models.productmanagement.AbstractConcern}.
@@ -52,69 +49,5 @@ public interface Capability extends NamedPeriod, AbstractCapability, EvidenceDom
 	 * @generated
 	 */
 	EList<AbstractConcern> getAllAddresses();
-
-	/**
-	 * Returns the value of the '<em><b>Dependencies</b></em>' containment reference list.
-	 * The list contents are of type {@link org.nasdanika.models.productmanagement.AbstractCapability}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * *
-	 * Dependencies as an abstract capability allows to
-	 * model self-contained capabilities with inline dependencies
-	 * and even dependency domains.
-	 * When federated, such inline capabilities can be
-	 * either replaced with CapabilityReference or CapabilityDependency
-	 * or use URIs to de-dup multiple definitions into one logical definition
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Dependencies</em>' containment reference list.
-	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getCapability_Dependencies()
-	 * @model containment="true"
-	 * @generated
-	 */
-	EList<AbstractCapability> getDependencies();
-
-	/**
-	 * Returns the value of the '<em><b>Dependents</b></em>' reference list.
-	 * The list contents are of type {@link org.nasdanika.models.productmanagement.CapabilityReference}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * <!-- begin-model-doc -->
-	 * *
-	 * Capabilities depending on this capability, excludes containment.
-	 * Returns capability references, including capability dependencies, with target pointing
-	 * to this capability and contained by the dependencies reference.
-	 * <!-- end-model-doc -->
-	 * @return the value of the '<em>Dependents</em>' reference list.
-	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getCapability_Dependents()
-	 * @model transient="true" changeable="false" volatile="true" derived="true"
-	 * @generated
-	 */
-	EList<CapabilityReference> getDependents();
-
-	/**
-	 * Returns the value of the '<em><b>Lifecycle</b></em>' attribute.
-	 * The literals are from the enumeration {@link org.nasdanika.models.productmanagement.Lifecycle}.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @return the value of the '<em>Lifecycle</em>' attribute.
-	 * @see org.nasdanika.models.productmanagement.Lifecycle
-	 * @see #setLifecycle(Lifecycle)
-	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getCapability_Lifecycle()
-	 * @model unique="false"
-	 * @generated
-	 */
-	Lifecycle getLifecycle();
-
-	/**
-	 * Sets the value of the '{@link org.nasdanika.models.productmanagement.Capability#getLifecycle <em>Lifecycle</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @param value the new value of the '<em>Lifecycle</em>' attribute.
-	 * @see org.nasdanika.models.productmanagement.Lifecycle
-	 * @see #getLifecycle()
-	 * @generated
-	 */
-	void setLifecycle(Lifecycle value);
 
 } // Capability

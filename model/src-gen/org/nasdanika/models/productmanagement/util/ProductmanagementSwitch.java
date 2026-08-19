@@ -7,7 +7,32 @@ import org.eclipse.emf.ecore.EPackage;
 
 import org.eclipse.emf.ecore.util.Switch;
 
+import org.nasdanika.models.capability.AbstractCapability;
+import org.nasdanika.models.capability.AbstractCapabilityProvider;
+import org.nasdanika.models.capability.AbstractEvidence;
+import org.nasdanika.models.capability.CapabilityDomain;
+import org.nasdanika.models.capability.CapabilityProviderDomain;
+import org.nasdanika.models.capability.EvidenceDomain;
+
+import org.nasdanika.models.iam.AccessControlled;
+
+import org.nasdanika.models.lifecycle.Staged;
+
+import org.nasdanika.models.nxcore.Documented;
+import org.nasdanika.models.nxcore.Marked;
+import org.nasdanika.models.nxcore.ModelElement;
+import org.nasdanika.models.nxcore.NamedElement;
+import org.nasdanika.models.nxcore.NamedPeriod;
+import org.nasdanika.models.nxcore.Period;
+import org.nasdanika.models.nxcore.Referrable;
+import org.nasdanika.models.nxcore.StringIdentity;
+
 import org.nasdanika.models.productmanagement.*;
+
+import org.nasdanika.models.role.AbstractActor;
+import org.nasdanika.models.role.ActorDomain;
+
+import org.nasdanika.models.seal.SealedElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -66,59 +91,6 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 	@Override
 	protected T doSwitch(int classifierID, EObject theEObject) {
 		switch (classifierID) {
-			case ProductmanagementPackage.REFERRABLE: {
-				Referrable referrable = (Referrable)theEObject;
-				T result = caseReferrable(referrable);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ProductmanagementPackage.TEMPORAL: {
-				Temporal temporal = (Temporal)theEObject;
-				T result = caseTemporal(temporal);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ProductmanagementPackage.PERIOD: {
-				Period period = (Period)theEObject;
-				T result = casePeriod(period);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ProductmanagementPackage.STRING_IDENTITY: {
-				StringIdentity stringIdentity = (StringIdentity)theEObject;
-				T result = caseStringIdentity(stringIdentity);
-				if (result == null) result = caseReferrable(stringIdentity);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ProductmanagementPackage.MODEL_ELEMENT: {
-				ModelElement modelElement = (ModelElement)theEObject;
-				T result = caseModelElement(modelElement);
-				if (result == null) result = caseStringIdentity(modelElement);
-				if (result == null) result = caseReferrable(modelElement);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ProductmanagementPackage.NAMED_ELEMENT: {
-				NamedElement namedElement = (NamedElement)theEObject;
-				T result = caseNamedElement(namedElement);
-				if (result == null) result = caseModelElement(namedElement);
-				if (result == null) result = caseStringIdentity(namedElement);
-				if (result == null) result = caseReferrable(namedElement);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ProductmanagementPackage.NAMED_PERIOD: {
-				NamedPeriod namedPeriod = (NamedPeriod)theEObject;
-				T result = caseNamedPeriod(namedPeriod);
-				if (result == null) result = caseNamedElement(namedPeriod);
-				if (result == null) result = casePeriod(namedPeriod);
-				if (result == null) result = caseModelElement(namedPeriod);
-				if (result == null) result = caseStringIdentity(namedPeriod);
-				if (result == null) result = caseReferrable(namedPeriod);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
 			case ProductmanagementPackage.PRODUCT_MODEL: {
 				ProductModel productModel = (ProductModel)theEObject;
 				T result = caseProductModel(productModel);
@@ -135,6 +107,8 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = caseAbstractActor(productModel);
 				if (result == null) result = caseModelElement(productModel);
 				if (result == null) result = caseStringIdentity(productModel);
+				if (result == null) result = caseDocumented(productModel);
+				if (result == null) result = caseMarked(productModel);
 				if (result == null) result = caseReferrable(productModel);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -144,6 +118,8 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				T result = caseAbstractPersona(abstractPersona);
 				if (result == null) result = caseModelElement(abstractPersona);
 				if (result == null) result = caseStringIdentity(abstractPersona);
+				if (result == null) result = caseDocumented(abstractPersona);
+				if (result == null) result = caseMarked(abstractPersona);
 				if (result == null) result = caseReferrable(abstractPersona);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -159,6 +135,8 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = caseAbstractConcern(persona);
 				if (result == null) result = caseModelElement(persona);
 				if (result == null) result = caseStringIdentity(persona);
+				if (result == null) result = caseDocumented(persona);
+				if (result == null) result = caseMarked(persona);
 				if (result == null) result = caseReferrable(persona);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -170,6 +148,8 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = caseAbstractPersona(personaDomain);
 				if (result == null) result = caseModelElement(personaDomain);
 				if (result == null) result = caseStringIdentity(personaDomain);
+				if (result == null) result = caseDocumented(personaDomain);
+				if (result == null) result = caseMarked(personaDomain);
 				if (result == null) result = caseReferrable(personaDomain);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -180,6 +160,8 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = caseAbstractPersona(personaReference);
 				if (result == null) result = caseModelElement(personaReference);
 				if (result == null) result = caseStringIdentity(personaReference);
+				if (result == null) result = caseDocumented(personaReference);
+				if (result == null) result = caseMarked(personaReference);
 				if (result == null) result = caseReferrable(personaReference);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -189,6 +171,8 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				T result = caseAbstractConcern(abstractConcern);
 				if (result == null) result = caseModelElement(abstractConcern);
 				if (result == null) result = caseStringIdentity(abstractConcern);
+				if (result == null) result = caseDocumented(abstractConcern);
+				if (result == null) result = caseMarked(abstractConcern);
 				if (result == null) result = caseReferrable(abstractConcern);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -202,6 +186,8 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = casePeriod(concern);
 				if (result == null) result = caseModelElement(concern);
 				if (result == null) result = caseStringIdentity(concern);
+				if (result == null) result = caseDocumented(concern);
+				if (result == null) result = caseMarked(concern);
 				if (result == null) result = caseReferrable(concern);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -212,6 +198,8 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = caseAbstractConcern(concernReference);
 				if (result == null) result = caseModelElement(concernReference);
 				if (result == null) result = caseStringIdentity(concernReference);
+				if (result == null) result = caseDocumented(concernReference);
+				if (result == null) result = caseMarked(concernReference);
 				if (result == null) result = caseReferrable(concernReference);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -223,6 +211,8 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = caseAbstractConcern(concernDomain);
 				if (result == null) result = caseModelElement(concernDomain);
 				if (result == null) result = caseStringIdentity(concernDomain);
+				if (result == null) result = caseDocumented(concernDomain);
+				if (result == null) result = caseMarked(concernDomain);
 				if (result == null) result = caseReferrable(concernDomain);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -237,6 +227,8 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = casePeriod(goal);
 				if (result == null) result = caseModelElement(goal);
 				if (result == null) result = caseStringIdentity(goal);
+				if (result == null) result = caseDocumented(goal);
+				if (result == null) result = caseMarked(goal);
 				if (result == null) result = caseReferrable(goal);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -251,6 +243,8 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = casePeriod(need);
 				if (result == null) result = caseModelElement(need);
 				if (result == null) result = caseStringIdentity(need);
+				if (result == null) result = caseDocumented(need);
+				if (result == null) result = caseMarked(need);
 				if (result == null) result = caseReferrable(need);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -265,34 +259,33 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				if (result == null) result = casePeriod(painPoint);
 				if (result == null) result = caseModelElement(painPoint);
 				if (result == null) result = caseStringIdentity(painPoint);
+				if (result == null) result = caseDocumented(painPoint);
+				if (result == null) result = caseMarked(painPoint);
 				if (result == null) result = caseReferrable(painPoint);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ProductmanagementPackage.ABSTRACT_CAPABILITY: {
-				AbstractCapability abstractCapability = (AbstractCapability)theEObject;
-				T result = caseAbstractCapability(abstractCapability);
-				if (result == null) result = caseModelElement(abstractCapability);
-				if (result == null) result = caseStringIdentity(abstractCapability);
-				if (result == null) result = caseReferrable(abstractCapability);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			case ProductmanagementPackage.CAPABILITY: {
 				Capability capability = (Capability)theEObject;
 				T result = caseCapability(capability);
+				if (result == null) result = caseCapability_Capability(capability);
+				if (result == null) result = casePersonaDomain(capability);
+				if (result == null) result = caseConcernDomain(capability);
 				if (result == null) result = caseNamedPeriod(capability);
 				if (result == null) result = caseAbstractCapability(capability);
 				if (result == null) result = caseEvidenceDomain(capability);
-				if (result == null) result = casePersonaDomain(capability);
-				if (result == null) result = caseConcernDomain(capability);
+				if (result == null) result = caseStaged(capability);
+				if (result == null) result = caseAbstractPersona(capability);
+				if (result == null) result = caseAbstractConcern(capability);
 				if (result == null) result = caseNamedElement(capability);
 				if (result == null) result = casePeriod(capability);
 				if (result == null) result = caseAbstractEvidence(capability);
-				if (result == null) result = caseAbstractPersona(capability);
-				if (result == null) result = caseAbstractConcern(capability);
+				if (result == null) result = caseSealedElement(capability);
 				if (result == null) result = caseModelElement(capability);
+				if (result == null) result = caseAccessControlled(capability);
 				if (result == null) result = caseStringIdentity(capability);
+				if (result == null) result = caseDocumented(capability);
+				if (result == null) result = caseMarked(capability);
 				if (result == null) result = caseReferrable(capability);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
@@ -302,329 +295,30 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 				T result = caseCompositeCapability(compositeCapability);
 				if (result == null) result = caseCapability(compositeCapability);
 				if (result == null) result = caseCapabilityDomain(compositeCapability);
+				if (result == null) result = caseCapability_Capability(compositeCapability);
+				if (result == null) result = casePersonaDomain(compositeCapability);
+				if (result == null) result = caseConcernDomain(compositeCapability);
 				if (result == null) result = caseNamedPeriod(compositeCapability);
 				if (result == null) result = caseAbstractCapability(compositeCapability);
 				if (result == null) result = caseEvidenceDomain(compositeCapability);
-				if (result == null) result = casePersonaDomain(compositeCapability);
-				if (result == null) result = caseConcernDomain(compositeCapability);
+				if (result == null) result = caseStaged(compositeCapability);
+				if (result == null) result = caseAbstractPersona(compositeCapability);
+				if (result == null) result = caseAbstractConcern(compositeCapability);
 				if (result == null) result = caseNamedElement(compositeCapability);
 				if (result == null) result = casePeriod(compositeCapability);
 				if (result == null) result = caseAbstractEvidence(compositeCapability);
-				if (result == null) result = caseAbstractPersona(compositeCapability);
-				if (result == null) result = caseAbstractConcern(compositeCapability);
+				if (result == null) result = caseSealedElement(compositeCapability);
 				if (result == null) result = caseModelElement(compositeCapability);
+				if (result == null) result = caseAccessControlled(compositeCapability);
 				if (result == null) result = caseStringIdentity(compositeCapability);
+				if (result == null) result = caseDocumented(compositeCapability);
+				if (result == null) result = caseMarked(compositeCapability);
 				if (result == null) result = caseReferrable(compositeCapability);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ProductmanagementPackage.CAPABILITY_REFERENCE: {
-				CapabilityReference capabilityReference = (CapabilityReference)theEObject;
-				T result = caseCapabilityReference(capabilityReference);
-				if (result == null) result = caseAbstractCapability(capabilityReference);
-				if (result == null) result = caseModelElement(capabilityReference);
-				if (result == null) result = caseStringIdentity(capabilityReference);
-				if (result == null) result = caseReferrable(capabilityReference);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ProductmanagementPackage.CAPABILITY_DOMAIN: {
-				CapabilityDomain capabilityDomain = (CapabilityDomain)theEObject;
-				T result = caseCapabilityDomain(capabilityDomain);
-				if (result == null) result = caseNamedElement(capabilityDomain);
-				if (result == null) result = caseAbstractCapability(capabilityDomain);
-				if (result == null) result = caseModelElement(capabilityDomain);
-				if (result == null) result = caseStringIdentity(capabilityDomain);
-				if (result == null) result = caseReferrable(capabilityDomain);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ProductmanagementPackage.CAPABILITY_DEPENDENCY: {
-				CapabilityDependency capabilityDependency = (CapabilityDependency)theEObject;
-				T result = caseCapabilityDependency(capabilityDependency);
-				if (result == null) result = caseCapabilityReference(capabilityDependency);
-				if (result == null) result = caseAbstractCapability(capabilityDependency);
-				if (result == null) result = caseModelElement(capabilityDependency);
-				if (result == null) result = caseStringIdentity(capabilityDependency);
-				if (result == null) result = caseReferrable(capabilityDependency);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ProductmanagementPackage.ABSTRACT_CAPABILITY_PROVIDER: {
-				AbstractCapabilityProvider abstractCapabilityProvider = (AbstractCapabilityProvider)theEObject;
-				T result = caseAbstractCapabilityProvider(abstractCapabilityProvider);
-				if (result == null) result = caseStringIdentity(abstractCapabilityProvider);
-				if (result == null) result = caseReferrable(abstractCapabilityProvider);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ProductmanagementPackage.CAPABILITY_PROVIDER: {
-				CapabilityProvider capabilityProvider = (CapabilityProvider)theEObject;
-				T result = caseCapabilityProvider(capabilityProvider);
-				if (result == null) result = caseNamedPeriod(capabilityProvider);
-				if (result == null) result = caseAbstractCapabilityProvider(capabilityProvider);
-				if (result == null) result = caseNamedElement(capabilityProvider);
-				if (result == null) result = casePeriod(capabilityProvider);
-				if (result == null) result = caseModelElement(capabilityProvider);
-				if (result == null) result = caseStringIdentity(capabilityProvider);
-				if (result == null) result = caseReferrable(capabilityProvider);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ProductmanagementPackage.CAPABILITY_PROVIDER_DOMAIN: {
-				CapabilityProviderDomain capabilityProviderDomain = (CapabilityProviderDomain)theEObject;
-				T result = caseCapabilityProviderDomain(capabilityProviderDomain);
-				if (result == null) result = caseNamedElement(capabilityProviderDomain);
-				if (result == null) result = caseAbstractCapabilityProvider(capabilityProviderDomain);
-				if (result == null) result = caseModelElement(capabilityProviderDomain);
-				if (result == null) result = caseStringIdentity(capabilityProviderDomain);
-				if (result == null) result = caseReferrable(capabilityProviderDomain);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ProductmanagementPackage.CAPABILITY_PROVIDER_REFERENCE: {
-				CapabilityProviderReference capabilityProviderReference = (CapabilityProviderReference)theEObject;
-				T result = caseCapabilityProviderReference(capabilityProviderReference);
-				if (result == null) result = caseAbstractCapabilityProvider(capabilityProviderReference);
-				if (result == null) result = caseStringIdentity(capabilityProviderReference);
-				if (result == null) result = caseReferrable(capabilityProviderReference);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ProductmanagementPackage.PROVIDED_CAPABILITY: {
-				ProvidedCapability providedCapability = (ProvidedCapability)theEObject;
-				T result = caseProvidedCapability(providedCapability);
-				if (result == null) result = caseNamedPeriod(providedCapability);
-				if (result == null) result = caseEvidenceDomain(providedCapability);
-				if (result == null) result = caseNamedElement(providedCapability);
-				if (result == null) result = casePeriod(providedCapability);
-				if (result == null) result = caseAbstractEvidence(providedCapability);
-				if (result == null) result = caseModelElement(providedCapability);
-				if (result == null) result = caseStringIdentity(providedCapability);
-				if (result == null) result = caseReferrable(providedCapability);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ProductmanagementPackage.ABSTRACT_EVIDENCE: {
-				AbstractEvidence abstractEvidence = (AbstractEvidence)theEObject;
-				T result = caseAbstractEvidence(abstractEvidence);
-				if (result == null) result = caseStringIdentity(abstractEvidence);
-				if (result == null) result = caseReferrable(abstractEvidence);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ProductmanagementPackage.EVIDENCE: {
-				Evidence evidence = (Evidence)theEObject;
-				T result = caseEvidence(evidence);
-				if (result == null) result = caseNamedPeriod(evidence);
-				if (result == null) result = caseAbstractEvidence(evidence);
-				if (result == null) result = caseNamedElement(evidence);
-				if (result == null) result = casePeriod(evidence);
-				if (result == null) result = caseModelElement(evidence);
-				if (result == null) result = caseStringIdentity(evidence);
-				if (result == null) result = caseReferrable(evidence);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ProductmanagementPackage.EVIDENCE_DOMAIN: {
-				EvidenceDomain evidenceDomain = (EvidenceDomain)theEObject;
-				T result = caseEvidenceDomain(evidenceDomain);
-				if (result == null) result = caseNamedElement(evidenceDomain);
-				if (result == null) result = caseAbstractEvidence(evidenceDomain);
-				if (result == null) result = caseModelElement(evidenceDomain);
-				if (result == null) result = caseStringIdentity(evidenceDomain);
-				if (result == null) result = caseReferrable(evidenceDomain);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ProductmanagementPackage.REQUIRED_CAPABILITY: {
-				RequiredCapability requiredCapability = (RequiredCapability)theEObject;
-				T result = caseRequiredCapability(requiredCapability);
-				if (result == null) result = caseNamedPeriod(requiredCapability);
-				if (result == null) result = caseNamedElement(requiredCapability);
-				if (result == null) result = casePeriod(requiredCapability);
-				if (result == null) result = caseModelElement(requiredCapability);
-				if (result == null) result = caseStringIdentity(requiredCapability);
-				if (result == null) result = caseReferrable(requiredCapability);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ProductmanagementPackage.VERSION: {
-				Version version = (Version)theEObject;
-				T result = caseVersion(version);
-				if (result == null) result = caseNamedPeriod(version);
-				if (result == null) result = caseNamedElement(version);
-				if (result == null) result = casePeriod(version);
-				if (result == null) result = caseModelElement(version);
-				if (result == null) result = caseStringIdentity(version);
-				if (result == null) result = caseReferrable(version);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ProductmanagementPackage.UNDERGOER: {
-				Undergoer undergoer = (Undergoer)theEObject;
-				T result = caseUndergoer(undergoer);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ProductmanagementPackage.ROLE: {
-				Role role = (Role)theEObject;
-				T result = caseRole(role);
-				if (result == null) result = caseNamedPeriod(role);
-				if (result == null) result = caseNamedElement(role);
-				if (result == null) result = casePeriod(role);
-				if (result == null) result = caseModelElement(role);
-				if (result == null) result = caseStringIdentity(role);
-				if (result == null) result = caseReferrable(role);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ProductmanagementPackage.ROLE_ASSIGNMENT: {
-				RoleAssignment roleAssignment = (RoleAssignment)theEObject;
-				T result = caseRoleAssignment(roleAssignment);
-				if (result == null) result = casePeriod(roleAssignment);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ProductmanagementPackage.ABSTRACT_ACTOR: {
-				AbstractActor abstractActor = (AbstractActor)theEObject;
-				T result = caseAbstractActor(abstractActor);
-				if (result == null) result = caseStringIdentity(abstractActor);
-				if (result == null) result = caseReferrable(abstractActor);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ProductmanagementPackage.ACTOR: {
-				Actor actor = (Actor)theEObject;
-				T result = caseActor(actor);
-				if (result == null) result = caseNamedPeriod(actor);
-				if (result == null) result = caseAbstractActor(actor);
-				if (result == null) result = caseNamedElement(actor);
-				if (result == null) result = casePeriod(actor);
-				if (result == null) result = caseModelElement(actor);
-				if (result == null) result = caseStringIdentity(actor);
-				if (result == null) result = caseReferrable(actor);
-				if (result == null) result = defaultCase(theEObject);
-				return result;
-			}
-			case ProductmanagementPackage.ACTOR_DOMAIN: {
-				ActorDomain actorDomain = (ActorDomain)theEObject;
-				T result = caseActorDomain(actorDomain);
-				if (result == null) result = caseNamedElement(actorDomain);
-				if (result == null) result = caseAbstractActor(actorDomain);
-				if (result == null) result = caseModelElement(actorDomain);
-				if (result == null) result = caseStringIdentity(actorDomain);
-				if (result == null) result = caseReferrable(actorDomain);
 				if (result == null) result = defaultCase(theEObject);
 				return result;
 			}
 			default: return defaultCase(theEObject);
 		}
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Referrable</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Referrable</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseReferrable(Referrable object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Temporal</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Temporal</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseTemporal(Temporal object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Period</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Period</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T casePeriod(Period object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>String Identity</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>String Identity</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseStringIdentity(StringIdentity object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Model Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Model Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseModelElement(ModelElement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Named Element</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Named Element</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseNamedElement(NamedElement object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Named Period</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Named Period</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseNamedPeriod(NamedPeriod object) {
-		return null;
 	}
 
 	/**
@@ -808,21 +502,6 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Abstract Capability</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Abstract Capability</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAbstractCapability(AbstractCapability object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Capability</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -853,47 +532,152 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Capability Reference</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Referrable</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Capability Reference</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Referrable</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
-	public T caseCapabilityReference(CapabilityReference object) {
+	public T caseReferrable(Referrable object) {
 		return null;
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Capability Domain</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>String Identity</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Capability Domain</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>String Identity</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStringIdentity(StringIdentity object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Documented</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Documented</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseDocumented(Documented object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Marked</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Marked</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseMarked(Marked object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Model Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Model Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseModelElement(ModelElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Named Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Named Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNamedElement(NamedElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Period</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Period</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T casePeriod(Period object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Named Period</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Named Period</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseNamedPeriod(NamedPeriod object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Abstract Capability</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Abstract Capability</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAbstractCapability(AbstractCapability object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Domain</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Domain</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
 	public T caseCapabilityDomain(CapabilityDomain object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Capability Dependency</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Capability Dependency</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseCapabilityDependency(CapabilityDependency object) {
 		return null;
 	}
 
@@ -913,182 +697,17 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Capability Provider</em>'.
+	 * Returns the result of interpreting the object as an instance of '<em>Provider Domain</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
 	 * returning a non-null result will terminate the switch.
 	 * <!-- end-user-doc -->
 	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Capability Provider</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseCapabilityProvider(CapabilityProvider object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Capability Provider Domain</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Capability Provider Domain</em>'.
+	 * @return the result of interpreting the object as an instance of '<em>Provider Domain</em>'.
 	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
 	 * @generated
 	 */
 	public T caseCapabilityProviderDomain(CapabilityProviderDomain object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Capability Provider Reference</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Capability Provider Reference</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseCapabilityProviderReference(CapabilityProviderReference object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Provided Capability</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Provided Capability</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseProvidedCapability(ProvidedCapability object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Abstract Evidence</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Abstract Evidence</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseAbstractEvidence(AbstractEvidence object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Evidence</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Evidence</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEvidence(Evidence object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Evidence Domain</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Evidence Domain</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseEvidenceDomain(EvidenceDomain object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Required Capability</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Required Capability</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseRequiredCapability(RequiredCapability object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Version</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Version</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseVersion(Version object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Undergoer</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Undergoer</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseUndergoer(Undergoer object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Role</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Role</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseRole(Role object) {
-		return null;
-	}
-
-	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Role Assignment</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Role Assignment</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseRoleAssignment(RoleAssignment object) {
 		return null;
 	}
 
@@ -1108,21 +727,6 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 	}
 
 	/**
-	 * Returns the result of interpreting the object as an instance of '<em>Actor</em>'.
-	 * <!-- begin-user-doc -->
-	 * This implementation returns null;
-	 * returning a non-null result will terminate the switch.
-	 * <!-- end-user-doc -->
-	 * @param object the target of the switch.
-	 * @return the result of interpreting the object as an instance of '<em>Actor</em>'.
-	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-	 * @generated
-	 */
-	public T caseActor(Actor object) {
-		return null;
-	}
-
-	/**
 	 * Returns the result of interpreting the object as an instance of '<em>Actor Domain</em>'.
 	 * <!-- begin-user-doc -->
 	 * This implementation returns null;
@@ -1134,6 +738,96 @@ public class ProductmanagementSwitch<T> extends Switch<T> {
 	 * @generated
 	 */
 	public T caseActorDomain(ActorDomain object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Abstract Evidence</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Abstract Evidence</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAbstractEvidence(AbstractEvidence object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Evidence Domain</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Evidence Domain</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseEvidenceDomain(EvidenceDomain object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Access Controlled</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Access Controlled</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseAccessControlled(AccessControlled object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Sealed Element</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Sealed Element</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseSealedElement(SealedElement object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Staged</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Staged</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseStaged(Staged object) {
+		return null;
+	}
+
+	/**
+	 * Returns the result of interpreting the object as an instance of '<em>Capability</em>'.
+	 * <!-- begin-user-doc -->
+	 * This implementation returns null;
+	 * returning a non-null result will terminate the switch.
+	 * <!-- end-user-doc -->
+	 * @param object the target of the switch.
+	 * @return the result of interpreting the object as an instance of '<em>Capability</em>'.
+	 * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+	 * @generated
+	 */
+	public T caseCapability_Capability(org.nasdanika.models.capability.Capability object) {
 		return null;
 	}
 

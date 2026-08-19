@@ -2,6 +2,7 @@
  */
 package org.nasdanika.models.productmanagement;
 
+import org.nasdanika.models.nxcore.ModelElement;
 
 /**
  * <!-- begin-user-doc -->

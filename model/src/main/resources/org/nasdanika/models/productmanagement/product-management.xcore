@@ -10,7 +10,16 @@
 package org.nasdanika.models.productmanagement
 
 import org.nasdanika.models.productmanagement.ProductmanagementPackage
-import org.eclipse.emf.ecore.EObject
+import org.nasdanika.models.nxcore.Period
+import org.nasdanika.models.nxcore.NamedElement
+import org.nasdanika.models.nxcore.NamedPeriod
+import org.nasdanika.models.nxcore.ModelElement
+import org.nasdanika.models.nxcore.StringIdentity
+import org.nasdanika.models.capability.AbstractCapability
+import org.nasdanika.models.capability.CapabilityDomain
+import org.nasdanika.models.capability.CapabilityProviderDomain
+import org.nasdanika.models.role.ActorDomain
+
 
 annotation "http://www.eclipse.org/emf/2002/Ecore" as Ecore
 annotation "http://www.eclipse.org/emf/2002/GenModel" as GenModel
@@ -19,143 +28,6 @@ annotation "urn:org.nasdanika" as Nasdanika
 type Instant wraps java.time.Instant
 type Duration wraps java.time.Duration 
 
-interface Referrable {
-    
-    op void collect(
-            Object source,
-            org.eclipse.emf.ecore.EReference eReference,
-            EObject[] accumulator) {
-        if (eReference.EContainingClass.isInstance(source)) {
-            val value = (source as org.eclipse.emf.ecore.EObject).eGet(eReference)
-            if (eReference.many) {
-                if ((value as java.util.Collection<?>).contains(this)) {
-                    accumulator.add(source as org.eclipse.emf.ecore.EObject)
-                }
-            } else if (value === this) {
-                accumulator.add(source as org.eclipse.emf.ecore.EObject)
-            }
-        }
-    }    
-    
-    op EObject[] getReferrers(org.eclipse.emf.ecore.EReference eReference) {
-        val ret = new org.eclipse.emf.common.util.BasicEList<EObject>()
-        
-        val org.eclipse.emf.ecore.resource.Resource res = this.eResource()
-        var org.eclipse.emf.common.util.TreeIterator<?> cit = null
-        
-        if (res === null) {
-            var org.eclipse.emf.ecore.EObject root = this
-            var org.eclipse.emf.ecore.EObject rc
-            while ((rc = root.eContainer()) !== null) {
-                root = rc
-            }
-            if (root !== null) {
-                collect(root, eReference, ret)
-                cit = root.eAllContents()
-            }
-        } else {
-            val rSet = res.resourceSet
-            cit = if (rSet === null) res.allContents else rSet.allContents
-        }
-        
-        if (cit !== null) {
-            while (cit.hasNext()) {
-                collect(cit.next(), eReference, ret)
-            }
-        }
-        
-        return ret
-    }    
-    
-}
-
-class Temporal {
-    
-    refers Temporal base
-    
-    Instant instant
-    
-    Duration duration
-    
-    refers Temporal[] lowerBounds
-    
-    refers Temporal[] upperBounds
-    
-    // TODO - operations - after, before, normalize, minus, plus, copy, conicides
-        
-}
-
-class Period {
-    
-    Duration duration
-    
-    contains Temporal start
-    
-    contains Temporal end
-    
-}
-
-interface StringIdentity extends Referrable {
-    
-    String ^id
-    
-}
-
-abstract class ModelElement extends StringIdentity {
-
-// id, documentation, uris - aliases
-
-    /**
-     * Custom icon - treated as URL if contains / or as a CSS class otherwise.
-     * E.g. fas fa-wrench would be treated as a CSS class.
-     * For URLs the recommended icon size is 20x20 pixels and the recommended format is SVG. 
-     */
-    String icon
-
-    String documentation
-    
-    /**
-     * Documentation resource URI resolved relative to this model element resource URI.
-     * Documentation format is derived from extension if not set.
-     */
-    String docRef
-    
-    /**
-     * Documentation format. If not set, defaults to markdown for inline documentation and is
-     * derived from the documentation resource extension for docRef 
-     */
-    String docFormat
-    
-    /**
-     * Alias URIs resolved relative to the parent URIs - can be absolute or opaque - global references. 
-     * For example: actors://john-smith.
-     * For domains URIs can be used as anchors to merge domains from different sources.
-     * For example, several teams may maintain capability domains with URI myorg://capabilities/developer-productivity
-     * When these definitions are assembled into the organization's product management model to generate documentation
-     * all of these domains are merged into a single logical domain.
-     */
-    String[] uris
-    
-    /**
-     * Extension-specific configuration associated with a model element.
-     * For example, geometry and color for a diagram facet,
-     * Weight for a prioritization facet,
-     * Embedding vectors for similarity search.
-     */
-    // contains EObject[] facets
-
-}
-
-abstract class NamedElement extends ModelElement {
-    
-    String name
-    
-}
-
-abstract class NamedPeriod extends NamedElement, Period {
-
-
-}
 
 class ProductModel extends 
     NamedPeriod, 
@@ -429,31 +301,12 @@ class PainPoint extends Concern {
             }
         }
         result
-    }            
+    }     
     
-}
-
-// --- Capabilities ---
-
-enum Lifecycle {
-    DRAFT       as "Draft"    = 0
-    PROPOSED    as "Proposed"    = 100
-    BACKLOG     as "Backlog"     = 200
-    PLANNED     as "Planned"     = 300
-    IN_PROGRESS as "In Progress" = 400
-    AVAILABLE   as "Available"   = 500
-    DEPRECATED  as "Deprecated"  = 600
-    RETIRED     as "Retired"     = 700
-}
-
-interface AbstractCapability extends ModelElement {
-    
-}
-
+ }
+           
 class Capability extends 
-    NamedPeriod, 
-    AbstractCapability, 
-    EvidenceDomain, 
+	org.nasdanika.models.capability.Capability,
     PersonaDomain, 
     ConcernDomain {
     
@@ -472,223 +325,9 @@ class Capability extends
         }
         result
     }
-    
-    /**
-     * Dependencies as an abstract capability allows to 
-     * model self-contained capabilities with inline dependencies
-     * and even dependency domains.
-     * When federated, such inline capabilities can be 
-     * either replaced with CapabilityReference or CapabilityDependency
-     * or use URIs to de-dup multiple definitions into one logical definition
-     */
-    contains AbstractCapability[] dependencies
-    
-    /**
-     * Capabilities depending on this capability, excludes containment. 
-     * Returns capability references, including capability dependencies, with target pointing
-     * to this capability and contained by the dependencies reference.  
-     */
-    refers derived transient volatile readonly CapabilityReference[] dependents get {
-        val result = new org.eclipse.emf.common.util.BasicEList<CapabilityReference>()
-        for (referrer : getReferrers(ProductmanagementPackage.Literals.CAPABILITY_REFERENCE__TARGET)) {
-            if (referrer.eContainmentFeature() === ProductmanagementPackage.Literals.CAPABILITY__DEPENDENCIES) {
-                if (referrer instanceof CapabilityReference) {
-                    result.add(referrer)
-                }                
-            }
-        }
-        result
-    }    
-    
-    Lifecycle lifecycle
-        
+            
 }
 
 class CompositeCapability extends Capability, CapabilityDomain {
     
 }
-
-/**
- * Capability reference extends ModelEment to allow adding documentation
- * to addressedBy
- */
-class CapabilityReference extends ModelElement, AbstractCapability {
-    
-    //@Nasdanika(logicalContainment="true")         
-    refers Capability target
-        
-}
-
-class CapabilityDomain extends NamedElement, AbstractCapability {
-    
-    @Nasdanika(logicalContainment="false")         
-    contains AbstractCapability[] capabilities keys ^id
-       
-    @Nasdanika(logicalContainment="true")         
-    refers derived transient volatile readonly AbstractCapability[] resolvedCapabilities keys ^id get {
-        val result = new org.eclipse.emf.common.util.BasicEList<AbstractCapability>()
-        for (capability : capabilities) {
-            val resolved = resolveCapabilityReference(capability)
-            if (resolved !== null) result.add(resolved)
-        }
-        result
-    }
-    
-    op AbstractCapability resolveCapabilityReference(AbstractCapability start) {
-        var AbstractCapability current = start
-        val seen = new java.util.HashSet<AbstractCapability>()
-        while (current instanceof CapabilityReference) {
-            if (!seen.add(current)) {
-                return null  // cycle detected
-            }
-            current = current.target
-            if (current === null) return null  // dangling reference
-        }
-        return current
-        
-    }
-    
-}
-
-class CapabilityDependency extends CapabilityReference {
-    
-    DependencyKind kind  // REQUIRES, ENHANCES, CONFLICTS, CUSTOM
-    
-    /**
-     * Qualifier for the dependency kind, e.g. CUSTOM kind
-     */
-    String qualifier
-    
-}
-
-/**
- * Built-in dependency types
- */
-enum DependencyKind {
-    
-    /**
-     * I cannot function without this
-     */
-    REQUIRES  
-    
-    /**
-     * I work better when this is also present
-     */
-    ENHANCES      
-    
-    /**
-     * I cannot coexist with this
-     */
-    CONFLICTS
-    
-    /**
-     * Custom dependency type
-     */
-    CUSTOM       
-      
-}
-
-// --- Capability Providers ---
-
-interface AbstractCapabilityProvider extends StringIdentity {
-    
-}
-
-class CapabilityProvider extends NamedPeriod, AbstractCapabilityProvider {
-    
-    contains ProvidedCapability[] provides
-    
-    contains RequiredCapability[] requires    
-        
-    Lifecycle lifecycle    
-    
-}
-
-class CapabilityProviderDomain extends NamedElement, AbstractCapabilityProvider {
-    
-    contains AbstractCapabilityProvider[] capabilityProviders
-    
-}
-
-class CapabilityProviderReference extends AbstractCapabilityProvider {
-    refers CapabilityProvider target
-}
-
-class ProvidedCapability extends NamedPeriod, EvidenceDomain {
-    
-    contains AbstractCapability capability
-        
-}
-
-interface AbstractEvidence extends StringIdentity {
-    
-}
-
-/**
- * Evidence of provided capability.
- * E.g. for humans it can be a diploma or a certification or a project
- * For software products it might be a demo, recorded video, ...
- */
-class Evidence extends NamedPeriod, AbstractEvidence {
-    
-}
-
-class EvidenceDomain extends NamedElement, AbstractEvidence {
-    
-    contains Evidence[] evidence keys ^id
-    
-}
-
-class RequiredCapability extends NamedPeriod {
-    
-    contains AbstractCapability capability
-    
-}
-
-// --- Version ---
-
-class Version extends NamedPeriod {
-    
-}
-
-// --- Undergoer, actor, role ---
-
-interface Undergoer {
-    
-    contains Role[] roles
-    
-}
-
-class Role extends NamedPeriod {
-    
-    contains RoleAssignment[] assignments 
-    
-}
-
-class RoleAssignment extends Period {
-    
-    String comment
-    
-    contains AbstractActor actors
-    
-}
-
-interface AbstractActor extends StringIdentity {
-    
-}
-
-class Actor extends NamedPeriod, AbstractActor {
-    
-}
-
-class ActorDomain extends NamedElement, AbstractActor {
-    
-    contains AbstractActor[] actors
-    
-}
-
-// Party with contact methods...
-
-// Product
-
-// Market segment

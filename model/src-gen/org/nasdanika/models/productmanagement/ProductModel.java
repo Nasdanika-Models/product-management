@@ -2,6 +2,12 @@
  */
 package org.nasdanika.models.productmanagement;
 
+import org.nasdanika.models.capability.CapabilityDomain;
+import org.nasdanika.models.capability.CapabilityProviderDomain;
+
+import org.nasdanika.models.nxcore.NamedPeriod;
+
+import org.nasdanika.models.role.ActorDomain;
 
 /**
  * <!-- begin-user-doc -->

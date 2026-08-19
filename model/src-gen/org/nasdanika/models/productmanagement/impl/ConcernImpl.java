@@ -15,7 +15,10 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.nasdanika.models.productmanagement.AbstractCapability;
+import org.nasdanika.models.capability.AbstractCapability;
+
+import org.nasdanika.models.nxcore.impl.NamedPeriodImpl;
+
 import org.nasdanika.models.productmanagement.Concern;
 import org.nasdanika.models.productmanagement.ConcernReference;
 import org.nasdanika.models.productmanagement.ProductmanagementPackage;

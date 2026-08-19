@@ -60,8 +60,6 @@ public class ProductmanagementFactoryImpl extends EFactoryImpl implements Produc
 	@Override
 	public EObject create(EClass eClass) {
 		switch (eClass.getClassifierID()) {
-			case ProductmanagementPackage.TEMPORAL: return createTemporal();
-			case ProductmanagementPackage.PERIOD: return createPeriod();
 			case ProductmanagementPackage.PRODUCT_MODEL: return createProductModel();
 			case ProductmanagementPackage.PERSONA: return createPersona();
 			case ProductmanagementPackage.PERSONA_DOMAIN: return createPersonaDomain();
@@ -74,21 +72,6 @@ public class ProductmanagementFactoryImpl extends EFactoryImpl implements Produc
 			case ProductmanagementPackage.PAIN_POINT: return createPainPoint();
 			case ProductmanagementPackage.CAPABILITY: return createCapability();
 			case ProductmanagementPackage.COMPOSITE_CAPABILITY: return createCompositeCapability();
-			case ProductmanagementPackage.CAPABILITY_REFERENCE: return createCapabilityReference();
-			case ProductmanagementPackage.CAPABILITY_DOMAIN: return createCapabilityDomain();
-			case ProductmanagementPackage.CAPABILITY_DEPENDENCY: return createCapabilityDependency();
-			case ProductmanagementPackage.CAPABILITY_PROVIDER: return createCapabilityProvider();
-			case ProductmanagementPackage.CAPABILITY_PROVIDER_DOMAIN: return createCapabilityProviderDomain();
-			case ProductmanagementPackage.CAPABILITY_PROVIDER_REFERENCE: return createCapabilityProviderReference();
-			case ProductmanagementPackage.PROVIDED_CAPABILITY: return createProvidedCapability();
-			case ProductmanagementPackage.EVIDENCE: return createEvidence();
-			case ProductmanagementPackage.EVIDENCE_DOMAIN: return createEvidenceDomain();
-			case ProductmanagementPackage.REQUIRED_CAPABILITY: return createRequiredCapability();
-			case ProductmanagementPackage.VERSION: return createVersion();
-			case ProductmanagementPackage.ROLE: return createRole();
-			case ProductmanagementPackage.ROLE_ASSIGNMENT: return createRoleAssignment();
-			case ProductmanagementPackage.ACTOR: return createActor();
-			case ProductmanagementPackage.ACTOR_DOMAIN: return createActorDomain();
 			default:
 				throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
 		}
@@ -102,10 +85,6 @@ public class ProductmanagementFactoryImpl extends EFactoryImpl implements Produc
 	@Override
 	public Object createFromString(EDataType eDataType, String initialValue) {
 		switch (eDataType.getClassifierID()) {
-			case ProductmanagementPackage.LIFECYCLE:
-				return createLifecycleFromString(eDataType, initialValue);
-			case ProductmanagementPackage.DEPENDENCY_KIND:
-				return createDependencyKindFromString(eDataType, initialValue);
 			case ProductmanagementPackage.INSTANT:
 				return createInstantFromString(eDataType, initialValue);
 			case ProductmanagementPackage.DURATION:
@@ -123,10 +102,6 @@ public class ProductmanagementFactoryImpl extends EFactoryImpl implements Produc
 	@Override
 	public String convertToString(EDataType eDataType, Object instanceValue) {
 		switch (eDataType.getClassifierID()) {
-			case ProductmanagementPackage.LIFECYCLE:
-				return convertLifecycleToString(eDataType, instanceValue);
-			case ProductmanagementPackage.DEPENDENCY_KIND:
-				return convertDependencyKindToString(eDataType, instanceValue);
 			case ProductmanagementPackage.INSTANT:
 				return convertInstantToString(eDataType, instanceValue);
 			case ProductmanagementPackage.DURATION:
@@ -134,28 +109,6 @@ public class ProductmanagementFactoryImpl extends EFactoryImpl implements Produc
 			default:
 				throw new IllegalArgumentException("The datatype '" + eDataType.getName() + "' is not a valid classifier");
 		}
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Temporal createTemporal() {
-		TemporalImpl temporal = new TemporalImpl();
-		return temporal;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Period createPeriod() {
-		PeriodImpl period = new PeriodImpl();
-		return period;
 	}
 
 	/**
@@ -288,211 +241,6 @@ public class ProductmanagementFactoryImpl extends EFactoryImpl implements Produc
 	public CompositeCapability createCompositeCapability() {
 		CompositeCapabilityImpl compositeCapability = new CompositeCapabilityImpl();
 		return compositeCapability;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public CapabilityReference createCapabilityReference() {
-		CapabilityReferenceImpl capabilityReference = new CapabilityReferenceImpl();
-		return capabilityReference;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public CapabilityDomain createCapabilityDomain() {
-		CapabilityDomainImpl capabilityDomain = new CapabilityDomainImpl();
-		return capabilityDomain;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public CapabilityDependency createCapabilityDependency() {
-		CapabilityDependencyImpl capabilityDependency = new CapabilityDependencyImpl();
-		return capabilityDependency;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public CapabilityProvider createCapabilityProvider() {
-		CapabilityProviderImpl capabilityProvider = new CapabilityProviderImpl();
-		return capabilityProvider;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public CapabilityProviderDomain createCapabilityProviderDomain() {
-		CapabilityProviderDomainImpl capabilityProviderDomain = new CapabilityProviderDomainImpl();
-		return capabilityProviderDomain;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public CapabilityProviderReference createCapabilityProviderReference() {
-		CapabilityProviderReferenceImpl capabilityProviderReference = new CapabilityProviderReferenceImpl();
-		return capabilityProviderReference;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ProvidedCapability createProvidedCapability() {
-		ProvidedCapabilityImpl providedCapability = new ProvidedCapabilityImpl();
-		return providedCapability;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Evidence createEvidence() {
-		EvidenceImpl evidence = new EvidenceImpl();
-		return evidence;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EvidenceDomain createEvidenceDomain() {
-		EvidenceDomainImpl evidenceDomain = new EvidenceDomainImpl();
-		return evidenceDomain;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public RequiredCapability createRequiredCapability() {
-		RequiredCapabilityImpl requiredCapability = new RequiredCapabilityImpl();
-		return requiredCapability;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Version createVersion() {
-		VersionImpl version = new VersionImpl();
-		return version;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Role createRole() {
-		RoleImpl role = new RoleImpl();
-		return role;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public RoleAssignment createRoleAssignment() {
-		RoleAssignmentImpl roleAssignment = new RoleAssignmentImpl();
-		return roleAssignment;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Actor createActor() {
-		ActorImpl actor = new ActorImpl();
-		return actor;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public ActorDomain createActorDomain() {
-		ActorDomainImpl actorDomain = new ActorDomainImpl();
-		return actorDomain;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public Lifecycle createLifecycleFromString(EDataType eDataType, String initialValue) {
-		Lifecycle result = Lifecycle.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertLifecycleToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public DependencyKind createDependencyKindFromString(EDataType eDataType, String initialValue) {
-		DependencyKind result = DependencyKind.get(initialValue);
-		if (result == null) throw new IllegalArgumentException("The value '" + initialValue + "' is not a valid enumerator of '" + eDataType.getName() + "'");
-		return result;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	public String convertDependencyKindToString(EDataType eDataType, Object instanceValue) {
-		return instanceValue == null ? null : instanceValue.toString();
 	}
 
 	/**

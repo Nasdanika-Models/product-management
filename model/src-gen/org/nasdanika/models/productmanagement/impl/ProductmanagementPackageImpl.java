@@ -5,10 +5,8 @@ package org.nasdanika.models.productmanagement.impl;
 import java.time.Duration;
 import java.time.Instant;
 
-import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EDataType;
-import org.eclipse.emf.ecore.EEnum;
 import org.eclipse.emf.ecore.EOperation;
 import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.EReference;
@@ -16,51 +14,34 @@ import org.eclipse.emf.ecore.EcorePackage;
 
 import org.eclipse.emf.ecore.impl.EPackageImpl;
 
-import org.nasdanika.models.productmanagement.AbstractActor;
-import org.nasdanika.models.productmanagement.AbstractCapability;
-import org.nasdanika.models.productmanagement.AbstractCapabilityProvider;
+import org.nasdanika.models.capability.CapabilityPackage;
+
+import org.nasdanika.models.iam.IamPackage;
+
+import org.nasdanika.models.lifecycle.LifecyclePackage;
+
+import org.nasdanika.models.nxcore.NxcorePackage;
+
 import org.nasdanika.models.productmanagement.AbstractConcern;
-import org.nasdanika.models.productmanagement.AbstractEvidence;
 import org.nasdanika.models.productmanagement.AbstractPersona;
-import org.nasdanika.models.productmanagement.Actor;
-import org.nasdanika.models.productmanagement.ActorDomain;
 import org.nasdanika.models.productmanagement.Capability;
-import org.nasdanika.models.productmanagement.CapabilityDependency;
-import org.nasdanika.models.productmanagement.CapabilityDomain;
-import org.nasdanika.models.productmanagement.CapabilityProvider;
-import org.nasdanika.models.productmanagement.CapabilityProviderDomain;
-import org.nasdanika.models.productmanagement.CapabilityProviderReference;
-import org.nasdanika.models.productmanagement.CapabilityReference;
 import org.nasdanika.models.productmanagement.CompositeCapability;
 import org.nasdanika.models.productmanagement.Concern;
 import org.nasdanika.models.productmanagement.ConcernDomain;
 import org.nasdanika.models.productmanagement.ConcernReference;
-import org.nasdanika.models.productmanagement.DependencyKind;
-import org.nasdanika.models.productmanagement.Evidence;
-import org.nasdanika.models.productmanagement.EvidenceDomain;
 import org.nasdanika.models.productmanagement.Goal;
-import org.nasdanika.models.productmanagement.Lifecycle;
-import org.nasdanika.models.productmanagement.ModelElement;
-import org.nasdanika.models.productmanagement.NamedElement;
-import org.nasdanika.models.productmanagement.NamedPeriod;
 import org.nasdanika.models.productmanagement.Need;
 import org.nasdanika.models.productmanagement.PainPoint;
-import org.nasdanika.models.productmanagement.Period;
 import org.nasdanika.models.productmanagement.Persona;
 import org.nasdanika.models.productmanagement.PersonaDomain;
 import org.nasdanika.models.productmanagement.PersonaReference;
 import org.nasdanika.models.productmanagement.ProductModel;
 import org.nasdanika.models.productmanagement.ProductmanagementFactory;
 import org.nasdanika.models.productmanagement.ProductmanagementPackage;
-import org.nasdanika.models.productmanagement.ProvidedCapability;
-import org.nasdanika.models.productmanagement.Referrable;
-import org.nasdanika.models.productmanagement.RequiredCapability;
-import org.nasdanika.models.productmanagement.Role;
-import org.nasdanika.models.productmanagement.RoleAssignment;
-import org.nasdanika.models.productmanagement.StringIdentity;
-import org.nasdanika.models.productmanagement.Temporal;
-import org.nasdanika.models.productmanagement.Undergoer;
-import org.nasdanika.models.productmanagement.Version;
+
+import org.nasdanika.models.role.RolePackage;
+
+import org.nasdanika.models.seal.SealPackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -69,55 +50,6 @@ import org.nasdanika.models.productmanagement.Version;
  * @generated
  */
 public class ProductmanagementPackageImpl extends EPackageImpl implements ProductmanagementPackage {
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass referrableEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass temporalEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass periodEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass stringIdentityEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass modelElementEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass namedElementEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass namedPeriodEClass = null;
-
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -207,13 +139,6 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	private EClass abstractCapabilityEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	private EClass capabilityEClass = null;
 
 	/**
@@ -222,153 +147,6 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	 * @generated
 	 */
 	private EClass compositeCapabilityEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass capabilityReferenceEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass capabilityDomainEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass capabilityDependencyEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass abstractCapabilityProviderEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass capabilityProviderEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass capabilityProviderDomainEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass capabilityProviderReferenceEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass providedCapabilityEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass abstractEvidenceEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass evidenceEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass evidenceDomainEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass requiredCapabilityEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass versionEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass undergoerEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass roleEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass roleAssignmentEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass abstractActorEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass actorEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EClass actorDomainEClass = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EEnum lifecycleEEnum = null;
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	private EEnum dependencyKindEEnum = null;
 
 	/**
 	 * <!-- begin-user-doc -->
@@ -431,6 +209,12 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		isInited = true;
 
 		// Initialize simple dependencies
+		NxcorePackage.eINSTANCE.eClass();
+		CapabilityPackage.eINSTANCE.eClass();
+		RolePackage.eINSTANCE.eClass();
+		IamPackage.eINSTANCE.eClass();
+		SealPackage.eINSTANCE.eClass();
+		LifecyclePackage.eINSTANCE.eClass();
 		EcorePackage.eINSTANCE.eClass();
 
 		// Create package meta-data objects
@@ -445,246 +229,6 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		// Update the registry and return the package
 		EPackage.Registry.INSTANCE.put(ProductmanagementPackage.eNS_URI, theProductmanagementPackage);
 		return theProductmanagementPackage;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getReferrable() {
-		return referrableEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EOperation getReferrable__Collect__Object_EReference_EList() {
-		return referrableEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EOperation getReferrable__GetReferrers__EReference() {
-		return referrableEClass.getEOperations().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getTemporal() {
-		return temporalEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getTemporal_Base() {
-		return (EReference)temporalEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getTemporal_Instant() {
-		return (EAttribute)temporalEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getTemporal_Duration() {
-		return (EAttribute)temporalEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getTemporal_LowerBounds() {
-		return (EReference)temporalEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getTemporal_UpperBounds() {
-		return (EReference)temporalEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getPeriod() {
-		return periodEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getPeriod_Duration() {
-		return (EAttribute)periodEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getPeriod_Start() {
-		return (EReference)periodEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getPeriod_End() {
-		return (EReference)periodEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getStringIdentity() {
-		return stringIdentityEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getStringIdentity_Id() {
-		return (EAttribute)stringIdentityEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getModelElement() {
-		return modelElementEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getModelElement_Icon() {
-		return (EAttribute)modelElementEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getModelElement_Documentation() {
-		return (EAttribute)modelElementEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getModelElement_DocRef() {
-		return (EAttribute)modelElementEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getModelElement_DocFormat() {
-		return (EAttribute)modelElementEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getModelElement_Uris() {
-		return (EAttribute)modelElementEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getNamedElement() {
-		return namedElementEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getNamedElement_Name() {
-		return (EAttribute)namedElementEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getNamedPeriod() {
-		return namedPeriodEClass;
 	}
 
 	/**
@@ -1033,16 +577,6 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	 * @generated
 	 */
 	@Override
-	public EClass getAbstractCapability() {
-		return abstractCapabilityEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getCapability() {
 		return capabilityEClass;
 	}
@@ -1073,438 +607,8 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 	 * @generated
 	 */
 	@Override
-	public EReference getCapability_Dependencies() {
-		return (EReference)capabilityEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getCapability_Dependents() {
-		return (EReference)capabilityEClass.getEStructuralFeatures().get(3);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getCapability_Lifecycle() {
-		return (EAttribute)capabilityEClass.getEStructuralFeatures().get(4);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
 	public EClass getCompositeCapability() {
 		return compositeCapabilityEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getCapabilityReference() {
-		return capabilityReferenceEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getCapabilityReference_Target() {
-		return (EReference)capabilityReferenceEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getCapabilityDomain() {
-		return capabilityDomainEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getCapabilityDomain_Capabilities() {
-		return (EReference)capabilityDomainEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getCapabilityDomain_ResolvedCapabilities() {
-		return (EReference)capabilityDomainEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EOperation getCapabilityDomain__ResolveCapabilityReference__AbstractCapability() {
-		return capabilityDomainEClass.getEOperations().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getCapabilityDependency() {
-		return capabilityDependencyEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getCapabilityDependency_Kind() {
-		return (EAttribute)capabilityDependencyEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getCapabilityDependency_Qualifier() {
-		return (EAttribute)capabilityDependencyEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getAbstractCapabilityProvider() {
-		return abstractCapabilityProviderEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getCapabilityProvider() {
-		return capabilityProviderEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getCapabilityProvider_Provides() {
-		return (EReference)capabilityProviderEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getCapabilityProvider_Requires() {
-		return (EReference)capabilityProviderEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getCapabilityProvider_Lifecycle() {
-		return (EAttribute)capabilityProviderEClass.getEStructuralFeatures().get(2);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getCapabilityProviderDomain() {
-		return capabilityProviderDomainEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getCapabilityProviderDomain_CapabilityProviders() {
-		return (EReference)capabilityProviderDomainEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getCapabilityProviderReference() {
-		return capabilityProviderReferenceEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getCapabilityProviderReference_Target() {
-		return (EReference)capabilityProviderReferenceEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getProvidedCapability() {
-		return providedCapabilityEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getProvidedCapability_Capability() {
-		return (EReference)providedCapabilityEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getAbstractEvidence() {
-		return abstractEvidenceEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getEvidence() {
-		return evidenceEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getEvidenceDomain() {
-		return evidenceDomainEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getEvidenceDomain_Evidence() {
-		return (EReference)evidenceDomainEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getRequiredCapability() {
-		return requiredCapabilityEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getRequiredCapability_Capability() {
-		return (EReference)requiredCapabilityEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getVersion() {
-		return versionEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getUndergoer() {
-		return undergoerEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getUndergoer_Roles() {
-		return (EReference)undergoerEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getRole() {
-		return roleEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getRole_Assignments() {
-		return (EReference)roleEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getRoleAssignment() {
-		return roleAssignmentEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EAttribute getRoleAssignment_Comment() {
-		return (EAttribute)roleAssignmentEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getRoleAssignment_Actors() {
-		return (EReference)roleAssignmentEClass.getEStructuralFeatures().get(1);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getAbstractActor() {
-		return abstractActorEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getActor() {
-		return actorEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EClass getActorDomain() {
-		return actorDomainEClass;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EReference getActorDomain_Actors() {
-		return (EReference)actorDomainEClass.getEStructuralFeatures().get(0);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EEnum getLifecycle() {
-		return lifecycleEEnum;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EEnum getDependencyKind() {
-		return dependencyKindEEnum;
 	}
 
 	/**
@@ -1556,37 +660,6 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		isCreated = true;
 
 		// Create classes and their features
-		referrableEClass = createEClass(REFERRABLE);
-		createEOperation(referrableEClass, REFERRABLE___COLLECT__OBJECT_EREFERENCE_ELIST);
-		createEOperation(referrableEClass, REFERRABLE___GET_REFERRERS__EREFERENCE);
-
-		temporalEClass = createEClass(TEMPORAL);
-		createEReference(temporalEClass, TEMPORAL__BASE);
-		createEAttribute(temporalEClass, TEMPORAL__INSTANT);
-		createEAttribute(temporalEClass, TEMPORAL__DURATION);
-		createEReference(temporalEClass, TEMPORAL__LOWER_BOUNDS);
-		createEReference(temporalEClass, TEMPORAL__UPPER_BOUNDS);
-
-		periodEClass = createEClass(PERIOD);
-		createEAttribute(periodEClass, PERIOD__DURATION);
-		createEReference(periodEClass, PERIOD__START);
-		createEReference(periodEClass, PERIOD__END);
-
-		stringIdentityEClass = createEClass(STRING_IDENTITY);
-		createEAttribute(stringIdentityEClass, STRING_IDENTITY__ID);
-
-		modelElementEClass = createEClass(MODEL_ELEMENT);
-		createEAttribute(modelElementEClass, MODEL_ELEMENT__ICON);
-		createEAttribute(modelElementEClass, MODEL_ELEMENT__DOCUMENTATION);
-		createEAttribute(modelElementEClass, MODEL_ELEMENT__DOC_REF);
-		createEAttribute(modelElementEClass, MODEL_ELEMENT__DOC_FORMAT);
-		createEAttribute(modelElementEClass, MODEL_ELEMENT__URIS);
-
-		namedElementEClass = createEClass(NAMED_ELEMENT);
-		createEAttribute(namedElementEClass, NAMED_ELEMENT__NAME);
-
-		namedPeriodEClass = createEClass(NAMED_PERIOD);
-
 		productModelEClass = createEClass(PRODUCT_MODEL);
 
 		abstractPersonaEClass = createEClass(ABSTRACT_PERSONA);
@@ -1633,77 +706,11 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		createEReference(painPointEClass, PAIN_POINT__VIOLATES);
 		createEReference(painPointEClass, PAIN_POINT__ALL_VIOLATES);
 
-		abstractCapabilityEClass = createEClass(ABSTRACT_CAPABILITY);
-
 		capabilityEClass = createEClass(CAPABILITY);
 		createEReference(capabilityEClass, CAPABILITY__ADDRESSES);
 		createEReference(capabilityEClass, CAPABILITY__ALL_ADDRESSES);
-		createEReference(capabilityEClass, CAPABILITY__DEPENDENCIES);
-		createEReference(capabilityEClass, CAPABILITY__DEPENDENTS);
-		createEAttribute(capabilityEClass, CAPABILITY__LIFECYCLE);
 
 		compositeCapabilityEClass = createEClass(COMPOSITE_CAPABILITY);
-
-		capabilityReferenceEClass = createEClass(CAPABILITY_REFERENCE);
-		createEReference(capabilityReferenceEClass, CAPABILITY_REFERENCE__TARGET);
-
-		capabilityDomainEClass = createEClass(CAPABILITY_DOMAIN);
-		createEReference(capabilityDomainEClass, CAPABILITY_DOMAIN__CAPABILITIES);
-		createEReference(capabilityDomainEClass, CAPABILITY_DOMAIN__RESOLVED_CAPABILITIES);
-		createEOperation(capabilityDomainEClass, CAPABILITY_DOMAIN___RESOLVE_CAPABILITY_REFERENCE__ABSTRACTCAPABILITY);
-
-		capabilityDependencyEClass = createEClass(CAPABILITY_DEPENDENCY);
-		createEAttribute(capabilityDependencyEClass, CAPABILITY_DEPENDENCY__KIND);
-		createEAttribute(capabilityDependencyEClass, CAPABILITY_DEPENDENCY__QUALIFIER);
-
-		abstractCapabilityProviderEClass = createEClass(ABSTRACT_CAPABILITY_PROVIDER);
-
-		capabilityProviderEClass = createEClass(CAPABILITY_PROVIDER);
-		createEReference(capabilityProviderEClass, CAPABILITY_PROVIDER__PROVIDES);
-		createEReference(capabilityProviderEClass, CAPABILITY_PROVIDER__REQUIRES);
-		createEAttribute(capabilityProviderEClass, CAPABILITY_PROVIDER__LIFECYCLE);
-
-		capabilityProviderDomainEClass = createEClass(CAPABILITY_PROVIDER_DOMAIN);
-		createEReference(capabilityProviderDomainEClass, CAPABILITY_PROVIDER_DOMAIN__CAPABILITY_PROVIDERS);
-
-		capabilityProviderReferenceEClass = createEClass(CAPABILITY_PROVIDER_REFERENCE);
-		createEReference(capabilityProviderReferenceEClass, CAPABILITY_PROVIDER_REFERENCE__TARGET);
-
-		providedCapabilityEClass = createEClass(PROVIDED_CAPABILITY);
-		createEReference(providedCapabilityEClass, PROVIDED_CAPABILITY__CAPABILITY);
-
-		abstractEvidenceEClass = createEClass(ABSTRACT_EVIDENCE);
-
-		evidenceEClass = createEClass(EVIDENCE);
-
-		evidenceDomainEClass = createEClass(EVIDENCE_DOMAIN);
-		createEReference(evidenceDomainEClass, EVIDENCE_DOMAIN__EVIDENCE);
-
-		requiredCapabilityEClass = createEClass(REQUIRED_CAPABILITY);
-		createEReference(requiredCapabilityEClass, REQUIRED_CAPABILITY__CAPABILITY);
-
-		versionEClass = createEClass(VERSION);
-
-		undergoerEClass = createEClass(UNDERGOER);
-		createEReference(undergoerEClass, UNDERGOER__ROLES);
-
-		roleEClass = createEClass(ROLE);
-		createEReference(roleEClass, ROLE__ASSIGNMENTS);
-
-		roleAssignmentEClass = createEClass(ROLE_ASSIGNMENT);
-		createEAttribute(roleAssignmentEClass, ROLE_ASSIGNMENT__COMMENT);
-		createEReference(roleAssignmentEClass, ROLE_ASSIGNMENT__ACTORS);
-
-		abstractActorEClass = createEClass(ABSTRACT_ACTOR);
-
-		actorEClass = createEClass(ACTOR);
-
-		actorDomainEClass = createEClass(ACTOR_DOMAIN);
-		createEReference(actorDomainEClass, ACTOR_DOMAIN__ACTORS);
-
-		// Create enums
-		lifecycleEEnum = createEEnum(LIFECYCLE);
-		dependencyKindEEnum = createEEnum(DEPENDENCY_KIND);
 
 		// Create data types
 		instantEDataType = createEDataType(INSTANT);
@@ -1734,113 +741,43 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		setNsURI(eNS_URI);
 
 		// Obtain other dependent packages
-		EcorePackage theEcorePackage = (EcorePackage)EPackage.Registry.INSTANCE.getEPackage(EcorePackage.eNS_URI);
+		NxcorePackage theNxcorePackage = (NxcorePackage)EPackage.Registry.INSTANCE.getEPackage(NxcorePackage.eNS_URI);
+		CapabilityPackage theCapabilityPackage = (CapabilityPackage)EPackage.Registry.INSTANCE.getEPackage(CapabilityPackage.eNS_URI);
+		RolePackage theRolePackage = (RolePackage)EPackage.Registry.INSTANCE.getEPackage(RolePackage.eNS_URI);
 
 		// Create type parameters
 
 		// Set bounds for type parameters
 
 		// Add supertypes to classes
-		stringIdentityEClass.getESuperTypes().add(this.getReferrable());
-		modelElementEClass.getESuperTypes().add(this.getStringIdentity());
-		namedElementEClass.getESuperTypes().add(this.getModelElement());
-		namedPeriodEClass.getESuperTypes().add(this.getNamedElement());
-		namedPeriodEClass.getESuperTypes().add(this.getPeriod());
-		productModelEClass.getESuperTypes().add(this.getNamedPeriod());
+		productModelEClass.getESuperTypes().add(theNxcorePackage.getNamedPeriod());
 		productModelEClass.getESuperTypes().add(this.getPersonaDomain());
-		productModelEClass.getESuperTypes().add(this.getCapabilityDomain());
-		productModelEClass.getESuperTypes().add(this.getCapabilityProviderDomain());
-		productModelEClass.getESuperTypes().add(this.getActorDomain());
-		abstractPersonaEClass.getESuperTypes().add(this.getModelElement());
-		personaEClass.getESuperTypes().add(this.getNamedPeriod());
+		productModelEClass.getESuperTypes().add(theCapabilityPackage.getCapabilityDomain());
+		productModelEClass.getESuperTypes().add(theCapabilityPackage.getCapabilityProviderDomain());
+		productModelEClass.getESuperTypes().add(theRolePackage.getActorDomain());
+		abstractPersonaEClass.getESuperTypes().add(theNxcorePackage.getModelElement());
+		personaEClass.getESuperTypes().add(theNxcorePackage.getNamedPeriod());
 		personaEClass.getESuperTypes().add(this.getAbstractPersona());
 		personaEClass.getESuperTypes().add(this.getConcernDomain());
-		personaDomainEClass.getESuperTypes().add(this.getNamedElement());
+		personaDomainEClass.getESuperTypes().add(theNxcorePackage.getNamedElement());
 		personaDomainEClass.getESuperTypes().add(this.getAbstractPersona());
 		personaReferenceEClass.getESuperTypes().add(this.getAbstractPersona());
-		abstractConcernEClass.getESuperTypes().add(this.getModelElement());
-		concernEClass.getESuperTypes().add(this.getNamedPeriod());
+		abstractConcernEClass.getESuperTypes().add(theNxcorePackage.getModelElement());
+		concernEClass.getESuperTypes().add(theNxcorePackage.getNamedPeriod());
 		concernEClass.getESuperTypes().add(this.getAbstractConcern());
 		concernReferenceEClass.getESuperTypes().add(this.getAbstractConcern());
-		concernDomainEClass.getESuperTypes().add(this.getNamedElement());
+		concernDomainEClass.getESuperTypes().add(theNxcorePackage.getNamedElement());
 		concernDomainEClass.getESuperTypes().add(this.getAbstractConcern());
 		goalEClass.getESuperTypes().add(this.getConcern());
 		needEClass.getESuperTypes().add(this.getConcern());
 		painPointEClass.getESuperTypes().add(this.getConcern());
-		abstractCapabilityEClass.getESuperTypes().add(this.getModelElement());
-		capabilityEClass.getESuperTypes().add(this.getNamedPeriod());
-		capabilityEClass.getESuperTypes().add(this.getAbstractCapability());
-		capabilityEClass.getESuperTypes().add(this.getEvidenceDomain());
+		capabilityEClass.getESuperTypes().add(theCapabilityPackage.getCapability());
 		capabilityEClass.getESuperTypes().add(this.getPersonaDomain());
 		capabilityEClass.getESuperTypes().add(this.getConcernDomain());
 		compositeCapabilityEClass.getESuperTypes().add(this.getCapability());
-		compositeCapabilityEClass.getESuperTypes().add(this.getCapabilityDomain());
-		capabilityReferenceEClass.getESuperTypes().add(this.getModelElement());
-		capabilityReferenceEClass.getESuperTypes().add(this.getAbstractCapability());
-		capabilityDomainEClass.getESuperTypes().add(this.getNamedElement());
-		capabilityDomainEClass.getESuperTypes().add(this.getAbstractCapability());
-		capabilityDependencyEClass.getESuperTypes().add(this.getCapabilityReference());
-		abstractCapabilityProviderEClass.getESuperTypes().add(this.getStringIdentity());
-		capabilityProviderEClass.getESuperTypes().add(this.getNamedPeriod());
-		capabilityProviderEClass.getESuperTypes().add(this.getAbstractCapabilityProvider());
-		capabilityProviderDomainEClass.getESuperTypes().add(this.getNamedElement());
-		capabilityProviderDomainEClass.getESuperTypes().add(this.getAbstractCapabilityProvider());
-		capabilityProviderReferenceEClass.getESuperTypes().add(this.getAbstractCapabilityProvider());
-		providedCapabilityEClass.getESuperTypes().add(this.getNamedPeriod());
-		providedCapabilityEClass.getESuperTypes().add(this.getEvidenceDomain());
-		abstractEvidenceEClass.getESuperTypes().add(this.getStringIdentity());
-		evidenceEClass.getESuperTypes().add(this.getNamedPeriod());
-		evidenceEClass.getESuperTypes().add(this.getAbstractEvidence());
-		evidenceDomainEClass.getESuperTypes().add(this.getNamedElement());
-		evidenceDomainEClass.getESuperTypes().add(this.getAbstractEvidence());
-		requiredCapabilityEClass.getESuperTypes().add(this.getNamedPeriod());
-		versionEClass.getESuperTypes().add(this.getNamedPeriod());
-		roleEClass.getESuperTypes().add(this.getNamedPeriod());
-		roleAssignmentEClass.getESuperTypes().add(this.getPeriod());
-		abstractActorEClass.getESuperTypes().add(this.getStringIdentity());
-		actorEClass.getESuperTypes().add(this.getNamedPeriod());
-		actorEClass.getESuperTypes().add(this.getAbstractActor());
-		actorDomainEClass.getESuperTypes().add(this.getNamedElement());
-		actorDomainEClass.getESuperTypes().add(this.getAbstractActor());
+		compositeCapabilityEClass.getESuperTypes().add(theCapabilityPackage.getCapabilityDomain());
 
 		// Initialize classes, features, and operations; add parameters
-		initEClass(referrableEClass, Referrable.class, "Referrable", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		EOperation op = initEOperation(getReferrable__Collect__Object_EReference_EList(), null, "collect", 0, 1, !IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theEcorePackage.getEJavaObject(), "source", 0, 1, !IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theEcorePackage.getEReference(), "eReference", 0, 1, !IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theEcorePackage.getEObject(), "accumulator", 0, -1, !IS_UNIQUE, IS_ORDERED);
-
-		op = initEOperation(getReferrable__GetReferrers__EReference(), theEcorePackage.getEObject(), "getReferrers", 0, -1, !IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, theEcorePackage.getEReference(), "eReference", 0, 1, !IS_UNIQUE, IS_ORDERED);
-
-		initEClass(temporalEClass, Temporal.class, "Temporal", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getTemporal_Base(), this.getTemporal(), null, "base", null, 0, 1, Temporal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTemporal_Instant(), this.getInstant(), "instant", null, 0, 1, Temporal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getTemporal_Duration(), this.getDuration(), "duration", null, 0, 1, Temporal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTemporal_LowerBounds(), this.getTemporal(), null, "lowerBounds", null, 0, -1, Temporal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getTemporal_UpperBounds(), this.getTemporal(), null, "upperBounds", null, 0, -1, Temporal.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(periodEClass, Period.class, "Period", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getPeriod_Duration(), this.getDuration(), "duration", null, 0, 1, Period.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPeriod_Start(), this.getTemporal(), null, "start", null, 0, 1, Period.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getPeriod_End(), this.getTemporal(), null, "end", null, 0, 1, Period.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(stringIdentityEClass, StringIdentity.class, "StringIdentity", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getStringIdentity_Id(), theEcorePackage.getEString(), "id", null, 0, 1, StringIdentity.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(modelElementEClass, ModelElement.class, "ModelElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getModelElement_Icon(), theEcorePackage.getEString(), "icon", null, 0, 1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getModelElement_Documentation(), theEcorePackage.getEString(), "documentation", null, 0, 1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getModelElement_DocRef(), theEcorePackage.getEString(), "docRef", null, 0, 1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getModelElement_DocFormat(), theEcorePackage.getEString(), "docFormat", null, 0, 1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getModelElement_Uris(), theEcorePackage.getEString(), "uris", null, 0, -1, ModelElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(namedElementEClass, NamedElement.class, "NamedElement", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getNamedElement_Name(), theEcorePackage.getEString(), "name", null, 0, 1, NamedElement.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(namedPeriodEClass, NamedPeriod.class, "NamedPeriod", IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
 		initEClass(productModelEClass, ProductModel.class, "ProductModel", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(abstractPersonaEClass, AbstractPersona.class, "AbstractPersona", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1849,11 +786,9 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 
 		initEClass(personaDomainEClass, PersonaDomain.class, "PersonaDomain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getPersonaDomain_Personas(), this.getAbstractPersona(), null, "personas", null, 0, -1, PersonaDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		getPersonaDomain_Personas().getEKeys().add(this.getStringIdentity_Id());
 		initEReference(getPersonaDomain_ResolvedPersonas(), this.getAbstractPersona(), null, "resolvedPersonas", null, 0, -1, PersonaDomain.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		getPersonaDomain_ResolvedPersonas().getEKeys().add(this.getStringIdentity_Id());
 
-		op = initEOperation(getPersonaDomain__ResolvePersonaReference__AbstractPersona(), this.getAbstractPersona(), "resolvePersonaReference", 0, 1, !IS_UNIQUE, IS_ORDERED);
+		EOperation op = initEOperation(getPersonaDomain__ResolvePersonaReference__AbstractPersona(), this.getAbstractPersona(), "resolvePersonaReference", 0, 1, !IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getAbstractPersona(), "start", 0, 1, !IS_UNIQUE, IS_ORDERED);
 
 		initEClass(personaReferenceEClass, PersonaReference.class, "PersonaReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -1862,8 +797,8 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		initEClass(abstractConcernEClass, AbstractConcern.class, "AbstractConcern", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
 		initEClass(concernEClass, Concern.class, "Concern", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getConcern_AddressedBy(), this.getAbstractCapability(), null, "addressedBy", null, 0, -1, Concern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getConcern_AllAddressedBy(), this.getAbstractCapability(), null, "allAddressedBy", null, 0, -1, Concern.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
+		initEReference(getConcern_AddressedBy(), theCapabilityPackage.getAbstractCapability(), null, "addressedBy", null, 0, -1, Concern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+		initEReference(getConcern_AllAddressedBy(), theCapabilityPackage.getAbstractCapability(), null, "allAddressedBy", null, 0, -1, Concern.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getConcern_Supports(), this.getConcernReference(), null, "supports", null, 0, -1, Concern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getConcern_AllSupports(), this.getConcern(), null, "allSupports", null, 0, -1, Concern.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 		initEReference(getConcern_SupportedBy(), this.getConcernReference(), null, "supportedBy", null, 0, -1, Concern.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1874,9 +809,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 
 		initEClass(concernDomainEClass, ConcernDomain.class, "ConcernDomain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getConcernDomain_Concerns(), this.getAbstractConcern(), null, "concerns", null, 0, -1, ConcernDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		getConcernDomain_Concerns().getEKeys().add(this.getStringIdentity_Id());
 		initEReference(getConcernDomain_ResolvedConcerns(), this.getAbstractConcern(), null, "resolvedConcerns", null, 0, -1, ConcernDomain.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		getConcernDomain_ResolvedConcerns().getEKeys().add(this.getStringIdentity_Id());
 
 		op = initEOperation(getConcernDomain__ResolveConcernReference__AbstractConcern(), this.getAbstractConcern(), "resolveConcernReference", 0, 1, !IS_UNIQUE, IS_ORDERED);
 		addEParameter(op, this.getAbstractConcern(), "start", 0, 1, !IS_UNIQUE, IS_ORDERED);
@@ -1895,95 +828,11 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		initEReference(getPainPoint_Violates(), this.getConcernReference(), null, "violates", null, 0, -1, PainPoint.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getPainPoint_AllViolates(), this.getNeed(), null, "allViolates", null, 0, -1, PainPoint.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
 
-		initEClass(abstractCapabilityEClass, AbstractCapability.class, "AbstractCapability", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
 		initEClass(capabilityEClass, Capability.class, "Capability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 		initEReference(getCapability_Addresses(), this.getAbstractConcern(), null, "addresses", null, 0, -1, Capability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 		initEReference(getCapability_AllAddresses(), this.getAbstractConcern(), null, "allAddresses", null, 0, -1, Capability.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEReference(getCapability_Dependencies(), this.getAbstractCapability(), null, "dependencies", null, 0, -1, Capability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCapability_Dependents(), this.getCapabilityReference(), null, "dependents", null, 0, -1, Capability.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCapability_Lifecycle(), this.getLifecycle(), "lifecycle", null, 0, 1, Capability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
 		initEClass(compositeCapabilityEClass, CompositeCapability.class, "CompositeCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(capabilityReferenceEClass, CapabilityReference.class, "CapabilityReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCapabilityReference_Target(), this.getCapability(), null, "target", null, 0, 1, CapabilityReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(capabilityDomainEClass, CapabilityDomain.class, "CapabilityDomain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCapabilityDomain_Capabilities(), this.getAbstractCapability(), null, "capabilities", null, 0, -1, CapabilityDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		getCapabilityDomain_Capabilities().getEKeys().add(this.getStringIdentity_Id());
-		initEReference(getCapabilityDomain_ResolvedCapabilities(), this.getAbstractCapability(), null, "resolvedCapabilities", null, 0, -1, CapabilityDomain.class, IS_TRANSIENT, IS_VOLATILE, !IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, IS_DERIVED, IS_ORDERED);
-		getCapabilityDomain_ResolvedCapabilities().getEKeys().add(this.getStringIdentity_Id());
-
-		op = initEOperation(getCapabilityDomain__ResolveCapabilityReference__AbstractCapability(), this.getAbstractCapability(), "resolveCapabilityReference", 0, 1, !IS_UNIQUE, IS_ORDERED);
-		addEParameter(op, this.getAbstractCapability(), "start", 0, 1, !IS_UNIQUE, IS_ORDERED);
-
-		initEClass(capabilityDependencyEClass, CapabilityDependency.class, "CapabilityDependency", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getCapabilityDependency_Kind(), this.getDependencyKind(), "kind", null, 0, 1, CapabilityDependency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCapabilityDependency_Qualifier(), theEcorePackage.getEString(), "qualifier", null, 0, 1, CapabilityDependency.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(abstractCapabilityProviderEClass, AbstractCapabilityProvider.class, "AbstractCapabilityProvider", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(capabilityProviderEClass, CapabilityProvider.class, "CapabilityProvider", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCapabilityProvider_Provides(), this.getProvidedCapability(), null, "provides", null, 0, -1, CapabilityProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getCapabilityProvider_Requires(), this.getRequiredCapability(), null, "requires", null, 0, -1, CapabilityProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEAttribute(getCapabilityProvider_Lifecycle(), this.getLifecycle(), "lifecycle", null, 0, 1, CapabilityProvider.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(capabilityProviderDomainEClass, CapabilityProviderDomain.class, "CapabilityProviderDomain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCapabilityProviderDomain_CapabilityProviders(), this.getAbstractCapabilityProvider(), null, "capabilityProviders", null, 0, -1, CapabilityProviderDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(capabilityProviderReferenceEClass, CapabilityProviderReference.class, "CapabilityProviderReference", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getCapabilityProviderReference_Target(), this.getCapabilityProvider(), null, "target", null, 0, 1, CapabilityProviderReference.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(providedCapabilityEClass, ProvidedCapability.class, "ProvidedCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getProvidedCapability_Capability(), this.getAbstractCapability(), null, "capability", null, 0, 1, ProvidedCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(abstractEvidenceEClass, AbstractEvidence.class, "AbstractEvidence", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(evidenceEClass, Evidence.class, "Evidence", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(evidenceDomainEClass, EvidenceDomain.class, "EvidenceDomain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getEvidenceDomain_Evidence(), this.getEvidence(), null, "evidence", null, 0, -1, EvidenceDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		getEvidenceDomain_Evidence().getEKeys().add(this.getStringIdentity_Id());
-
-		initEClass(requiredCapabilityEClass, RequiredCapability.class, "RequiredCapability", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRequiredCapability_Capability(), this.getAbstractCapability(), null, "capability", null, 0, 1, RequiredCapability.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(versionEClass, Version.class, "Version", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(undergoerEClass, Undergoer.class, "Undergoer", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getUndergoer_Roles(), this.getRole(), null, "roles", null, 0, -1, Undergoer.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(roleEClass, Role.class, "Role", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getRole_Assignments(), this.getRoleAssignment(), null, "assignments", null, 0, -1, Role.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(roleAssignmentEClass, RoleAssignment.class, "RoleAssignment", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEAttribute(getRoleAssignment_Comment(), theEcorePackage.getEString(), "comment", null, 0, 1, RoleAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, !IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-		initEReference(getRoleAssignment_Actors(), this.getAbstractActor(), null, "actors", null, 0, 1, RoleAssignment.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		initEClass(abstractActorEClass, AbstractActor.class, "AbstractActor", IS_ABSTRACT, IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(actorEClass, Actor.class, "Actor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-
-		initEClass(actorDomainEClass, ActorDomain.class, "ActorDomain", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-		initEReference(getActorDomain_Actors(), this.getAbstractActor(), null, "actors", null, 0, -1, ActorDomain.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-
-		// Initialize enums and add enum literals
-		initEEnum(lifecycleEEnum, Lifecycle.class, "Lifecycle");
-		addEEnumLiteral(lifecycleEEnum, Lifecycle.DRAFT);
-		addEEnumLiteral(lifecycleEEnum, Lifecycle.PROPOSED);
-		addEEnumLiteral(lifecycleEEnum, Lifecycle.BACKLOG);
-		addEEnumLiteral(lifecycleEEnum, Lifecycle.PLANNED);
-		addEEnumLiteral(lifecycleEEnum, Lifecycle.IN_PROGRESS);
-		addEEnumLiteral(lifecycleEEnum, Lifecycle.AVAILABLE);
-		addEEnumLiteral(lifecycleEEnum, Lifecycle.DEPRECATED);
-		addEEnumLiteral(lifecycleEEnum, Lifecycle.RETIRED);
-
-		initEEnum(dependencyKindEEnum, DependencyKind.class, "DependencyKind");
-		addEEnumLiteral(dependencyKindEEnum, DependencyKind.REQUIRES);
-		addEEnumLiteral(dependencyKindEEnum, DependencyKind.ENHANCES);
-		addEEnumLiteral(dependencyKindEEnum, DependencyKind.CONFLICTS);
-		addEEnumLiteral(dependencyKindEEnum, DependencyKind.CUSTOM);
 
 		// Initialize data types
 		initEDataType(instantEDataType, Instant.class, "Instant", IS_SERIALIZABLE, !IS_GENERATED_INSTANCE_CLASS);
@@ -2022,42 +871,6 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 			   "basePackage", "org.nasdanika.models"
 		   });
 		addAnnotation
-		  (getReferrable__Collect__Object_EReference_EList(),
-		   source,
-		   new String[] {
-			   "body", "boolean _isInstance = eReference.getEContainingClass().isInstance(source);\nif (_isInstance)\n{\n\tfinal <%java.lang.Object%> value = ((<%org.eclipse.emf.ecore.EObject%>) source).eGet(eReference);\n\tboolean _isMany = eReference.isMany();\n\tif (_isMany)\n\t{\n\t\tboolean _contains = ((<%java.util.Collection%><?>) value).contains(this);\n\t\tif (_contains)\n\t\t{\n\t\t\taccumulator.add(((<%org.eclipse.emf.ecore.EObject%>) source));\n\t\t}\n\t}\n\telse\n\t{\n\t\tif ((value == this))\n\t\t{\n\t\t\taccumulator.add(((<%org.eclipse.emf.ecore.EObject%>) source));\n\t\t}\n\t}\n}"
-		   });
-		addAnnotation
-		  (getReferrable__GetReferrers__EReference(),
-		   source,
-		   new String[] {
-			   "body", "final <%org.eclipse.emf.common.util.BasicEList%><<%org.eclipse.emf.ecore.EObject%>> ret = new <%org.eclipse.emf.common.util.BasicEList%><<%org.eclipse.emf.ecore.EObject%>>();\nfinal <%org.eclipse.emf.ecore.resource.Resource%> res = this.eResource();\n<%org.eclipse.emf.common.util.TreeIterator%><?> cit = null;\nif ((res == null))\n{\n\t<%org.eclipse.emf.ecore.EObject%> root = this;\n\t<%org.eclipse.emf.ecore.EObject%> rc = null;\n\twhile (((rc = root.eContainer()) != null))\n\t{\n\t\troot = rc;\n\t}\n\tif ((root != null))\n\t{\n\t\tthis.collect(root, eReference, ret);\n\t\tcit = root.eAllContents();\n\t}\n}\nelse\n{\n\tfinal <%org.eclipse.emf.ecore.resource.ResourceSet%> rSet = res.getResourceSet();\n\t<%org.eclipse.emf.common.util.TreeIterator%><? extends <%org.eclipse.emf.common.notify.Notifier%>> _xifexpression = null;\n\tif ((rSet == null))\n\t{\n\t\t_xifexpression = res.getAllContents();\n\t}\n\telse\n\t{\n\t\t_xifexpression = rSet.getAllContents();\n\t}\n\tcit = _xifexpression;\n}\nif ((cit != null))\n{\n\twhile (cit.hasNext())\n\t{\n\t\tthis.collect(cit.next(), eReference, ret);\n\t}\n}\nreturn ret;"
-		   });
-		addAnnotation
-		  (getModelElement_Icon(),
-		   source,
-		   new String[] {
-			   "documentation", "*\nCustom icon - treated as URL if contains / or as a CSS class otherwise.\nE.g. fas fa-wrench would be treated as a CSS class.\nFor URLs the recommended icon size is 20x20 pixels and the recommended format is SVG."
-		   });
-		addAnnotation
-		  (getModelElement_DocRef(),
-		   source,
-		   new String[] {
-			   "documentation", "*\nDocumentation resource URI resolved relative to this model element resource URI.\nDocumentation format is derived from extension if not set."
-		   });
-		addAnnotation
-		  (getModelElement_DocFormat(),
-		   source,
-		   new String[] {
-			   "documentation", "*\nDocumentation format. If not set, defaults to markdown for inline documentation and is\nderived from the documentation resource extension for docRef"
-		   });
-		addAnnotation
-		  (getModelElement_Uris(),
-		   source,
-		   new String[] {
-			   "documentation", "*\nAlias URIs resolved relative to the parent URIs - can be absolute or opaque - global references.\nFor example: actors://john-smith.\nFor domains URIs can be used as anchors to merge domains from different sources.\nFor example, several teams may maintain capability domains with URI myorg://capabilities/developer-productivity\nWhen these definitions are assembled into the organization\'s product management model to generate documentation\nall of these domains are merged into a single logical domain."
-		   });
-		addAnnotation
 		  (getPersonaDomain__ResolvePersonaReference__AbstractPersona(),
 		   source,
 		   new String[] {
@@ -2080,7 +893,7 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		   source,
 		   new String[] {
 			   "documentation", "*\nAddressed concerns from this capability plus addressedBy from concerns",
-			   "get", "<%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractCapability%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractCapability%>> result = new <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractCapability%>>();\n\tresult.addAll(this.getAddressedBy());\n\t<%org.eclipse.emf.common.util.EList%><<%org.eclipse.emf.ecore.EObject%>> _referrers = this.getReferrers(<%org.nasdanika.models.productmanagement.ProductmanagementPackage.Literals%>.CAPABILITY__ADDRESSES);\n\tfor (final <%org.eclipse.emf.ecore.EObject%> referrer : _referrers)\n\t{\n\t\tif ((referrer instanceof <%org.nasdanika.models.productmanagement.AbstractCapability%>))\n\t\t{\n\t\t\tresult.add(((<%org.nasdanika.models.productmanagement.AbstractCapability%>)referrer));\n\t\t}\n\t}\n\t_xblockexpression = result;\n}\nreturn _xblockexpression;"
+			   "get", "<%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.capability.AbstractCapability%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.capability.AbstractCapability%>> result = new <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.capability.AbstractCapability%>>();\n\tresult.addAll(this.getAddressedBy());\n\t<%org.eclipse.emf.common.util.EList%><<%org.eclipse.emf.ecore.EObject%>> _referrers = this.getReferrers(<%org.nasdanika.models.productmanagement.ProductmanagementPackage.Literals%>.CAPABILITY__ADDRESSES);\n\tfor (final <%org.eclipse.emf.ecore.EObject%> referrer : _referrers)\n\t{\n\t\tif ((referrer instanceof <%org.nasdanika.models.capability.AbstractCapability%>))\n\t\t{\n\t\t\tresult.add(((<%org.nasdanika.models.capability.AbstractCapability%>)referrer));\n\t\t}\n\t}\n\t_xblockexpression = result;\n}\nreturn _xblockexpression;"
 		   });
 		addAnnotation
 		  (getConcern_Supports(),
@@ -2167,79 +980,6 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 			   "documentation", "*\nAddressed concerns from this capability plus addressedBy from concerns",
 			   "get", "<%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractConcern%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractConcern%>> result = new <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractConcern%>>();\n\tresult.addAll(this.getAddresses());\n\t<%org.eclipse.emf.common.util.EList%><<%org.eclipse.emf.ecore.EObject%>> _referrers = this.getReferrers(<%org.nasdanika.models.productmanagement.ProductmanagementPackage.Literals%>.CONCERN__ADDRESSED_BY);\n\tfor (final <%org.eclipse.emf.ecore.EObject%> referrer : _referrers)\n\t{\n\t\tif ((referrer instanceof <%org.nasdanika.models.productmanagement.AbstractConcern%>))\n\t\t{\n\t\t\tresult.add(((<%org.nasdanika.models.productmanagement.AbstractConcern%>)referrer));\n\t\t}\n\t}\n\t_xblockexpression = result;\n}\nreturn _xblockexpression;"
 		   });
-		addAnnotation
-		  (getCapability_Dependencies(),
-		   source,
-		   new String[] {
-			   "documentation", "*\nDependencies as an abstract capability allows to\nmodel self-contained capabilities with inline dependencies\nand even dependency domains.\nWhen federated, such inline capabilities can be\neither replaced with CapabilityReference or CapabilityDependency\nor use URIs to de-dup multiple definitions into one logical definition"
-		   });
-		addAnnotation
-		  (getCapability_Dependents(),
-		   source,
-		   new String[] {
-			   "documentation", "*\nCapabilities depending on this capability, excludes containment.\nReturns capability references, including capability dependencies, with target pointing\nto this capability and contained by the dependencies reference.",
-			   "get", "<%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.CapabilityReference%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.CapabilityReference%>> result = new <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.CapabilityReference%>>();\n\t<%org.eclipse.emf.common.util.EList%><<%org.eclipse.emf.ecore.EObject%>> _referrers = this.getReferrers(<%org.nasdanika.models.productmanagement.ProductmanagementPackage.Literals%>.CAPABILITY_REFERENCE__TARGET);\n\tfor (final <%org.eclipse.emf.ecore.EObject%> referrer : _referrers)\n\t{\n\t\t<%org.eclipse.emf.ecore.EReference%> _eContainmentFeature = referrer.eContainmentFeature();\n\t\tboolean _tripleEquals = (_eContainmentFeature == <%org.nasdanika.models.productmanagement.ProductmanagementPackage.Literals%>.CAPABILITY__DEPENDENCIES);\n\t\tif (_tripleEquals)\n\t\t{\n\t\t\tif ((referrer instanceof <%org.nasdanika.models.productmanagement.CapabilityReference%>))\n\t\t\t{\n\t\t\t\tresult.add(((<%org.nasdanika.models.productmanagement.CapabilityReference%>)referrer));\n\t\t\t}\n\t\t}\n\t}\n\t_xblockexpression = result;\n}\nreturn _xblockexpression;"
-		   });
-		addAnnotation
-		  (capabilityReferenceEClass,
-		   source,
-		   new String[] {
-			   "documentation", "*\nCapability reference extends ModelEment to allow adding documentation\nto addressedBy"
-		   });
-		addAnnotation
-		  (getCapabilityDomain__ResolveCapabilityReference__AbstractCapability(),
-		   source,
-		   new String[] {
-			   "body", "<%org.nasdanika.models.productmanagement.AbstractCapability%> current = start;\nfinal <%java.util.HashSet%><<%org.nasdanika.models.productmanagement.AbstractCapability%>> seen = new <%java.util.HashSet%><<%org.nasdanika.models.productmanagement.AbstractCapability%>>();\nwhile ((current instanceof <%org.nasdanika.models.productmanagement.CapabilityReference%>))\n{\n\t{\n\t\tboolean _add = seen.add(current);\n\t\tboolean _not = (!_add);\n\t\tif (_not)\n\t\t{\n\t\t\treturn null;\n\t\t}\n\t\tcurrent = ((<%org.nasdanika.models.productmanagement.CapabilityReference%>)current).getTarget();\n\t\tif ((current == null))\n\t\t{\n\t\t\treturn null;\n\t\t}\n\t}\n}\nreturn current;"
-		   });
-		addAnnotation
-		  (getCapabilityDomain_ResolvedCapabilities(),
-		   source,
-		   new String[] {
-			   "get", "<%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractCapability%>> _xblockexpression = null;\n{\n\tfinal <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractCapability%>> result = new <%org.eclipse.emf.common.util.BasicEList%><<%org.nasdanika.models.productmanagement.AbstractCapability%>>();\n\t<%org.eclipse.emf.common.util.EList%><<%org.nasdanika.models.productmanagement.AbstractCapability%>> _capabilities = this.getCapabilities();\n\tfor (final <%org.nasdanika.models.productmanagement.AbstractCapability%> capability : _capabilities)\n\t{\n\t\t{\n\t\t\tfinal <%org.nasdanika.models.productmanagement.AbstractCapability%> resolved = this.resolveCapabilityReference(capability);\n\t\t\tif ((resolved != null))\n\t\t\t{\n\t\t\t\tresult.add(resolved);\n\t\t\t}\n\t\t}\n\t}\n\t_xblockexpression = result;\n}\nreturn _xblockexpression;"
-		   });
-		addAnnotation
-		  (getCapabilityDependency_Qualifier(),
-		   source,
-		   new String[] {
-			   "documentation", "*\nQualifier for the dependency kind, e.g. CUSTOM kind"
-		   });
-		addAnnotation
-		  (dependencyKindEEnum,
-		   source,
-		   new String[] {
-			   "documentation", "*\nBuilt-in dependency types"
-		   });
-		addAnnotation
-		  (dependencyKindEEnum.getELiterals().get(0),
-		   source,
-		   new String[] {
-			   "documentation", "*\nI cannot function without this"
-		   });
-		addAnnotation
-		  (dependencyKindEEnum.getELiterals().get(1),
-		   source,
-		   new String[] {
-			   "documentation", "*\nI work better when this is also present"
-		   });
-		addAnnotation
-		  (dependencyKindEEnum.getELiterals().get(2),
-		   source,
-		   new String[] {
-			   "documentation", "*\nI cannot coexist with this"
-		   });
-		addAnnotation
-		  (dependencyKindEEnum.getELiterals().get(3),
-		   source,
-		   new String[] {
-			   "documentation", "*\nCustom dependency type"
-		   });
-		addAnnotation
-		  (evidenceEClass,
-		   source,
-		   new String[] {
-			   "documentation", "*\nEvidence of provided capability.\nE.g. for humans it can be a diploma or a certification or a project\nFor software products it might be a demo, recorded video, ..."
-		   });
 	}
 
 	/**
@@ -2288,18 +1028,6 @@ public class ProductmanagementPackageImpl extends EPackageImpl implements Produc
 		   });
 		addAnnotation
 		  (getConcernDomain_ResolvedConcerns(),
-		   source,
-		   new String[] {
-			   "logicalContainment", "true"
-		   });
-		addAnnotation
-		  (getCapabilityDomain_Capabilities(),
-		   source,
-		   new String[] {
-			   "logicalContainment", "false"
-		   });
-		addAnnotation
-		  (getCapabilityDomain_ResolvedCapabilities(),
 		   source,
 		   new String[] {
 			   "logicalContainment", "true"

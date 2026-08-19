@@ -17,6 +17,8 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.InternalEList;
 
+import org.nasdanika.models.nxcore.impl.NamedPeriodImpl;
+
 import org.nasdanika.models.productmanagement.AbstractConcern;
 import org.nasdanika.models.productmanagement.AbstractPersona;
 import org.nasdanika.models.productmanagement.ConcernDomain;

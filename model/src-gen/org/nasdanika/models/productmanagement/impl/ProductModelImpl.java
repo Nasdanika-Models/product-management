@@ -17,18 +17,24 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.nasdanika.models.productmanagement.AbstractActor;
-import org.nasdanika.models.productmanagement.AbstractCapability;
-import org.nasdanika.models.productmanagement.AbstractCapabilityProvider;
+import org.nasdanika.models.capability.AbstractCapability;
+import org.nasdanika.models.capability.AbstractCapabilityProvider;
+import org.nasdanika.models.capability.CapabilityDomain;
+import org.nasdanika.models.capability.CapabilityPackage;
+import org.nasdanika.models.capability.CapabilityProviderDomain;
+import org.nasdanika.models.capability.CapabilityReference;
+
+import org.nasdanika.models.nxcore.impl.NamedPeriodImpl;
+
 import org.nasdanika.models.productmanagement.AbstractPersona;
-import org.nasdanika.models.productmanagement.ActorDomain;
-import org.nasdanika.models.productmanagement.CapabilityDomain;
-import org.nasdanika.models.productmanagement.CapabilityProviderDomain;
-import org.nasdanika.models.productmanagement.CapabilityReference;
 import org.nasdanika.models.productmanagement.PersonaDomain;
 import org.nasdanika.models.productmanagement.PersonaReference;
 import org.nasdanika.models.productmanagement.ProductModel;
 import org.nasdanika.models.productmanagement.ProductmanagementPackage;
+
+import org.nasdanika.models.role.AbstractActor;
+import org.nasdanika.models.role.ActorDomain;
+import org.nasdanika.models.role.RolePackage;
 
 /**
  * <!-- begin-user-doc -->
@@ -111,7 +117,7 @@ public class ProductModelImpl extends NamedPeriodImpl implements ProductModel {
 	@SuppressWarnings("unchecked")
 	@Override
 	public EList<AbstractCapability> getCapabilities() {
-		return (EList<AbstractCapability>)eDynamicGet(ProductmanagementPackage.PRODUCT_MODEL__CAPABILITIES, ProductmanagementPackage.Literals.CAPABILITY_DOMAIN__CAPABILITIES, true, true);
+		return (EList<AbstractCapability>)eDynamicGet(ProductmanagementPackage.PRODUCT_MODEL__CAPABILITIES, CapabilityPackage.Literals.CAPABILITY_DOMAIN__CAPABILITIES, true, true);
 	}
 
 	/**
@@ -146,7 +152,7 @@ public class ProductModelImpl extends NamedPeriodImpl implements ProductModel {
 	@SuppressWarnings("unchecked")
 	@Override
 	public EList<AbstractCapabilityProvider> getCapabilityProviders() {
-		return (EList<AbstractCapabilityProvider>)eDynamicGet(ProductmanagementPackage.PRODUCT_MODEL__CAPABILITY_PROVIDERS, ProductmanagementPackage.Literals.CAPABILITY_PROVIDER_DOMAIN__CAPABILITY_PROVIDERS, true, true);
+		return (EList<AbstractCapabilityProvider>)eDynamicGet(ProductmanagementPackage.PRODUCT_MODEL__CAPABILITY_PROVIDERS, CapabilityPackage.Literals.CAPABILITY_PROVIDER_DOMAIN__CAPABILITY_PROVIDERS, true, true);
 	}
 
 	/**
@@ -157,7 +163,7 @@ public class ProductModelImpl extends NamedPeriodImpl implements ProductModel {
 	@SuppressWarnings("unchecked")
 	@Override
 	public EList<AbstractActor> getActors() {
-		return (EList<AbstractActor>)eDynamicGet(ProductmanagementPackage.PRODUCT_MODEL__ACTORS, ProductmanagementPackage.Literals.ACTOR_DOMAIN__ACTORS, true, true);
+		return (EList<AbstractActor>)eDynamicGet(ProductmanagementPackage.PRODUCT_MODEL__ACTORS, RolePackage.Literals.ACTOR_DOMAIN__ACTORS, true, true);
 	}
 
 	/**
@@ -357,8 +363,8 @@ public class ProductModelImpl extends NamedPeriodImpl implements ProductModel {
 		}
 		if (baseClass == CapabilityDomain.class) {
 			switch (derivedFeatureID) {
-				case ProductmanagementPackage.PRODUCT_MODEL__CAPABILITIES: return ProductmanagementPackage.CAPABILITY_DOMAIN__CAPABILITIES;
-				case ProductmanagementPackage.PRODUCT_MODEL__RESOLVED_CAPABILITIES: return ProductmanagementPackage.CAPABILITY_DOMAIN__RESOLVED_CAPABILITIES;
+				case ProductmanagementPackage.PRODUCT_MODEL__CAPABILITIES: return CapabilityPackage.CAPABILITY_DOMAIN__CAPABILITIES;
+				case ProductmanagementPackage.PRODUCT_MODEL__RESOLVED_CAPABILITIES: return CapabilityPackage.CAPABILITY_DOMAIN__RESOLVED_CAPABILITIES;
 				default: return -1;
 			}
 		}
@@ -369,7 +375,7 @@ public class ProductModelImpl extends NamedPeriodImpl implements ProductModel {
 		}
 		if (baseClass == CapabilityProviderDomain.class) {
 			switch (derivedFeatureID) {
-				case ProductmanagementPackage.PRODUCT_MODEL__CAPABILITY_PROVIDERS: return ProductmanagementPackage.CAPABILITY_PROVIDER_DOMAIN__CAPABILITY_PROVIDERS;
+				case ProductmanagementPackage.PRODUCT_MODEL__CAPABILITY_PROVIDERS: return CapabilityPackage.CAPABILITY_PROVIDER_DOMAIN__CAPABILITY_PROVIDERS;
 				default: return -1;
 			}
 		}
@@ -380,7 +386,7 @@ public class ProductModelImpl extends NamedPeriodImpl implements ProductModel {
 		}
 		if (baseClass == ActorDomain.class) {
 			switch (derivedFeatureID) {
-				case ProductmanagementPackage.PRODUCT_MODEL__ACTORS: return ProductmanagementPackage.ACTOR_DOMAIN__ACTORS;
+				case ProductmanagementPackage.PRODUCT_MODEL__ACTORS: return RolePackage.ACTOR_DOMAIN__ACTORS;
 				default: return -1;
 			}
 		}
@@ -413,8 +419,8 @@ public class ProductModelImpl extends NamedPeriodImpl implements ProductModel {
 		}
 		if (baseClass == CapabilityDomain.class) {
 			switch (baseFeatureID) {
-				case ProductmanagementPackage.CAPABILITY_DOMAIN__CAPABILITIES: return ProductmanagementPackage.PRODUCT_MODEL__CAPABILITIES;
-				case ProductmanagementPackage.CAPABILITY_DOMAIN__RESOLVED_CAPABILITIES: return ProductmanagementPackage.PRODUCT_MODEL__RESOLVED_CAPABILITIES;
+				case CapabilityPackage.CAPABILITY_DOMAIN__CAPABILITIES: return ProductmanagementPackage.PRODUCT_MODEL__CAPABILITIES;
+				case CapabilityPackage.CAPABILITY_DOMAIN__RESOLVED_CAPABILITIES: return ProductmanagementPackage.PRODUCT_MODEL__RESOLVED_CAPABILITIES;
 				default: return -1;
 			}
 		}
@@ -425,7 +431,7 @@ public class ProductModelImpl extends NamedPeriodImpl implements ProductModel {
 		}
 		if (baseClass == CapabilityProviderDomain.class) {
 			switch (baseFeatureID) {
-				case ProductmanagementPackage.CAPABILITY_PROVIDER_DOMAIN__CAPABILITY_PROVIDERS: return ProductmanagementPackage.PRODUCT_MODEL__CAPABILITY_PROVIDERS;
+				case CapabilityPackage.CAPABILITY_PROVIDER_DOMAIN__CAPABILITY_PROVIDERS: return ProductmanagementPackage.PRODUCT_MODEL__CAPABILITY_PROVIDERS;
 				default: return -1;
 			}
 		}
@@ -436,7 +442,7 @@ public class ProductModelImpl extends NamedPeriodImpl implements ProductModel {
 		}
 		if (baseClass == ActorDomain.class) {
 			switch (baseFeatureID) {
-				case ProductmanagementPackage.ACTOR_DOMAIN__ACTORS: return ProductmanagementPackage.PRODUCT_MODEL__ACTORS;
+				case RolePackage.ACTOR_DOMAIN__ACTORS: return ProductmanagementPackage.PRODUCT_MODEL__ACTORS;
 				default: return -1;
 			}
 		}
@@ -468,7 +474,7 @@ public class ProductModelImpl extends NamedPeriodImpl implements ProductModel {
 		}
 		if (baseClass == CapabilityDomain.class) {
 			switch (baseOperationID) {
-				case ProductmanagementPackage.CAPABILITY_DOMAIN___RESOLVE_CAPABILITY_REFERENCE__ABSTRACTCAPABILITY: return ProductmanagementPackage.PRODUCT_MODEL___RESOLVE_CAPABILITY_REFERENCE__ABSTRACTCAPABILITY;
+				case CapabilityPackage.CAPABILITY_DOMAIN___RESOLVE_CAPABILITY_REFERENCE__ABSTRACTCAPABILITY: return ProductmanagementPackage.PRODUCT_MODEL___RESOLVE_CAPABILITY_REFERENCE__ABSTRACTCAPABILITY;
 				default: return -1;
 			}
 		}

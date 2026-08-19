@@ -4,6 +4,10 @@ package org.nasdanika.models.productmanagement;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.nasdanika.models.capability.AbstractCapability;
+
+import org.nasdanika.models.nxcore.NamedPeriod;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Concern</b></em>'.
@@ -28,7 +32,7 @@ import org.eclipse.emf.common.util.EList;
 public interface Concern extends NamedPeriod, AbstractConcern {
 	/**
 	 * Returns the value of the '<em><b>Addressed By</b></em>' containment reference list.
-	 * The list contents are of type {@link org.nasdanika.models.productmanagement.AbstractCapability}.
+	 * The list contents are of type {@link org.nasdanika.models.capability.AbstractCapability}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->
@@ -50,7 +54,7 @@ public interface Concern extends NamedPeriod, AbstractConcern {
 
 	/**
 	 * Returns the value of the '<em><b>All Addressed By</b></em>' reference list.
-	 * The list contents are of type {@link org.nasdanika.models.productmanagement.AbstractCapability}.
+	 * The list contents are of type {@link org.nasdanika.models.capability.AbstractCapability}.
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
 	 * <!-- begin-model-doc -->

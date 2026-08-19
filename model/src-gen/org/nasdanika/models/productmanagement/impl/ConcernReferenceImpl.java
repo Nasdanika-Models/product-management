@@ -4,6 +4,8 @@ package org.nasdanika.models.productmanagement.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.nasdanika.models.nxcore.impl.ModelElementImpl;
+
 import org.nasdanika.models.productmanagement.Concern;
 import org.nasdanika.models.productmanagement.ConcernReference;
 import org.nasdanika.models.productmanagement.ProductmanagementPackage;

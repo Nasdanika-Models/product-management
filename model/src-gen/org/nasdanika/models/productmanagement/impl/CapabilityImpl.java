@@ -14,22 +14,15 @@ import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.EObject;
-import org.eclipse.emf.ecore.EReference;
 import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.nasdanika.models.productmanagement.AbstractCapability;
 import org.nasdanika.models.productmanagement.AbstractConcern;
-import org.nasdanika.models.productmanagement.AbstractEvidence;
 import org.nasdanika.models.productmanagement.AbstractPersona;
 import org.nasdanika.models.productmanagement.Capability;
-import org.nasdanika.models.productmanagement.CapabilityReference;
 import org.nasdanika.models.productmanagement.ConcernDomain;
 import org.nasdanika.models.productmanagement.ConcernReference;
-import org.nasdanika.models.productmanagement.Evidence;
-import org.nasdanika.models.productmanagement.EvidenceDomain;
-import org.nasdanika.models.productmanagement.Lifecycle;
 import org.nasdanika.models.productmanagement.PersonaDomain;
 import org.nasdanika.models.productmanagement.PersonaReference;
 import org.nasdanika.models.productmanagement.ProductmanagementPackage;
@@ -44,31 +37,17 @@ import org.nasdanika.models.productmanagement.ProductmanagementPackage.Literals;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getEvidence <em>Evidence</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getPersonas <em>Personas</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getResolvedPersonas <em>Resolved Personas</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getConcerns <em>Concerns</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getResolvedConcerns <em>Resolved Concerns</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getAddresses <em>Addresses</em>}</li>
  *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getAllAddresses <em>All Addresses</em>}</li>
- *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getDependencies <em>Dependencies</em>}</li>
- *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getDependents <em>Dependents</em>}</li>
- *   <li>{@link org.nasdanika.models.productmanagement.impl.CapabilityImpl#getLifecycle <em>Lifecycle</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class CapabilityImpl extends NamedPeriodImpl implements Capability {
-	/**
-	 * The default value of the '{@link #getLifecycle() <em>Lifecycle</em>}' attribute.
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @see #getLifecycle()
-	 * @generated
-	 * @ordered
-	 */
-	protected static final Lifecycle LIFECYCLE_EDEFAULT = Lifecycle.DRAFT;
-
+public class CapabilityImpl extends org.nasdanika.models.capability.impl.CapabilityImpl implements Capability {
 	/**
 	 * <!-- begin-user-doc -->
 	 * <!-- end-user-doc -->
@@ -86,17 +65,6 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 	@Override
 	protected EClass eStaticClass() {
 		return ProductmanagementPackage.Literals.CAPABILITY;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public EList<Evidence> getEvidence() {
-		return (EList<Evidence>)eDynamicGet(ProductmanagementPackage.CAPABILITY__EVIDENCE, ProductmanagementPackage.Literals.EVIDENCE_DOMAIN__EVIDENCE, true, true);
 	}
 
 	/**
@@ -207,62 +175,6 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 	 * <!-- end-user-doc -->
 	 * @generated
 	 */
-	@SuppressWarnings("unchecked")
-	@Override
-	public EList<AbstractCapability> getDependencies() {
-		return (EList<AbstractCapability>)eDynamicGet(ProductmanagementPackage.CAPABILITY__DEPENDENCIES, ProductmanagementPackage.Literals.CAPABILITY__DEPENDENCIES, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public EList<CapabilityReference> getDependents() {
-		BasicEList<CapabilityReference> _xblockexpression = null;
-		{
-			final BasicEList<CapabilityReference> result = new BasicEList<CapabilityReference>();
-			EList<EObject> _referrers = this.getReferrers(Literals.CAPABILITY_REFERENCE__TARGET);
-			for (final EObject referrer : _referrers) {
-				EReference _eContainmentFeature = referrer.eContainmentFeature();
-				boolean _tripleEquals = (_eContainmentFeature == Literals.CAPABILITY__DEPENDENCIES);
-				if (_tripleEquals) {
-					if ((referrer instanceof CapabilityReference)) {
-						result.add(((CapabilityReference)referrer));
-					}
-				}
-			}
-			_xblockexpression = result;
-		}
-		return _xblockexpression;
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public Lifecycle getLifecycle() {
-		return (Lifecycle)eDynamicGet(ProductmanagementPackage.CAPABILITY__LIFECYCLE, ProductmanagementPackage.Literals.CAPABILITY__LIFECYCLE, true, true);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
-	@Override
-	public void setLifecycle(Lifecycle newLifecycle) {
-		eDynamicSet(ProductmanagementPackage.CAPABILITY__LIFECYCLE, ProductmanagementPackage.Literals.CAPABILITY__LIFECYCLE, newLifecycle);
-	}
-
-	/**
-	 * <!-- begin-user-doc -->
-	 * <!-- end-user-doc -->
-	 * @generated
-	 */
 	@Override
 	public AbstractConcern resolveConcernReference(final AbstractConcern start) {
 		AbstractConcern current = start;
@@ -316,16 +228,12 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 	@Override
 	public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs) {
 		switch (featureID) {
-			case ProductmanagementPackage.CAPABILITY__EVIDENCE:
-				return ((InternalEList<?>)getEvidence()).basicRemove(otherEnd, msgs);
 			case ProductmanagementPackage.CAPABILITY__PERSONAS:
 				return ((InternalEList<?>)getPersonas()).basicRemove(otherEnd, msgs);
 			case ProductmanagementPackage.CAPABILITY__CONCERNS:
 				return ((InternalEList<?>)getConcerns()).basicRemove(otherEnd, msgs);
 			case ProductmanagementPackage.CAPABILITY__ADDRESSES:
 				return ((InternalEList<?>)getAddresses()).basicRemove(otherEnd, msgs);
-			case ProductmanagementPackage.CAPABILITY__DEPENDENCIES:
-				return ((InternalEList<?>)getDependencies()).basicRemove(otherEnd, msgs);
 		}
 		return super.eInverseRemove(otherEnd, featureID, msgs);
 	}
@@ -338,8 +246,6 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 	@Override
 	public Object eGet(int featureID, boolean resolve, boolean coreType) {
 		switch (featureID) {
-			case ProductmanagementPackage.CAPABILITY__EVIDENCE:
-				return getEvidence();
 			case ProductmanagementPackage.CAPABILITY__PERSONAS:
 				return getPersonas();
 			case ProductmanagementPackage.CAPABILITY__RESOLVED_PERSONAS:
@@ -352,12 +258,6 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 				return getAddresses();
 			case ProductmanagementPackage.CAPABILITY__ALL_ADDRESSES:
 				return getAllAddresses();
-			case ProductmanagementPackage.CAPABILITY__DEPENDENCIES:
-				return getDependencies();
-			case ProductmanagementPackage.CAPABILITY__DEPENDENTS:
-				return getDependents();
-			case ProductmanagementPackage.CAPABILITY__LIFECYCLE:
-				return getLifecycle();
 		}
 		return super.eGet(featureID, resolve, coreType);
 	}
@@ -371,10 +271,6 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 	@Override
 	public void eSet(int featureID, Object newValue) {
 		switch (featureID) {
-			case ProductmanagementPackage.CAPABILITY__EVIDENCE:
-				getEvidence().clear();
-				getEvidence().addAll((Collection<? extends Evidence>)newValue);
-				return;
 			case ProductmanagementPackage.CAPABILITY__PERSONAS:
 				getPersonas().clear();
 				getPersonas().addAll((Collection<? extends AbstractPersona>)newValue);
@@ -386,13 +282,6 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 			case ProductmanagementPackage.CAPABILITY__ADDRESSES:
 				getAddresses().clear();
 				getAddresses().addAll((Collection<? extends AbstractConcern>)newValue);
-				return;
-			case ProductmanagementPackage.CAPABILITY__DEPENDENCIES:
-				getDependencies().clear();
-				getDependencies().addAll((Collection<? extends AbstractCapability>)newValue);
-				return;
-			case ProductmanagementPackage.CAPABILITY__LIFECYCLE:
-				setLifecycle((Lifecycle)newValue);
 				return;
 		}
 		super.eSet(featureID, newValue);
@@ -406,9 +295,6 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 	@Override
 	public void eUnset(int featureID) {
 		switch (featureID) {
-			case ProductmanagementPackage.CAPABILITY__EVIDENCE:
-				getEvidence().clear();
-				return;
 			case ProductmanagementPackage.CAPABILITY__PERSONAS:
 				getPersonas().clear();
 				return;
@@ -417,12 +303,6 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 				return;
 			case ProductmanagementPackage.CAPABILITY__ADDRESSES:
 				getAddresses().clear();
-				return;
-			case ProductmanagementPackage.CAPABILITY__DEPENDENCIES:
-				getDependencies().clear();
-				return;
-			case ProductmanagementPackage.CAPABILITY__LIFECYCLE:
-				setLifecycle(LIFECYCLE_EDEFAULT);
 				return;
 		}
 		super.eUnset(featureID);
@@ -436,8 +316,6 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 	@Override
 	public boolean eIsSet(int featureID) {
 		switch (featureID) {
-			case ProductmanagementPackage.CAPABILITY__EVIDENCE:
-				return !getEvidence().isEmpty();
 			case ProductmanagementPackage.CAPABILITY__PERSONAS:
 				return !getPersonas().isEmpty();
 			case ProductmanagementPackage.CAPABILITY__RESOLVED_PERSONAS:
@@ -450,12 +328,6 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 				return !getAddresses().isEmpty();
 			case ProductmanagementPackage.CAPABILITY__ALL_ADDRESSES:
 				return !getAllAddresses().isEmpty();
-			case ProductmanagementPackage.CAPABILITY__DEPENDENCIES:
-				return !getDependencies().isEmpty();
-			case ProductmanagementPackage.CAPABILITY__DEPENDENTS:
-				return !getDependents().isEmpty();
-			case ProductmanagementPackage.CAPABILITY__LIFECYCLE:
-				return getLifecycle() != LIFECYCLE_EDEFAULT;
 		}
 		return super.eIsSet(featureID);
 	}
@@ -467,22 +339,6 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 	 */
 	@Override
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
-		if (baseClass == AbstractCapability.class) {
-			switch (derivedFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == AbstractEvidence.class) {
-			switch (derivedFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == EvidenceDomain.class) {
-			switch (derivedFeatureID) {
-				case ProductmanagementPackage.CAPABILITY__EVIDENCE: return ProductmanagementPackage.EVIDENCE_DOMAIN__EVIDENCE;
-				default: return -1;
-			}
-		}
 		if (baseClass == AbstractPersona.class) {
 			switch (derivedFeatureID) {
 				default: return -1;
@@ -517,22 +373,6 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 	 */
 	@Override
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
-		if (baseClass == AbstractCapability.class) {
-			switch (baseFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == AbstractEvidence.class) {
-			switch (baseFeatureID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == EvidenceDomain.class) {
-			switch (baseFeatureID) {
-				case ProductmanagementPackage.EVIDENCE_DOMAIN__EVIDENCE: return ProductmanagementPackage.CAPABILITY__EVIDENCE;
-				default: return -1;
-			}
-		}
 		if (baseClass == AbstractPersona.class) {
 			switch (baseFeatureID) {
 				default: return -1;
@@ -567,21 +407,6 @@ public class CapabilityImpl extends NamedPeriodImpl implements Capability {
 	 */
 	@Override
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
-		if (baseClass == AbstractCapability.class) {
-			switch (baseOperationID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == AbstractEvidence.class) {
-			switch (baseOperationID) {
-				default: return -1;
-			}
-		}
-		if (baseClass == EvidenceDomain.class) {
-			switch (baseOperationID) {
-				default: return -1;
-			}
-		}
 		if (baseClass == AbstractPersona.class) {
 			switch (baseOperationID) {
 				default: return -1;

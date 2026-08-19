@@ -9,7 +9,32 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 
 import org.eclipse.emf.ecore.EObject;
 
+import org.nasdanika.models.capability.AbstractCapability;
+import org.nasdanika.models.capability.AbstractCapabilityProvider;
+import org.nasdanika.models.capability.AbstractEvidence;
+import org.nasdanika.models.capability.CapabilityDomain;
+import org.nasdanika.models.capability.CapabilityProviderDomain;
+import org.nasdanika.models.capability.EvidenceDomain;
+
+import org.nasdanika.models.iam.AccessControlled;
+
+import org.nasdanika.models.lifecycle.Staged;
+
+import org.nasdanika.models.nxcore.Documented;
+import org.nasdanika.models.nxcore.Marked;
+import org.nasdanika.models.nxcore.ModelElement;
+import org.nasdanika.models.nxcore.NamedElement;
+import org.nasdanika.models.nxcore.NamedPeriod;
+import org.nasdanika.models.nxcore.Period;
+import org.nasdanika.models.nxcore.Referrable;
+import org.nasdanika.models.nxcore.StringIdentity;
+
 import org.nasdanika.models.productmanagement.*;
+
+import org.nasdanika.models.role.AbstractActor;
+import org.nasdanika.models.role.ActorDomain;
+
+import org.nasdanika.models.seal.SealedElement;
 
 /**
  * <!-- begin-user-doc -->
@@ -68,34 +93,6 @@ public class ProductmanagementAdapterFactory extends AdapterFactoryImpl {
 	protected ProductmanagementSwitch<Adapter> modelSwitch =
 		new ProductmanagementSwitch<Adapter>() {
 			@Override
-			public Adapter caseReferrable(Referrable object) {
-				return createReferrableAdapter();
-			}
-			@Override
-			public Adapter caseTemporal(Temporal object) {
-				return createTemporalAdapter();
-			}
-			@Override
-			public Adapter casePeriod(Period object) {
-				return createPeriodAdapter();
-			}
-			@Override
-			public Adapter caseStringIdentity(StringIdentity object) {
-				return createStringIdentityAdapter();
-			}
-			@Override
-			public Adapter caseModelElement(ModelElement object) {
-				return createModelElementAdapter();
-			}
-			@Override
-			public Adapter caseNamedElement(NamedElement object) {
-				return createNamedElementAdapter();
-			}
-			@Override
-			public Adapter caseNamedPeriod(NamedPeriod object) {
-				return createNamedPeriodAdapter();
-			}
-			@Override
 			public Adapter caseProductModel(ProductModel object) {
 				return createProductModelAdapter();
 			}
@@ -144,10 +141,6 @@ public class ProductmanagementAdapterFactory extends AdapterFactoryImpl {
 				return createPainPointAdapter();
 			}
 			@Override
-			public Adapter caseAbstractCapability(AbstractCapability object) {
-				return createAbstractCapabilityAdapter();
-			}
-			@Override
 			public Adapter caseCapability(Capability object) {
 				return createCapabilityAdapter();
 			}
@@ -156,80 +149,84 @@ public class ProductmanagementAdapterFactory extends AdapterFactoryImpl {
 				return createCompositeCapabilityAdapter();
 			}
 			@Override
-			public Adapter caseCapabilityReference(CapabilityReference object) {
-				return createCapabilityReferenceAdapter();
+			public Adapter caseReferrable(Referrable object) {
+				return createReferrableAdapter();
+			}
+			@Override
+			public Adapter caseStringIdentity(StringIdentity object) {
+				return createStringIdentityAdapter();
+			}
+			@Override
+			public Adapter caseDocumented(Documented object) {
+				return createDocumentedAdapter();
+			}
+			@Override
+			public Adapter caseMarked(Marked object) {
+				return createMarkedAdapter();
+			}
+			@Override
+			public Adapter caseModelElement(ModelElement object) {
+				return createModelElementAdapter();
+			}
+			@Override
+			public Adapter caseNamedElement(NamedElement object) {
+				return createNamedElementAdapter();
+			}
+			@Override
+			public Adapter casePeriod(Period object) {
+				return createPeriodAdapter();
+			}
+			@Override
+			public Adapter caseNamedPeriod(NamedPeriod object) {
+				return createNamedPeriodAdapter();
+			}
+			@Override
+			public Adapter caseAbstractCapability(AbstractCapability object) {
+				return createAbstractCapabilityAdapter();
 			}
 			@Override
 			public Adapter caseCapabilityDomain(CapabilityDomain object) {
 				return createCapabilityDomainAdapter();
 			}
 			@Override
-			public Adapter caseCapabilityDependency(CapabilityDependency object) {
-				return createCapabilityDependencyAdapter();
-			}
-			@Override
 			public Adapter caseAbstractCapabilityProvider(AbstractCapabilityProvider object) {
 				return createAbstractCapabilityProviderAdapter();
-			}
-			@Override
-			public Adapter caseCapabilityProvider(CapabilityProvider object) {
-				return createCapabilityProviderAdapter();
 			}
 			@Override
 			public Adapter caseCapabilityProviderDomain(CapabilityProviderDomain object) {
 				return createCapabilityProviderDomainAdapter();
 			}
 			@Override
-			public Adapter caseCapabilityProviderReference(CapabilityProviderReference object) {
-				return createCapabilityProviderReferenceAdapter();
+			public Adapter caseAbstractActor(AbstractActor object) {
+				return createAbstractActorAdapter();
 			}
 			@Override
-			public Adapter caseProvidedCapability(ProvidedCapability object) {
-				return createProvidedCapabilityAdapter();
+			public Adapter caseActorDomain(ActorDomain object) {
+				return createActorDomainAdapter();
 			}
 			@Override
 			public Adapter caseAbstractEvidence(AbstractEvidence object) {
 				return createAbstractEvidenceAdapter();
 			}
 			@Override
-			public Adapter caseEvidence(Evidence object) {
-				return createEvidenceAdapter();
-			}
-			@Override
 			public Adapter caseEvidenceDomain(EvidenceDomain object) {
 				return createEvidenceDomainAdapter();
 			}
 			@Override
-			public Adapter caseRequiredCapability(RequiredCapability object) {
-				return createRequiredCapabilityAdapter();
+			public Adapter caseAccessControlled(AccessControlled object) {
+				return createAccessControlledAdapter();
 			}
 			@Override
-			public Adapter caseVersion(Version object) {
-				return createVersionAdapter();
+			public Adapter caseSealedElement(SealedElement object) {
+				return createSealedElementAdapter();
 			}
 			@Override
-			public Adapter caseUndergoer(Undergoer object) {
-				return createUndergoerAdapter();
+			public Adapter caseStaged(Staged object) {
+				return createStagedAdapter();
 			}
 			@Override
-			public Adapter caseRole(Role object) {
-				return createRoleAdapter();
-			}
-			@Override
-			public Adapter caseRoleAssignment(RoleAssignment object) {
-				return createRoleAssignmentAdapter();
-			}
-			@Override
-			public Adapter caseAbstractActor(AbstractActor object) {
-				return createAbstractActorAdapter();
-			}
-			@Override
-			public Adapter caseActor(Actor object) {
-				return createActorAdapter();
-			}
-			@Override
-			public Adapter caseActorDomain(ActorDomain object) {
-				return createActorDomainAdapter();
+			public Adapter caseCapability_Capability(org.nasdanika.models.capability.Capability object) {
+				return createCapability_CapabilityAdapter();
 			}
 			@Override
 			public Adapter defaultCase(EObject object) {
@@ -250,104 +247,6 @@ public class ProductmanagementAdapterFactory extends AdapterFactoryImpl {
 		return modelSwitch.doSwitch((EObject)target);
 	}
 
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.productmanagement.Referrable <em>Referrable</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.productmanagement.Referrable
-	 * @generated
-	 */
-	public Adapter createReferrableAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.productmanagement.Temporal <em>Temporal</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.productmanagement.Temporal
-	 * @generated
-	 */
-	public Adapter createTemporalAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.productmanagement.Period <em>Period</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.productmanagement.Period
-	 * @generated
-	 */
-	public Adapter createPeriodAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.productmanagement.StringIdentity <em>String Identity</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.productmanagement.StringIdentity
-	 * @generated
-	 */
-	public Adapter createStringIdentityAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.productmanagement.ModelElement <em>Model Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.productmanagement.ModelElement
-	 * @generated
-	 */
-	public Adapter createModelElementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.productmanagement.NamedElement <em>Named Element</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.productmanagement.NamedElement
-	 * @generated
-	 */
-	public Adapter createNamedElementAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.productmanagement.NamedPeriod <em>Named Period</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.productmanagement.NamedPeriod
-	 * @generated
-	 */
-	public Adapter createNamedPeriodAdapter() {
-		return null;
-	}
 
 	/**
 	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.productmanagement.ProductModel <em>Product Model</em>}'.
@@ -518,20 +417,6 @@ public class ProductmanagementAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.productmanagement.AbstractCapability <em>Abstract Capability</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.productmanagement.AbstractCapability
-	 * @generated
-	 */
-	public Adapter createAbstractCapabilityAdapter() {
-		return null;
-	}
-
-	/**
 	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.productmanagement.Capability <em>Capability</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
@@ -560,27 +445,139 @@ public class ProductmanagementAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.productmanagement.CapabilityReference <em>Capability Reference</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.nxcore.Referrable <em>Referrable</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.nasdanika.models.productmanagement.CapabilityReference
+	 * @see org.nasdanika.models.nxcore.Referrable
 	 * @generated
 	 */
-	public Adapter createCapabilityReferenceAdapter() {
+	public Adapter createReferrableAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.productmanagement.CapabilityDomain <em>Capability Domain</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.nxcore.StringIdentity <em>String Identity</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.nasdanika.models.productmanagement.CapabilityDomain
+	 * @see org.nasdanika.models.nxcore.StringIdentity
+	 * @generated
+	 */
+	public Adapter createStringIdentityAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.nxcore.Documented <em>Documented</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.models.nxcore.Documented
+	 * @generated
+	 */
+	public Adapter createDocumentedAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.nxcore.Marked <em>Marked</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.models.nxcore.Marked
+	 * @generated
+	 */
+	public Adapter createMarkedAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.nxcore.ModelElement <em>Model Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.models.nxcore.ModelElement
+	 * @generated
+	 */
+	public Adapter createModelElementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.nxcore.NamedElement <em>Named Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.models.nxcore.NamedElement
+	 * @generated
+	 */
+	public Adapter createNamedElementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.nxcore.Period <em>Period</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.models.nxcore.Period
+	 * @generated
+	 */
+	public Adapter createPeriodAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.nxcore.NamedPeriod <em>Named Period</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.models.nxcore.NamedPeriod
+	 * @generated
+	 */
+	public Adapter createNamedPeriodAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.capability.AbstractCapability <em>Abstract Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.models.capability.AbstractCapability
+	 * @generated
+	 */
+	public Adapter createAbstractCapabilityAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.capability.CapabilityDomain <em>Domain</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.models.capability.CapabilityDomain
 	 * @generated
 	 */
 	public Adapter createCapabilityDomainAdapter() {
@@ -588,27 +585,13 @@ public class ProductmanagementAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.productmanagement.CapabilityDependency <em>Capability Dependency</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.capability.AbstractCapabilityProvider <em>Abstract Capability Provider</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.nasdanika.models.productmanagement.CapabilityDependency
-	 * @generated
-	 */
-	public Adapter createCapabilityDependencyAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.productmanagement.AbstractCapabilityProvider <em>Abstract Capability Provider</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.productmanagement.AbstractCapabilityProvider
+	 * @see org.nasdanika.models.capability.AbstractCapabilityProvider
 	 * @generated
 	 */
 	public Adapter createAbstractCapabilityProviderAdapter() {
@@ -616,27 +599,13 @@ public class ProductmanagementAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.productmanagement.CapabilityProvider <em>Capability Provider</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.capability.CapabilityProviderDomain <em>Provider Domain</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.nasdanika.models.productmanagement.CapabilityProvider
-	 * @generated
-	 */
-	public Adapter createCapabilityProviderAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.productmanagement.CapabilityProviderDomain <em>Capability Provider Domain</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.productmanagement.CapabilityProviderDomain
+	 * @see org.nasdanika.models.capability.CapabilityProviderDomain
 	 * @generated
 	 */
 	public Adapter createCapabilityProviderDomainAdapter() {
@@ -644,153 +613,13 @@ public class ProductmanagementAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.productmanagement.CapabilityProviderReference <em>Capability Provider Reference</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.role.AbstractActor <em>Abstract Actor</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.nasdanika.models.productmanagement.CapabilityProviderReference
-	 * @generated
-	 */
-	public Adapter createCapabilityProviderReferenceAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.productmanagement.ProvidedCapability <em>Provided Capability</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.productmanagement.ProvidedCapability
-	 * @generated
-	 */
-	public Adapter createProvidedCapabilityAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.productmanagement.AbstractEvidence <em>Abstract Evidence</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.productmanagement.AbstractEvidence
-	 * @generated
-	 */
-	public Adapter createAbstractEvidenceAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.productmanagement.Evidence <em>Evidence</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.productmanagement.Evidence
-	 * @generated
-	 */
-	public Adapter createEvidenceAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.productmanagement.EvidenceDomain <em>Evidence Domain</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.productmanagement.EvidenceDomain
-	 * @generated
-	 */
-	public Adapter createEvidenceDomainAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.productmanagement.RequiredCapability <em>Required Capability</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.productmanagement.RequiredCapability
-	 * @generated
-	 */
-	public Adapter createRequiredCapabilityAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.productmanagement.Version <em>Version</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.productmanagement.Version
-	 * @generated
-	 */
-	public Adapter createVersionAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.productmanagement.Undergoer <em>Undergoer</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.productmanagement.Undergoer
-	 * @generated
-	 */
-	public Adapter createUndergoerAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.productmanagement.Role <em>Role</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.productmanagement.Role
-	 * @generated
-	 */
-	public Adapter createRoleAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.productmanagement.RoleAssignment <em>Role Assignment</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.productmanagement.RoleAssignment
-	 * @generated
-	 */
-	public Adapter createRoleAssignmentAdapter() {
-		return null;
-	}
-
-	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.productmanagement.AbstractActor <em>Abstract Actor</em>}'.
-	 * <!-- begin-user-doc -->
-	 * This default implementation returns null so that we can easily ignore cases;
-	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
-	 * <!-- end-user-doc -->
-	 * @return the new adapter.
-	 * @see org.nasdanika.models.productmanagement.AbstractActor
+	 * @see org.nasdanika.models.role.AbstractActor
 	 * @generated
 	 */
 	public Adapter createAbstractActorAdapter() {
@@ -798,30 +627,100 @@ public class ProductmanagementAdapterFactory extends AdapterFactoryImpl {
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.productmanagement.Actor <em>Actor</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.role.ActorDomain <em>Actor Domain</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.nasdanika.models.productmanagement.Actor
+	 * @see org.nasdanika.models.role.ActorDomain
 	 * @generated
 	 */
-	public Adapter createActorAdapter() {
+	public Adapter createActorDomainAdapter() {
 		return null;
 	}
 
 	/**
-	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.productmanagement.ActorDomain <em>Actor Domain</em>}'.
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.capability.AbstractEvidence <em>Abstract Evidence</em>}'.
 	 * <!-- begin-user-doc -->
 	 * This default implementation returns null so that we can easily ignore cases;
 	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
 	 * <!-- end-user-doc -->
 	 * @return the new adapter.
-	 * @see org.nasdanika.models.productmanagement.ActorDomain
+	 * @see org.nasdanika.models.capability.AbstractEvidence
 	 * @generated
 	 */
-	public Adapter createActorDomainAdapter() {
+	public Adapter createAbstractEvidenceAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.capability.EvidenceDomain <em>Evidence Domain</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.models.capability.EvidenceDomain
+	 * @generated
+	 */
+	public Adapter createEvidenceDomainAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.iam.AccessControlled <em>Access Controlled</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.models.iam.AccessControlled
+	 * @generated
+	 */
+	public Adapter createAccessControlledAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.seal.SealedElement <em>Sealed Element</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.models.seal.SealedElement
+	 * @generated
+	 */
+	public Adapter createSealedElementAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.lifecycle.Staged <em>Staged</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.models.lifecycle.Staged
+	 * @generated
+	 */
+	public Adapter createStagedAdapter() {
+		return null;
+	}
+
+	/**
+	 * Creates a new adapter for an object of class '{@link org.nasdanika.models.capability.Capability <em>Capability</em>}'.
+	 * <!-- begin-user-doc -->
+	 * This default implementation returns null so that we can easily ignore cases;
+	 * it's useful to ignore a case when inheritance will catch all the cases anyway.
+	 * <!-- end-user-doc -->
+	 * @return the new adapter.
+	 * @see org.nasdanika.models.capability.Capability
+	 * @generated
+	 */
+	public Adapter createCapability_CapabilityAdapter() {
 		return null;
 	}
 

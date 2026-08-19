@@ -4,6 +4,8 @@ package org.nasdanika.models.productmanagement;
 
 import org.eclipse.emf.common.util.EList;
 
+import org.nasdanika.models.nxcore.NamedElement;
+
 /**
  * <!-- begin-user-doc -->
  * A representation of the model object '<em><b>Persona Domain</b></em>'.
@@ -29,7 +31,7 @@ public interface PersonaDomain extends NamedElement, AbstractPersona {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Personas</em>' containment reference list.
 	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getPersonaDomain_Personas()
-	 * @model containment="true" keys="id"
+	 * @model containment="true"
 	 *        annotation="urn:org.nasdanika logicalContainment='false'"
 	 * @generated
 	 */
@@ -42,7 +44,7 @@ public interface PersonaDomain extends NamedElement, AbstractPersona {
 	 * <!-- end-user-doc -->
 	 * @return the value of the '<em>Resolved Personas</em>' reference list.
 	 * @see org.nasdanika.models.productmanagement.ProductmanagementPackage#getPersonaDomain_ResolvedPersonas()
-	 * @model keys="id" transient="true" changeable="false" volatile="true" derived="true"
+	 * @model transient="true" changeable="false" volatile="true" derived="true"
 	 *        annotation="urn:org.nasdanika logicalContainment='true'"
 	 * @generated
 	 */

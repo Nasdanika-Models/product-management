@@ -17,9 +17,11 @@ import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.util.InternalEList;
 
-import org.nasdanika.models.productmanagement.AbstractCapability;
-import org.nasdanika.models.productmanagement.CapabilityDomain;
-import org.nasdanika.models.productmanagement.CapabilityReference;
+import org.nasdanika.models.capability.AbstractCapability;
+import org.nasdanika.models.capability.CapabilityDomain;
+import org.nasdanika.models.capability.CapabilityPackage;
+import org.nasdanika.models.capability.CapabilityReference;
+
 import org.nasdanika.models.productmanagement.CompositeCapability;
 import org.nasdanika.models.productmanagement.ProductmanagementPackage;
 
@@ -65,7 +67,7 @@ public class CompositeCapabilityImpl extends CapabilityImpl implements Composite
 	@SuppressWarnings("unchecked")
 	@Override
 	public EList<AbstractCapability> getCapabilities() {
-		return (EList<AbstractCapability>)eDynamicGet(ProductmanagementPackage.COMPOSITE_CAPABILITY__CAPABILITIES, ProductmanagementPackage.Literals.CAPABILITY_DOMAIN__CAPABILITIES, true, true);
+		return (EList<AbstractCapability>)eDynamicGet(ProductmanagementPackage.COMPOSITE_CAPABILITY__CAPABILITIES, CapabilityPackage.Literals.CAPABILITY_DOMAIN__CAPABILITIES, true, true);
 	}
 
 	/**
@@ -204,8 +206,8 @@ public class CompositeCapabilityImpl extends CapabilityImpl implements Composite
 	public int eBaseStructuralFeatureID(int derivedFeatureID, Class<?> baseClass) {
 		if (baseClass == CapabilityDomain.class) {
 			switch (derivedFeatureID) {
-				case ProductmanagementPackage.COMPOSITE_CAPABILITY__CAPABILITIES: return ProductmanagementPackage.CAPABILITY_DOMAIN__CAPABILITIES;
-				case ProductmanagementPackage.COMPOSITE_CAPABILITY__RESOLVED_CAPABILITIES: return ProductmanagementPackage.CAPABILITY_DOMAIN__RESOLVED_CAPABILITIES;
+				case ProductmanagementPackage.COMPOSITE_CAPABILITY__CAPABILITIES: return CapabilityPackage.CAPABILITY_DOMAIN__CAPABILITIES;
+				case ProductmanagementPackage.COMPOSITE_CAPABILITY__RESOLVED_CAPABILITIES: return CapabilityPackage.CAPABILITY_DOMAIN__RESOLVED_CAPABILITIES;
 				default: return -1;
 			}
 		}
@@ -221,8 +223,8 @@ public class CompositeCapabilityImpl extends CapabilityImpl implements Composite
 	public int eDerivedStructuralFeatureID(int baseFeatureID, Class<?> baseClass) {
 		if (baseClass == CapabilityDomain.class) {
 			switch (baseFeatureID) {
-				case ProductmanagementPackage.CAPABILITY_DOMAIN__CAPABILITIES: return ProductmanagementPackage.COMPOSITE_CAPABILITY__CAPABILITIES;
-				case ProductmanagementPackage.CAPABILITY_DOMAIN__RESOLVED_CAPABILITIES: return ProductmanagementPackage.COMPOSITE_CAPABILITY__RESOLVED_CAPABILITIES;
+				case CapabilityPackage.CAPABILITY_DOMAIN__CAPABILITIES: return ProductmanagementPackage.COMPOSITE_CAPABILITY__CAPABILITIES;
+				case CapabilityPackage.CAPABILITY_DOMAIN__RESOLVED_CAPABILITIES: return ProductmanagementPackage.COMPOSITE_CAPABILITY__RESOLVED_CAPABILITIES;
 				default: return -1;
 			}
 		}
@@ -238,7 +240,7 @@ public class CompositeCapabilityImpl extends CapabilityImpl implements Composite
 	public int eDerivedOperationID(int baseOperationID, Class<?> baseClass) {
 		if (baseClass == CapabilityDomain.class) {
 			switch (baseOperationID) {
-				case ProductmanagementPackage.CAPABILITY_DOMAIN___RESOLVE_CAPABILITY_REFERENCE__ABSTRACTCAPABILITY: return ProductmanagementPackage.COMPOSITE_CAPABILITY___RESOLVE_CAPABILITY_REFERENCE__ABSTRACTCAPABILITY;
+				case CapabilityPackage.CAPABILITY_DOMAIN___RESOLVE_CAPABILITY_REFERENCE__ABSTRACTCAPABILITY: return ProductmanagementPackage.COMPOSITE_CAPABILITY___RESOLVE_CAPABILITY_REFERENCE__ABSTRACTCAPABILITY;
 				default: return -1;
 			}
 		}

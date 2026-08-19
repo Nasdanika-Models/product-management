@@ -4,6 +4,8 @@ package org.nasdanika.models.productmanagement.impl;
 
 import org.eclipse.emf.ecore.EClass;
 
+import org.nasdanika.models.nxcore.impl.ModelElementImpl;
+
 import org.nasdanika.models.productmanagement.Persona;
 import org.nasdanika.models.productmanagement.PersonaReference;
 import org.nasdanika.models.productmanagement.ProductmanagementPackage;
