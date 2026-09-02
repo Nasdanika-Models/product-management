@@ -186,8 +186,10 @@
 
 	<modules>
 		<module>model</module>
+		<!--
 		<module>doc</module>
 		<module>handlers</module>
+		-->
 	</modules>
 
 	 <profiles>
